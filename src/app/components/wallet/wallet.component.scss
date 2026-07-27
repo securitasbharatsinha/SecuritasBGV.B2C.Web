@@ -1,0 +1,46 @@
+.sg_add_wlt_pymt {
+  position: relative;
+  width: calc(100% - 250px);
+}
+
+.sg_add_wlt_pymt input {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  background-color: transparent;
+  border-radius: 0;
+  height: auto !important;
+  padding: 8px 35px 4px !important;
+}
+
+.sg_add_wlt_pymt i.bi {
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+  top: 4px;
+}
+
+.accordion-button {
+  color: #8d5fff;
+  background-color: #f3eeff;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #8d5fff;
+  background-color: #f3eeff;
+}
+.shadow {
+  box-shadow: 1px 0rem 1rem #00000026 !important;
+}
+.Credit {
+  color: green;
+  &::before {
+    content: "+";
+  }
+}
+.Debit {
+  color: red;
+  &::before {
+    content: "-";
+  }
+}

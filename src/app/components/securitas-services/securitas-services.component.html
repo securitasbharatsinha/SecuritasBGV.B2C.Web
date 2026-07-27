@@ -1,0 +1,3730 @@
+<div class="bg-white p-0 sg_new_srvs_div_s">
+  <!--     <div>
+        <img src="assets/image/header.png" class="w-100">
+      </div> -->
+
+  <div
+    class="py-4 bg_blu hero-header sg_page_title position-relative"
+    style="background-image: url(assets/image/bnr.png)"
+  >
+    <!-- <div
+      class="position-absolute top-0 left-0 w-100 h-100 opacity-75 bg_blu"
+    ></div> -->
+    <div class="container my-1 my-lg-5 position-relative">
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-2">
+              <li class="breadcrumb-item">
+                <a class="tc_red tc_h_w" [routerLink]="['/home']">HOME</a>
+              </li>
+              <li class="breadcrumb-item tc_red active ps-1" aria-current="page">
+                <span>SERVICES</span>
+              </li>
+            </ol>
+          </nav>
+          <h1 class="text-white animated zoomIn">Services</h1> 
+        </div>
+        <!-- <div
+          class="col-lg-6 text-center text-md-start text-lg-center mt-3 mt-lg-0"
+        >
+          <img
+            src="assets/image/3.jpg"
+            class="rounded-3 shadow-lg"
+            width="80%"
+          />
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- Navbar & Hero End -->
+
+
+
+  <div class="sg_new_srv_pg">
+    <!-- Instant verification -->
+    <div class="container py-4 py-lg-5">
+      <div class="row">
+        <div class="col-10"></div>
+      </div>
+    </div>
+
+    <section id="instant_verification">
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-center mb-3">
+          <div class="col-lg-6 order-lg-2 sg_new_srv_img">
+            <img
+              src="assets/image/ins.png"
+              class="wow fadeInRight"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Verify Now (Self)</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Prompt self validation information through automated systems
+                backed by reliable sources.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="position-relative"> 
+        <div class="sg_circle_rt"></div>
+        <div class="sg_circle_ltb"></div>
+        <div class="sg_circle_lts"></div>
+        <div class="sg_circle_lb"></div>
+        <div class="sg_circle_lbs"></div>
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div
+              #instant_verification
+              class="col-lg-12 wow fadeInRight"
+              data-wow-delay="0.3s"
+            > 
+                <!-- <div class="col-md-12">
+                  <div class="section-title position-relative mb-4 pb-2">
+                    <h2>Instant Verification</h2>
+                  </div>
+                  <div>
+                    <p class="mb-0">
+                      Prompt self validation information through automated systems
+                      backed by reliable sources.
+                    </p>
+                  </div>
+                </div> -->
+                <div
+                  class="skelton d-flex justify-content-center align-items-center"
+                  style="height: 350px"
+                  *ngIf="!getServiceId('instant_verification')"
+                >
+                  <div class="spinner-border tc_prp" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <shared-checks-table
+                  *ngIf="getServiceId('instant_verification')"
+                  [serviceTypeId]="getServiceId('instant_verification')"
+                ></shared-checks-table> 
+            </div>
+          </div>
+        </div> 
+      </div>
+    </section>
+
+    <div class="container py-4 mt-xl-3 py-lg-5">
+      <div class="row">
+        <div class="col-10"></div>
+      </div>
+    </div>
+
+    <div class="container" id="helper_verification">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Helper Verification -->
+
+    <section class="">
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
+          <div class="col-lg-6 sg_new_srv_img">
+            <img
+              src="assets/image/spt.png"
+              class="wow fadeInLeft w-100"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 text-lg-end position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Support Personnel</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Safeguarding your loved ones by verifying individuals contributing to your daily life namely, 
+                domestic help, nanny, driver, security guard, etc. .
+              </p>
+            </div>
+          </div> 
+        </div>
+      </div>
+      <div class="position-relative"> 
+        <div class="sg_circle_rt"></div>
+        <div class="sg_circle_ltb"></div>
+        <div class="sg_circle_lts"></div>
+        <div class="sg_circle_lb"></div>
+        <div class="sg_circle_lbs"></div>
+        <div class="container position-relative z_index999">
+          <div class="row"> 
+            <div class="col-lg-12 wow fadeInRight" data-wow-delay="0.3s"> 
+                <div
+                  class="skelton d-flex justify-content-center align-items-center"
+                  style="height: 350px"
+                  *ngIf="!getServiceId('helper_verification')"
+                >
+                  <div class="spinner-border tc_prp" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <shared-checks-table
+                  *ngIf="getServiceId('helper_verification')"
+                  [serviceTypeId]="getServiceId('helper_verification')"
+                ></shared-checks-table> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container py-4 py-lg-5">
+      <div class="row">
+        <div class="col-10"></div>
+      </div>
+    </div>
+
+    <div class="container" id="tenant_verification">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Tenant Verification -->
+
+    <section class="">
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
+          <div class="col-lg-6 sg_new_srv_img order-lg-2">
+            <img
+              src="assets/image/tnt.png"
+              class="wow fadeInRight"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Tenant</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Be sure about whom you extend access to your home! A 
+                scrutinized process to ensure awareness of the tenant’s 
+                background which the landlords may skip knowing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="position-relative"> 
+        <div class="sg_circle_rt"></div>
+        <div class="sg_circle_ltb"></div>
+        <div class="sg_circle_lts"></div>
+        <div class="sg_circle_lt"></div>
+        <div class="sg_circle_lbs"></div>
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div class="col-lg-12 wow fadeInLeft" data-wow-delay="0.3s"> 
+                <div
+                  class="skelton d-flex justify-content-center align-items-center"
+                  style="height: 350px"
+                  *ngIf="!getServiceId('tenant_verification')"
+                >
+                  <div class="spinner-border tc_prp" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <shared-checks-table
+                  *ngIf="getServiceId('tenant_verification')"
+                  [serviceTypeId]="getServiceId('tenant_verification')"
+                ></shared-checks-table> 
+            </div> 
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container py-4 py-lg-5 mt-xl-2">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+    <div class="container" id="matrimonial_verification">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Matrimonial verification -->
+
+    <section>
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-baseline">
+          <div class="col-lg-6 sg_new_srv_img ps-lg-5">
+            <img
+              src="assets/image/mtri.png"
+              class="wow fadeInLeft"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999 text-lg-end">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Matrimonial</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                In the matter of lifelong alliance, be sure about the
+                authenticity individual. Avail our customized offering to
+                make informed decisions.
+              </p>
+              <h5 class="tc_prp mb-0 mt-4 fs_22 pb-lg-3 text-lg-end">
+                Share your details, Securitas will connect to you.
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row justify-content-end"> 
+          <div
+            #matrimonial_verification
+            class="col-lg-9 wow fadeInRight"
+            data-wow-delay="0.3s"
+          >  
+              <div class="sg_new_shdw pb-3"> 
+                <diligence-form
+                  [PkgName]="'matrimonial'"
+                  [checkDetails]="getServiceId('matrimonial_verification')"
+                ></diligence-form>
+              </div> 
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="container py-4 py-lg-5">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+    <div class="container" id="employee_verification">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Employee Verification -->
+
+    <section class="">
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
+          <div class="col-lg-6 sg_new_srv_img order-lg-2">
+            <img
+              src="assets/image/emly.png"
+              class="wow fadeInRight w-100"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Employee</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Offering granular-level insights on an individual's
+                background information pre-&-post hiring.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="position-relative"> 
+        <div class="sg_circle_rt"></div>
+        <div class="sg_circle_ltb"></div>
+        <div class="sg_circle_lts"></div>
+        <div class="sg_circle_lb"></div>
+        <div class="sg_circle_lbs"></div>
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div class="col-lg-12 wow fadeInLeft" data-wow-delay="0.3s"> 
+                <div
+                  class="skelton d-flex justify-content-center align-items-center"
+                  style="height: 350px"
+                  *ngIf="!getServiceId('employee_verification')"
+                >
+                  <div class="spinner-border tc_prp" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <shared-checks-table
+                  *ngIf="getServiceId('employee_verification')"
+                  [serviceTypeId]="getServiceId('employee_verification')"
+                ></shared-checks-table> 
+            </div> 
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <div class="container" id="leadership_due_diligence">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+    <div class="container py-4 py-lg-5">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+    <!-- Leadership Due Diligence -->
+
+    <section>
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-end">
+          <div class="col-lg-6 sg_new_srv_img">
+            <img
+              src="assets/image/ldr.png"
+              class="wow fadeInLeft"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999 text-lg-end">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Leadership Due</span> Diligence</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                An exhaustive screening exercised through competency mapping
+                and career tracking offers a 360-degree analysis before
+                onboarding.
+              </p>
+              <h5 class="tc_prp mb-0 mt-4 fs_22 pb-lg-3 text-lg-end">
+                Share your details, Securitas will connect to you.
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row justify-content-end">  
+          <div class="col-lg-9 wow fadeInRight" data-wow-delay="0.3s">  
+              <div class="sg_new_shdw pb-3"> 
+                <diligence-form
+                  [PkgName]="'leader'"
+                  [checkDetails]="getServiceId('leadership_due_diligence')"
+                ></diligence-form>
+              </div> 
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" id="vendor_due_diligence_(vdd)">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+    <div class="container py-4 py-lg-5">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+    <!-- Vendor Due Diligence -->
+
+    <section class="">
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-end">
+          <div class="col-lg-6 sg_new_srv_img order-lg-2">
+            <img
+              src="assets/image/vdr.png"
+              class="wow fadeInLeft"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Vendor Due</span> Diligence</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Risk-free business partnerships are always a value-ad to the
+                    company and enabling you to funnel the right partners.
+              </p>
+              <h5 class="tc_prp mb-0 mt-4 fs_22 pb-lg-3">
+                Share your details, Securitas will connect to you.
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div
+            #vendor_due_diligence_(vdd)
+            class="col-lg-9 wow fadeInLeft"
+            data-wow-delay="0.3s"
+          > 
+              <div class="sg_new_shdw mt-2 pb-3"> 
+                <diligence-form
+                  [PkgName]="'vendor'"
+                  [checkDetails]="getServiceId('vendor_due_diligence')"
+                ></diligence-form>
+              </div> 
+          </div> 
+        </div>
+      </div>
+    </section>
+
+    <div class="container" id="digital_verification">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+    <div class="container py-4 py-lg-5">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+    <!-- Digital Verification -->
+
+    <section class="">
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
+          <div class="col-lg-6 sg_new_srv_img">
+            <img
+              src="assets/image/dtl.png"
+              class="wow fadeInLeft"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999 text-lg-end">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Digital</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Smart & secure new-age digital methods offering
+                comprehensive background verification.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="position-relative"> 
+        <div class="sg_circle_rt"></div>
+        <div class="sg_circle_ltb"></div>
+        <div class="sg_circle_lts"></div>
+        <div class="sg_circle_lb"></div>
+        <div class="sg_circle_lbs"></div>
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div
+              #digital_verification
+              class="col-lg-12 wow fadeInLeft"
+              data-wow-delay="0.3s"
+            > 
+                <div
+                  class="skelton d-flex justify-content-center align-items-center"
+                  style="height: 350px"
+                  *ngIf="!getServiceId('digital_verification')"
+                >
+                  <div class="spinner-border tc_prp" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <shared-checks-table
+                  *ngIf="getServiceId('digital_verification')"
+                  [serviceTypeId]="getServiceId('digital_verification')"
+                ></shared-checks-table> 
+            </div> 
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <div class="container">
+          <div class="row">
+            <div class="col-lg-12 py-5 my-1"></div>
+          </div>
+      </div> 
+  </div>
+</div>
+
+<!-- <router-outlet></router-outlet> -->
+<ng-template>
+  <ng-template>
+    <div
+      class="py-md-5 bg_blu hero-header sg_page_title position-relative"
+      style="background-image: url(/assets/img/Leadership_Due_Diligence.jpg)"
+    >
+      <div
+        class="position-absolute top-0 left-0 w-100 h-100 opacity-50 bg_blu"
+      ></div>
+      <div class="container position-relative py-5 my-lg-5">
+        <div class="row">
+          <div class="col-12 align-items-center d-flex justify-content-between">
+            <div>
+              <h1 class="text-white animated zoomIn">Services</h1>
+            </div>
+
+            <!-- <hr class="bg-white mx-auto mt-0 opacity-100" style="width: 90px" /> -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item">
+                  <a class="tc_w tc_h_red" [routerLink]="['/home']">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Services
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- *ngIf="servicesTypesList?.length" -->
+    <ng-container *ngIf="false">
+      <app-instant-verify
+        [serviceTypeId]="getServiceId('instant_verification')"
+        id="instant_verification"
+      >
+      </app-instant-verify>
+      <app-digital-verification
+        [serviceTypeId]="getServiceId('digital_verification')"
+        id="digital_verification"
+      ></app-digital-verification>
+
+      <app-matrimonial-due-diligence
+        id="matrimonial_due_diligence"
+        [serviceTypeId]="getServiceId('matrimonial_due_diligence')"
+      ></app-matrimonial-due-diligence>
+      <app-tenant-verification
+        id="tenant_verification"
+        [serviceTypeId]="getServiceId('tenant_verification')"
+      ></app-tenant-verification>
+      <app-helper-verification
+        id="helper_verification"
+        [serviceTypeId]="getServiceId('helper_verification')"
+      ></app-helper-verification>
+      <app-business-employee-verification
+        id="employee_verification"
+        [serviceTypeId]="getServiceId('employee_verification')"
+      ></app-business-employee-verification>
+      <app-leadership-due-diligence
+        id="leadership_due_diligence"
+        [serviceTypeId]="getServiceId('leadership_due_diligence')"
+      ></app-leadership-due-diligence>
+      <app-vendor-due-diligence
+        id="vendor_due_diligence_"
+        [serviceTypeId]="getServiceId('vendor_due_diligence')"
+      ></app-vendor-due-diligence>
+      <app-new-services></app-new-services>
+    </ng-container>
+  </ng-template>
+  <ng-template #serviceList let-item="item">
+    <div class="col-lg-12">
+      <form class="row">
+        <ng-container *ngFor="let el of item.services">
+          <div class="col-md-6">
+            <div class="sg_pckg_checks">
+              <div
+                class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+              >
+                <div class="sg_form_group">
+                  <input
+                    type="checkbox"
+                    id="driving{{ el.id }}"
+                    [value]="el.price"
+                    (change)="selectService($event)"
+                  />
+                  <label for="driving{{ el.id }}">{{ el.service }} </label>
+                  <a
+                    [hidden]="!el?.desc"
+                    href="javascript:void()"
+                    class="show_shrt_dtal"
+                    ><i class="bi bi-chevron-down"></i
+                  ></a>
+                </div>
+                <div class="d-flex gap-2 align-items-center">
+                  <span class="price"> ₹ {{ el.price }}</span>
+                </div>
+              </div>
+              <div class="sg_shrt_dtal px-3">
+                <p>{{ el?.desc }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </form>
+    </div>
+    <div class="col-lg-12">
+      <div class="d-md-flex align-items-center justify-content-center">
+        <button
+          (click)="buyNow()"
+          style="min-width: 200px"
+          type="button"
+          class="mx-md-3 my-4 mb-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+        >
+          <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+          <span>Buy Now</span>
+        </button>
+        <button
+          style="min-width: 200px"
+          type="button"
+          class="mx-md-3 my-4 mb-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+        >
+          <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+          <span>Add to Cart</span>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #submenuServices let-item="item">
+    <div class="col-lg-12">
+      <form class="row align-items-center">
+        <ng-container *ngFor="let el of item.services; let i = index">
+          <div class="col-md-6">
+            <div class="sg_pckg_checks">
+              <div
+                class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+              >
+                <img
+                  src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                  width="70px"
+                />
+                <div class="sg_form_group">
+                  <input
+                    type="checkbox"
+                    id="h_tenant_verification{{ el.id }}"
+                  />
+                  <label for="h_tenant_verification{{ el.id }}">{{
+                    el.service
+                  }}</label>
+                </div>
+              </div>
+              <div
+                class="h_tenant_verification_input sg_inner_checks px-3 pb-3"
+              >
+                <ng-container *ngFor="let menus of el?.subService">
+                  <div class="sg_checkbox_div sg_form_group_inr">
+                    <input
+                      type="checkbox"
+                      id="tenant_verification_national_id{{ el.id }}"
+                      name="sg_occupied_option"
+                      value=""
+                      class="sg_inner_checks"
+                    />
+                    <label
+                      class="fs_14"
+                      for="tenant_verification_national_id{{ el.id }}"
+                      >{{ menus }}</label
+                    >
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <div class="col-lg-6">
+          <div class="d-md-flex align-items-center justify-content-center">
+            <button
+              style="min-width: 200px"
+              type="button"
+              class="mx-md-3 my-4 my-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+            >
+              <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+              <span>Buy Now</span>
+            </button>
+            <button
+              style="min-width: 200px"
+              type="button"
+              class="mx-md-3 my-4 my-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+            >
+              <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  <ng-template>
+    <div
+      class="py-5 bg_blu hero-header sg_page_title position-relative"
+      style="background-image: url(/assets/img/Leadership_Due_Diligence.jpg)"
+    >
+      <div
+        class="position-absolute top-0 left-0 w-100 h-100 opacity-50 bg_blu"
+      ></div>
+      <div class="container position-relative py-5 my-lg-5">
+        <div class="row">
+          <div class="col-12 align-items-center d-flex justify-content-between">
+            <div>
+              <h1 class="text-white animated zoomIn">Services</h1>
+            </div>
+
+            <!-- <hr class="bg-white mx-auto mt-0 opacity-100" style="width: 90px" /> -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item">
+                  <a class="tc_w tc_h_red" [routerLink]="['/home']">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Services
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instant Verification -->
+
+    <div
+      class="pt-5"
+      style="background-color: #fbfbfb"
+      id="instant_verification"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-4">
+            <div class="section-title position-relative mb-4 pb-2 text-center">
+              <h2 class="">Instant Verification</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="service_div_new"><app-shared-packages [serviceTypeId]="serviceTypeId"></app-shared-packages></div> -->
+      <!-- <div class="container sg_shadow rounded-3 py-4 py-lg-5 px-5 mt-5">  
+        <div class="row mt-2 align-items-center"  *ngIf="knowHow"> 
+           <div class="col-lg-6 fs_18 wow fadeInLeft" data-wow-delay="0.1s"> 
+              <div class="section-title position-relative mb-4 pb-2">
+                 <h6 class="position-relative d-inline ps-4">Instant Verification</h6>
+                 <h2 class="mt-2">{{knowHow.process_title}}</h2>
+              </div>
+              <div class="pt-2">
+                 <div class="d-flex align-items-baseline" *ngFor="let el of knowHow.service_process_details">
+                    <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                    <p class="mb-2"><b class="tc_prp me-1">{{el.process_desc_title}} : </b> {{el.process_desc_details}}</p>
+                 </div>   
+                  
+              </div> 
+           </div>
+           <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0">
+              <img [src]="knowHow.process_img?knowHow.process_img:'assets/img/Know_HOW.jpg'" class="w-100 rounded-3 wow animate__zoomIn" data-wow-delay="0.1s">
+           </div>
+        </div>
+        </div> -->
+      <!-- 
+        <div class="container">
+          <div class="row">
+             <div class="col-lg-12 my-3 py-3"></div>
+          </div>
+        </div> -->
+      <section class="pb-4 position-relative">
+        <div class="container">
+          <div class="row align-items-center px-xl-3">
+            <div class="col-lg-6">
+              <div class="col-lg-12">
+                <div class="mb-2">
+                  <h2 class="fs_24 tc_lred">Know HOW?</h2>
+                </div>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-12">
+                  <div
+                    class="sg_shadow px-4 py-3 bg_w d-flex gap-3 align-items-center"
+                  >
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Document Verification</h5>
+                      <p class="mb-0">
+                        Platinum partner of National Skills Registry, NASSCOM
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div
+                    class="sg_shadow px-4 py-3 bg_w d-flex gap-3 align-items-center"
+                  >
+                    <img
+                      src="assets/img/facial_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Facial Verification</h5>
+                      <p class="mb-0">
+                        Verifies that the user’s selfie matches the photo on the
+                        identity document
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ps-xxl-5 text-center">
+              <img
+                src="assets/img/id_varification.gif"
+                class="fit_img_cnt wow zoomIn h-100"
+                width=""
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- <div class="container">
+        <div class="row">
+           <div class="col-lg-12 py-4"></div>
+        </div>
+        </div> -->
+
+      <section class="bg_w py-5">
+        <div class="container">
+          <div class="row px-xl-3">
+            <!-- <ng-container
+            *ngTemplateOutlet="
+              serviceList;
+              context: { item: serviceLists.instant_verification }
+            "
+          ></ng-container> -->
+
+            <div class="col-lg-12">
+              <form class="row">
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks h-auto">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="adhar_otp" />
+                        <label for="adhar_otp"
+                          >Aadhar Verifcation (With OTP)</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks h-auto">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="adhar_n_otp" />
+                        <label for="adhar_n_otp"
+                          >Aadhar Verifcation (Without OTP)</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks h-auto">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="pan" />
+                        <label for="pan">Pan Verification</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks h-auto">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="pan_a" />
+                        <label for="pan_a">Pan Advanced</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks h-auto">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="driving" />
+                        <label for="driving">Driving License </label>
+                        <a href="javascript:void()" class="show_shrt_dtal"
+                          ><i class="bi bi-chevron-down"></i
+                        ></a>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹50</span>
+                      </div>
+                    </div>
+                    <div class="sg_shrt_dtal px-3">
+                      <p>
+                        Driving licence is an official document issued by the
+                        Government of India, permitting individuals to operate
+                        or drive motorised vehicles. Using only the DL number,
+                        our API will extract all the updated and real time data
+                        from the database. Our API allows you to conduct
+                        verification of Driving Licenses for numerous business
+                        scenarios and establishing a fine tuned process with the
+                        least failure probability.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks h-auto">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="voter" />
+                        <label for="voter">Voter ID</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks h-auto">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="face" />
+                        <label for="face">Face Match</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks h-auto">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="bank" />
+                        <label for="bank">Bank Account Verification</label>
+                        <a href="javascript:void()" class="show_shrt_dtal"
+                          ><i class="bi bi-chevron-down"></i
+                        ></a>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                    <div class="sg_shrt_dtal px-3">
+                      <p>
+                        Bank Account verification API helps you confirm account
+                        validity. By accessing updated data and real-time
+                        authentication, the result such as the account holder’s
+                        name is fetched which will be exactly as it appears in
+                        bank records.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-12">
+              <div class="d-md-flex align-items-center justify-content-center">
+                <button
+                  (click)="buyNow()"
+                  style="min-width: 200px"
+                  type="button"
+                  class="mx-md-3 my-4 mb-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Buy Now</span>
+                </button>
+                <button
+                  style="min-width: 200px"
+                  type="button"
+                  class="mx-md-3 my-4 mb-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Add to Cart</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="position-relative pt-2 pb-4 mb-2"
+        style="background-color: #fbfbfb"
+      >
+        <div class="container py-4">
+          <div class="row mt-2 align-items-center">
+            <div
+              class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-2"
+              data-wow-delay="0.1s"
+            >
+              <div class="mb-2">
+                <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+              </div>
+              <div class="row text-center pt-2">
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      High-user pass rate
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      High-fraud detection accuracy
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Cost-effective</h5>
+                  </div>
+                </div>
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Quality Database</h5>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="d-lg-flex align-items-center mt-4">
+                    <button type="button" class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4">
+                       <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                       <span>Buy Now</span>
+                    </button>
+                     <button type="button" class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4">
+                       <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                       <span>Add to Cart</span>
+                    </button> 
+                 </div> -->
+            </div>
+            <div class="col-lg-6 order-1 text-center">
+              <img
+                src="assets/img/high_fraud_detection.png"
+                class="h-100 fit_img_cnt wow zoomIn w-75"
+                width=""
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ------------ -->
+
+    <div class="container-fluid" style="border-top: 4px #acc2dd solid">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Digital Verification -->
+
+    <div class="pt-5" style="background-color: #fff" id="digital_verification">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-4">
+            <div class="section-title position-relative mb-4 pb-2 text-center">
+              <h2 class="">Digital Verification</h2>
+              <p class="mb-2">
+                Screen with Securitas’ reliable digital technology
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="pb-5 position-relative">
+        <div class="container pb-3 pt-1">
+          <div class="row align-items-center px-xl-3">
+            <div class="col-lg-6">
+              <div class="col-lg-12">
+                <div class="mb-2">
+                  <h2 class="fs_24 tc_lred">Address Know HOW?</h2>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-lg-12">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Web Link Address Validation</h5>
+                      <p class="mb-0">
+                        Contactless, technology-driven and consent-based
+                        verification by capturing geo-coordinates with Real-time
+                        Location Tracking System (RLTS).
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/facial_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Video Call Address Validation</h5>
+                      <p class="mb-0">
+                        Instant and Reliable address verification just with a
+                        video call!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/facial_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">KYC Address Validation</h5>
+                      <p class="mb-0">
+                        Validation through the Government issued ID proofs as
+                        per standard KYC norms.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ps-xxl-5">
+              <img
+                src="assets/img/facerecogntion.gif"
+                class="fit_img_cnt wow zoomIn h-100"
+                width=""
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5" style="background-color: #fbfbfb">
+        <div class="container">
+          <div class="row align-items-center px-xl-3">
+            <!-- <ng-container
+            *ngTemplateOutlet="
+              serviceList;
+              context: { item: serviceLists.digital_verification }
+            "
+          ></ng-container> -->
+            <div class="col-lg-12">
+              <form class="row">
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="digi_adrs_vrifi" />
+                        <label for="digi_adrs_vrifi"
+                          >Digital Address Verification</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="digi_emply" />
+                        <label for="digi_emply">Digital Employment Check</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="glbl_database" />
+                        <label for="glbl_database">Global Database Check</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="digi_court_rcrd" />
+                        <label for="digi_court_rcrd">Court Record Check</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="digi_national_id" />
+                        <label for="digi_national_id"
+                          >National Identity Check</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="digi_crdit_histy" />
+                        <label for="digi_crdit_histy"
+                          >Credit History Check</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="digi_fcis_levl" />
+                        <label for="digi_fcis_levl"
+                          >Facis Level III Check</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="digi_social" />
+                        <label for="digi_social">Social Media Check</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-12">
+              <div class="d-md-flex align-items-center justify-content-center">
+                <button
+                  (click)="buyNow()"
+                  style="min-width: 200px"
+                  type="button"
+                  class="mx-md-3 my-4 mb-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Buy Now</span>
+                </button>
+                <button
+                  style="min-width: 200px"
+                  type="button"
+                  class="mx-md-3 my-4 mb-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Add to Cart</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="position-relative py-5 bg_w">
+        <div class="container">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-2"
+              data-wow-delay="0.1s"
+            >
+              <div class="mb-2">
+                <h2 class="mt-2 fs_24 tc_lred">Address Know WHY?</h2>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Verifies instantly and reliably- completely compliant and
+                      does away with the dependency of a physical address visit
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Expanded scope- run address checks in containment zones
+                      and locations with mobility concerns
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 order-1">
+              <img
+                src="assets/img/address.png"
+                class="h-100 fit_img_cnt wow zoomIn w-75"
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-5 position-relative">
+        <div class="container py-1">
+          <div class="row align-items-center px-xl-3">
+            <div class="col-lg-6">
+              <div class="col-lg-12">
+                <div class="mb-2">
+                  <h2 class="fs_24 tc_lred">Employment Know HOW?</h2>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-lg-12">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Through ITR</h5>
+                      <p class="mb-0">
+                        Beat the clock with our dependable Employment
+                        Verifications through Income Tax Returns
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/facial_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Through UAN</h5>
+                      <p class="mb-0">
+                        Prompt validation of employer details of the candidate
+                        with the authentic platform- Employee Provident Fund
+                        Organization, Govt of India.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ps-xxl-5">
+              <img
+                src="assets/img/employment.png"
+                class="h-100 fit_img_cnt wow zoomIn w-100"
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative py-5" style="background: #fbfbfb">
+        <div class="container">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-2"
+              data-wow-delay="0.1s"
+            >
+              <div class="mb-2">
+                <h2 class="mt-2 fs_24 tc_lred">Employment Know WHY?</h2>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Closures on Unable to Verify; cases: when the previous
+                      Employer is non – operational or not verifying.
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Check for dual employment/moonlighting
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Identify false claims
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Quick closures</h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Highlight High-risk cases before onboarding
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Efficient processes can also be performed while the
+                      candidate is still working.
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Assists in internal audits: periodically to reinforce
+                      ethics, integrity and compliances
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="d-lg-flex align-items-center mt-4">
+                    <button type="button" class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4">
+                       <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                       <span>Buy Now</span>
+                    </button>
+                     <button type="button" class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4">
+                       <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                       <span>Add to Cart</span>
+                    </button> 
+                 </div> -->
+            </div>
+            <div class="col-lg-6 order-1">
+              <img
+                src="assets/img/high_fraud_detection.png"
+                class="h-100 fit_img_cnt wow zoomIn w-75"
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ------------ -->
+
+    <div class="container-fluid" style="border-top: 4px #acc2dd solid">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Matrimonial Verification -->
+
+    <div
+      class="py-5"
+      style="background-color: #fff"
+      id="matrimonial_due_diligence"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-4">
+            <div class="section-title position-relative mb-4 pb-2 text-center">
+              <h2 class="">Matrimonial Verification</h2>
+              <p class="mb-2">
+                Verify to ensure that your perfect match is a reliable one
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="pb-5 position-relative">
+        <div class="container pb-3 pt-1">
+          <div class="row align-items-center px-xl-3">
+            <div class="col-lg-12">
+              <div class="mb-2">
+                <h2 class="fs_24 tc_lred">Know HOW?</h2>
+                <p class="mb-0">
+                  <b>A) Pre-marital due diligence-</b> tying a knot with someone
+                  special? Get verifications done beforehand through seasoned
+                  professionals.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="row pt-3">
+                <div class="col-lg-12">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Discreet Employment Check</h5>
+                      <p class="mb-0">
+                        A complete report on employment to know the gap between
+                        actual and provided information
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Identity Check</h5>
+                      <p class="mb-0">
+                        Vetting of the ID of your potential partner to avoid
+                        fraudsters
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Criminal Record Check</h5>
+                      <p class="mb-0">
+                        Investigation via the court to unveil possible criminal
+                        conviction(s), divorce, sexual harassment or even fraud
+                        cases.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Credit Check</h5>
+                      <p class="mb-0">
+                        To know about credit rating, Loan default or any
+                        integrity issue
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Physical Address Verification</h5>
+                      <p class="mb-0">
+                        Validate address and gather information regarding
+                        character/family lifestyle/ relation from a neighbour
+                        and other sources to avoid future reputational risk
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Social Media Check</h5>
+                      <p class="mb-0">
+                        Identifying red flags such as extra-marital affairs,
+                        Previous Affairs, Lifestyle, Bad Habits, bullying,
+                        violence and hate crimes
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ps-xxl-5">
+              <img
+                src="assets/img/id_varification.gif"
+                class="fit_img_cnt wow zoomIn h-100 w-100"
+                width=""
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative py-5" style="background: #fbfbfb">
+        <div class="container">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-2"
+              data-wow-delay="0.1s"
+            >
+              <div class="mb-2">
+                <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+                <p class="mb-0">
+                  <b>A) Post-marital diligence-</b> make a smart choice to know
+                  about your spouse.
+                </p>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Surveillance</h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Photo and Video evidence of Extramarital affairs
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Income proof and Financial status
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Proof of second/illegal marriage
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center justify-content-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Employment details for alimony decision
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 order-1">
+              <img
+                src="assets/img/post_marital.png"
+                class="h-100 fit_img_cnt wow zoomIn w-100"
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-5 position-relative">
+        <div class="container py-1">
+          <div class="row align-items-center px-xl-3">
+            <div class="col-lg-6">
+              <div class="col-lg-12">
+                <div class="mb-2">
+                  <h2 class="fs_24 tc_lred">Employment Know HOW?</h2>
+                </div>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Secure future</h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Proactive identification red flags
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Safety of children
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Avoid financial and reputation loss
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Identify the character integrity of the partner
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="d-lg-flex align-items-center mt-4">
+                    <button
+                      (click)="buyNow()"
+                      type="button"
+                      class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+                    >
+                      <i
+                        class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"
+                      ></i>
+                      <span>Buy Now</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+                    >
+                      <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+                      <span>Add to Cart</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ps-xxl-5">
+              <img
+                src="assets/img/secure_future.png"
+                class="h-100 fit_img_cnt wow zoomIn w-100"
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ------------ -->
+
+    <div class="container-fluid" style="border-top: 4px #acc2dd solid">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Tenant Verification -->
+
+    <div class="pt-5" style="background-color: #fff" id="tenant_verification">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-4">
+            <div class="section-title position-relative mb-4 pb-2 text-center">
+              <h2 class="">Tenant Verification</h2>
+              <p class="mb-2">Verify first, rent your house after</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="pb-5 position-relative">
+        <div class="container pb-3 pt-1">
+          <div class="row align-items-center px-xl-3">
+            <div class="col-lg-6">
+              <div class="col-lg-12">
+                <div class="mb-2">
+                  <h2 class="fs_24 tc_lred">Know HOW?</h2>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-lg-12">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Identity check</h5>
+                      <p class="mb-0">API-driven authentication ID</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div
+                    class="sg_shadow px-4 py-3 bg_w d-flex gap-3 align-items-center"
+                  >
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18 mb-0">Address Check</h5>
+                      <!-- <p class="mb-0">Instant and Reliable address verification just with a video call!</p> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Criminal Record Check</h5>
+                      <p class="mb-0">
+                        Via court record search on current and permanent address
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div
+                    class="sg_shadow px-4 py-3 bg_w d-flex gap-3 align-items-center"
+                  >
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18 mb-0">Employment Check</h5>
+                      <!-- <p class="mb-0">Via court record search on current and permanent address</p> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div
+                    class="sg_shadow px-4 py-3 bg_w d-flex gap-3 align-items-center"
+                  >
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18 mb-0">Credit History Check</h5>
+                      <!-- <p class="mb-0">Via court record search on current and permanent address</p> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Police Verification</h5>
+                      <p class="mb-0">
+                        form submission at the local police station
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ps-xxl-5">
+              <img
+                src="assets/img/kycvalidation.gif"
+                class="fit_img_cnt wow zoomIn h-100 w-100"
+                width=""
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5" style="background: #fbfbfb">
+        <div class="container">
+          <div class="row align-items-center px-xl-3">
+            <!-- <ng-container
+            *ngTemplateOutlet="
+              submenuServices;
+              context: { item: serviceLists.tenant_verification }
+            "
+          ></ng-container> -->
+
+            <div class="col-lg-12">
+              <form class="row align-items-center">
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="h_tenant_verification" />
+                        <label for="h_tenant_verification"
+                          >Tenant Verification</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                    <div
+                      class="h_tenant_verification_input sg_inner_checks px-3 pb-3"
+                    >
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="tenant_verification_national_id"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label
+                          class="fs_14"
+                          for="tenant_verification_national_id"
+                          >National ID Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="tenant_verification_court_adrs"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label
+                          class="fs_14"
+                          for="tenant_verification_court_adrs"
+                        >
+                          Court Record Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="tenant_verification_reference"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="tenant_verification_reference"
+                          >Reference Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="tenant_verification_digital_emply"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label
+                          class="fs_14"
+                          for="tenant_verification_digital_emply"
+                        >
+                          Digital Employment Check</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div
+                    class="d-md-flex align-items-center justify-content-center"
+                  >
+                    <button
+                      (click)="buyNow()"
+                      style="min-width: 200px"
+                      type="button"
+                      class="mx-md-3 my-4 my-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+                    >
+                      <i
+                        class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"
+                      ></i>
+                      <span>Buy Now</span>
+                    </button>
+                    <button
+                      style="min-width: 200px"
+                      type="button"
+                      class="mx-md-3 my-4 my-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+                    >
+                      <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+                      <span>Add to Cart</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="position-relative py-5 bg_w">
+        <div class="container">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-2"
+              data-wow-delay="0.1s"
+            >
+              <div class="mb-2">
+                <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Better maintenance and safety of premises
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Assist in fulfilling the legal responsibility of the
+                      landlord over the tenant activities.
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Generating income without the hassle
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Gauge payment capacity of tenant
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 order-1">
+              <img
+                src="assets/img/tenant_verification.png"
+                class="h-100 fit_img_cnt wow zoomIn w-75"
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ------------ -->
+
+    <div class="container-fluid" style="border-top: 4px #acc2dd solid">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Helper Verification -->
+
+    <div class="pt-5" style="background-color: #fff" id="helper_verification">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-4">
+            <div class="section-title position-relative mb-4 pb-2 text-center">
+              <h2 class="">Helper Verification</h2>
+              <p class="mb-2">
+                International Labour Bureau states due to ageing Asia there is a
+                rise in demand for house-helpers like maids, cooks, drivers and
+                babysitters with high risks. Keep your home safe with our
+                solutions
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="pb-5 position-relative" style="background: #fbfbfb">
+        <div class="container pb-3 pt-1">
+          <div class="row align-items-center px-xl-3">
+            <div class="col-lg-6">
+              <div class="col-lg-12">
+                <div class="mb-2">
+                  <h2 class="fs_24 tc_lred">Know HOW?</h2>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-lg-12">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">ID Check (PAN / Voter / DL)</h5>
+                      <p class="mb-0">
+                        Verify the identity of your helper so that no fraudster
+                        makes inroads into your home.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">
+                        Court Record Check-Current & Permanent Address
+                      </h5>
+                      <p class="mb-0">
+                        Investigation via the court to unveil possible criminal
+                        conviction(s), sexual harassment, child abuse or even
+                        fraud case.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Police clearance</h5>
+                      <p class="mb-0">
+                        It validates that your helper is a law-abiding citizen
+                        and hence safe for your beloved ones.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Address Check-Present & Permanent</h5>
+                      <p class="mb-0">
+                        Validate address and locality to avoid future risks.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <img
+                      src="assets/img/document_verification.png"
+                      width="45px"
+                      height="45px"
+                      class="fit_img_cnt"
+                    />
+                    <div>
+                      <h5 class="fs_18">Reference Verification</h5>
+                      <p class="mb-0">
+                        From the previous deployment gather information about
+                        work history, performance, possible malpractices, etc.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ps-xxl-5">
+              <img
+                src="assets/img/id_varification.gif"
+                class="fit_img_cnt wow zoomIn h-100 w-100"
+                width=""
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5 bg_w">
+        <div class="container">
+          <div class="row align-items-center px-xl-3">
+            <!-- <ng-container
+            *ngTemplateOutlet="
+              submenuServices;
+              context: { item: serviceLists.helper_verification }
+            "
+          ></ng-container> -->
+            <div class="col-lg-12">
+              <form class="row">
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="domestic_helper" />
+                        <label for="domestic_helper">Domestic Helper</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                    <div
+                      class="domestic_helper_input mb-3 sg_inner_checks px-3 pb-3"
+                    >
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="domestic_helper_national"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="domestic_helper_national"
+                          >National ID</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="domestic_court_record"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="domestic_court_record"
+                          >Court Record Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="domestic_reference"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="domestic_reference"
+                          >Reference Check</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="baby_sitter" />
+                        <label for="baby_sitter"
+                          >Baby Sitter / Elderly Care Taker</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                    <div
+                      class="baby_sitter_input mb-3 sg_inner_checks px-3 pb-3"
+                    >
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="baby_sitter_national"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="baby_sitter_national"
+                          >National ID</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="baby_sitter_court_record"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="baby_sitter_court_record"
+                          >Court Record Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="baby_sitter_reference"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="baby_sitter_reference"
+                          >Reference Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="baby_sitter_drug"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="baby_sitter_drug"
+                          >Drug Test</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="driver" />
+                        <label for="driver">Driver</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                    <div class="driver_input sg_inner_checks px-3 pb-3">
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="driver_driving_license"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="driver_driving_license"
+                          >Driving License Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="driver_national_id"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="driver_national_id"
+                          >National ID Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="driver_court_record"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="driver_court_record"
+                          >Court Record Check on Current Address</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="driver_court_permanent_adrs"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="driver_court_permanent_adrs"
+                          >Court record check on Permanent Address</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="driver_physical_current"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="driver_physical_current"
+                          >Physical Current Address Verification</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="driver_reference"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="driver_reference"
+                          >Reference Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="driver_drug"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="driver_drug">
+                          Drug Test</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="tution_teacher" />
+                        <label for="tution_teacher">Tution Teacher</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                    <div class="tution_teacher_input sg_inner_checks px-3 pb-3">
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="tution_teacher_highest_qlif"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="tution_teacher_highest_qlif"
+                          >Highest Qualification Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="tution_teacher_national_id"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="tution_teacher_national_id"
+                          >National ID Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="tution_teacher_crnt_adrs"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="tution_teacher_crnt_adrs"
+                          >Current Address Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="tution_teacher_reference"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label class="fs_14" for="tution_teacher_reference"
+                          >Reference Check</label
+                        >
+                      </div>
+                      <div class="sg_checkbox_div sg_form_group_inr">
+                        <input
+                          type="checkbox"
+                          id="tution_teacher_court_prnt_adrs"
+                          name="sg_occupied_option"
+                          value=""
+                          class="sg_inner_checks"
+                        />
+                        <label
+                          class="fs_14"
+                          for="tution_teacher_court_prnt_adrs"
+                          >Court record check on permanent address</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="self" />
+                        <label for="self">Self</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                    <div class="driver_input sg_inner_checks px-3 pb-3 d-block">
+                      Alacarte
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-6">
+              <div
+                class="d-flex justify-content-center align-items-center gap-3"
+              >
+                <button
+                  (click)="buyNow()"
+                  style="min-width: 200px"
+                  type="button"
+                  class="my-4 mb-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Buy Now</span>
+                </button>
+                <button
+                  (click)="goToCart(); isAddedCart = true"
+                  style="min-width: 200px"
+                  type="button"
+                  class="my-4 mb-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>{{ isAddedCart ? "Go to Cart" : "Add to Cart" }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="position-relative py-5" style="background: #fbfbfb">
+        <div class="container">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-2"
+              data-wow-delay="0.1s"
+            >
+              <div class="mb-2">
+                <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Safer homes for children, elderly and disabled
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Proactive risk mitigation
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Making an informed decision
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Hiring a quality helper
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="d-lg-flex align-items-center mt-4">
+                 <button type="button" class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4">
+                    <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                    <span>Buy Now</span>
+                 </button>
+                  <button type="button" class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4">
+                    <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                    <span>Add to Cart</span>
+                 </button> 
+              </div>   -->
+            </div>
+            <div class="col-lg-6 order-1">
+              <img
+                src="assets/img/helper.png"
+                class="h-100 fit_img_cnt wow zoomIn w-75"
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ------------ -->
+
+    <div class="container-fluid" style="border-top: 4px #acc2dd solid">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Employee Verification -->
+
+    <div class="pt-5" style="background-color: #fff" id="employee_verification">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-4">
+            <div class="section-title position-relative mb-4 pb-2 text-center">
+              <h2 class="">Employee Verification</h2>
+              <p class="mb-2">
+                Check your employee authenticity prior to or post recruitment
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="pb-5 position-relative">
+        <div class="container pb-3 pt-1">
+          <div class="row align-items-center px-xl-3">
+            <div class="col-lg-6">
+              <div class="col-lg-12">
+                <div class="mb-2">
+                  <h2 class="fs_24 tc_lred">Know HOW?</h2>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Academic Record</h5>
+                  </div>
+                </div>
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Previous Employment
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Residential Verification
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Criminal Record</h5>
+                  </div>
+                </div>
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Criminal Database Record
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">ID Verification</h5>
+                  </div>
+                </div>
+                <div class="col-lg-6 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Social media Checks
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ps-xxl-5">
+              <img
+                src="assets/img/kycvalidat.gif"
+                class="fit_img_cnt wow zoomIn h-100 w-100"
+                width=""
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5" style="background: #fbfbfb">
+        <div class="container">
+          <div class="row align-items-center px-xl-3">
+            <!-- <ng-container
+            *ngTemplateOutlet="
+              serviceList;
+              context: { item: serviceLists.employee_verification }
+            "
+          ></ng-container> -->
+            <div class="col-lg-12">
+              <form class="row">
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="academic_record" />
+                        <label for="academic_record"
+                          >Academic Record Check</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input
+                          type="checkbox"
+                          id="previous_emply_verificaiton"
+                        />
+                        <label for="previous_emply_verificaiton"
+                          >Previous Employment Verificaiton</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="residential_verification" />
+                        <label for="residential_verification"
+                          >Residential Verification</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="id_document_verficaiton" />
+                        <label for="id_document_verficaiton"
+                          >ID Document Verficaiton</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="emply_court_record" />
+                        <label for="emply_court_record"
+                          >National Identity Check</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="global_database" />
+                        <label for="global_database"
+                          >Global Database Check</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="sg_pckg_checks">
+                    <div
+                      class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                    >
+                      <!-- <img
+                      src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                      width="70px"
+                    /> -->
+                      <div class="sg_form_group">
+                        <input type="checkbox" id="emply_social_media" />
+                        <label for="emply_social_media"
+                          >Social Media Check</label
+                        >
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <span class="price">₹60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-12">
+              <div class="d-md-flex align-items-center justify-content-center">
+                <button
+                  (click)="buyNow()"
+                  style="min-width: 200px"
+                  type="button"
+                  class="mx-md-3 my-4 mb-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Buy Now</span>
+                </button>
+                <button
+                  style="min-width: 200px"
+                  type="button"
+                  class="mx-md-3 my-4 mb-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Add to Cart</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="position-relative py-5 bg_w">
+        <div class="container">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-2"
+              data-wow-delay="0.1s"
+            >
+              <div class="mb-2">
+                <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Quality and reliable hire
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Healthy working environment
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Safety of resources and assets and company
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Cost and time effective
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Compliance with Anti-discrimination laws
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="d-lg-flex align-items-center mt-4">
+                 <button type="button" class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4">
+                    <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                    <span>Buy Now</span>
+                 </button>
+                  <button type="button" class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4">
+                    <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                    <span>Add to Cart</span>
+                 </button> 
+              </div> -->
+            </div>
+            <div class="col-lg-6 order-1">
+              <img
+                src="assets/img/employee2.png"
+                class="h-100 fit_img_cnt wow zoomIn w-100"
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ------------ -->
+
+    <div class="container-fluid" style="border-top: 4px #acc2dd solid">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Leadership Due Diligence -->
+
+    <div
+      class="pt-5"
+      style="background-color: #fff"
+      id="leadership_due_diligence"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-4">
+            <div class="section-title position-relative mb-4 pb-2 text-center">
+              <h2 class="">Leadership Due Diligence</h2>
+              <p class="mb-2">
+                >Verify Leadership positions with Securitas’ comprehensive
+                evaluation and validation. Onboard them with safety first and
+                caution second.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="pb-5 position-relative">
+        <div class="container pb-3 pt-1">
+          <div class="row align-items-center px-xl-3">
+            <div class="col-lg-6">
+              <div class="col-lg-12">
+                <div class="mb-2">
+                  <h2 class="fs_24 tc_lred">Know HOW?</h2>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-lg-12">
+                  <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                    <div>
+                      <h5 class="fs_18">
+                        Credit Check - Worried about financial deception?
+                      </h5>
+                      <div class="pt-2 fs_16">
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">
+                            Active accounts including open loans;
+                          </p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Outstanding balances, foreclosures</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Late or missed payments</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Any bankruptcies</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Collection accounts</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div class="sg_shadow px-4 py-3 bg_w">
+                    <h5 class="fs_15 mb-2 ff_reg">
+                      a) Discreet reference checks - Reference checks from HR,
+                      and supervisors.
+                    </h5>
+                    <h5 class="fs_15 mb-2 ff_reg">b) Political affiliation</h5>
+                    <h5 class="fs_15 mb-2 ff_reg">c) Social Media check</h5>
+                    <h5 class="fs_15 mb-2 ff_reg">d) Criminal verification</h5>
+                    <h5 class="fs_15 mb-2 ff_reg">
+                      e) Compliance and regulatory issues check
+                    </h5>
+                    <h5 class="fs_15 mb-2 ff_reg">
+                      f) Previous Employment Check
+                    </h5>
+                    <h5 class="fs_15 mb-2 ff_reg">
+                      g) Corporate Affiliations/directorship partnership check
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ps-xxl-5">
+              <img
+                src="assets/img/employment.gif"
+                class="fit_img_cnt wow zoomIn h-100 w-100"
+                width=""
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="position-relative py-5" style="background: #fbfbfb">
+        <div class="container">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-2"
+              data-wow-delay="0.1s"
+            >
+              <div class="mb-2">
+                <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Confident decisions while hiring
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Candidate analysis before considering for a financial role
+                      or at the time of assets assignment
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Healthy workplace environment
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Value creation, risk mitigation and successful integration
+                      planning with a verified M&A executive
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="d-lg-flex align-items-center mt-4">
+                <button
+                  (click)="buyNow()"
+                  type="button"
+                  class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Buy Now</span>
+                </button>
+                <button
+                  type="button"
+                  class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Add to Cart</span>
+                </button>
+              </div>
+            </div>
+            <div class="col-lg-6 order-1">
+              <img
+                src="assets/img/employee2.png"
+                class="h-100 fit_img_cnt wow zoomIn w-100"
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ------------ -->
+
+    <div class="container-fluid" style="border-top: 4px #acc2dd solid">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Vendor Due Diligence -->
+
+    <div
+      class="pt-5"
+      style="background-color: #fff"
+      id="vendor_due_diligence_(vdd)"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-4">
+            <div class="section-title position-relative mb-4 pb-2 text-center">
+              <h2 class="">Vendor Due Diligence</h2>
+              <p class="mb-2">Validate your vendor/supplier/business partner</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="pb-5 position-relative">
+        <div class="container pb-3 pt-1">
+          <div class="row px-xl-3">
+            <div class="col-lg-6">
+              <div class="col-lg-12">
+                <div class="mb-2">
+                  <h2 class="fs_24 tc_lred">Know HOW?</h2>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-lg-12">
+                  <div class="sg_shadow px-4 py-3 bg_w mb-3">
+                    <div>
+                      <h5 class="fs_18 mb-0">
+                        a) Enterprise’s Financial Status check
+                      </h5>
+                    </div>
+                  </div>
+                  <div class="sg_shadow px-4 py-3 bg_w mb-3">
+                    <div>
+                      <h5 class="fs_18 mb-0">
+                        b) Information Security Processes and Compliance s
+                      </h5>
+                    </div>
+                  </div>
+                  <div class="sg_shadow px-4 py-3 bg_w mb-3">
+                    <div>
+                      <h5 class="fs_18">c) Geo-spread & setup</h5>
+                      <div class="pt-2 fs_16">
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Location-wise presence</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Emergency Response system</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sg_shadow px-4 py-3 bg_w mb-3">
+                    <div>
+                      <h5 class="fs_18">
+                        d) Policies & Compliances of the Enterprise
+                      </h5>
+                      <div class="pt-2 fs_16">
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Compliance Management</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">
+                            Policies on C&B, Health & Safety, Sexual Harassment,
+                            Data Protection, Anti-Bribery etc.
+                          </p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Payroll management</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sg_shadow px-4 py-3 bg_w mb-3">
+                    <div>
+                      <h5 class="fs_18">
+                        e) Enterprise’s Overview, Ethics & Market Reputation
+                      </h5>
+                      <div class="pt-2 fs_16">
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Experience and expertise</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">
+                            Operating structure & operating procedures
+                          </p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Customer Reference Check</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">
+                            Defaulter’s checks - statutory bodies
+                          </p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Adverse Media Checks</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">MCA defaulter checks</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Indian and Global database checks</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sg_shadow px-4 py-3 bg_w">
+                    <div>
+                      <h5 class="fs_18">
+                        f) Directors / Promoters Background check
+                      </h5>
+                      <div class="pt-2 fs_16">
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">
+                            KYC Documents of Enterprise and its promoters/
+                            directors
+                          </p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Conflict of interest check</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">
+                            Media Check of promoters/ directors
+                          </p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Political involvement</p>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                          <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                          <p class="mb-0">Court Record Check</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ps-xxl-5 position-sticky top-0">
+              <img
+                src="assets/img/employment2.gif"
+                class="fit_img_cnt wow zoomIn h-100 w-100"
+                width=""
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="position-relative py-5" style="background: #fbfbfb">
+        <div class="container">
+          <div class="row align-items-center">
+            <div
+              class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-2"
+              data-wow-delay="0.1s"
+            >
+              <div class="mb-2">
+                <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+              </div>
+              <div class="row pt-2">
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Stamp out any financial threat
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Appropriate accountability
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Gauging their strategic presence and reputation
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Ensuring cybersecurity
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Eliminate Compliance risks
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-lg-12 my-2">
+                  <div
+                    class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+                  >
+                    <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                      Smooth operations
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="d-lg-flex align-items-center mt-4">
+                <button
+                  (click)="buyNow()"
+                  type="button"
+                  class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Buy Now</span>
+                </button>
+                <button
+                  type="button"
+                  class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+                >
+                  <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span>Add to Cart</span>
+                </button>
+              </div>
+            </div>
+            <div class="col-lg-6 order-1">
+              <img
+                src="assets/img/taxes.gif"
+                class="h-100 fit_img_cnt wow zoomIn w-100"
+                data-wow-delay="0.1s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </ng-template>
+</ng-template>

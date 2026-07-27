@@ -1,0 +1,185 @@
+<div class="viewport-wrapper">
+  <!-- Securitas Logo (Top-Right on Desktop, Fluid on Mobile) -->
+  <!-- <header class="securitas-logo-container">
+    <a href="#" aria-label="Securitas Home">
+        <img src="../../../assets/img/logo_b.png" alt="">
+    </a>
+  </header> -->
+
+  <main class="app-container">
+    <!-- Left Panel: Brand Headers and Features -->
+     <section class="left-panel">
+                <div class="slider-container" 
+     (mouseenter)="stopAutoRotate()" 
+     (mouseleave)="startAutoRotate()">
+
+  <div class="slides-wrapper">
+    <div *ngFor="let slide of slides; let i = index" 
+         class="slide" 
+         [class.active]="i === currentIndex">
+
+      <div class="circles-group">
+        <div *ngFor="let avatar of slide.avatars" 
+             class="circle-avatar" 
+             [style.backgroundImage]="'url(' + avatar + ')'">
+        </div>
+      </div>
+
+      <h2 class="slide-title">
+        {{ slide.title }}
+      </h2>
+      <span class="slidespan">{{ slide.subtitle }}</span>
+      <p class="slide-desc">{{ slide.desc }}</p>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="slider-controls">
+    <button type="button" class="slider-arrow prev-btn" (click)="prevSlide()">
+      <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button type="button" class="slider-arrow next-btn" (click)="nextSlide()">
+      <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+</div>
+
+                    </section>
+
+    <!-- Right Panel: Login Card Container -->
+    <section class="right-panel">
+      <div class="card">
+              <div class="card-header-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="3" x2="12" y2="21"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="5.64" y1="5.64" x2="18.36" y2="18.36"></line>
+              <line x1="5.64" y1="18.36" x2="18.36" y2="5.64"></line>
+            </svg>
+          </div>
+          <h1 class="card-title">Get Started</h1>
+          <p class="card-subtitle">Create your secure profile to begin background verification and unlock verified opportunities.</p>
+             <form class="registration-form">  
+       <div class="container">
+  <form [formGroup]="signUpForm">
+  <div class="name-row">
+              <div class="form-group">
+                <label for="Title" class="form-label label-select">
+                  Title
+                  <svg class="select-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </label>
+                <div class="input-wrapper">
+                  <select id="Prefix" class="form-input" formControlName="Prefix">
+                    <option value="null" disabled selected>Prefix</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="FirstName" class="form-label">First Name<span class="required-star">*</span></label>
+                <div class="input-wrapper">
+                  <input type="text" id="FName" class="form-input" formControlName="FName">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="MiddleName" class="form-label">Middle Name</label>
+                <div class="input-wrapper">
+                  <input type="text" id="MName" class="form-input" formControlName="MName">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="LastName" class="form-label">Last Name<span class="required-star">*</span></label>
+                <div class="input-wrapper">
+                  <input type="text" id="LName" class="form-input" formControlName="LName">
+                </div>
+              </div>
+            </div>
+            <!-- Contact Row -->
+            <div class="contact-row">
+              <div class="form-group">
+                <label for="MobileNumber" class="form-label">Mobile Number<span class="required-star">*</span></label>
+                <div class="input-wrapper">
+                  <input type="tel" id="Phone" class="form-input" placeholder="IN (+91)" formControlName="Phone">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="Email" class="form-label">Email Address<span class="required-star">*</span></label>
+                <div class="input-wrapper">
+                  <input type="email" id="Email" class="form-input" formControlName="Email">
+                </div>
+              </div>
+            </div>
+            <!-- Create Password -->
+            <div class="form-group col-md-7">
+              <label for="Password" class="form-label">Create Password<span class="required-star">*</span></label>
+              <div class="input-wrapper ">
+                <input type="password" id="Password" class="form-input has-icon" placeholder="••••••" formControlName="Password">
+                <button type="button" class="input-icon-btn" id="togglePasswordBtn" aria-label="Toggle Password Visibility">
+                  <!-- Sleeping Eye SVG -->
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="eyeIcon">
+                    <path d="M3 10C3 10 7 15 12 15C17 15 21 10 21 10"></path>
+                    <path d="M12 15V18"></path>
+                    <path d="M8 14L6.5 16.5"></path>
+                    <path d="M16 14L17.5 16.5"></path>
+                    <path d="M4.5 11.5L3 13.5"></path>
+                    <path d="M19.5 11.5L21 13.5"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <!-- Checkbox Agreement -->
+            <div class="checkbox-group">
+              <input type="checkbox" id="agreement" class="checkbox-input" formControlName="IsAgreement">
+              <label for="agreement" class="checkbox-label">
+                I agree to the <a href="assets/documents/Terms_and_condition.pdf" target="_blank">
+                        <u>(Terms and conditions)</u></a> and Privacy Policy for the background verification processing.
+              </label>
+            </div>
+            <!-- Captcha Section -->
+            <div class="verification-container">
+              <div class="captcha-badge" id="captchaBadge" style="cursor: pointer;" title="Click to refresh captcha">
+              </div>
+              <div class="col-md-7">
+                <captcha #captcha *ngIf="selectedTab === 'Individual'"></captcha>
+              </div>
+            </div>
+
+            <ng-container *ngIf="verifyTemplate === 'Authentication'">
+              <div class="col-md-4">
+                <label class="form-label"> Enter OTP:</label>
+                <input min="0" type="number" minlength="6" maxlength="6" class="form-input" id="code" placeholder="Code" #code />
+              </div>
+              <div class="mt-2 col-md-7">
+                <button type="submit" class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100" (click)="verifyActivationCode(code.value)">
+                  Authentication
+                </button>
+              </div>
+            </ng-container>
+            <!-- Submit Button -->
+            <div class="mt-2 col-md-7" *ngIf="verifyTemplate !== 'Authentication'">
+              <button type="submit" class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100" (click)="signup()">
+                Create Secure Account
+              </button>
+            </div>
+  </form>
+</div>
+          </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Walsons Logo (Bottom-Left on Desktop, Fluid on Mobile) -->
+  <footer class="walsons-logo-container">
+    <a href="#" aria-label="Walsons Home">
+      <img src="assets/img/WalsonsLogo.png" width="160px" class="d-none d-lg-block" />
+    </a>
+  </footer>
+</div>	

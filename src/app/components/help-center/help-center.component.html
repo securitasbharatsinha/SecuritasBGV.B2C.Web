@@ -1,0 +1,205 @@
+<section class="sg_hlp_cntr py-2">
+  <div class="container py-5 px-4 px-md-0">
+    <div class="row justify-content-center">
+      <div class="col-xl-10 bg-white rounded-2 px-lg-5">
+        <div class="d-flex justify-content-end w-100">
+          <a [routerLink]="
+              !isLoggedIn && isSpecialWindow
+                ? '/special/login'
+                : isLoggedIn && isSpecialWindow
+                ? '/special/individual'
+                : '/individual'
+            " routerLinkActive="active" class="nav-item nav-link mt-2 mt-md-0"><i
+              class="bi bi-x-circle-fill fa-2x"></i></a>
+        </div>
+
+        <div class="p-4 p-md-4 p-lg-5">
+          <form class="row gx-xl-5 gy-4 sg_hlp_cntr_frm py-lg-1" [formGroup]="actionForm">
+            <div class="col-sm-6 col-xl-5 col-md-4">
+              <div class="d-block d-sm-flex gap-2 justify-content-between">
+                <span class="fs_20 ff_l">I AM</span>
+                <div class="mt-3 mt-sm-0 form-check d-flex align-items-center gap-2">
+                  <input class="form-check-input" type="radio" formControlName="UserType" id="flexRadioDefault1"
+                    value="individual" #ct />
+                  <label class="form-check-label fs_20 ff_bold" for="flexRadioDefault1">
+                    Verify Now
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-8 col-xl-7">
+              <div class="form-check d-flex align-items-center gap-2" *ngIf="!isSpecialWindow">
+                <input class="form-check-input" [hidden]="true" type="radio" formControlName="UserType" id="flexRadioDefault2"
+                  value="corporate" #ct />
+                <label class="form-check-label fs_20 ff_bold" for="flexRadioDefault2" [hidden]="true">
+                  CORPORATE
+                </label>
+              </div>
+            </div>
+            <div class="col-xl-5 col-md-4">
+              <div class="form-group">
+                <label for="exampleFormControlSelect1" class="form-label tc_lred fs_18 mb-2">Query-related</label>
+                <select class="form-select rounded-1 ff_l" aria-label="Default select example"
+                  formControlName="queryType" #qt (change)="resetQuery()">
+                  <option value="" disabled>Select</option>
+                  <option *ngFor="let el of data?.queryType" [value]="el">
+                    {{ el }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-8 col-xl-7">
+              <div>
+                <label for="exampleFormControlSelect1"
+                  class="form-label tc_lred fs_18 mb-2 d-none d-md-block">&nbsp;</label>
+                <select class="form-select rounded-1 ff_l" aria-labdel="Default select example" formControlName="query">
+                  <option value="" disabled>Select the query related</option>
+                  <option *ngFor="let el of data?.[qt.value]" [value]="el">
+                    {{ el }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xl-5 col-md-4 mt-3 pt-lg-2">
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-4">
+                    <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                    <input type="text" class="form-control" placeholder="Full Name" formControlName="name" (input)="onNameInput($event)" maxlength="30" />
+                    <span class="text-danger" *ngIf="
+                        actionForm.controls.name?.errors &&
+                        actionForm.controls.name?.touched
+                      ">Name is Required</span>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="mb-4">
+                    <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                    <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Phone number"
+                      formControlName="phone" (input)="onInput($event)" maxlength="10" />
+                    <span class="text-danger" *ngIf="
+                        actionForm.controls.phone?.errors &&
+                        actionForm.controls.phone?.touched
+                      ">Please enter a valid phone no</span>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="">
+                    <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                    <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="Email ID"
+                      formControlName="email" maxlength="50" />
+                    <span *ngIf="
+                        actionForm.controls.email?.touched &&
+                        actionForm.controls.email?.errors?.pattern &&
+                        !actionForm.controls.email?.hasError('hasCapitalCase')
+                      " class="tc_red fs_13">Please enter a valid e-mail.</span>
+                    <span *ngIf="
+                        actionForm.controls.email?.touched &&
+                        actionForm.controls.email?.hasError('hasCapitalCase')
+                      " class="tc_red fs_13">Only small letters are allowed.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 col-xl-7 sg_text_ara pt-lg-2 position-relative">
+              <div class="" style="height: 85%">
+                <label for="exampleFormControlTextarea1" class="form-label tc_l_gry fs_16">Remarks</label>
+                <textarea formControlName="remarks" class="form-control rounded-0 border-0"
+                  style="height: calc(100% - 32px)" placeholder=" Type something here......" maxlength="300"></textarea>
+              </div>
+              <div class="row mt-2">
+                <div class="col-12">
+                  <div class="d-flex align-items-center justify-content-between gap-2">
+                    <div class="sg_image-upload">
+                      <label for="sg_file-input" class="fs_12">
+                        <i class="bi bi-paperclip fs_14"></i>
+                        File Choose <code>(pdf, png, jpg)</code>
+                      </label>
+                      <input id="sg_file-input" type="file" [accept]="'.pdf,.png,.jpg'" (change)="uploadFile($event)" />
+                    </div>
+                    <small *ngIf="selectedFile" class="tc_l_gry d-flex align-items-center justify-content-end gap-2">{{
+                      selectedFile }}
+                      <a href="javaScript:void(0)" (click)="selectedFile = null; b64Value = ''"><i
+                          class="bi bi-x-lg"></i></a></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xl-5 col-md-4 mt-4 pt-lg-1" *ngIf="
+                isLoggedIn &&
+                actionForm.controls.UserType.value === 'individual'
+              ">
+              <div>
+                <input type="text" class="form-control" id="securitasid" placeholder="Securitas ID"
+                  formControlName="securitasId" />
+                <span class="text-danger" *ngIf="
+                    actionForm.controls.securitasId?.errors &&
+                    actionForm.controls.securitasId?.touched
+                  ">Required</span>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xl-5 col-md-4 mt-4 pt-lg-1" *ngIf="
+                isLoggedIn && actionForm.controls.UserType.value === 'corporate'
+              ">
+              <div>
+                <input type="text" class="form-control" id="trackid" placeholder="Track ID" formControlName="trackId" />
+                <span class="text-danger" *ngIf="
+                    actionForm.controls.trackId?.errors &&
+                    actionForm.controls.trackId?.touched
+                  ">Required</span>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xl-5 col-md-4 mt-4 pt-lg-1" *ngIf="
+                !isLoggedIn &&
+                actionForm.controls.UserType.value === 'corporate'
+              ">
+              <div>
+                <!-- <label
+                  for="exampleFormControlSelect1"
+                  class="form-label tc_lred fs_18 mb-2 d-none d-md-block"
+                  >Industry</label
+                > -->
+                <select class="form-select rounded-1 ff_l" aria-labdel="Default select example"
+                  formControlName="industryType">
+                  <option value="" disabled>Industry</option>
+                  <option [value]="el.id" *ngFor="let el of industries">
+                    {{ el.type }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-8 col-xl-7 mt-4 pt-lg-1" *ngIf="
+                !isLoggedIn &&
+                actionForm.controls.UserType.value === 'corporate'
+              ">
+              <div>
+                <!-- <label
+                  for="exampleFormControlSelect1"
+                  class="form-label tc_lred fs_18 mb-2 d-none d-md-block"
+                  >Employee Strength</label
+                > -->
+                <select class="form-select rounded-1 ff_l" aria-labdel="Default select example"
+                  formControlName="employeeStrength">
+                  <option value="" disabled>Employee Strength</option>
+                  <option value=">10">Less Than 10</option>
+                  <option value="10-50">10-50</option>
+                  <option value="50-100">50-100</option>
+                  <option value=">100">More Than 100</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 text-end pt-4">
+              <div *ngIf="isLoading">
+                <span class="spinner-border tc_prp" role="status"></span>Loading...
+              </div>
+              <button type="submit" class="btn bg_prp bg_h_red w-auto rounded-0 border-0 tc_w fs_13 py-1 px-4" *ngIf="!isLoading"
+                (click)="postFrom()">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

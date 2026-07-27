@@ -1,0 +1,51 @@
+.item-no {
+  padding: 0px 0px;
+  height: 16px;
+  background-color: #8d5fff;
+  width: 15px;
+  text-align: center;
+  border-radius: 2px;
+  color: white;
+  font-size: 12px;
+  top: 1px;
+}
+.item-container {
+  overflow-y: auto;
+  height: 100%;
+  max-height: 60vh;
+}
+.item-container .sg_child_checks p {
+  margin-bottom: 4px;
+  font-family: "securitaspro_light" !important;
+  font-size: 13px;
+  padding-left: 23px;
+}
+.close-icon {
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  color: red;
+  background: none;
+  border: 0px;
+  outline: none;
+}
+
+/* width */
+.item-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+.item-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.item-container::-webkit-scrollbar-thumb {
+  background: #ff8da3;
+}
+
+/* Handle on hover */
+.item-container::-webkit-scrollbar-thumb:hover {
+  background: #acc2dd;
+}

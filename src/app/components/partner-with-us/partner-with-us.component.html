@@ -1,0 +1,482 @@
+<div class="py-4 bg_blu hero-header mb-4 mb-md-5 sg_page_title position-relative" *ngIf="partnerContent">
+  <div class="position-absolute top-0 left-0 w-100 h-100 opacity-50 bg_blu"></div>
+  <div class="container-fluid my-1 my-lg-5 px-xxl-5 px-4 position-relative">
+    <div class="row align-items-center">
+      <div class="col-xxl-12 col-lg-12 text-white">
+        <!-- <h1 class="text-white animated zoomIn text-start">{{partnerContent.title}}</h1> -->
+        <h1 class="text-white animated zoomIn text-start">Partner Connect</h1>
+        <hr class="bg-white mt-0 opacity-100" style="width: 90px" />
+
+        <!-- <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-start">
+                   <li class="breadcrumb-item"><a class="tc_w tc_h_red" [routerLink]="['/home']">Home</a></li>
+                   <li class="breadcrumb-item tc_red active" aria-current="page">{{partnerContent.title}}</li>
+                </ol>
+             </nav> -->
+        <!-- <div class="tc_w">
+                <p>{{partnerContent.desc}} </p>
+             </div> -->
+      </div>
+      <!-- <div class="col-xxl-4 col-lg-6 text-lg-center mt-3 mt-lg-0">
+        <img
+          [src]="partnerContent.img"
+          class="rounded-3 shadow-lg"
+          width="80%"
+        />
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<div class="pt-0 pt-lg-4">
+  <div class="container-fluid px-xxl-5 px-4" *ngIf="partnerContent">
+    <div class="row mt-2 align-items-center">
+      <div class="col-xxl-8 col-lg-6 fs_18 wow fadeInLeft" data-wow-delay="0.1s">
+        <div class="section-title position-relative mb-2 pb-2">
+          <h2 class="mt-2">Partner with Securitas</h2>
+          <!-- <h2 class="mt-2">{{ partnerContent.causes.title }}</h2> -->
+        </div>
+        <div class="pt-0 pt-md-2">
+          <i style="font-size: 13px">Building A Partnership Rooted In Integrity
+          </i>
+          <p>
+            Securitas India promotes an ecosystem that helps vendors and
+            suppliers to grow not just in their revenue but in the overall
+            growth of their respective organisations. Thus, at Securitas India,
+            we call people associated with our supply chain, Partners.
+          </p>
+          <!-- <p class="mb-3 mb-lg-4">
+            {{ partnerContent.causes.desc }}
+          </p> -->
+          <!-- <ng-container *ngFor="let e of partnerContent.causes.options"> -->
+          <h6 class="mb-2">
+            <i class="fa fa-check tc_red me-2"></i>Volume-driven Business From
+            Diverse Industries
+          </h6>
+          <h6 class="mb-2">
+            <i class="fa fa-check tc_red me-2"></i>Defined & Documented Code Of
+            Conduct
+          </h6>
+          <h6 class="mb-2">
+            <i class="fa fa-check tc_red me-2"></i>Structured Payment Procedures
+          </h6>
+          <h6 class="mb-2">
+            <i class="fa fa-check tc_red me-2"></i>Transparent &
+            Technology-enabled Processes
+          </h6>
+          <h6 class="mb-2">
+            <i class="fa fa-check tc_red me-2"></i>Policy-driven Approach
+          </h6>
+          <h6 class="mb-2">
+            <i class="fa fa-check tc_red me-2"></i>Infosec & Compliance Focussed
+          </h6>
+          <h6 class="mb-2">
+            <i class="fa fa-check tc_red me-2"></i>Extensive & Periodic Product
+            & Process Training
+          </h6>
+          <h6 class="mb-3">
+            <i class="fa fa-check tc_red me-2"></i>User-friendly Partner Portal
+          </h6>
+
+          <h6 class="mb-2">
+            Our partner onboarding includes thorough due diligence to ensure
+            compliance and maintain data privacy standards.
+          </h6>
+
+          <i style="font-size: 12px">
+            For any concerns, please reach out to our
+            <a href="mailto:infosec@securitas-india.com" style="color: #0d6efd">Ethics Helpline</a>.
+          </i>
+
+          <!-- </ng-container> -->
+
+          <!-- <h6 class="mb-3"><i class="fa fa-check tc_red me-2"></i>It has survived not only five</h6> -->
+        </div>
+      </div>
+      <div class="col-xxl-4 col-lg-6 ps-lg-5 mt-4 mt-lg-0">
+        <img [src]="partnerContent.causes.img" class="w-100 rounded-3 position-sticky top-0 wow zoomIn"
+          data-wow-delay="0.1s" />
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid px-xxl-5 px-4">
+    <div class="row">
+      <div class="col-lg-12 pt-4 pb-1 pt-lg-5 pb-lg-0"></div>
+    </div>
+  </div>
+
+  <div class="container-fluid px-xxl-5 px-4">
+    <div class="row align-items-center">
+      <div class="col-lg-12 wow" data-wow-delay="0.1s">
+        <div class="section-title position-relative mb-4 pb-2 text-center">
+          <h2 class="mt-2">Fill the form to connect with us</h2>
+        </div>
+        <form class="pt-2 row justify-content-center" [formGroup]="partnerUsForm">
+          <div class="col-lg-12">
+            <div class="row sg_partner_frm">
+              <div class="col-md-12">
+                <div class="mb-3 mb-lg-4">
+                  <label for="org" class="form-label">Name of the organisation <code>*</code></label>
+                  <fieldset>
+                    <input
+                      type="text"
+                      class="form-control rounded-pill px-3"
+                      id="org"
+                      placeholder="Name of the organisation"
+                      formControlName="CompanyName"
+                      maxlength="100"
+                      required=""
+                      autocomplete="on"
+                      (input)="handleSpaceInput($event,'CompanyName')"
+                      />
+                    </fieldset>
+                    <span *ngIf="partnerUsForm?.get('Name of the organisation')?.errors?.required">
+                      <small class="text-danger" *ngIf="isSubmitted">
+                        Organisation name is mandatory.
+                      </small>
+                    </span>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="mb-3 mb-lg-4">
+                  <label for="prefix" class="form-label">Prefix <code>*</code></label>
+                  <select id="prefix" class="form-select rounded-pill px-3" formControlName="Prefix">
+                    <option value="" selected disabled>Choose</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Ms">Ms</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3 mb-lg-4">
+                      <label for="name" class="form-label">Name <code>*</code></label>
+                      <fieldset>
+                      <input
+                        type="text"
+                        name=""
+                        id="sname"
+                        placeholder="Name"
+                        (input)="onNameInput($event)"
+                        autocomplete="on"
+                        class="form-control rounded-pill px-3"
+                        formControlName="Name"
+                        required=""
+                        maxlength="30"
+                      />
+                    </fieldset>
+                    <span *ngIf="partnerUsForm?.get('Name')?.errors?.required">
+                      <small class="text-danger" *ngIf="isSubmitted">
+                        Name is required.
+                      </small>
+                    </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3 mb-lg-4">
+                      <label for="sname" class="form-label">Surname <code>*</code></label>
+                      <fieldset>
+                        <input
+                          type="text"
+                          name=""
+                          id="sname"
+                          class="form-control rounded-pill px-3"
+                          placeholder="Surname"
+                          (input)="onSurnameInput($event)"
+                          autocomplete="on"
+                          formControlName="SurName"
+                          required=""
+                          maxlength="30"
+                        />
+                      </fieldset>
+                      <span *ngIf="partnerUsForm?.get('SurName')?.errors?.required">
+                      <small class="text-danger" *ngIf="isSubmitted">
+                        Surname is required.
+                      </small>
+                    </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="mb-3 mb-lg-4">
+                  <label for="pno" class="form-label">Phone no <code>*</code></label>
+                  <fieldset>
+                      <input
+                        type="tel"
+                        name="phn"
+                        id="pho"
+                        class="form-control rounded-pill px-3"
+                        placeholder="Phone no"
+                        formControlName="Phone"
+                        required=""
+                        maxlength="10"
+                        minlength="10"
+                        (input)="onInput($event)"
+                      />
+                    </fieldset>
+                  <span *ngIf="partnerUsForm?.get('Phone')?.errors?.required">
+                      <small class="text-danger" *ngIf="isSubmitted">
+                        Phone is required.
+                      </small>
+                    </span>
+                    <span
+                      class="tc_red fs_13"
+                      *ngIf="partnerUsForm.controls.Phone.errors?.pattern"
+                      >Please enter valid phone no.</span
+                    >
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="mb-3 mb-lg-4">
+                  <label for="emaill" class="form-label">Email <code>*</code></label>
+                  <fieldset>
+                      <input
+                        type="email"
+                        name="email1"
+                        id="email1"
+                        class="form-control rounded-pill px-3"
+                        required=""
+                        placeholder="email@gmail.com"
+                        formControlName="Email"
+                        maxlength="50"
+                      />
+                      <span *ngIf="partnerUsForm?.get('Email')?.errors?.required">
+                        <small class="text-danger" *ngIf="isSubmitted">
+                          Email is required.
+                        </small>
+                      </span>  
+                      <span
+                        *ngIf="
+                          partnerUsForm.controls.Email?.errors?.pattern&&
+                          partnerUsForm.controls.Email.touched
+                        "
+                        class="tc_red fs_13"
+                        >Please enter a valid e-mail.</span
+                      >
+                    </fieldset>
+                </div>
+              </div>
+              <!-- <div class="col-lg-4 col-md-6">
+                <div class="mb-3 mb-lg-4">
+                  <label for="subject" class="form-label"
+                    >Subject <code>*</code></label
+                  >
+                  <select
+                    id="subject"
+                    class="form-select rounded-pill px-3"
+                    formControlName="SubjectId"
+                  >
+                    <option value="" selected disabled>Choose</option>
+                    <option
+                      value="{{ item.Id }}"
+                      *ngFor="let item of allSubjects"
+                    >
+                      {{ item.SubjectName }}
+                    </option>
+                  </select>
+                </div>
+              </div> -->
+              <div class="col-lg-6 col-md-6">
+                <div class="mb-3 mb-lg-4">
+                  <label for="Services" class="form-label">Services</label>
+                  <input type="text" class="form-control rounded-pill px-3" id="Services" placeholder="Services"
+                    formControlName="Service" maxlength="50" (input)="handleSpaceInput($event,'Service')"/>
+                    <span *ngIf="partnerUsForm?.get('Message')?.errors?.required">
+                      <small class="text-danger" *ngIf="isSubmitted">
+                        Enter Services is required.
+                      </small>
+                    </span>
+                  <!-- <select
+                    id="Services"
+                    class="form-select rounded-pill px-3"
+                    formControlName="Service"
+                  >
+                    <option value="" selected disabled>Choose</option>
+                    <option value="1">Services 1</option>
+                    <option value="1">Services 2</option>
+                    <option value="1">Services 3</option>
+                  </select> -->
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="mb-3 mb-lg-4">
+                  <label for="Region" class="form-label">Region</label>
+                  <input type="text" class="form-control rounded-pill px-3" id="Region" placeholder="Region"
+                    formControlName="Region" maxlength="40" (input)="handleSpaceInput($event,'Region')" />
+                    <span *ngIf="partnerUsForm?.get('Message')?.errors?.required">
+                      <small class="text-danger" *ngIf="isSubmitted">
+                        Region is required.
+                      </small>
+                    </span>
+                  <!-- <select
+                    id="Region"
+                    class="form-select rounded-pill px-3"
+                    formControlName="Region"
+                  >
+                    <option value="" selected disabled>Choose</option>
+                    <option value="1">Region 1</option>
+                    <option value="1">Region 2</option>
+                    <option value="1">Region 3</option>
+                  </select> -->
+                </div>
+              </div>
+              <!-- <div class="col-lg-4 col-md-6">
+                <div class="mb-3 mb-lg-4">
+                  <label for="work" class="form-label"
+                    >How you want to work with us</label
+                  >
+                  <select
+                    id="work"
+                    class="form-select rounded-pill px-3"
+                    formControlName="WorkCondition"
+                  >
+                    <option value="" selected disabled>Choose</option>
+                    <option value="1">Region 1</option>
+                    <option value="1">Region 2</option>
+                    <option value="1">Region 3</option>
+                  </select>
+                </div>
+              </div> -->
+              <!-- <div class="col-md-12">
+                        <div class="mb-3">
+                          <label for="desc" class="form-label">How you want to work with us</label>
+                          <textarea class="form-control" id="desc" rows="3" formControlName="Description"></textarea>
+                        </div>
+                     </div>  -->
+              <div class="col-md-12">
+                <div class="mb-3 mb-lg-4">
+                  <label for="formFile" class="form-label">Default file input example (upload your proposal)</label>
+                  <input #file class="form-control rounded-pill px-3" type="file" id="formFile" accept=".jpg,.jpej,.png,.pdf,.zip"
+                    (change)="filehandler($event)" />
+                  <div class="fs_12 tc_red">
+                    Upload only jpg, pdf, zip, png under 5MB
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mt-2 mt-lg-4">
+                <button href="" class="btn bg_prp tc_w bg_h_red tc_h_w rounded-3 rounded-pill py-1 py-md-2"
+                  style="width: 160px" (click)="saveForm()">
+                  Submit
+                </button>
+              </div>
+            </div>
+            <!-- <div class="row sg_partner_frm">
+                            <div class="col-md-12">
+                               <div class="mb-3">
+                                  <label for="org" class="form-label">Name of the organisation <code>*</code></label>
+                                  <input type="text" class="form-control" id="org" placeholder="Name of the organisation" formControlName="CompanyName">
+                               </div>
+                            </div>
+                            <div class="col-md-2">
+                               <div class="mb-3">
+                                  <label for="prefix" class="form-label">Prefix <code>*</code></label>
+                                  <select id="prefix" class="form-select" formControlName="Prefix">
+                                    <option value="" selected disabled>Choose</option>
+                                     <option value="Ms">Ms</option>
+                                     <option value="Mrs">Mrs</option>
+                                     <option value="Mr">Mr</option> 
+                                     <option value="others">Non Dis.</option> 
+                                  </select>
+                               </div>
+                            </div>
+                            <div class="col-md-10">
+                               <div class="row">
+                                  <div class="col-md-6">
+                                     <div class="mb-3">
+                                        <label for="name" class="form-label">Name <code>*</code></label>
+                                        <input type="text" class="form-control" id="name" placeholder="Name" formControlName="Name">
+                                     </div>
+                                  </div> 
+                                  <div class="col-md-6">
+                                     <div class="mb-3">
+                                        <label for="sname" class="form-label">Surname <code>*</code></label>
+                                        <input type="text" class="form-control" id="sname" placeholder="Surname" formControlName="SurName">
+                                     </div>
+                                  </div>
+                               </div>
+                            </div> 
+                            <div class="col-lg-4 col-md-6">
+                               <div class="mb-3">
+                                  <label for="pno" class="form-label">Phone no <code>*</code></label>
+                                  <input type="number" class="form-control" id="pno" placeholder="Phone no" formControlName="Phone">
+                                  <span class="tc_red fs_13" *ngIf="partnerUsForm.controls.Phone.errors?.pattern">Please enter valid phone no.</span>
+                                 
+                               </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                               <div class="mb-3">
+                                  <label for="emaill" class="form-label">Email <code>*</code></label>
+                                  <input type="email" class="form-control" id="emaill" placeholder="email@gmail.com" formControlName="Email">
+                                  <span *ngIf="partnerUsForm.controls.Email?.errors?.email && partnerUsForm.controls.Email.touched" class="tc_red fs_13">Please enter a valid e-mail.</span>
+
+                               </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                               <div class="mb-3">
+                                  <label for="subject" class="form-label">Subject <code>*</code></label>
+                                  <select id="subject" class="form-select" formControlName="SubjectId">
+                                    <option value="" selected disabled>Choose</option>
+                                  <option value="{{item.Id}}" *ngFor="let item of allSubjects">{{item.SubjectName}}</option>
+                                  </select>
+                               </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                               <div class="mb-3">
+                                  <label for="Services" class="form-label">Services</label>
+                                  <select id="Services" class="form-select" formControlName="Service">
+                                    <option value="" selected disabled>Choose</option>
+                                    <option value="1">Services 1</option>
+                                    <option value="1">Services 2</option>
+                                    <option value="1">Services 3</option>
+                                  </select>
+                               </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                               <div class="mb-3">
+                                  <label for="Region" class="form-label">Region</label>
+                                  <select id="Region" class="form-select" formControlName="Region">
+                                    <option value="" selected disabled>Choose</option>
+                                    <option value="1">Region 1</option>
+                                    <option value="1">Region 2</option>
+                                    <option value="1">Region 3</option>
+                                  </select>
+                               </div>
+                            </div> 
+                            <div class="col-lg-4 col-md-6">
+                               <div class="mb-3">
+                                  <label for="work" class="form-label">How you want to work with us</label>
+                                  <select id="work" class="form-select" formControlName="WorkCondition">
+                                    <option value="" selected disabled>Choose</option>
+                                    <option value="1">Region 1</option>
+                                    <option value="1">Region 2</option>
+                                    <option value="1">Region 3</option>
+                                  </select>
+                               </div>
+                            </div>  
+                            <div class="col-md-12">
+                               <div class="mb-3">
+                                 <label for="formFile" class="form-label">Default file input example</label>
+                                 <input class="form-control" type="file" id="formFile" (change)="filehandler($event)">
+                                 <div class="fs_12 tc_red">Upload only jpg, doc, zip, png under 5MB</div>
+                               </div>
+                            </div> 
+                            <div class="col-md-12 mt-4">
+                               <button href="" class="btn bg_prp tc_w bg_h_red tc_h_w rounded-3" style="width: 150px" (click)="saveForm()">Submit</button>
+                            </div>
+                   </div> -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 py-lg-4 pt-5"></div>
+    </div>
+  </div>
+</div>

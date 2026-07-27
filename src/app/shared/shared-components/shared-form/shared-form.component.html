@@ -1,0 +1,107 @@
+<section class="position-relative pb-4 pb-lg-5 pt-5" style="background: #fbfbfb">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 text-center sg_service_m_img">
+        <container-element [ngSwitch]="type">
+          <img
+            *ngSwitchCase="'matrimonial'"
+            src="assets/img/marriage-due1.jpg"
+            class="h-100 fit_img_cnt wow zoomIn w-100"
+            data-wow-delay="0.1s"
+          />
+          <img
+            *ngSwitchCase="'leadership'"
+            src="assets/img/leadership-due1.jpg"
+            class="h-100 fit_img_cnt wow zoomIn w-100"
+            data-wow-delay="0.1s"
+          />
+          <img
+            *ngSwitchCase="'vendor'"
+            src="assets/img/vendor-due1.jpg"
+            class="h-100 fit_img_cnt wow zoomIn w-100"
+            data-wow-delay="0.1s"
+          />
+        </container-element>
+      </div>
+
+      <div class="col-lg-6 mt-4 mt-lg-0">
+        <h6>Share your details, Securitas will connect to you.</h6>
+        <form id="contact" class="sg_pkj_frm p-0 m-0 bg-transparent">
+          <div class="row">
+            <div class="col-lg-6">
+              <fieldset>
+                <input
+                  type="name"
+                  name="name1"
+                  id="name1"
+                  placeholder="Name"
+                  autocomplete="on"
+                  formcontrolname="Name"
+                  required=""
+                  class="form-control ng-pristine ng-invalid ng-touched"
+                />
+              </fieldset>
+            </div>
+            <div class="col-lg-6">
+              <fieldset>
+                <input
+                  type="phone"
+                  name="phn"
+                  id="phn"
+                  placeholder="Mob No"
+                  formcontrolname="Phone"
+                  required=""
+                  class="ng-untouched ng-pristine ng-invalid"
+                />
+              </fieldset>
+              <!---->
+            </div>
+            <div class="col-lg-12">
+              <fieldset>
+                <input
+                  type="email"
+                  name="email1"
+                  id="email1"
+                  required=""
+                  placeholder="E-mail ID"
+                  formcontrolname="Email"
+                  class="ng-untouched ng-pristine ng-invalid"
+                />
+                <!---->
+              </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <fieldset>
+                <textarea
+                  name="message"
+                  type="text"
+                  id="message"
+                  placeholder="Brief Description"
+                  formcontrolname="Message"
+                  class="form-control ng-untouched ng-pristine ng-valid"
+                >
+                </textarea>
+              </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <fieldset class="d-flex gap-3">
+                <!-- <button
+                  class="btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 fs_14 px-4 py-2"
+                >
+                  Submit
+                </button> -->
+                <button
+                  type="button"
+                  class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center fs_14 px-4"
+                >
+                  <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+                  <span> Submit & Buy Now</span>
+                </button>
+              </fieldset>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

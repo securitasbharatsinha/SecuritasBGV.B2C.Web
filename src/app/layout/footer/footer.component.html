@@ -1,0 +1,146 @@
+<footer class="sg-footer">
+ 
+  <!-- ── Main Footer Content ──────────────────────── -->
+  <div class="footer-main container-fluid px-4 px-xxl-5">
+    <div class="row gy-5 gy-lg-0">
+ 
+      <!-- Col 1: Brand + Social -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <!-- Logo dots -->
+      <div class="footer-logo mb-3">
+        <img src="../../../assets/img/securitas_ab_logo.svg" alt="">
+</div>
+ 
+        <!-- Brand name -->
+
+ 
+        <!-- Description -->
+  
+ 
+        <!-- Social Icons -->
+        <div class="footer-socials">
+          <a href="https://www.facebook.com" target="_blank" class="social-icon" aria-label="Facebook">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="https://www.linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a href="https://wa.me/" target="_blank" class="social-icon" aria-label="WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+ 
+      <!-- Col 2: Useful Links -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <h5 class="footer-col-title">Useful links</h5>
+        <ul class="footer-links">
+          <li>
+            <a [routerLink]="['/home']" class="footer-link">
+              <i class="bi bi-chevron-right"></i> Services
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/supplier-connect']" class="footer-link">
+              <i class="bi bi-chevron-right"></i> Partner with us
+            </a>
+          </li>
+        </ul>
+        <!-- Payment icons -->
+        <div class="payment-icons mt-3">
+          <img src="assets/img/6.png" alt="Secure Payments" class="payment-img" style="filter: none; opacity: 1; max-width: 200px;" />
+        </div>
+      </div>
+ 
+      <!-- Col 3: Popular Links -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <h5 class="footer-col-title">Popular Links</h5>
+        <ul class="footer-links">
+          <li>
+            <a [routerLink]="['/about']" class="footer-link">
+              <i class="bi bi-chevron-right"></i> About Us
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/contact-us']"
+               data-bs-toggle="modal"
+               data-bs-target="#sg_contact_frm_Modal"
+               class="footer-link">
+              <i class="bi bi-chevron-right"></i> Contact US
+            </a>
+          </li>
+        </ul>
+      </div>
+ 
+      <!-- Col 4: Legal -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <h5 class="footer-col-title">Legal</h5>
+        <ul class="footer-links">
+          <li>
+            <a [routerLink]="['/privacy-policy']" class="footer-link">
+              <i class="bi bi-chevron-right"></i> Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/sitemap']" class="footer-link">
+              <i class="bi bi-chevron-right"></i> Sitemap
+            </a>
+          </li>
+          <li>
+            <a href="assets/documents/Terms_and_condition.pdf" target="_blank" class="footer-link">
+              <i class="bi bi-chevron-right"></i> Terms &amp; Conditions
+            </a>
+          </li>
+        </ul>
+      </div>
+ 
+      <!-- Col 5: Address + Contact -->
+      <div class="col-6 col-md-3 col-lg-3">
+        <h5 class="footer-col-title">Address</h5>
+        <p class="footer-address">
+          496, Udyog Vihar, Phase-III,<br>
+          Gurgaon- 122016 Haryana
+        </p>
+ 
+        <h5 class="footer-col-title mt-3">Contact</h5>
+        <p class="footer-address">
+          0124- 4718888<br>
+          <a href="mailto:contact.us@walsonsverify.com" class="footer-email">
+            contact.us&#64;walsonsverify.com
+          </a>
+        </p>
+ 
+        <!-- Walsons Logo - bottom right of col -->
+        <div class="text-end mt-4">
+          <img src="assets/img/WalsonsLogoWhite.png" alt="Walsons" class="walsons-logo" />
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- ── Footer Bottom Bar ──────────────────────── -->
+  <div class="footer-bottom">
+    <div class="container-fluid px-4 px-xxl-5">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <p class="footer-copy mb-0">
+          &copy; <span class="">WALSONS SERVICES PRIVATE LIMITED</span>,
+          2026 All Right Reserved
+        </p>
+        <!-- <a [routerLink]="['/cookie-policy']" class="cookie-link">Cookie Policy</a> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="sg-cart-mdl position-fixed h-100 py-5 ps-2" [hidden]="isLogout">
+    <button type="button" [ngClass]="{ active: isCartAdded }"
+      class="sg-cart-open btn sg_gradient_ani tc_w tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center bg_lp_r sg_view_crt_btn">
+      <i class="bi bi-cart-plus"></i>
+    </button>
+    <app-shared-cart (isItemIncard)="isAddedInCart($event)" (willOpen)="willModalOpen($event)"></app-shared-cart>
+  </div>
+
+</footer>

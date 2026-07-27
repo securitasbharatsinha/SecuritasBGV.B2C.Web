@@ -1,0 +1,297 @@
+<ng-container *ngFor="let item of data; let i = index">
+  <div *ngIf="item.service_id === 5 || item.service_id === 4">
+    <div class="col-md-12 mb-4" *ngIf="item.fixedpackage">
+      <div class="sg_pkg_row">
+        <div
+          class="py-1 py-lg-3 px-3 d-flex border-end align-items-center justify-content-center position-relative"
+        >
+          <div class="text-center">
+            <img [src]="setIcon(item.package_name)" width="70px" />
+            <h5 class="tc_lred">{{ item.package_name }}</h5>
+            <span class="d-block tc_prp ff_bold mt-1">₹{{ item.price }}</span>
+            <!-- <span class="d-block tc_prp ff_bold mt-1"
+              >₹{{ setTotalForFixedpackages(item.package_id) }}</span
+            > -->
+          </div>
+        </div>
+        <div class="sg_fix_pkg">
+          <div class="sg_pkg_pnt py-2 border-end">
+            <ng-container
+              *ngFor="let el of item.packageServices; let inn = index"
+            >
+              <p class="fs_14">
+                <i class="bi bi-check2-circle"></i> {{ el.service_name }}
+              </p>
+              <!-- <div class="sg_form_group_inr">
+                <input
+                  type="checkbox"
+                  id="fixed{{ item.package_id }}{{ i }}{{ inn }}"
+                  name="sg_fixed"
+                  class="sg_inner_checks"
+                />
+                <label
+                  class="fs_14"
+                  for="domestic_reference{{ item.package_id }}{{ inn }}"
+                  >{{ el.service_name }}</label
+                >
+                <span class="tc_prp ff_bold ms-3">₹{{ el.service_price }}</span>
+              </div> -->
+            </ng-container>
+            <div
+              class="sg_custome_checks"
+              *ngIf="item.service_id === 5 && item.fixedpackage"
+            >
+              <div class="sg_custome_checks_div" id="optionDiv{{ i }}">
+                <ng-container
+                  *ngFor="let e of item.options.packageServices; let in = index"
+                >
+                  <div class="sg_form_group_inr">
+                    <input
+                      type="checkbox"
+                      id="domestic_reference{{ item.package_id }}{{ in }}"
+                      name="sg_occupied_option"
+                      [value]="e.package_service_id"
+                      class="sg_inner_checks"
+                      (change)="selectCustomizeOptions($event, e, in, item, i)"
+                    />
+                    <label
+                      class="fs_14"
+                      for="domestic_reference{{ item.package_id }}{{ in }}"
+                      >{{ e.service_name }}</label
+                    >
+                    <span class="tc_prp ff_bold ms-3"
+                      >₹{{ e.service_price }}</span
+                    >
+                  </div>
+                </ng-container>
+              </div>
+              <button class="sg_show_cstm_checks" id="optionBtn{{ i }}">
+                Customize <i class="bi bi-chevron-down"></i>
+              </button>
+            </div>
+          </div>
+          <div class="px-3 d-flex d-md-block">
+            <button
+              (click)="addItemToCart(item)"
+              [disabled]="item.isSelected"
+              [ngClass]="item.isSelected ? 'bg_p_lr' : 'bg_lp_r'"
+              type="button"
+              class="w-100 my-3 btn sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_14 px-3"
+            >
+              <i class="bi bi-cart-plus fs_12 me-1 me-lg-0 me-xl-1"></i>
+              <span
+                >{{ item.isSelected ? "Added to Cart" : "Add to Cart" }}
+              </span>
+            </button>
+            <button
+              (click)="addItemToCart(item)"
+              [disabled]="item.isSelected"
+              [ngClass]="item.isSelected ? 'bg_lp_r' : 'bg_p_lr'"
+              type="button"
+              class="w-100 my-3 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center fs_14 px-3"
+            >
+              <i class="bi bi-cart-check fs_12 me-1 me-lg-0 me-xl-1"></i>
+              <span>{{ item.isSelected ? "Added to Cart" : "Buy Now" }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!item.fixedpackage">
+    <div class="col-md-12">
+      <div class="sg_pkg_row sg_pkg_alacate mb-3">
+        <div
+          class="py-1 py-lg-3 border-end d-flex align-items-center justify-content-center position-relative px-3"
+        >
+          <div class="text-center">
+            <img [src]="setIcon(item.package_name)" width="70px" />
+            <h5 class="tc_lred">{{ item.package_name }}</h5>
+          </div>
+        </div>
+        <div class="sg_fix_pkg">
+          <div class="sg_pkg_pnt py-3">
+            <ng-container
+              *ngFor="let el of item.packageServices; let in = index"
+            >
+              <!-- [ngClass]="{ sg_qnty_pkg: item.service_id === 6 }" -->
+              <div
+                [ngClass]="{
+                  sg_qnty_pkg: item.service_id === 6 || item.service_id === 2
+                }"
+                class="border-bottom d-flex align-items-center justify-content-between"
+              >
+                <p class="fs_14">
+                  <i class="bi bi-check2-circle"></i> {{ el.service_name }}
+                  <!-- [ngClass]="{ 'd-none': item.service_id === 6 }" -->
+                  <span class="tc_prp ff_bold ps-0 ps-sm-2 ps-md-3 text-center"
+                    >₹{{ el.oldPrice ? el.oldPrice : el.service_price }}</span
+                  >
+                </p>
+                <div
+                  class="d-md-flex align-items-center justify-content-between sg_qnt_prs"
+                  *ngIf="
+                    (item.service_id === 6 || item.service_id === 2) &&
+                      el.Ismultiple;
+                    else emptyBLock
+                  "
+                >
+                  <div
+                    class="sg_input-group w-auto justify-content-end align-items-center"
+                  >
+                    <input
+                      type="button"
+                      value="-"
+                      class="button-minus border rounded-circle sg_icon-shape sg_icon-sm mx-1"
+                      data-field="quantity"
+                      (click)="decrementValue($event, qty.value, el, in)"
+                    />
+                    <input
+                      [disabled]="true"
+                      #qty
+                      type="number"
+                      step="1"
+                      min="1"
+                      value="1"
+                      max="10"
+                      name="quantity"
+                      class="quantity-field border-0 text-center"
+                    />
+                    <input
+                      type="button"
+                      value="+"
+                      class="button-plus border rounded-circle sg_icon-shape sg_icon-sm"
+                      data-field="quantity"
+                      (click)="incrementValue($event, qty.value, el, in)"
+                    />
+                  </div>
+                  <span class="tc_prp ff_bold ps-lg-3"
+                    >₹{{ el.service_price }}</span
+                  >
+                </div>
+                <ng-template #emptyBLock>
+                  <div></div>
+                </ng-template>
+
+                <div class="">
+                  <button
+                    (click)="
+                      selectInCart(
+                        in,
+                        el.service_price,
+                        item,
+                        el.package_service_id,
+                        el,
+                        i
+                      )
+                    "
+                    [disabled]="el.isSelected"
+                    type="button"
+                    [ngClass]="el.isSelected ? 'bg_p_lr' : 'bg_lp_r'"
+                    class="btn sg_pkg_btn sg_gradient_ani tc_w rounded-pill tc_h_wff_reg border-0 d-flex align-items-center justify-content-center ms-md-auto"
+                  >
+                    <i
+                      [ngClass]="
+                        el.isSelected ? 'bi-check2-circle' : 'bi-circle'
+                      "
+                      class="bi me-1"
+                    ></i>
+                    <span>{{ el.isSelected ? "Selected" : "Select" }}</span>
+                  </button>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="sg_pkg_alacate_ttl">
+        <div class="">
+          <h6 class="m-0 d-flex gap-2">
+            <span>Total</span>
+            <span>₹{{ totalAmt ? totalAmt : "0.00" }}</span>
+          </h6>
+        </div>
+        <button
+          [disabled]="item.isSelected"
+          (click)="buyNowAla(item)"
+          type="button"
+          [ngClass]="item.isSelected ? 'bg_p_lr' : 'bg_lp_r'"
+          class="btn tc_w border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center fs_14 px-3"
+        >
+          <i class="bi bi-cart-check fs_12 me-1"></i>
+          <span>{{ item.isSelected ? "Added to Cart" : "Add to Cart" }} </span>
+        </button>
+        <button
+          [disabled]="item.isSelected"
+          (click)="buyNowAla(item)"
+          type="button"
+          [ngClass]="item.isSelected ? 'bg_lp_r' : 'bg_p_lr'"
+          class="btn tc_w border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center fs_14 px-3"
+        >
+          <i class="bi bi-cart-check fs_12 me-1"></i>
+          <span>{{ item.isSelected ? "Added to Cart" : "Buy Now" }} </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<style>
+  .sg_custome_checks {
+    padding: 2px 20px 2px 22px;
+    margin: 0;
+    color: #42638c;
+    margin-top: 6px;
+    position: relative;
+  }
+  .sg_custome_checks .sg_form_group_inr label {
+    padding: 0 0 0 24px;
+  }
+  .sg_custome_checks .sg_form_group_inr {
+    margin: 0px 0px 7px !important;
+  }
+
+  .sg_custome_checks .sg_form_group_inr input:checked + label:after {
+    top: 5px;
+    left: 5px;
+    width: 5px;
+    height: 9px;
+    border: solid #8d5fff;
+    border-width: 0 2px 2px 0;
+  }
+
+  .sg_custome_checks .sg_form_group_inr label:before {
+    padding: 6.5px;
+    border: 1px solid #8d5fff;
+    background: #fff;
+    position: absolute;
+    top: 3px;
+    left: 0;
+  }
+
+  button.sg_show_cstm_checks {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    border: 0;
+    background: #acc2dd;
+    padding: 4px 13px;
+    color: white;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    font-family: "securitaspro_regular";
+    border-radius: 20px;
+    transition: 0.6s all;
+  }
+
+  button.sg_show_cstm_checks:hover {
+    background: #ff8da3;
+    color: white;
+  }
+
+  button.sg_show_cstm_checks.active i::before {
+    transform: rotate(3.142rad);
+  }
+</style>

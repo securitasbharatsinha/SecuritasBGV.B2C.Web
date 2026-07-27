@@ -1,0 +1,212 @@
+section.target-buyers-section {
+  // background: #f6f6f6;
+}
+.targetbuyers-slide {
+  position: relative;
+  padding: 25px 25px 0px;
+  scale: 1;
+  transition: all 0.5s ease-in-out;
+}
+.targetbuyers-swiper .targetbuyers-icon {
+  width: 70px;
+  margin: 0 auto;
+  height: 70px;
+  object-fit: cover;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.targetbuyers-icon img {
+  max-width: 50px;
+  margin: 0 auto;
+  max-height: 60px;
+  text-align: center;
+  object-fit: contain;
+  border-radius:0px;
+}
+p.targetbuyers-title {
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #031f30;
+  margin-top: 12px;
+  text-align: center;
+  font-family: "securitaspro_bold" !important;
+}
+.targetBuy-heading .section-head h2.heading-f56-mediam {
+  margin: 0;
+}
+.targetBuy-heading {
+  // margin-bottom: 45px;
+}
+////////////////////////////
+.sg_new_data_tbl td,
+.sg_new_data_tbl th {
+  font-size: 11px;
+  color: #42638c;
+  text-align: center;
+  vertical-align: middle;
+}
+.sg_new_data_tbl td i {
+  font-size: 18px;
+}
+.sg_new_data_tbl th {
+  vertical-align: middle;
+  color: #ffffff;
+  font-family: "securitaspro_regular";
+  font-weight: unset;
+  border-bottom: 1px #acc2dd solid !important;
+}
+
+.sg_new_data_tbl .table > :not(:first-child) {
+  border-top: 1px solid black;
+}
+
+.sg_new_data_tbl thead {
+  background: #031f30;
+  color: white;
+  border-bottom: 0px !important;
+}
+
+.progress {
+  height: 13px;
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.progress div {
+  font-family: system-ui;
+  text-shadow: 0 0 black;
+  text-align: left;
+  font-weight: 600;
+  padding-left: 6px;
+  text-shadow: 0px 0px 1px #ebebeb;
+}
+
+.sg_risks_involved_clr span {
+  width: 14px;
+  display: block;
+  height: 14px;
+  border: 1px white solid;
+  box-shadow: 0px 0px 0px 1px #00000014;
+  border-radius: 100%;
+}
+
+ul.sg_risks_involved_clr { 
+  list-style: none;
+  margin: auto;
+  text-align: center;
+  width: fit-content;
+}
+
+ul.sg_risks_involved_clr li {
+  display: flex;
+  grid-gap: 8px;
+  gap: 8px;
+  align-items: center;
+  width: fit-content;
+  float: left;
+  margin: 8px 12px;
+}
+
+.sg_tooltip {
+  position: relative;
+  font-size: 13px;
+  margin-left: 5px;
+  top: -0px;
+}
+
+.sg_tooltip span {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  min-width: 160px;
+  background: #d7d8d6;
+  font-size: 11px;
+  padding: 2px 6px 4px;
+  border-radius: 4px;
+  left: 0px;
+  top: -10px;
+  color: #031f30;
+  transition: 0.6s all;
+  z-index: 999;
+}
+
+.targetbuyers-slide:hover {
+  scale: 1.2;
+  transition: all .5s ease-in-out;
+}
+
+.sg_tooltip:hover span {
+  opacity: 1;
+  left: 24px;
+  display: block;
+}
+
+.sg_risks_involved_clr img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.sg_risk_prgrs_bar img {
+  width: 20px;
+  display: none;
+}
+
+
+// .heading-f56-mediam span.yellow-h {
+//   background: #FF8DA3;
+//   padding: 0 10px;
+//   color: #fff;
+//   transition: all .5s ease-in-out;
+//   position: relative;
+//   display: inline-block;
+// }
+
+// h2.heading-f56-mediam { 
+//   margin-bottom: 25px;
+//   font-weight: 500;
+//   text-transform: capitalize;
+// }
+
+// h2.heading-f56-mediam {
+//   font-size: 40px;
+//   line-height: 50px;
+// }
+
+.section-head h2.heading-f56-mediam {
+  text-align: center;
+}
+.targetBuy-heading .section-head h2.heading-f56-mediam {
+  margin: 0;
+}
+
+
+@media(max-width:991px){
+  // ul.sg_risks_involved_clr {
+  //   list-style: none;
+  //   display: flex;
+  //   gap: 15px;
+  //   margin: auto;
+  //   justify-content: center;
+  // }
+
+  .targetbuyers-swiper .targetbuyers-icon { 
+    margin: 0 auto 0px; 
+}
+}
+
+@media(max-width:767px){
+  ul.sg_risks_involved_clr li { 
+    align-items: center; 
+    width: 100%;
+    float: unset; 
+}
+.targetbuyers-slide { 
+  padding: 0px 15px 0px; 
+}
+.heading-f56-mediam span.yellow-h { 
+  line-height: 21px;
+}
+}
+

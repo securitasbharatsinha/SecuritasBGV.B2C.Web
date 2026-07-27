@@ -1,0 +1,17 @@
+version: "3"
+services:
+  securitasb2cweb-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: securitasb2cweb
+    container_name: securitasb2cweb-container
+    ports:
+      - "4200:4200"
+    command:
+      - npm
+      - run
+      - dev:ssr
+
+    # volumes:
+    #   - ./:/app

@@ -1,0 +1,136 @@
+<div
+  class="sg_btm_cart_modal"
+  [ngClass]="{ active: AllCartItems.length }"
+  id="sg_btm_crt"
+>
+  <div class="position-absolute sg_open_mini_btn d-flex gap-1">
+    <button
+      class="border-0 position-relative p-0 sg_btom_crt_open bg_lblu_h tc_h_w"
+      id="sg_btm_crt_opn"
+    >
+      <i class="bi bi-chevron-up"></i>
+    </button>
+    <button
+      class="border-0 p-0 position-relative sg_btom_crt_minimized bg_prp bg_lblu_h tc_w tc_h_w"
+    >
+      <i class="bi bi-dash active"></i>
+      <i class="bi bi-cart"></i>
+    </button>
+  </div>
+
+  <div class="container-fluid py-4 sg_btm_crt_ctn">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-3">
+        <div class="text-center">
+          <img src="assets/img/cart_i.png" width="50px" />
+          <h6 class="fs_16 mt-2 mb-0 tc_w d-none d-md-block">Cart Item(s)</h6>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 my-4 mb-3 mb-sm-4 my-md-0">
+        <div class="active_crt">
+          <!-- <ng-container *ngFor="let item of AllCartItems"> -->
+          <ng-container *ngFor="let el of AllCartItems">
+            <div class="mb-3">
+              <div class="d-flex gap-2 justify-content-between sg_cart_itm_lst">
+                <h6
+                  class="align-items-center position-relative ps-4 ms-2 mb-0 fs_15 ff_reg tc_w"
+                >
+                  <!-- *ngIf="el.fixedpackage" -->
+                  <button
+                    (click)="deleteItemCart(el.CartId)"
+                    class="border-0 position-absolute bg_h_red tc_red tc_h_w"
+                  >
+                    <i class="bi bi-trash3"></i>
+                  </button>
+                  {{ el.package_name }}
+                </h6>
+                <span class="ff_bold tc_w"
+                  >₹
+                  {{
+                    el.fixedpackage
+                      ? el.price.toLocaleString("en-IN")
+                      : el.totalAlaCarteAmt.toLocaleString("en-IN")
+                  }}</span
+                >
+              </div>
+              <div class="sg_child_checks mt-1 ps-2">
+                <ng-container *ngFor="let e of el.packageServices">
+                  <div class="d-flex gap-2 justify-content-between">
+                    <p class="position-relative ps-4">
+                      <!-- *ngIf="!el.fixedpackage" -->
+                      <button
+                        (click)="updateCart(e.package_service_id, el)"
+                        *ngIf="
+                          isLoggedIn &&
+                          !el.fixedpackage &&
+                          el.packageServices?.length > 1
+                        "
+                        class="border-0 position-absolute bg_h_red tc_red tc_h_w"
+                      >
+                        <i class="bi bi-trash3"> </i>
+                      </button>
+                      {{ e.service_name }}
+                    </p>
+                    <span *ngIf="!el.fixedpackage" class="fs_13 ff_reg tc_w"
+                      >₹ {{ e.service_price.toLocaleString("en-IN") }}</span
+                    >
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+          <!-- </ng-container> -->
+        </div>
+        <div class="active_not">
+          <!-- <ng-container *ngFor="let item of AllCartItems"> -->
+          <ng-container *ngFor="let el of AllCartItems">
+            <div class="d-flex gap-2 justify-content-between sg_cart_itm_lst">
+              <h6
+                class="align-items-center position-relative ps-4 ms-2 mb-0 fs_15 ff_reg tc_w"
+              >
+                <button
+                  (click)="deleteItemCart(el.CartId)"
+                  class="border-0 position-absolute bg_h_red tc_red tc_h_w"
+                >
+                  <i class="bi bi-trash3"></i>
+                </button>
+                {{ el.package_name }}
+              </h6>
+              <span class="ff_bold tc_w"
+                >₹{{
+                  el.fixedpackage
+                    ? el.price.toLocaleString("en-IN")
+                    : el.totalAlaCarteAmt.toLocaleString("en-IN")
+                }}</span
+              >
+            </div>
+          </ng-container>
+          <!-- </ng-container> -->
+        </div>
+      </div>
+      <div class="col-12 col-md-3 text-center sg_mobile_crt_bt">
+        <h6 class="tc_lred mb-3 fs_18">Total</h6>
+        <h6 class="tc_w sg_cart_p">₹ {{ totalAmt.toLocaleString("en-IN") }}</h6>
+        <div class="d-md-block d-sm-flex gap-2">
+          <button
+            type="button"
+            (click)="buyNow()"
+            [disabled]="!AllCartItems.length"
+            class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center fs_15 px-3 py-1 mx-auto mt-sm-3"
+          >
+            <i class="bi bi-cart-check fs_14 me-1 me-lg-0 me-xl-1"></i>
+            <span>Buy Services </span>
+          </button>
+          <button
+            (click)="clearCart()"
+            type="button"
+            class="bg_lp_r btn sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_15 px-3 py-1 mx-auto mt-2"
+          >
+            <i class="bi bi-cart-x fs_15 me-1 me-lg-0 me-xl-1"></i>
+            <span>Clear Cart </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

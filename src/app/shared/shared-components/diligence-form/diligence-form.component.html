@@ -1,0 +1,77 @@
+<form [formGroup]="actionForm" novalidate="" id="contact" class="sg_pkj_frm p-0 m-0 bg-transparent">
+  <div class="row">
+    <div class="col-lg-6">
+      <fieldset>
+        <input type="text" name="name1" id="name1"
+          placeholder="Name" formControlName="Name" class="form-control"
+          (input)="onNameInput($event)" maxlength="30"/>
+      </fieldset>
+      <span *ngIf="actionForm?.get('Name')?.errors?.required && isSubmitted">
+        <small class="text-danger">
+          Name is required.
+        </small>
+      </span>
+    </div>
+    <div class="col-lg-6">
+      <fieldset>
+        <select [disabled]="true" name="" id="dialCode" class="form-control dialCode" [(ngModel)]="selectedDialCode"
+          [ngModelOptions]="{ standalone: true }" (change)="getCountry($event)">
+          <option [value]="code.code" *ngFor="let code of dialCodes">
+            {{ code.code }}({{ code.dial_code }})
+          </option>
+        </select>
+        <input type="tel" name="phn" id="phn"
+          placeholder="Mob No" formControlName="MobileNumber" min="0" class="form-control" (input)="onInput($event)" maxlength="10" />
+      </fieldset>
+      <span *ngIf="actionForm?.get('MobileNumber')?.errors?.required && isSubmitted">
+        <small class="text-danger">
+          Mob No is required.
+        </small>
+      </span>
+      <span class="tc_red fs_13" *ngIf= "actionForm.controls.MobileNumber.errors?.pattern">Please enter valid Mob No</span>
+    </div>
+    <div class="col-lg-12">
+      <fieldset>
+        <input type="email" name="email1"
+          id="email1" placeholder="E-mail ID" formControlName="EmailId" class="" maxlength="50" />
+      </fieldset>
+      <span *ngIf="actionForm?.get('EmailId')?.errors?.required && isSubmitted">
+        <small class="text-danger">
+          Email ID is required.
+        </small>
+      </span>
+      <span
+      *ngIf="actionForm.controls.EmailId?.errors?.pattern && actionForm.controls.EmailId.touched" class="tc_red fs_13">Please enter a valid Email ID.</span>
+    </div>
+    <div class="col-lg-12">
+      <fieldset>
+        <textarea name="message" id="message"
+          placeholder="Brief Description" formControlName="Description" class="form-control"
+          maxlength="300"></textarea>
+      </fieldset>
+      <span *ngIf="actionForm?.get('Description')?.errors?.required && isSubmitted">
+        <small class="text-danger">
+          Brief Description is required.
+        </small>
+      </span>
+    </div>
+    <div class="col-lg-12">
+      <fieldset class="d-flex gap-3 justify-content-end">
+        <div *ngIf="isLoading">
+          <span class="spinner-border tc_prp" role="status"></span>Loading...
+        </div>
+        <button (click)="enqSubmit()" type="button" *ngIf="!isLoading" style="background-color: black !important;"
+          class="sg_new_submit_btn btn tc_w border-0 rounded-pill bg_prp bg_lred_h tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center px-2 btn-sm">
+          <i class="bi bi-arrow-right-short fs_16 me-1 me-lg-0 me-xl-1"></i><span> Submit</span>
+        </button>
+      </fieldset>
+    </div>
+  </div>
+</form>
+<!-- (keydown)="unableType($event)" (focus)="checkLoggedIn(true, $event)"
+(keydown)="unableType($event)" (focus)="checkLoggedIn(true, $event)"
+(keydown)="unableType($event)" (focus)="checkLoggedIn(true, $event)"
+(keydown)="unableType($event)" (focus)="checkLoggedIn(true, $event)" -->
+<!-- (click)="
+serviceType?.roleid === userRoleId ? enqSubmit() : askForSignup()
+"  -->

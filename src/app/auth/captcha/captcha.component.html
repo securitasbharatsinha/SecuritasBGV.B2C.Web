@@ -1,0 +1,11 @@
+<div class="d-flex gap-4 mt-1 align-items-baseline new-captcha">
+    <div class="captcha-badge w-50 p-1">
+        {{captchaText}}
+        <i class="bi bi-arrow-clockwise fs_15 me-1 me-xl-1 " (click)="generateCaptcha()" style="cursor: pointer;"></i>
+
+    </div>
+    <input type="text" class="border-0 captcha-input " style="border-radius: 0;" placeholder="Enter verification code"
+        [(ngModel)]="captcha">
+
+    <!-- (blur)="matchCaptcha($event)" -->
+</div>  

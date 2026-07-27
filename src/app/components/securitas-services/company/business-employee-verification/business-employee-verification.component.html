@@ -1,0 +1,676 @@
+<ng-template>
+  <div class="py-4 bg_blu hero-header mb-5 sg_page_title position-relative">
+    <div
+      class="position-absolute top-0 left-0 w-100 h-100 opacity-50 bg_blu"
+    ></div>
+    <div class="container my-1 my-lg-5 px-lg-5 position-relative">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1 class="text-white animated zoomIn">Employee Verification</h1>
+          <hr class="bg-white mt-0 opacity-100" style="width: 90px" />
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-start">
+              <li class="breadcrumb-item">
+                <a class="tc_w tc_h_red" [routerLink]="['/home']">Home</a>
+              </li>
+              <li class="breadcrumb-item tc_red active" aria-current="page">
+                Employee Verification
+              </li>
+            </ol>
+          </nav>
+          <div class="tc_w">
+            <p>Check your employee authenticity prior to or post recruitment</p>
+          </div>
+        </div>
+        <div class="col-lg-6 text-lg-center mt-3 mt-lg-0">
+          <img src="assets/img/3.jpg" class="rounded-3 shadow-lg" width="80%" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pt-0 pt-lg-1">
+    <app-shared-packages [serviceTypeId]="serviceTypeId"></app-shared-packages>
+
+    <div class="container sg_shadow rounded-3 py-4 py-lg-5 px-5 mt-5">
+      <div class="row mt-2 align-items-center" *ngIf="knowHow">
+        <div class="col-lg-6 fs_18 wow fadeInLeft" data-wow-delay="0.1s">
+          <div class="section-title position-relative mb-4 pb-2">
+            <h6 class="position-relative d-inline ps-4">
+              Business Employee Verification
+            </h6>
+            <h2 class="mt-2">{{ knowHow.process_title }}</h2>
+          </div>
+          <div class="pt-2">
+            <div
+              class="d-flex align-items-baseline"
+              *ngFor="let el of knowHow.service_process_details"
+            >
+              <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+              <p class="mb-2">
+                <b class="tc_prp me-1">{{ el.process_desc_title }} </b>
+              </p>
+            </div>
+            <!-- <div class="d-flex align-items-baseline">
+                   <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                   <p class="mb-2"><b class="tc_prp me-1">Previous Employment </b> </p>
+                </div>    
+                <div class="d-flex align-items-baseline">
+                   <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                   <p class="mb-2"><b class="tc_prp me-1">Residential Verification </b></p>
+                </div>    
+                <div class="d-flex align-items-baseline">
+                   <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                   <p class="mb-2"><b class="tc_prp me-1">Criminal Record </b> </p>
+                </div>    
+                <div class="d-flex align-items-baseline">
+                   <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                   <p class="mb-2"><b class="tc_prp me-1">Criminal Database Record </b></p>
+                </div>    
+                <div class="d-flex align-items-baseline">
+                   <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                   <p class="mb-2"><b class="tc_prp me-1">ID Verification </b></p>
+                </div>    
+                <div class="d-flex align-items-baseline">
+                   <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                   <p class="mb-2"><b class="tc_prp me-1">Social media Checks </b></p>
+                </div>     -->
+          </div>
+        </div>
+        <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0">
+          <img
+            [src]="
+              knowHow.process_img
+                ? knowHow.process_img
+                : 'assets/img/Know_HOW.jpg'
+            "
+            class="w-100 rounded-3 wow animate__zoomIn"
+            data-wow-delay="0.1s"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 py-1"></div>
+      </div>
+    </div>
+
+    <div
+      class="container sg_shadow rounded-3 py-4 py-lg-5 px-5 mt-4 mb-5 my-lg-5"
+    >
+      <div class="row mt-2 align-items-center" *ngIf="knowWhy">
+        <div class="col-lg-6">
+          <img
+            [src]="
+              knowWhy.cause_img ? knowWhy.cause_img : 'assets/img/Know_WHY.jpg'
+            "
+            class="w-100 rounded-3 wow animate__zoomIn"
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div
+          class="col-lg-6 fs_18 wow fadeInRight ps-lg-5"
+          data-wow-delay="0.1s"
+        >
+          <div class="section-title position-relative mb-4 pb-2">
+            <h6 class="position-relative d-inline ps-4">
+              Business Employee Verification
+            </h6>
+            <h2 class="mt-2">{{ knowWhy.cause_title }}</h2>
+          </div>
+          <div class="pt-2">
+            <div
+              class="d-flex align-items-baseline"
+              *ngFor="let item of knowWhy.service_cause_details"
+            >
+              <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+              <p class="mb-2">{{ item.cause_desc_details }}</p>
+            </div>
+            <!-- <div class="d-flex align-items-baseline">
+                   <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                   <p class="mb-2">Healthy working environment</p>
+                </div>
+                <div class="d-flex align-items-baseline">
+                   <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                   <p class="mb-2">Safety of resources and assets and company</p>
+                </div>
+                <div class="d-flex align-items-baseline">
+                   <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                   <p class="mb-2">Cost and time effective</p>
+                </div>       
+                <div class="d-flex align-items-baseline">
+                   <i class="fa bi-caret-right tc_red me-1 fs_18"></i>
+                   <p class="mb-2">Compliance with Anti-discrimination laws</p>
+                </div>        -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!-- Employee Verification -->
+
+<div class="pt-5" style="background-color: #fff" id="employee_verification">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mb-3 mb-lg-4">
+        <div class="section-title position-relative mb-4 pb-2 text-center">
+          <h2 class="">Employee Verification</h2>
+          <p class="mb-2">
+            Check your employee authenticity prior to or post recruitment
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="pb-5 position-relative">
+    <div class="container">
+      <div class="row align-items-center px-xl-3">
+        <div class="col-lg-6 ps-xxl-5 order-lg-2 text-center sg_service_m_img">
+          <img
+            src="assets/img/kycvalidat.gif"
+            class="fit_img_cnt wow zoomIn h-100 w-100"
+            width=""
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div class="col-lg-6 mt-4 mt-lg-0 order-lg-1">
+          <div class="col-lg-12">
+            <div class="mb-2">
+              <h2 class="fs_24 tc_lred">Know HOW?</h2>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="col-lg-6 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Academic Record</h5>
+              </div>
+            </div>
+            <div class="col-lg-6 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Previous Employment</h5>
+              </div>
+            </div>
+            <div class="col-lg-6 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Residential Verification
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-6 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Criminal Record</h5>
+              </div>
+            </div>
+            <div class="col-lg-6 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Criminal Database Record
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-6 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">ID Verification</h5>
+              </div>
+            </div>
+            <div class="col-lg-6 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Social media Checks</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="pt-5" style="background: #fbfbfb">
+    <div class="container pb-2">
+    
+    </div>
+  </section> -->
+  <section class="pb-4 pt-5" style="background: #fbfbfb">
+    <div class="container pb-2">
+      <div class="row align-items-center px-xl-3 mb-4">
+        <div class="col-md-12">
+          <div
+            class="sg_pkg_row d-block py-3 px-4 d-md-flex justify-content-md-between text-center"
+          >
+            <h5 class="link mb-3 mb-md-0">
+              Purchase Checks for Employees
+              <a
+                [href]="portalPath + '/ulogged/case-initiation'"
+                class="tc_red px-1"
+                ><i class="bi bi-box-arrow-up-right"></i
+              ></a>
+            </h5>
+            <a
+              [href]="portalPath + '/ulogged/case-initiation'"
+              class="portal btn tc_w rounded-pill border-0 btn_shadow"
+            >
+              Go to portal
+            </a>
+            <!-- <div
+              class="py-1 py-lg-3 px-3 d-flex border-end align-items-center justify-content-center position-relative"
+            >
+              mukesh
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center px-xl-3">
+        <!-- <ng-container
+          *ngTemplateOutlet="
+            submenuServices;
+            context: { item: servicesPackagesdata }
+          "
+        ></ng-container> -->
+        <app-common-package [data]="servicesPackagesdata"></app-common-package>
+        <ng-template>
+          <div class="col-lg-12">
+            <form class="row">
+              <div class="col-md-6">
+                <div class="sg_pckg_checks">
+                  <div
+                    class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                  >
+                    <!-- <img
+                  src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                  width="70px"
+                /> -->
+                    <div class="sg_form_group">
+                      <input type="checkbox" id="academic_record" />
+                      <label for="academic_record">Academic Record Check</label>
+                    </div>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="price">₹60</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sg_pckg_checks">
+                  <div
+                    class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                  >
+                    <!-- <img
+                  src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                  width="70px"
+                /> -->
+                    <div class="sg_form_group">
+                      <input type="checkbox" id="previous_emply_verificaiton" />
+                      <label for="previous_emply_verificaiton"
+                        >Previous Employment Verificaiton</label
+                      >
+                    </div>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="price">₹60</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sg_pckg_checks">
+                  <div
+                    class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                  >
+                    <!-- <img
+                  src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                  width="70px"
+                /> -->
+                    <div class="sg_form_group">
+                      <input type="checkbox" id="residential_verification" />
+                      <label for="residential_verification"
+                        >Residential Verification</label
+                      >
+                    </div>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="price">₹60</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sg_pckg_checks">
+                  <div
+                    class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                  >
+                    <!-- <img
+                  src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                  width="70px"
+                /> -->
+                    <div class="sg_form_group">
+                      <input type="checkbox" id="id_document_verficaiton" />
+                      <label for="id_document_verficaiton"
+                        >ID Document Verficaiton</label
+                      >
+                    </div>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="price">₹60</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sg_pckg_checks">
+                  <div
+                    class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                  >
+                    <!-- <img
+                  src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                  width="70px"
+                /> -->
+                    <div class="sg_form_group">
+                      <input type="checkbox" id="emply_court_record" />
+                      <label for="emply_court_record"
+                        >National Identity Check</label
+                      >
+                    </div>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="price">₹60</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sg_pckg_checks">
+                  <div
+                    class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                  >
+                    <!-- <img
+                  src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                  width="70px"
+                /> -->
+                    <div class="sg_form_group">
+                      <input type="checkbox" id="global_database" />
+                      <label for="global_database">Global Database Check</label>
+                    </div>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="price">₹60</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sg_pckg_checks">
+                  <div
+                    class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+                  >
+                    <!-- <img
+                  src="https://cdn4.iconfinder.com/data/icons/professions-1-5/66/51-512.png"
+                  width="70px"
+                /> -->
+                    <div class="sg_form_group">
+                      <input type="checkbox" id="emply_social_media" />
+                      <label for="emply_social_media">Social Media Check</label>
+                    </div>
+                    <div class="d-flex gap-2 align-items-center">
+                      <span class="price">₹60</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-12">
+            <div class="d-md-flex align-items-center justify-content-center">
+              <button
+                (click)="buyNow()"
+                style="min-width: 200px"
+                type="button"
+                class="mx-md-3 my-4 mb-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+              >
+                <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+                <span>Buy Now</span>
+              </button>
+              <button
+                style="min-width: 200px"
+                type="button"
+                class="mx-md-3 my-4 mb-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+              >
+                <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </section>
+
+  <section class="position-relative py-5 bg_w">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2 text-center sg_service_m_img">
+          <img
+            src="assets/img/employee2.png"
+            class="h-100 fit_img_cnt wow zoomIn w-100"
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div
+          class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-lg-1 mt-4 mt-lg-0"
+          data-wow-delay="0.1s"
+        >
+          <div class="mb-2">
+            <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+          </div>
+          <div class="row pt-2">
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Quality and reliable hire
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Healthy working environment
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Safety of resources and assets and company
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Cost and time effective
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Compliance with Anti-discrimination laws
+                </h5>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="d-lg-flex align-items-center mt-4">
+             <button type="button" class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4">
+                <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                <span>Buy Now</span>
+             </button>
+              <button type="button" class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4">
+                <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                <span>Add to Cart</span>
+             </button> 
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ------------ -->
+
+<div class="container-fluid" style="border-top: 4px #acc2dd solid">
+  <div class="row">
+    <div class="col-lg-12"></div>
+  </div>
+</div>
+<ng-template let-item="item">
+  <div class="col-lg-12">
+    <form class="row align-items-center">
+      <ng-container *ngFor="let el of item; let i = index">
+        <div class="col-md-6">
+          <div class="sg_pckg_checks">
+            <div
+              class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+            >
+              <div class="sg_form_group">
+                <input
+                  type="checkbox"
+                  id="h_tenant_verification{{ el.package_id }}"
+                />
+                <label for="h_tenant_verification{{ el.package_id }}">{{
+                  el.package_name
+                }}</label>
+              </div>
+              <div class="d-flex gap-2 align-items-center">
+                <span class="price">₹{{ el.price }}</span>
+              </div>
+            </div>
+            <div class="h_tenant_verification_input sg_inner_checks px-3 pb-3">
+              <ng-container *ngFor="let menus of el?.packageServices">
+                <div class="sg_checkbox_div sg_form_group_inr">
+                  <input
+                    type="checkbox"
+                    id="tenant_verification_national_id{{
+                      menus.package_service_id
+                    }}"
+                    name="sg_occupied_option"
+                    value=""
+                    class="sg_inner_checks"
+                  />
+                  <label
+                    class="fs_14"
+                    for="tenant_verification_national_id{{
+                      menus.package_service_id
+                    }}"
+                    >{{ menus.service_name }}</label
+                  >
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="col-lg-6">
+        <div class="d-md-flex align-items-center justify-content-center">
+          <button
+            style="min-width: 200px"
+            type="button"
+            class="mx-md-3 my-4 my-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+          >
+            <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+            <span>Buy Now</span>
+          </button>
+          <button
+            style="min-width: 200px"
+            type="button"
+            class="mx-md-3 my-4 my-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+          >
+            <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+            <span>Add to Cart</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<ng-template #submenuServices let-item="item">
+  <div class="col-lg-12">
+    <form class="row">
+      <ng-container *ngFor="let el of item?.packageServices">
+        <div class="col-md-6">
+          <div class="sg_pckg_checks">
+            <div
+              class="d-flex align-items-center justify-content-between py-2 mb-3 px-3 sg_pckg_tlt_icn"
+            >
+              <div class="sg_form_group">
+                <input
+                  type="checkbox"
+                  id="employee{{ el.package_service_id }}"
+                  [value]="el.package_service_id"
+                  (change)="selectService($event)"
+                />
+                <label for="employee{{ el.package_service_id }}"
+                  >{{ el.service_name }}
+                </label>
+                <!-- <a
+                  [hidden]="!el?.service_description"
+                  href="javascript:void()"
+                  class="show_shrt_dtal"
+                  ><i class="bi bi-chevron-down"></i
+                ></a> -->
+              </div>
+              <div class="d-flex gap-2 align-items-center">
+                <span class="price"> ₹ {{ el.service_price }}</span>
+              </div>
+            </div>
+            <!-- <div class="sg_shrt_dtal px-3">
+              <p>{{ el?.service_description }}</p>
+            </div> -->
+          </div>
+        </div>
+      </ng-container>
+    </form>
+  </div>
+  <div class="col-lg-12">
+    <div class="d-md-flex align-items-center justify-content-center">
+      <button
+        (click)="buyNow()"
+        style="min-width: 200px"
+        type="button"
+        class="mx-md-3 my-4 mb-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+      >
+        <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+        <span>Buy Now</span>
+      </button>
+      <button
+        (click)="goToCart(); isAddedCart = true"
+        style="min-width: 200px"
+        type="button"
+        class="mx-md-3 my-4 mb-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+      >
+        <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+        <span>{{ isAddedCart ? "Go to Cart" : "Add to Cart" }}</span>
+      </button>
+    </div>
+  </div>
+</ng-template>

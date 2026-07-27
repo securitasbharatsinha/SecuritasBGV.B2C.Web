@@ -1,0 +1,40 @@
+.sg_child_checks p {
+  font-size: 13px;
+  margin: 2px 0px;
+  color: #42638c;
+  font-family: "securitaspro_light" !important;
+}
+.sg_child_checks {
+  margin-top: 5px;
+}
+
+.sg_prdt_crt_name {
+  margin: 10px 0px;
+  border-bottom: 1px #ebebeb solid;
+  padding-bottom: 8px;
+  /* width: fit-content; */
+  /*padding-right: 50px;*/
+}
+
+.sg_prdt_crt_name:last-child {
+  border: 0;
+  padding-bottom: 0px;
+}
+
+.sg_prdt_crt_name h6 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.sg_prdt_crt_name span {
+  font-size: 14px;
+  font-family: "securitaspro_regular";
+}
+
+.sg_crt_tbl thead {
+  border-bottom: 2px solid #303143;
+}
+.sg_crt_tbl tfoot {
+  border-top: 2px solid #303143;
+  background-color: #f7f7f7;
+}

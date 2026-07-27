@@ -1,0 +1,534 @@
+<ng-template>
+  <div class="py-4 bg_blu hero-header mb-5 sg_page_title position-relative">
+    <div
+      class="position-absolute top-0 left-0 w-100 h-100 opacity-50 bg_blu"
+    ></div>
+    <div class="container my-1 my-lg-5 px-lg-5 position-relative">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1 class="text-white animated zoomIn">Vendor Due Diligence</h1>
+          <hr class="bg-white mt-0 opacity-100" style="width: 90px" />
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-start">
+              <li class="breadcrumb-item">
+                <a class="tc_w tc_h_red" [routerLink]="['/home']">Home</a>
+              </li>
+              <li class="breadcrumb-item tc_red active" aria-current="page">
+                Vendor Due Diligence
+              </li>
+            </ol>
+          </nav>
+          <div class="tc_w">
+            <p>Validate your vendor/supplier/business partner</p>
+          </div>
+        </div>
+        <div class="col-lg-6 text-lg-center mt-3 mt-lg-0">
+          <img src="assets/img/3.jpg" class="rounded-3 shadow-lg" width="80%" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar & Hero End -->
+  <div class="pt-0 pt-lg-1">
+    <app-shared-packages [serviceTypeId]="serviceTypeId"></app-shared-packages>
+
+    <div class="container sg_shadow rounded-3 py-4 py-lg-5 px-5 my-5">
+      <div class="row" *ngIf="knowHow">
+        <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.1s">
+          <div class="mb-4">
+            <h2 class="fs_22">{{ knowHow.process_title }}</h2>
+          </div>
+          <!-- <h4 class="fs_18 mb-0 tc_prp mt-2">a) Enterprise’s Financial Status check  </h4>
+            <h4 class="fs_18 mb-0 tc_prp mt-2">b) Information Security Processes and Compliance s </h4> -->
+          <ng-container *ngFor="let el of knowHow.service_process_details">
+            <h4 class="fs_18 mb-0 tc_prp mt-2">{{ el.process_desc_title }}</h4>
+            <div class="fs_15 ps-3 pt-1 pb-2" *ngIf="el.multi_desc">
+              <div
+                class="d-flex align-items-baseline"
+                *ngFor="let e of el.service_process_desc_multirows"
+              >
+                <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                <p class="mb-0">{{ e.row_desc }}</p>
+              </div>
+              <!-- <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Emergency Response system</p>
+               </div>        -->
+            </div>
+          </ng-container>
+
+          <!-- <h4 class="fs_18 mb-0 tc_prp mt-2">d) Policies & Compliances of the Enterprise </h4>
+            <div class="fs_15 ps-3 pt-1 pb-2">
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Compliance Management</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Policies on C&B, Health & Safety, Sexual Harassment, Data Protection, Anti-Bribery etc.</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Payroll management</p>
+               </div>       
+            </div>
+            <h4 class="fs_18 mb-0 tc_prp mt-2">e) Enterprise’s Overview, Ethics & Market Reputation </h4>
+            <div class="fs_15 ps-3 pt-1 pb-2">
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Experience and expertise</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Operating structure & operating procedures</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Customer Reference Check</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Defaulter’s checks - statutory bodies</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Adverse Media Checks</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">MCA defaulter checks</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Indian and Global database checks</p>
+               </div>       
+            </div>
+            <h4 class="fs_18 mb-0 tc_prp mt-2">f) Directors / Promoters Background check</h4>
+            <div class="fs_15 ps-3 pt-1 pb-2">
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">KYC Documents of Enterprise and its promoters/ directors</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Conflict of interest check</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Media Check of promoters/ directors</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Political involvement</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Court Record Check</p>
+               </div>         
+            </div>  -->
+        </div>
+        <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0">
+          <img
+            [src]="
+              knowHow.process_img
+                ? knowHow.process_img
+                : 'assets/img/Know_HOW.jpg'
+            "
+            class="w-100 rounded-3 wow animate__zoomIn position-sticky top-0"
+            data-wow-delay="0.1s"
+          />
+        </div>
+      </div>
+      <div class="row mt-5 align-items-center" *ngIf="knowWhy">
+        <div class="col-lg-6">
+          <img
+            [src]="
+              knowWhy.cause_img ? knowWhy.cause_img : 'assets/img/Know_WHY.jpg'
+            "
+            class="w-100 rounded-3 wow animate__zoomIn position-sticky top-0"
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div
+          class="col-lg-6 fs_18 wow fadeInRight ps-lg-5"
+          data-wow-delay="0.1s"
+        >
+          <div class="mb-3">
+            <h2 class="fs_22">{{ knowWhy.cause_title }}</h2>
+          </div>
+          <div class="pt-2 fs_16">
+            <div
+              class="d-flex align-items-baseline"
+              *ngFor="let item of knowWhy.service_cause_details"
+            >
+              <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+              <p class="mb-0">{{ item.cause_desc_details }}</p>
+            </div>
+            <!-- <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Appropriate accountability</p>
+               </div>
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Gauging their strategic presence and reputation</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Ensuring cybersecurity</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Eliminate Compliance risks</p>
+               </div>
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Smooth operations</p>
+               </div>       -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 py-2"></div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!-- Vendor Due Diligence -->
+
+<div
+  class="pt-5"
+  style="background-color: #fff"
+  id="vendor_due_diligence_(vdd)"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mb-3 mb-lg-4">
+        <div class="section-title position-relative mb-4 pb-2 text-center">
+          <h2 class="">Vendor Due Diligence</h2>
+          <p class="mb-2">Validate your vendor/supplier/business partner</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="pb-5 position-relative">
+    <div class="container">
+      <div class="row px-xl-3">
+        <div class="col-lg-6 ps-xxl-5 sg_service_m_img order-lg-2">
+          <img
+            src="assets/img/employment2.gif"
+            class="fit_img_cnt wow zoomIn h-100 w-100"
+            width=""
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div class="col-lg-6 order-lg-1 mt-4 mt-lg-0">
+          <div class="col-lg-12">
+            <div class="mb-2">
+              <h2 class="fs_24 tc_lred">Know HOW?</h2>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="col-lg-12">
+              <div class="sg_shadow px-4 py-3 bg_w mb-2 mb-lg-3">
+                <div>
+                  <h5 class="fs_18 mb-0">
+                    a) Enterprise’s Financial Status check
+                  </h5>
+                </div>
+              </div>
+              <div class="sg_shadow px-4 py-3 bg_w mb-2 mb-lg-3">
+                <div>
+                  <h5 class="fs_18 mb-0">
+                    b) Information Security Processes and Compliance s
+                  </h5>
+                </div>
+              </div>
+              <div class="sg_shadow px-4 py-3 bg_w mb-2 mb-lg-3">
+                <div>
+                  <h5 class="fs_18">c) Geo-spread & setup</h5>
+                  <div class="pt-2 fs_16">
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Location-wise presence</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Emergency Response system</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sg_shadow px-4 py-3 bg_w mb-2 mb-lg-3">
+                <div>
+                  <h5 class="fs_18">
+                    d) Policies & Compliances of the Enterprise
+                  </h5>
+                  <div class="pt-2 fs_16">
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Compliance Management</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">
+                        Policies on C&B, Health & Safety, Sexual Harassment,
+                        Data Protection, Anti-Bribery etc.
+                      </p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Payroll management</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sg_shadow px-4 py-3 bg_w mb-2 mb-lg-3">
+                <div>
+                  <h5 class="fs_18">
+                    e) Enterprise’s Overview, Ethics & Market Reputation
+                  </h5>
+                  <div class="pt-2 fs_16">
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Experience and expertise</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">
+                        Operating structure & operating procedures
+                      </p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Customer Reference Check</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Defaulter’s checks - statutory bodies</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Adverse Media Checks</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">MCA defaulter checks</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Indian and Global database checks</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sg_shadow px-4 py-3 bg_w">
+                <div>
+                  <h5 class="fs_18">
+                    f) Directors / Promoters Background check
+                  </h5>
+                  <div class="pt-2 fs_16">
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">
+                        KYC Documents of Enterprise and its promoters/ directors
+                      </p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Conflict of interest check</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Media Check of promoters/ directors</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Political involvement</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Court Record Check</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="position-relative py-5 pb-0 pb-lg-3"
+    style="background: #fbfbfb"
+  >
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 sg_service_m_img order-lg-2">
+          <img
+            src="assets/img/taxes.gif"
+            class="h-100 fit_img_cnt wow zoomIn w-100"
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div
+          class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-lg-1 mt-4 mt-lg-4"
+          data-wow-delay="0.1s"
+        >
+          <div class="mb-2">
+            <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+          </div>
+          <div class="row pt-2">
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Stamp out any financial threat
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Appropriate accountability
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Gauging their strategic presence and reputation
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Ensuring cybersecurity
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Eliminate Compliance risks
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">Smooth operations</h5>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="d-lg-flex align-items-center mt-4">
+            <button
+              (click)="buyNow()"
+              type="button"
+              class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+            >
+              <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+              <span>Buy Now</span>
+            </button>
+            <button
+              (click)="goToCart(); isAddedCart = true"
+              type="button"
+              class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+            >
+              <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+              <span>{{ isAddedCart ? "Go to Cart" : "Add to Cart" }}</span>
+            </button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-shared-form [type]="'vendor'"></app-shared-form>
+</div>
+<ng-template #submenuServices let-item="item">
+  <div class="col-lg-12">
+    <form class="row align-items-center">
+      <ng-container *ngFor="let el of item; let i = index">
+        <div class="col-md-6">
+          <div class="sg_pckg_checks">
+            <div
+              class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+            >
+              <div class="sg_form_group">
+                <input
+                  type="checkbox"
+                  id="h_tenant_verification{{ el.package_id }}"
+                />
+                <label for="h_tenant_verification{{ el.package_id }}">{{
+                  el.package_name
+                }}</label>
+              </div>
+              <div class="d-flex gap-2 align-items-center">
+                <span class="price">₹{{ el.price }}</span>
+              </div>
+            </div>
+            <div class="h_tenant_verification_input sg_inner_checks px-3 pb-3">
+              <ng-container *ngFor="let menus of el?.packageServices">
+                <div class="sg_checkbox_div sg_form_group_inr">
+                  <input
+                    type="checkbox"
+                    id="tenant_verification_national_id{{
+                      menus.package_service_id
+                    }}"
+                    name="sg_occupied_option"
+                    value=""
+                    class="sg_inner_checks"
+                  />
+                  <label
+                    class="fs_14"
+                    for="tenant_verification_national_id{{
+                      menus.package_service_id
+                    }}"
+                    >{{ menus.service_name }}</label
+                  >
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="col-lg-6">
+        <div class="d-md-flex align-items-center justify-content-center">
+          <button
+            style="min-width: 200px"
+            type="button"
+            class="mx-md-3 my-4 my-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+          >
+            <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+            <span>Buy Now</span>
+          </button>
+          <button
+            (click)="goToCart(); isAddedCart = true"
+            style="min-width: 200px"
+            type="button"
+            class="mx-md-3 my-4 my-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+          >
+            <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+            <span>{{ isAddedCart ? "Go to Cart" : "Add to Cart" }}</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,346 @@
+<div class="indivisual-page"></div>
+<div class="sv-page">
+        <!-- Header -->
+     
+
+        <!-- Hero Section -->
+        
+
+        <!-- Intro Section -->
+        <section class="sv-intro sv-container pt-3">
+               <div class="sv-hero__bg-placeholder"  [ngStyle]="{'background-image': 'url(' + servicePagesData?.[currentURL]?.['img1'] + ')'}">
+            <div class="sv-hero__content">
+                    <h1 class="sv-hero__title">{{servicePagesData?.[currentURL]?.['title']}}</h1>
+                </div>
+            </div>
+           
+                 <div class="intro-links">
+                <p>Home</p> - <a href="" class="">{{servicePagesData?.[currentURL]?.['title']}}</a>
+            </div>
+            <div class="sv-intro__grid ">
+                <div class="sv-intro__left">
+                    <h2 class="sv-intro__title">
+                        <span class="text-green">{{servicePagesData?.[currentURL]?.['heading1']?.['p1']}}</span><br>
+                        <span class="text-light-weight">
+                            {{servicePagesData?.[currentURL]?.['heading1']?.['p2']}}<br>
+                            {{servicePagesData?.[currentURL]?.['heading1']?.['p3']}}<br>
+                            {{servicePagesData?.[currentURL]?.['heading1']?.['p4']}}
+                        </span>
+                      </h2>
+                </div>
+                <div class="sv-intro__right">
+                    <p class="sv-intro__text">{{servicePagesData?.[currentURL]?.['heading2']?.['p1']}}
+                        <br>{{servicePagesData?.[currentURL]?.['heading2']?.['p2']}}
+                        <br>{{servicePagesData?.[currentURL]?.['heading2']?.['p3']}}</p>
+                    <p class="sv-intro__text-bold">{{servicePagesData?.[currentURL]?.['heading2']?.['p4']}}
+                        <br>{{servicePagesData?.[currentURL]?.['heading2']?.['p5']}}
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Matters Section -->
+        <section class="sv-why sv-container">
+            <div class="sv-why__grid">
+                <div class="sv-why__image-col">
+                    <div class="sv-why__image-placeholder" [ngStyle]="{'background-image': 'url(' + servicePagesData?.[currentURL]?.['img2'] + ')'}">
+                       
+                    </div>
+                </div>
+                <div class="sv-why__content-col">
+                    <h2 class="sv-why__title">Why {{servicePagesData?.[currentURL]?.['title']}} Matters?</h2>
+                    <ul class="sv-check-list">
+                        <li>
+                            <svg class="icon-check-circle" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z" />
+                            </svg>
+                            {{servicePagesData?.[currentURL]?.['heading3']?.['p1']}}
+                        </li>
+                        <li>
+                            <svg class="icon-check-circle" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z" />
+                            </svg>
+                            {{servicePagesData?.[currentURL]?.['heading3']?.['p2']}}
+                        </li>
+                        <li>
+                            <svg class="icon-check-circle" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z" />
+                            </svg>
+                            {{servicePagesData?.[currentURL]?.['heading3']?.['p3']}}
+                        </li>
+                        <li>
+                            <svg class="icon-check-circle" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z" />
+                            </svg>
+                            {{servicePagesData?.[currentURL]?.['heading3']?.['p4']}}
+                        </li>
+                        <li *ngIf="servicePagesData?.[currentURL]?.['heading3']?.['p5']">
+                            <svg class="icon-check-circle" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z" />
+                            </svg>
+                            {{servicePagesData?.[currentURL]?.['heading3']?.['p5']}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+    
+             <section class="how-it-works">
+        <h1 class="title">How It <span>Works</span></h1>
+
+        <div class="timeline">
+            <!-- Step 01 -->
+            <div class="step hiw-step--1">
+                <div class="step-icon">
+                 <img src="../../../assets/img/how-it-works-icon-1.png" alt="">
+                </div>
+                <div class="step-content">
+                    <div class="step-number">01</div>
+                    <p class="step-text">Select required checks<br>& submit details</p>
+                </div>
+            </div>
+            <!-- Step 02 -->
+            <div class="step hiw-step--2">
+                <div class="step-icon justify-content-start">
+              <img src="../../../assets/img/how-it-works-icon-2.png" alt="">
+                </div>
+                <div class="step-content">
+                    <div class="step-number">02</div>
+                    <p class="step-text">Upload documents & complete<br>the digital verification process</p>
+                </div>
+            </div>
+            <!-- Step 03 -->
+            <div class="step hiw-step--3">
+                <div class="step-icon">
+                  <img src="../../../assets/img/how-it-works-icon-3.png" alt="">
+                </div>
+                <div class="step-content">
+                    <div class="step-number">03</div>
+                    <p class="step-text">Access and download<br>your report instantly</p>
+                </div>
+            </div>
+        </div>
+    
+        </section>
+
+        <!-- Verification Checks Section -->
+ <section class="sv-checks sv-container">
+            <h2 class="sv-checks__title">Instant <span class="text-green">Checks</span></h2>
+            <p class="sv-checks__subtitle">Select checks to add to your order</p>
+
+                 <!-- Services Section -->
+        <div class="services-section">
+            <div class="services-grid edit-service-grid">
+                <ng-container *ngFor="let check of instantChecks[0]?.newPackageServices; let i = index;">
+                    <div class="service-card" [ngClass]="{ 'onclickservicecard': check?.qty > 0 }">
+                        <div class="tat-label"><span class="tat-sameday">₹ {{check?.service_price}} </span></div>
+                        <div class="card-icon">
+                          <img [src]="'../../../assets/img/instant_icon' + (i + 1) + '.png'" alt="">
+                        </div>
+                        <div class="card-title-row">
+                            <h3 class="card-title">{{check?.service_name}}</h3>
+                            
+                        </div>
+                        <div class="d-flex align-items-center grid-btn-layout">
+    
+    
+                            <button class="add-to-cart" (click)="incDecQty2('dec', i)">-</button>
+                            <input [disabled]="true" #qty type="number" step="1" min="0" [value]="check.qty" max="1"
+                            name="quantity" class="quantity-field border-0 text-center tc_l_gry" disabled="" />
+                            <button class="add-to-cart" (click)="incDecQty2('inc', i)">+</button>
+                        </div>
+    
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+      
+        <div class="sv-checks__proceed" *ngIf="instantCheckSelected()">
+            <form [formGroup]="actionForm" novalidate="" id="contact" class="sg_pkj_frm p-0 m-0 bg-transparent">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <fieldset>
+                        <select class="form-control dialCode" id="dialCode" formControlName="Title">
+                            <option value="Mr">Mr</option>
+                            <option value="Ms">Ms</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <input type="text" name="name1" id="phn"
+                            placeholder="Candidate Name" formControlName="Name" class="form-control" (input)="onNameInput($event)" maxlength="30"/>
+                        </fieldset>
+                        <span *ngIf="actionForm.get('Name')?.errors?.required && isSubmitted">
+                        <small class="text-danger">
+                            Candidate Name is required.
+                        </small>
+                        </span>
+                    </div>
+                    <div class="col-lg-3">
+                        <fieldset>
+                        <select [disabled]="true" name="" id="dialCode" class="form-control dialCode" [(ngModel)]="selectedDialCode"
+                            [ngModelOptions]="{ standalone: true }">
+                            <option [value]="code.code" *ngFor="let code of dialCodes">
+                            {{ code.code }}({{ code.dial_code }})
+                            </option>
+                        </select>
+                        <input type="text" name="phn" id="phn"
+                            placeholder="Mobile No" formControlName="MobileNumber" min="0" class="form-control" (input)="onInput($event)" maxlength="10" />
+                        </fieldset>
+                        <span *ngIf="actionForm.get('MobileNumber')?.errors?.required && isSubmitted">
+                        <small class="text-danger">
+                            Mob No is required.
+                        </small>
+                        </span>
+                        <span class="tc_red fs_13" *ngIf= "actionForm.controls.MobileNumber.errors?.pattern">Please enter valid Mob No</span>
+                    </div>
+                    <div class="col-lg-3">
+                        <fieldset>
+                        <input type="email" name="email1"
+                            id="email1" placeholder="E-mail ID" formControlName="EmailId" class="" maxlength="50" />
+                        </fieldset>
+                        <span *ngIf="actionForm.get('EmailId')?.errors?.required && isSubmitted">
+                        <small class="text-danger">
+                            Email ID is required.
+                        </small>
+                        </span>
+                        <span
+                        *ngIf="actionForm.controls.EmailId.errors?.pattern&& actionForm.controls.EmailId.touched" class="tc_red fs_13">Please enter a valid Email ID.</span>
+                    </div>
+                    <div class="col-lg-3" style="margin-top: 10px;">
+                        <div class="sv-checks__proceed">
+                            <button (click)="buyNowInstant(instantChecks[0])" class="btn-primary btn-bg">Proceed to Pay / Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        </section>
+
+        <section class="sv-checks sv-container">
+            <h2 class="sv-checks__title">Recommended <span class="text-green">Checks</span></h2>
+            <p class="sv-checks__subtitle">Select checks to add to your order</p>
+
+                 <!-- Services Section -->
+        <div class="services-section">
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card" [ngClass]="{ 'onclickservicecard': quantity7 > 0 }">
+                    <div class="tat-label">🕒 TAT- <span class="tat-sameday">Same Day</span><div class="tat-label " style="margin-top: 9px;
+    right: 0;"><span class="tat-sameday">₹ 399 </span></div></div>
+                    <div class="card-icon">
+                      <img src="../../../assets/img/Checks icon  (1).jpg" alt="">
+                    </div>
+                    <div class="card-title-row" style="margin-top: 9px;">
+                        <h3 class="card-title">Identity Verification</h3>
+                     <img src="../../../assets/img/Shield-Icon.png" alt="">
+                       
+                    </div>
+                    <!-- <p class="card-desc">Govt ID match, facial biometric & liveness detection</p> -->
+                    <div class="d-flex align-items-center grid-btn-layout">
+
+
+                        <button class="add-to-cart" (click)="incDecQty('dec', 'quantity7')">-</button>
+                        <input [disabled]="true" #qty type="number" step="1" min="0" [value]="quantity7" max="10"
+                        name="quantity" class="quantity-field border-0 text-center tc_l_gry" disabled="" />
+                        <button class="add-to-cart" (click)="incDecQty('inc', 'quantity7')">+</button>
+                    </div>
+
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card" [ngClass]="{ 'onclickservicecard': quantity8 > 0 }">
+                    <div class="tat-label">🕒 TAT- <span class="tat-days">2-3 Days</span><div class="tat-label " style="margin-top: 9px;
+    right: 0;"><span class="tat-sameday">₹ 799 </span></div></div>
+                    <div class="card-icon">
+                                            <img src="../../../assets/img/Checks icon  (2).jpg" alt="">
+
+                    </div>
+                    <div class="card-title-row" style="margin-top: 9px;">
+                        <h3 class="card-title">Criminal Check</h3>
+                     <img src="../../../assets/img/Shield-Icon.png" alt="">
+                    </div>
+                    <!-- <p class="card-desc">National courts database, police records & FIR search</p> -->
+                        <div class="d-flex align-items-center grid-btn-layout">
+                    <button class="add-to-cart" (click)="incDecQty('dec', 'quantity8')">-</button>
+                    <input [disabled]="true" #qty type="number" step="1" min="0" [value]="quantity8" max="10"
+                    name="quantity" class="quantity-field border-0 text-center tc_l_gry" disabled="" />
+                    <button class="add-to-cart" (click)="incDecQty('inc', 'quantity8')">+</button>
+                </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card" [ngClass]="{ 'onclickservicecard': quantity9 > 0 }">
+                    <div class="tat-label">🕒 TAT- <span class="tat-days">3-5 Days</span><div class="tat-label " style="margin-top: 9px;
+    right: 0;"><span class="tat-sameday">₹ 699 </span></div></div>
+                    <div class="card-icon">
+                                           <img src="../../../assets/img/Checks icon  (3).jpg" alt="">
+
+                    </div>
+                    <div class="card-title-row" style="margin-top: 9px;">
+                        <h3 class="card-title">Employment History</h3>
+                     <img src="../../../assets/img/Shield-Icon.png" alt="">
+                    </div>
+                    <!-- <p class="card-desc">Confirm past employers, designations & tenure</p> -->
+                        <div class="d-flex align-items-center grid-btn-layout">
+                    <button class="add-to-cart" (click)="incDecQty('dec', 'quantity9')">-</button>
+                    <input [disabled]="true" #qty type="number" step="1" min="0" [value]="quantity9" max="10"
+                    name="quantity" class="quantity-field border-0 text-center tc_l_gry" disabled="" />
+                    <button class="add-to-cart" (click)="incDecQty('inc', 'quantity9')">+</button>
+  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card" [ngClass]="{ 'onclickservicecard': quantity10 > 0 }">
+                    <div class="tat-label">🕒 TAT- <span class="tat-days">2-4 Days</span><div class="tat-label " style="margin-top: 9px;
+    right: 0;"><span class="tat-sameday">₹ 899 </span></div></div>
+                    <div class="card-icon">
+                                         <img src="../../../assets/img/Checks icon  (4).jpg" alt="">
+
+                    </div>
+                    <div class="card-title-row" style="margin-top: 9px;">
+                        <h3 class="card-title">Education Credentials</h3>
+                     <img src="../../../assets/img/Shield-Icon.png" alt="">
+                    </div>
+                    <!-- <p class="card-desc">Degree, institution & board certificate verification</p> -->
+                        <div class="d-flex align-items-center grid-btn-layout">
+                    <button class="add-to-cart" (click)="incDecQty('dec', 'quantity10')">-</button>
+                    <input [disabled]="true" #qty type="number" step="1" min="0" [value]="quantity10" max="10"
+                    name="quantity" class="quantity-field border-0 text-center tc_l_gry" disabled="" />
+                    <button class="add-to-cart" (click)="incDecQty('inc', 'quantity10')">+</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="sv-checks__proceed">
+                <button class="btn-primary btn-bg">Add to Cart</button>
+            </div>
+
+            <!-- Cart -->
+            <div class="sv-cart">
+                <div class="sv-cart__header">Your Cart</div>
+                <div class="sv-cart__body">
+                    <div class="sv-cart__row">
+                        <span class="text-gray">Checks Selected</span>
+                        <span class="sv-cart__count font-bold">0</span>
+                    </div>
+                    <div class="sv-cart__divider"></div>
+                    <div class="sv-cart__row sv-cart__row--total">
+                        <span class="text-purple font-bold">Total</span>
+                        <span class="font-bold"></span>
+                    </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center py-3">
+                  <button class=" bg-black btn-primary">Proceed to Verification</button>
+              </div>
+
+        </section>
+         </div>

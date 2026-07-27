@@ -1,0 +1,401 @@
+<ng-template>
+  <div class="py-4 bg_blu hero-header mb-5 sg_page_title position-relative">
+    <div
+      class="position-absolute top-0 left-0 w-100 h-100 opacity-50 bg_blu"
+    ></div>
+    <div class="container my-1 my-lg-5 px-lg-5 position-relative">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1 class="text-white animated zoomIn">Leadership Due Diligence</h1>
+          <hr class="bg-white mt-0 opacity-100" style="width: 90px" />
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-start">
+              <li class="breadcrumb-item">
+                <a class="tc_w tc_h_red" [routerLink]="['/home']">Home</a>
+              </li>
+              <li class="breadcrumb-item tc_red active" aria-current="page">
+                Leadership Due Diligence
+              </li>
+            </ol>
+          </nav>
+          <div class="tc_w">
+            <p>
+              Verify Leadership positions with Securitas’ comprehensive
+              evaluation and validation. Onboard them with safety first and
+              caution second.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 text-lg-center mt-3 mt-lg-0">
+          <img src="assets/img/3.jpg" class="rounded-3 shadow-lg" width="80%" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar & Hero End -->
+  <div class="pt-0 pt-lg-1">
+    <app-shared-packages [serviceTypeId]="serviceTypeId"></app-shared-packages>
+    <div class="container sg_shadow rounded-3 py-4 py-lg-5 px-5 my-5">
+      <div class="row" *ngIf="knowHow">
+        <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.1s">
+          <div class="mb-3">
+            <h2 class="fs_22">{{ knowHow.process_title }}</h2>
+          </div>
+          <h4 class="fs_18 mb-0 tc_prp mt-4">
+            {{ knowHow.service_process_details[0].process_desc_title }}
+          </h4>
+          <div
+            class="pt-2 fs_16"
+            *ngIf="knowHow.service_process_details[0].multi_desc"
+          >
+            <div
+              class="d-flex align-items-baseline"
+              *ngFor="
+                let el of knowHow.service_process_details[0]
+                  .service_process_desc_multirows
+              "
+            >
+              <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+              <p class="mb-0">{{ el.row_desc }}</p>
+            </div>
+            <!-- <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Outstanding balances, foreclosures</p>
+               </div>
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Late or missed payments</p>
+               </div>
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Any bankruptcies</p>
+               </div>
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Collection accounts</p>
+               </div>       -->
+          </div>
+          <div class="pt-3 fs_16">
+            <div class="">
+              <p
+                class="mb-2"
+                *ngFor="let e of knowHow.service_process_details; let i = index"
+              >
+                <span *ngIf="i !== 0">{{ e.process_desc_details }}</span>
+              </p>
+              <!-- <p class="mb-2">b) Political affiliation</p>
+                  <p class="mb-2">c) Social Media check</p>
+                  <p class="mb-2">d) Criminal verification</p>
+                  <p class="mb-2">e) Compliance and regulatory issues check</p>
+                  <p class="mb-2">f) Previous Employment Check</p>
+                  <p class="mb-2">g) Corporate Affiliations/directorship partnership check</p> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0">
+          <img
+            [src]="
+              knowHow.process_img
+                ? knowHow.process_img
+                : 'assets/img/Know_HOW.jpg'
+            "
+            class="w-100 rounded-3 wow animate__zoomIn position-sticky top-0"
+            data-wow-delay="0.1s"
+          />
+        </div>
+      </div>
+      <div class="row mt-5 align-items-center" *ngIf="knowWhy">
+        <div class="col-lg-6">
+          <img
+            [src]="
+              knowWhy.cause_img ? knowWhy.cause_img : 'assets/img/Know_WHY.jpg'
+            "
+            class="w-100 rounded-3 wow animate__zoomIn position-sticky top-0"
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div
+          class="col-lg-6 fs_18 wow fadeInRight ps-lg-5"
+          data-wow-delay="0.1s"
+        >
+          <div class="mb-3">
+            <h2 class="fs_22">{{ knowWhy.cause_title }}</h2>
+          </div>
+          <div class="pt-2 fs_16">
+            <div
+              class="d-flex align-items-baseline"
+              *ngFor="let item of knowWhy.service_cause_details"
+            >
+              <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+              <p class="mb-0">{{ item.cause_desc_details }}</p>
+            </div>
+            <!-- <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Candidate analysis before considering for a financial role or at the time of assets assignment</p>
+               </div>
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Healthy workplace environment</p>
+               </div> 
+               <div class="d-flex align-items-baseline">
+                  <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                  <p class="mb-0">Value creation, risk mitigation and successful integration planning with a verified M&A executive</p>
+               </div>       -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!-- Leadership Due Diligence -->
+
+<div class="pt-5" style="background-color: #fff" id="leadership_due_diligence">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mb-3 mb-lg-4">
+        <div class="section-title position-relative mb-4 pb-2 text-center">
+          <h2 class="">Leadership Due Diligence</h2>
+          <p class="mb-2">
+            >Verify Leadership positions with Securitas’ comprehensive
+            evaluation and validation. Onboard them with safety first and
+            caution second.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="pb-5 position-relative">
+    <div class="container">
+      <div class="row align-items-center px-xl-3">
+        <div class="col-lg-6 ps-xxl-5 text-center order-lg-2 sg_service_m_img">
+          <img
+            src="assets/img/employment.gif"
+            class="fit_img_cnt wow zoomIn h-100 w-100"
+            width=""
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div class="col-lg-6 order-lg-1 mt-4 mt-lg-0">
+          <div class="col-lg-12">
+            <div class="mb-2">
+              <h2 class="fs_24 tc_lred">Know HOW?</h2>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="col-lg-12">
+              <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                <div>
+                  <h5 class="fs_18">
+                    Credit Check - Worried about financial deception?
+                  </h5>
+                  <div class="pt-2 fs_16">
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Active accounts including open loans;</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Outstanding balances, foreclosures</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Late or missed payments</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Any bankruptcies</p>
+                    </div>
+                    <div class="d-flex align-items-baseline">
+                      <i class="bi bi-arrow-right tc_red me-2 fs_18"></i>
+                      <p class="mb-0">Collection accounts</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 my-2">
+              <div class="sg_shadow px-4 py-3 bg_w">
+                <h5 class="fs_15 mb-2 ff_reg">
+                  a) Discreet reference checks - Reference checks from HR, and
+                  supervisors.
+                </h5>
+                <h5 class="fs_15 mb-2 ff_reg">b) Political affiliation</h5>
+                <h5 class="fs_15 mb-2 ff_reg">c) Social Media check</h5>
+                <h5 class="fs_15 mb-2 ff_reg">d) Criminal verification</h5>
+                <h5 class="fs_15 mb-2 ff_reg">
+                  e) Compliance and regulatory issues check
+                </h5>
+                <h5 class="fs_15 mb-2 ff_reg">f) Previous Employment Check</h5>
+                <h5 class="fs_15 mb-2 ff_reg">
+                  g) Corporate Affiliations/directorship partnership check
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </section>
+
+  <section class="position-relative pt-5" style="background: #fbfbfb">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2 sg_service_m_img">
+          <img
+            src="assets/img/employee2.png"
+            class="h-100 fit_img_cnt wow zoomIn w-100"
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div
+          class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-lg-1 mt-4 mt-lg-0"
+          data-wow-delay="0.1s"
+        >
+          <div class="mb-2">
+            <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+          </div>
+          <div class="row pt-2">
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Confident decisions while hiring
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Candidate analysis before considering for a financial role or
+                  at the time of assets assignment
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Healthy workplace environment
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Value creation, risk mitigation and successful integration
+                  planning with a verified M&A executive
+                </h5>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="d-lg-flex align-items-center mt-4">
+            <button
+              (click)="buyNow()"
+              type="button"
+              class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+            >
+              <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+              <span>Buy Now</span>
+            </button>
+            <button
+              (click)="goToCart(); isAddedCart = true"
+              type="button"
+              class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+            >
+              <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+              <span>{{ isAddedCart ? "Go to Cart" : "Add to Cart" }}</span>
+            </button>
+          </div> -->
+        </div> 
+      </div>
+    </div>
+  </section> 
+    <app-shared-form [type]="'leadership'"></app-shared-form> 
+
+</div>
+
+<!-- ------------ -->
+
+<div class="container-fluid" style="border-top: 4px #acc2dd solid">
+  <div class="row">
+    <div class="col-lg-12"></div>
+  </div>
+</div>
+<ng-template #submenuServices let-item="item">
+  <div class="col-lg-12">
+    <form class="row align-items-center">
+      <ng-container *ngFor="let el of item; let i = index">
+        <div class="col-md-6">
+          <div class="sg_pckg_checks">
+            <div
+              class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+            >
+              <div class="sg_form_group">
+                <input
+                  type="checkbox"
+                  id="h_tenant_verification{{ el.package_id }}"
+                />
+                <label for="h_tenant_verification{{ el.package_id }}">{{
+                  el.package_name
+                }}</label>
+              </div>
+              <div class="d-flex gap-2 align-items-center">
+                <span class="price">₹{{ el.price }}</span>
+              </div>
+            </div>
+            <div class="h_tenant_verification_input sg_inner_checks px-3 pb-3">
+              <ng-container *ngFor="let menus of el?.packageServices">
+                <div class="sg_checkbox_div sg_form_group_inr">
+                  <input
+                    type="checkbox"
+                    id="tenant_verification_national_id{{
+                      menus.package_service_id
+                    }}"
+                    name="sg_occupied_option"
+                    value=""
+                    class="sg_inner_checks"
+                  />
+                  <label
+                    class="fs_14"
+                    for="tenant_verification_national_id{{
+                      menus.package_service_id
+                    }}"
+                    >{{ menus.service_name }}</label
+                  >
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="col-lg-6">
+        <div class="d-md-flex align-items-center justify-content-center">
+          <button
+            style="min-width: 200px"
+            type="button"
+            class="mx-md-3 my-4 my-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+          >
+            <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+            <span>Buy Now</span>
+          </button>
+          <button
+            (click)="goToCart(); isAddedCart = true"
+            style="min-width: 200px"
+            type="button"
+            class="mx-md-3 my-4 my-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+          >
+            <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+            <span>{{ isAddedCart ? "Go to Cart" : "Add to Cart" }}</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

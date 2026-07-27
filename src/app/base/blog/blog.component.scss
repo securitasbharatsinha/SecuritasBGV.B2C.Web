@@ -1,0 +1,145 @@
+.sg_sngl_blg .sg_blg_img {
+    width: 100%;
+    height: 55vh;
+    object-fit: cover;
+}
+
+.sg_blg_col .sg_usr_img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 100%;
+    position: absolute;
+    top: -30px;
+    left: 20px;
+    background: white;
+}
+
+small.sg_cata {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    background: var(--lred);
+    color: white;
+    border-radius: 10px;
+    padding: 2px 10px;
+    font-size: 10px;
+    transition: 0.6s all;
+}
+
+.sg_next_prev a {
+    color:var(--lred);
+    display: flex;
+    align-items: center;
+    transition: 0.6s all;
+    column-gap: 9px;
+} 
+
+.sg_blg_sidebr h6 {
+    font-size: 14px;
+    color:var(--dark)
+}
+
+.sg_blg_sidebr h6:hover { 
+    color:var(--secondary)
+}
+
+.sg_next_prev a:hover {
+    color:var(--secondary); 
+}
+
+
+small.sg_cata:hover{ 
+    background: var(--secondary); 
+}
+
+small.sg_cata:hover a{  
+    color: white; 
+}
+
+.sg_blg_sidebr {
+    box-shadow: 0px 0px 7px 0px #eeeeee;
+    padding: 20px 15px;
+    border-radius: 3px;
+}
+
+.sg_blg_sidebr h5 {
+    // font-weight: 600;
+}
+
+.sg_blg_sidebr .input-group-append button {
+    border-radius: 0px 0.375rem 0.375rem 0px;
+}
+
+
+.sg_blg_sidebr ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sg_blg_sidebr li {
+    display: grid;
+    grid-template-columns: 80px auto;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.sg_blg_sidebr img {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+    transition: 0.6s all;
+}
+
+.sg_cta_div {
+    border-radius: 8px;
+    background-image: linear-gradient(to right, var(--secondary), var(--lred));
+    box-shadow: #8f8f8f05 0 0 15px 16px; 
+    text-align: center;
+}
+  .sg_cta_div h4{
+    font-size: 20px;
+} 
+  .sg_cta_div a {
+    background: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    color: var(--dark);
+    font-weight: 600;
+    transition: 0.6s all;
+}
+  .sg_cta_div a:hover { 
+    color: var(--lred); 
+}
+
+
+
+
+
+//Blog Page
+
+.part-data .h3, .part-data h3 {
+    font-size: 18px; 
+    text-align: start; 
+}
+
+.part-data p { 
+    text-align: start;
+
+}
+
+.part-data {
+    padding: 25px 15px 8px;
+    position: relative;
+    // min-height: 180px;
+}
+
+.part-in-desing img { 
+    object-fit: cover;
+}
+
+.part-in-desing:hover small.tc_prp {
+    color: var(--lred) !important;
+}

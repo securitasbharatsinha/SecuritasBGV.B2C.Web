@@ -1,0 +1,386 @@
+<div class="" *ngIf="packagesList">
+  <div class="container">
+    <div
+      *ngIf="calledFromPage !== 'home'"
+      class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp"
+      data-wow-delay="0.1s"
+    >
+      <h6 class="position-relative d-inline ps-4">Our Plan</h6>
+      <h2 class="mt-2">Securitas Packages</h2>
+    </div>
+    <div class="row pt-0">
+      <div
+        class="col-lg-4 col-md-6 sg_plan_div wow fadeInUp"
+        data-wow-delay="0.2s"
+        *ngFor="let item of packagesList; let i = index"
+      >
+        <div
+          class="position-relative sg_plan_shadow rounded border-top border_5 h-100"
+          [style.border-color]="item.border_color + '!important'"
+        >
+          <div
+            class="d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle rounded-circle"
+            style="width: 45px; height: 45px; margin-top: -3px"
+            [style.background-color]="item.bg_color"
+          >
+            <!-- [ngClass]="item.icon" -->
+            <i class="fa text-white" [ngClass]="item.icon"></i>
+          </div>
+          <div
+            class="text-center border-bottom px-2 pb-3 pt-4 mt-3 p-xl-4 pt-xl-5 mt-xl-0"
+          >
+            <container-element [ngSwitch]="i">
+              <h4 class="fw-bold fs_28" *ngSwitchCase="0">Basic</h4>
+              <h4 class="fw-bold fs_28" *ngSwitchCase="1">Standard</h4>
+              <h4 class="fw-bold fs_28" *ngSwitchCase="2">Premium</h4>
+            </container-element>
+            <!-- <h4 class="fw-bold fs_22">{{ item.package_name }}</h4> -->
+
+            <p class="mb-0 fs_13">{{ item.description }}</p>
+          </div>
+          <div class="text-center border-bottom p-2 p-lg-4">
+            <p class="tc_prp mb-1">
+              <!-- {{item.fixedpackage? item.offer:'Select services' }} -->
+              <strong>{{ item.offer }}</strong>
+            </p>
+            <h1 class="mb-lg-3">
+              <small
+                class="align-top"
+                style="font-size: 24px; line-height: 45px; margin-right: 3px"
+                >₹
+                <!-- {{item.fixedpackage?item.price:totalServiceAmount
+                  }} --> </small
+              >{{ item.price
+              }}<small
+                class="align-bottom d-none"
+                style="font-size: 16px; line-height: 40px"
+                >/ Month</small
+              >
+            </h1>
+            <!-- (click)="buyServicepackages(item.package_id,item.price,item.fixedpackage)" -->
+            <a
+              type="button"
+              role="button"
+              (click)="callApiAddTocart(item)"
+              class="btn bg_red tc_w bg_h_prp tc_h_w px-2 py-1 px-lg-4 py-lg-2"
+              href="javascript:void(0)"
+              >Buy Now</a
+            >
+            <!-- (click)="createOrder(item.price, item.package_id)" -->
+          </div>
+
+          <form
+            class="px-3 py-3"
+            [ngClass]="!item.fixedpackage ? 'sg_allocate_check' : ''"
+          >
+            <div
+              *ngFor="
+                let el of item.packageServices;
+                let last = last;
+                let i = index
+              "
+            >
+              <p
+                class="mb-2 d-flex"
+                [ngClass]="last ? 'border-0 pb-0' : 'border-bottom pb-2'"
+              >
+                <i class="fa fa-check tc_red me-3 mt-2"></i
+                >{{ el.service_name }}
+              </p>
+              <!-- <p [ngClass]="last ? 'mb-0' : 'border-bottom pb-3'">
+                  <input
+                    type="checkbox"
+                    id="{{ el.package_service_id }}"
+                    value="{{ el.service_price }}"
+                    *ngIf="!item.fixedpackage"
+                    #service
+                    (change)="selectService($event,service.checked)"
+                  />
+                  <i
+                    class="fa fa-check tc_red me-3"
+                  *ngIf="item.fixedpackage"
+                   
+                  ></i>
+                  <label
+                    for="{{ el.package_service_id }}"
+                    class="justify-content-between"
+                    >{{ el.service_name
+                    }}
+                    <span
+                      class="tc_prp fs_14 ff_bold"
+                      *ngIf="!item.fixedpackage"
+                      >₹{{ el.service_price }}</span
+                    >
+                    </label
+                  >
+                </p> -->
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <ng-template #name *ngIf="false">
+        <ng-container
+          *ngFor="let item of packagesList; let i = index; let l = last"
+        >
+          <div
+            class="col-lg-4 col-md-6 sg_plan_div wow fadeInUp"
+            data-wow-delay="0.2s"
+          >
+            <div
+              class="position-relative sg_plan_shadow h-100 rounded border-top border_5 border_red"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle bg_red rounded-circle"
+                style="width: 45px; height: 45px; margin-top: -3px"
+              >
+                <i class="fa fa-share-alt text-white"></i>
+              </div>
+              <div
+                class="text-center border-bottom px-2 pb-3 pt-4 mt-3 p-xl-4 pt-xl-5 mt-xl-0"
+              >
+                <h4 class="fw-bold">Basic</h4>
+                <p class="mb-0 fs_13">
+                  Best suited for entry level staff, blue collar workers
+                </p>
+              </div>
+              <div class="text-center border-bottom p-2 p-lg-4">
+                <p class="tc_prp mb-1"><strong>Best-Seller</strong></p>
+                <h1 class="mb-lg-3">
+                  <small
+                    class="align-top"
+                    style="font-size: 22px; line-height: 45px"
+                    ><i class="bi bi-currency-rupee"></i></small
+                  >2.49<small
+                    class="align-bottom d-none"
+                    style="font-size: 16px; line-height: 40px"
+                    >/ Month</small
+                  >
+                </h1>
+                <a
+                  class="btn bg_red tc_w bg_h_prp tc_h_w px-2 py-1 px-lg-4 py-lg-2"
+                  href=""
+                  >Buy Now</a
+                >
+              </div>
+              <div class="p-2 p-lg-4">
+                <p class="border-bottom pb-2 mb-2 d-flex">
+                  <i class="fa fa-check tc_red me-3 mt-2"></i>National Identity
+                  Check
+                </p>
+                <p class="border-bottom pb-2 mb-2 d-flex">
+                  <i class="fa fa-check tc_red me-3 mt-2"></i>Court Record Check
+                  (Permanent Address)
+                </p>
+                <p class="mb-0 d-flex">
+                  <i class="fa fa-check tc_red me-3 mt-2"></i>Present Address
+                  Verification
+                </p>
+                <!-- <p class="border-bottom pb-2 mb-2 d-flex" ><i class="fa tc_red me-3"></i>-</p>
+                    <p class="border-bottom pb-2 mb-2 d-flex" ><i class="fa tc_red me-3"></i>-</p>
+                    <p class="border-bottom pb-2 mb-2 d-flex" ><i class="fa tc_red me-3"></i>-</p>
+                    <p class="mb-0"><i class="fa  tc_red me-3"></i>-</p> -->
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+      <ng-container *ngIf="false">
+        <div
+          class="col-lg-4 col-md-6 sg_plan_div wow fadeInUp"
+          data-wow-delay="0.2s"
+        >
+          <div
+            class="position-relative sg_plan_shadow h-100 rounded border-top border_5 border_red"
+          >
+            <div
+              class="d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle bg_red rounded-circle"
+              style="width: 45px; height: 45px; margin-top: -3px"
+            >
+              <i class="fa fa-share-alt text-white"></i>
+            </div>
+            <div
+              class="text-center border-bottom px-2 pb-3 pt-4 mt-3 p-xl-4 pt-xl-5 mt-xl-0"
+            >
+              <h4 class="fw-bold">Basic</h4>
+              <p class="mb-0 fs_13">
+                Best suited for entry level staff, blue collar workers
+              </p>
+            </div>
+            <div class="text-center border-bottom p-2 p-lg-4">
+              <p class="tc_prp mb-1"><strong>Best-Seller</strong></p>
+              <h1 class="mb-lg-3">
+                <small
+                  class="align-top"
+                  style="font-size: 22px; line-height: 45px"
+                  ><i class="bi bi-currency-rupee"></i></small
+                >120.0<small
+                  class="align-bottom d-none"
+                  style="font-size: 16px; line-height: 40px"
+                  >/ Month</small
+                >
+              </h1>
+              <a
+                class="btn bg_red tc_w bg_h_prp tc_h_w px-2 py-1 px-lg-4 py-lg-2"
+                href="javascript:void(0)"
+                >Buy Now</a
+              >
+            </div>
+            <div class="p-2 p-lg-4">
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>National Identity
+                Check
+              </p>
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Court Record Check
+                (Permanent Address)
+              </p>
+              <p class="mb-0 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Present Address
+                Verification
+              </p>
+              <!-- <p class="border-bottom pb-2 mb-2 d-flex" ><i class="fa tc_red me-3"></i>-</p>
+                    <p class="border-bottom pb-2 mb-2 d-flex" ><i class="fa tc_red me-3"></i>-</p>
+                    <p class="border-bottom pb-2 mb-2 d-flex" ><i class="fa tc_red me-3"></i>-</p>
+                    <p class="mb-0"><i class="fa  tc_red me-3"></i>-</p> -->
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-4 col-md-6 sg_plan_div wow fadeInUp"
+          data-wow-delay="0.4s"
+        >
+          <div
+            class="position-relative sg_plan_shadow h-100 rounded border-top border_5 border_blu"
+          >
+            <div
+              class="d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle bg_blu rounded-circle"
+              style="width: 45px; height: 45px; margin-top: -3px"
+            >
+              <i class="fa fa-server text-white"></i>
+            </div>
+            <div
+              class="text-center border-bottom px-2 pb-3 pt-4 mt-3 p-xl-4 pt-xl-5 mt-xl-0"
+            >
+              <h4 class="fw-bold">Standard</h4>
+              <p class="mb-0 fs_13">Best suited for corporate employee</p>
+            </div>
+            <div class="text-center border-bottom p-2 p-lg-4">
+              <p class="tc_prp mb-1">
+                Latest Offer - <strong>Save 30%</strong>
+              </p>
+              <h1 class="mb-lg-3">
+                <small
+                  class="align-top"
+                  style="font-size: 22px; line-height: 45px"
+                  ><i class="bi bi-currency-rupee"></i></small
+                >150.0<small
+                  class="align-bottom d-none"
+                  style="font-size: 16px; line-height: 40px"
+                  >/ Month</small
+                >
+              </h1>
+              <a
+                class="btn bg_red tc_w bg_h_prp tc_h_w px-2 py-1 px-lg-4 py-lg-2"
+                href="javascript:void(0)"
+                >Buy Now</a
+              >
+            </div>
+            <div class="p-2 p-lg-4">
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Highest
+                Qualification Check
+              </p>
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Employment Check (1)
+              </p>
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Present Address
+                Verification
+              </p>
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>National Identity
+                Check
+              </p>
+              <p class="mb-0 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Court Record Check
+                (Permanent Address)
+              </p>
+              <!-- <p class="border-bottom pb-2 mb-2 d-flex" ><i class="fa tc_red me-3"></i>-</p>
+
+                    <p class=" mb-0 d-flex" ><i class="fa  tc_red me-3 mt-2"></i>_</p> -->
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-4 col-md-6 sg_plan_div wow fadeInUp"
+          data-wow-delay="0.6s"
+        >
+          <div
+            class="position-relative sg_plan_shadow h-100 rounded border-top border_5 border_prp"
+          >
+            <div
+              class="d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle bg_prp rounded-circle"
+              style="width: 45px; height: 45px; margin-top: -3px"
+            >
+              <i class="fa fa-cog text-white"></i>
+            </div>
+            <div
+              class="text-center border-bottom px-2 pb-3 pt-4 mt-3 p-xl-4 pt-xl-5 mt-xl-0"
+            >
+              <h4 class="fw-bold">Premium</h4>
+              <p class="mb-0 fs_13">Best suited for managers and above</p>
+            </div>
+            <div class="text-center border-bottom p-2 p-lg-4">
+              <p class="tc_prp mb-1">Select your services items</p>
+              <h1 class="mb-lg-3">
+                <small
+                  class="align-top"
+                  style="font-size: 22px; line-height: 45px"
+                  ><i class="bi bi-currency-rupee"></i></small
+                >500.0<small
+                  class="align-bottom d-none"
+                  style="font-size: 16px; line-height: 40px"
+                  >/ Month</small
+                >
+              </h1>
+              <a
+                class="btn bg_red tc_w bg_h_prp tc_h_w px-2 py-1 px-lg-4 py-lg-2"
+                href="javascript:void(0)"
+                >Buy Now</a
+              >
+            </div>
+            <div class="p-2 p-lg-4">
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Highest
+                Qualification Check
+              </p>
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Employment Check (2)
+              </p>
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Present and
+                Permanent Address Verification
+              </p>
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>National Identity
+                Check
+              </p>
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Court Record Check
+                for Current and Permanent Address
+              </p>
+              <p class="border-bottom pb-2 mb-2 d-flex">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Credit Check
+              </p>
+              <p class="mb-0">
+                <i class="fa fa-check tc_red me-3 mt-2"></i>Global Database
+                Check
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

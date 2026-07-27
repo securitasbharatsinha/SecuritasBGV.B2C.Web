@@ -1,0 +1,12 @@
+<small for="" class="ps-2">
+  <button
+    href="javascript:void(0)"
+    class="ps-2 border-0 bg-white"
+    ngClass="{{ startingMinutes ? 'tc_blu' : 'tc_prp' }}"
+    (click)="resendCode()"
+    [disabled]="startingMinutes"
+  >
+    Resend code
+  </button>
+  <span *ngIf="startingMinutes">in {{ timer }} </span>
+</small>

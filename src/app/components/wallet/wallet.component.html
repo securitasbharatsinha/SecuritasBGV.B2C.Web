@@ -1,0 +1,132 @@
+<div
+  class="py-4 bg_blu hero-header mb-5 sg_page_title position-relative"
+  style="background-image: url(assets/image/wallet.jpg)"
+>
+  <div
+    class="position-absolute top-0 left-0 w-100 h-100 opacity-50 bg_blu"
+  ></div>
+  <div class="container my-1 my-lg-5 px-lg-5 position-relative">
+    <div class="row align-items-center">
+      <div class="col-lg-12 text-start">
+        <h1 class="text-white animated zoomIn">My Wallet</h1>
+        <hr class="bg-white mt-0 opacity-100" style="width: 90px" />
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-start">
+            <li class="breadcrumb-item">
+              <a class="tc_w tc_h_red" [routerLink]="['/home']">Home</a>
+            </li>
+            <li class="breadcrumb-item tc_red active" aria-current="page">
+              Wallet
+            </li>
+          </ol>
+        </nav>
+        <div class="tc_w"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pt-0 pt-lg-4 mb-5">
+  <div class="container shadow rounded-4 py-4 px-xxl-5 px-4">
+    <div class="row">
+      <div class="col-lg-4 d-flex align-items-center gap-4">
+        <i class="bi bi-wallet tc_prp fs-1"></i>
+        <div>
+          <h5 class="mb-0">{{ walletBalance / 100 | currency : "INR" }}</h5>
+          <small>Your Wallet Balance</small>
+        </div>
+      </div>
+      <div class="col-lg-8 d-flex align-items-center gap-4 justify-content-end">
+        <div class="fa-icon sg_add_wlt_pymt">
+          <i aria-hidden="true" class="bi bi-cash tc_prp"></i>
+          <div class="">
+            <input
+              type="number"
+              min="0"
+              placeholder="Enter Amount to be Added in Wallet*"
+              class="form-control h-auto pt-1"
+              autocomplete="off"
+              [(ngModel)]="RequestAmt"
+              required="true"
+            />
+          </div>
+        </div>
+        <button
+          (click)="openAlert()"
+          class="tc_w bg_prp bg_h_redbtn bg_prp tc_w bg_h_red tc_h_w rounded-3 rounded-pill py-1 py-md-2 border-0 px-3"
+        >
+          Add Money to Wallet
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne"
+                aria-expanded="false"
+                aria-controls="flush-collapseOne"
+              >
+                Wallet History
+              </button>
+            </h2>
+            <div
+              id="flush-collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="flush-headingOne"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body shadow sg_allocate_check">
+                <div class="table-responsive">
+                  <table class="table fs_14">
+                    <thead>
+                      <tr>
+                        <th scope="col">Order Id</th>
+                        <th scope="col">Payment Status</th>
+                        <th scope="col">Transaction Date</th>
+
+                        <th scope="col">Transaction Id</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Balance</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let el of history">
+                        <!-- <th>Instant Verification</th> -->
+                        <td>{{ el.OrderId }}</td>
+                        <td>
+                          <i class="bi bi-check-circle text-success me-1"></i>
+                          {{ el.PaymentStatus }}
+                        </td>
+
+                        <td>
+                          {{ el.TransactionDate | date : "dd-MM-yyyy hh:mm a" }}
+                        </td>
+
+                        <td>{{ el.TransactionId }}</td>
+                        <td ngClass="{{ el.TransactionType }}">
+                          {{ el.TransactionBalance / 100 | currency : "INR" }}
+                        </td>
+                        <td>
+                          {{ el.AvailableAmt / 100 | currency : "INR" }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

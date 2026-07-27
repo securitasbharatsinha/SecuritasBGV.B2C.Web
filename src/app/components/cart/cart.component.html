@@ -1,0 +1,123 @@
+<div class="py-5 bg_blu hero-header mb-5 sg_page_title position-relative">
+  <div
+    class="position-absolute top-0 left-0 w-100 h-100 opacity-50 bg_blu"
+  ></div>
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-12 align-items-center d-flex justify-content-between">
+        <div>
+          <h1 class="text-white animated zoomIn">Cart</h1>
+        </div>
+
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item">
+              <a class="tc_w tc_h_red" [routerLink]="['/home']">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Cart</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mb-5 pb-2 mt-4">
+  <div class="row justify-content-center" *ngIf="!isAdded">
+    <div class="col-md-8 col-lg-5 text-center">
+      <img src="/assets/img/cart.png" class="w-75" />
+      <h5 class="mt-4">Your Cart is <span class="tc_red"> Empty!</span></h5>
+      <div>
+        <button
+          [routerLink]="['/services/instant_verification']"
+          type="button"
+          class="mx-auto mt-3 mb-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg fs_20 px-4"
+          style="min-width: 200px"
+        >
+          <span>Back to Services</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="isAdded">
+    <div class="col-md-12 sg_crt_tbl pt-5">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">#</th>
+              <th scope="col">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>Product</span> <span>Total</span>
+                </div>
+              </th>
+              <!-- <th scope="col">Total</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="text-center align-middle">
+                <img
+                  src="https://securitasb2cweb.keycorp.in/assets/img/helper.png"
+                  width="150px"
+                />
+                <h6 class="fs_18 mt-2">Helper Verification</h6>
+              </th>
+              <td>
+                <div class="sg_prdt_crt_name d-flex justify-content-between">
+                  <div>
+                    <h6>Domestic Helper</h6>
+                    <div class="sg_child_checks">
+                      <p>National ID - ₹10</p>
+                      <p>Reference Check - ₹10</p>
+                    </div>
+                  </div>
+                  <span>₹20</span>
+                </div>
+                <div class="sg_prdt_crt_name d-flex justify-content-between">
+                  <div>
+                    <h6>Baby Sitter / Elderly Care Taker</h6>
+                    <div class="sg_child_checks">
+                      <p>National ID - ₹10</p>
+                      <p>Reference Check - ₹10</p>
+                      <p>Drug Test - ₹10</p>
+                    </div>
+                  </div>
+                  <span>₹30</span>
+                </div>
+                <div class="sg_prdt_crt_name d-flex justify-content-between">
+                  <div>
+                    <h6>Tution Teacher</h6>
+                    <div class="sg_child_checks">
+                      <p>Highest Qualification Check - ₹10</p>
+                      <p>Current Address Check - ₹10</p>
+                      <p>Court record check on permanent address - ₹10</p>
+                      <p>Reference Check - ₹10</p>
+                    </div>
+                  </div>
+                  <span>₹40</span>
+                </div>
+              </td>
+              <!-- <td>100₹</td>  -->
+            </tr>
+          </tbody>
+          <tfoot>
+            <th class="text-center py-2">Total</th>
+            <th class="text-end py-2 pe-2">₹90</th>
+          </tfoot>
+        </table>
+      </div>
+      <div class="">
+        <button
+          (click)="buyNow()"
+          type="button"
+          class="my-4 mb-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center fs_20 px-4 ms-auto"
+          style="min-width: 200px"
+        >
+          <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i
+          ><span>Buy Services</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

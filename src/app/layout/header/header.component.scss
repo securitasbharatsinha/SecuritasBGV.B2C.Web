@@ -1,0 +1,285 @@
+.header-wrapper {
+  padding: 12px 97px;
+  background: #fff;
+
+  @media (max-width: 540px) {
+    padding: 12px 0px;
+  }
+}
+.header-grey{
+   background: #F1F1F1 !important;
+}
+
+.login-header{
+ 
+    padding: 12px 97px;
+     background: unset;
+    position: absolute !important;
+    width: 100%;
+
+}
+
+// ── Pill Navbar ────────────────────────────────────
+.sg-navbar {
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  background     : #031F30;
+  border-radius  : 50px;
+  padding        : 14px 34px;
+  gap            : 1.5rem;
+}
+
+// ── Logo ───────────────────────────────────────────
+.sg-logo {
+  display       : flex;
+  flex-direction: column;
+  align-items   : flex-start;
+  gap           : 0px;
+  text-decoration: none;
+  flex-shrink   : 0;
+
+  .sg-logo-dots {
+    display    : flex;
+    gap        : 5px;
+    align-items: center;
+  }
+
+  .dot {
+    width        : 13px;
+    height       : 13px;
+    border-radius: 50%;
+    display      : block;
+    &.d1 { background: #e8344a; }
+    &.d2 { background: #f06090; }
+    &.d3 { background: #e8344a; }
+  }
+
+  .sg-logo-text {
+    color         : #ffffff;
+    font-size     : 0.82rem;
+    font-weight   : 600;
+    letter-spacing: 0.2px;
+    margin-top    : 1px;
+  }
+}
+
+.sg-nav-links {
+  list-style     : none;
+  display        : flex;
+  align-items    : center;
+  gap            :2.2rem;
+  margin         : 0;
+  padding        : 0;
+  flex           : 1;
+  justify-content: center;
+}
+
+.sg-nav-item {
+  display        : flex;
+  align-items    : center;
+  gap            : 4px;
+  // color          : #ACC2DD;
+  color          : #fff;
+  font-size      : 18px;
+  font-weight    : 500;
+  text-decoration: none;
+  padding        : 6px 14px;
+  border-radius  : 50px;
+  transition     : color 0.2s ease, background 0.2s ease;
+  white-space    : nowrap;
+  cursor         : pointer;
+
+  &:hover {
+    color     : #ffffff;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  &.active-link {
+    color     : #ffffff;
+    background: transparent;
+  }
+
+  .chevron {
+    width     : 14px;
+    height    : 14px;
+    transition: transform 0.2s ease;
+  }
+}
+
+// Help Desk purple color
+.sg-purple {
+  color: #a78bfa !important;
+  &:hover {
+    color     : #c4b5fd !important;
+    background: rgba(167, 139, 250, 0.08) !important;
+  }
+}
+
+// ── Dropdown ──────────────────────────────────────
+.sg-dropdown-wrap {
+  position: relative;
+
+  &:hover .sg-dropdown-menu {
+    opacity   : 1;
+    visibility: visible;
+    transform : translateX(-50%) translateY(0);
+  }
+
+  &:hover .chevron {
+    transform: rotate(180deg);
+  }
+}
+
+.sg-dropdown-menu {
+  position     : absolute;
+  top          : calc(100% + 12px);
+  left         : 50%;
+  transform    : translateX(-50%) translateY(-8px);
+  background   : #1a1a1a;
+  border       : 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  opacity      : 0;
+  visibility   : hidden;
+  transition   : all 0.2s ease;
+  z-index      : 9999;
+  min-width    : 300px;
+  box-shadow   : 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.sg-dropdown-inner {
+  display: flex;
+  padding: 1.2rem 1.5rem;
+  gap    : 0;
+}
+
+.dd-col {
+  flex     : 1;
+  min-width: 140px;
+
+  & + .dd-col {
+    border-left : 1px solid rgba(255,255,255,0.08);
+    padding-left: 1.2rem;
+    margin-left : 0.5rem;
+  }
+}
+
+.dd-heading {
+  font-size     : 0.78rem;
+  font-weight   : 700;
+  color         : #8d5fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom : 0.6rem;
+}
+
+.dd-link {
+  display        : block;
+  // color          : #aaa;
+  color          : #fff;
+  font-size      : 0.88rem;
+  text-decoration: none;
+  padding        : 5px 0;
+  white-space    : nowrap;
+  transition     : color 0.15s ease;
+ 
+  &:hover { color: #1aba66; }
+}
+
+// ── Auth Buttons ──────────────────────────────────
+.sg-auth-btns {
+  display    : flex;
+  align-items: center;
+  gap        : 0;
+  flex-shrink: 0;
+  background : rgba(255,255,255,0.06);
+  border     : 1px solid rgb(255, 255, 255);
+  border-radius: 50px;
+
+}
+
+.btn-primary {
+  background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(143, 97, 255, 1) 20%, rgba(185, 206, 243, 1) 41%, rgba(24, 242, 121, 1) 58%, rgba(4, 176, 86, 1) 80%, rgba(3, 22, 46, 1) 100%);
+  color        : #fff;
+  border       : 1px solid #fff;
+  border-radius: 50px;
+  padding      : 6px 22px;
+  font-size    :18px;
+  font-weight  : 700;
+  cursor       : pointer;
+  white-space  : nowrap;
+  transition   : opacity 0.2s ease;
+
+  &:hover { opacity: 0.9; }
+}
+
+.btn-partner {
+  background   : transparent;
+  color        : #e5e7eb;
+  border       : none;
+  border-radius: 50px;
+  padding      : 8px 22px;
+  font-size    : 0.88rem;
+  font-weight  : 600;
+  cursor       : pointer;
+  white-space  : nowrap;
+  transition   : color 0.2s ease;
+
+  &:hover { color: #ffffff; }
+}
+
+.btn-login-sm {
+  padding  : 6px 14px;
+  font-size: 0.82rem;
+}
+
+// ── Mobile Toggle ─────────────────────────────────
+.mobile-toggle {
+  background    : transparent;
+  border        : 1.5px solid rgba(255,255,255,0.2);
+  border-radius : 8px;
+  padding       : 7px 9px;
+  cursor        : pointer;
+  display       : flex;
+  flex-direction: column;
+  gap           : 4px;
+
+  span {
+    display      : block;
+    width        : 20px;
+    height       : 2px;
+    background   : #ccc;
+    border-radius: 2px;
+  }
+}
+
+// ── Mobile Menu ───────────────────────────────────
+.mobile-nav {
+  background    : #1a1a1a;
+  border-radius : 16px;
+  padding       : 1.2rem 1.5rem;
+  margin-top    : 8px;
+  margin-bottom : 8px;
+  display       : flex;
+  flex-direction: column;
+  gap           : 4px;
+}
+
+.mobile-link {
+  color          : #ccc;
+  text-decoration: none;
+  font-size      : 0.95rem;
+  padding        : 8px 4px;
+  border-bottom  : 1px solid rgba(255,255,255,0.06);
+  display        : block;
+  transition     : color 0.15s ease;
+
+  &:hover { color: #fff; }
+  &:last-of-type { border-bottom: none; }
+}
+
+.login-header{
+  position: absolute;
+  width: 100%;
+  background: unset;
+}

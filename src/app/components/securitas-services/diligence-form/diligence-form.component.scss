@@ -1,0 +1,31 @@
+input.ng-invalid.ng-touched {
+  border: solid 1px #da5235 !important;
+}
+input.ng-valid.ng-touched.ng-dirty {
+  border: solid 1px #50da35 !important;
+}
+textarea.ng-invalid.ng-touched {
+  border: solid 1px #da5235 !important;
+}
+textarea.ng-valid.ng-touched.ng-dirty {
+  border: solid 1px #50da35 !important;
+}
+#phn {
+  width: calc(100% - 80px);
+
+  border-top-left-radius: 0rem !important;
+  border-bottom-left-radius: 0rem !important;
+}
+#dialCode {
+  border-right: 0px;
+  width: 80px;
+  float: left;
+  padding: 8px;
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+  margin-top: 15px;
+}
+.dialCode.form-control:disabled {
+  background-color: #ffffff;
+  opacity: 1;
+}

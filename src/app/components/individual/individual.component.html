@@ -1,0 +1,346 @@
+<div class="bg-white p-0 sg_new_srvs_div_s">
+  <div class="py-4 bg_blu hero-header sg_page_title position-relative"
+    style="background-image: url(assets/image/bnr.png)">
+    <div class="container my-1 my-lg-5 position-relative">
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-2">
+              <li class="breadcrumb-item">
+                <a href="/home" class="tc_red tc_h_w">HOME</a>
+              </li>
+              <li class="breadcrumb-item tc_red active ps-1" aria-current="page">
+                <span>SERVICES</span>
+              </li>
+            </ol>
+          </nav>
+          <h1 class="text-white animated zoomIn">Services</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar & Hero End -->
+
+  <div class="sg_new_srv_pg">
+    <!-- Instant verification -->
+    <div class="container py-4 py-lg-5">
+      <div class="row">
+        <div class="col-10"></div>
+      </div>
+    </div>
+
+    <section id="self_verification" *ngIf="!isSpecial">
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-center mb-3">
+          <div class="col-lg-6 order-lg-2 sg_new_srv_img">
+            <img src="assets/image/ins.png" class="wow fadeIn" data-wow-delay="0.3s" />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Self</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Quick and secure self verification for individuals. Get accurate self checks backed by trusted data sources.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="position-relative">
+        <!-- <div class="sg_circle_rt crcl_xxl_nn"></div>  -->
+        <!-- <div class="sg_circle_lb crcl_xxl_nn"></div>   -->
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div #instant_verification class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
+              <div class="skelton d-flex justify-content-center align-items-center" style="height: 350px"
+                *ngIf="!getServiceId('self_verification')">
+                <div class="spinner-border tc_prp" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <shared-checks-table *ngIf="getServiceId('self_verification')"
+                [serviceTypeId]="getServiceId('self_verification')"></shared-checks-table>
+            </div>
+          </div>
+          <div class="sg_circle_rt"></div>
+          <div class="sg_circle_lb"></div>
+          <div class="sg_circle_ltb"></div>
+          <div class="sg_circle_lts"></div>
+          <div class="sg_circle_lbs"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container py-4 mt-xl-5 py-lg-5" *ngIf="!isSpecial">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+
+    <div class="container" id="support_verification" *ngIf="!isSpecial">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Support Personnel Verification -->
+
+    <section class="">
+      <div class="container" id="supportVerification">
+        <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
+          <div class="col-lg-6 sg_new_srv_img">
+            <img src="assets/image/spt.png" class="wow fadeIn w-100" data-wow-delay="0.3s" />
+          </div>
+          <div class="col-lg-6 text-lg-end position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Domestic</span> Help Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Verify maids, drivers, nannies, cooks, guards and more, before hiring. Ensure safety at home with trusted background verification for domestic help.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="position-relative">
+        <!-- <div class="sg_circle_rt"></div> -->
+        <!-- <div class="sg_circle_lb"></div> -->
+
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
+              <div class="skelton d-flex justify-content-center align-items-center" style="height: 350px"
+                *ngIf="!getServiceId('support_verification')">
+                <div class="spinner-border tc_prp" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <shared-checks-table *ngIf="getServiceId('support_verification')"
+                [serviceTypeId]="getServiceId('support_verification')"></shared-checks-table>
+            </div>
+          </div>
+          <div class="sg_circle_rt crcl_xxl_sh"></div>
+          <div class="sg_circle_lb crcl_xxl_sh"></div>
+          <div class="sg_circle_ltb"></div>
+          <div class="sg_circle_lts"></div>
+          <div class="sg_circle_lbs"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container py-4 my-xl-4 py-lg-5" *ngIf="!isSpecial">
+      <div class="row">
+        <div class="col-10"></div>
+      </div>
+    </div>
+
+    <div class="container" id="tenant_verification" *ngIf="!isSpecial">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Tenant Verification -->
+
+    <section class="sg_tenant_sec" *ngIf="!isSpecial">
+      <div class="container position-relative z_index9999" id="tenantVerification">
+        <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
+          <div class="col-lg-6 sg_new_srv_img order-lg-2">
+            <img src="assets/image/tnt.png" class="wow fadeIn" data-wow-delay="0.3s" />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Tenant</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Verify tenants before renting out your property. Simple and secure background checks to ensure you know who you’re handing your keys to.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="position-relative">
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
+              <div class="skelton d-flex justify-content-center align-items-center" style="height: 350px"
+                *ngIf="!getServiceId('tenant_verification')">
+                <div class="spinner-border tc_prp" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <shared-checks-table *ngIf="getServiceId('tenant_verification')"
+                [serviceTypeId]="getServiceId('tenant_verification')"></shared-checks-table>
+            </div>
+          </div>
+          <div class="sg_circle_rt"></div>
+          <div class="sg_circle_ltb"></div>
+          <div class="sg_circle_lts"></div>
+          <div class="sg_circle_lt"></div>
+          <div class="sg_circle_lbs"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container py-4 py-lg-5 mt-xl-5" *ngIf="!isSpecial">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+    <div class="container" id="matrimonial_verification" *ngIf="!isSpecial">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Matrimonial verification -->
+    <section class="" *ngIf="!isSpecial">
+      <div class="container" id="instantVerify">
+        <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
+          <div class="col-lg-6 sg_new_srv_img order-lg-2">
+            <img
+              src="assets/image/emly.png"
+              class="wow fadeIn w-100"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Instant</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Validate your identity with quick and accurate Instant verification backed by reliable background verification results.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="position-relative">
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
+              <div
+                class="skelton d-flex justify-content-center align-items-center"
+                style="height: 350px"
+                *ngIf="!getServiceId('instant_verification')"
+              >
+                <div class="spinner-border tc_prp" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <shared-checks-table
+                *ngIf="getServiceId('instant_verification')"
+                [serviceTypeId]="getServiceId('instant_verification')"
+              ></shared-checks-table>
+            </div>
+          </div>
+          <div class="sg_circle_rt"></div>
+          <div class="sg_circle_ltb"></div>
+          <div class="sg_circle_lts"></div>
+          <div class="sg_circle_lb"></div>
+          <div class="sg_circle_lbs"></div>
+        </div>
+      </div>
+    </section>
+    <section *ngIf="!isSpecial" id="matrimonialVerify">
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-baseline">
+          <div class="col-lg-6 sg_new_srv_img ps-lg-5">
+            <img src="assets/image/mtri.png" class="wow fadeIn" data-wow-delay="0.3s" />
+          </div>
+          <div class="col-lg-6 position-relative z_index999 text-lg-end">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Matrimonial</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Build trustworthy and long-term relationships with reliable matrimonial investigation. Verify identity, background, and personal history before making important life decisions.
+              </p>
+              <h5 class="tc_lred mb-0 mt-4 fs_22 pb-lg-3 text-lg-end">
+                Share your details, Securitas will connect to you.
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row justify-content-end">
+          <div #matrimonial_verification class="col-lg-9 wow fadeIn" data-wow-delay="0.4s">
+            <div class="sg_new_shdw pb-3">
+              <diligence-form [PkgName]="'matrimonial'"
+                [checkDetails]="getServiceId('matrimonial_verification')"></diligence-form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container py-4 py-lg-5 mt-xl-5">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+    <div class="container" id="employee_verification">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+
+    <!-- Digital Verification -->
+    <ng-template *ngIf="!isSpecial">
+      <section class="">
+        <div class="container">
+          <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
+            <div class="col-lg-6 sg_new_srv_img">
+              <img src="assets/image/dtl.png" class="wow fadeIn" data-wow-delay="0.3s" />
+            </div>
+            <div class="col-lg-6 position-relative z_index999 text-lg-end">
+              <div class="sg_new_tlt position-relative">
+                <h2><span>Digital</span> Verification</h2>
+              </div>
+              <div>
+                <p class="mb-0 tc_m_blu">
+                  Smart & secure new-age digital methods ofering comprehensive
+                  background verifcation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="position-relative">
+          <div class="container position-relative z_index999">
+            <div class="row">
+              <div #digital_verification class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
+                <div class="skelton d-flex justify-content-center align-items-center" style="height: 350px"
+                  *ngIf="!getServiceId('digital_verification')">
+                  <div class="spinner-border tc_prp" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <shared-checks-table *ngIf="getServiceId('digital_verification')"
+                  [serviceTypeId]="getServiceId('digital_verification')"></shared-checks-table>
+              </div>
+            </div>
+            <div class="sg_circle_rt"></div>
+            <div class="sg_circle_ltb"></div>
+            <div class="sg_circle_lts"></div>
+            <div class="sg_circle_lb"></div>
+            <div class="sg_circle_lbs"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 py-5 my-1"></div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

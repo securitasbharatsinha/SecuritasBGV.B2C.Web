@@ -1,0 +1,299 @@
+<!-- Helper Verification -->
+
+<div class="pt-5" style="background: #fbfbfb" id="helper_verification">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mb-3 mb-lg-4">
+        <div class="section-title position-relative mb-4 pb-2 text-center">
+          <h2 class="">Helper Verification</h2>
+          <p class="mb-2">
+            International Labour Bureau states due to ageing Asia there is a
+            rise in demand for house-helpers like maids, cooks, drivers and
+            babysitters with high risks. Keep your home safe with our solutions
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="pb-5 position-relative">
+    <div class="container">
+      <div class="row align-items-center px-xl-3">
+        <div class="col-lg-6 ps-xxl-5 text-center order-lg-2 sg_service_m_img">
+          <img
+            src="assets/img/id_varification.gif"
+            class="fit_img_cnt wow zoomIn h-100"
+            width=""
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div class="col-lg-6 mt-4 mt-lg-0 order-lg-1 ">
+          <div class="col-lg-12">
+            <div class="mb-2">
+              <h2 class="fs_24 tc_lred">Know HOW?</h2>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="col-lg-12">
+              <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                <img
+                  src="assets/img/document_verification.png"
+                  width="45px"
+                  height="45px"
+                  class="fit_img_cnt sg_pkg_pnt_icn"
+                />
+                <div>
+                  <h5 class="fs_18">ID Check (PAN / Voter / DL)</h5>
+                  <p class="mb-0">
+                    Verify the identity of your helper so that no fraudster
+                    makes inroads into your home.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 mt-2 mt-lg-4">
+              <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                <img
+                  src="assets/img/document_verification.png"
+                  width="45px"
+                  height="45px"
+                  class="fit_img_cnt sg_pkg_pnt_icn"
+                />
+                <div>
+                  <h5 class="fs_18">
+                    Court Record Check-Current & Permanent Address
+                  </h5>
+                  <p class="mb-0">
+                    Investigation via the court to unveil possible criminal
+                    conviction(s), sexual harassment, child abuse or even fraud
+                    case.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 mt-2 mt-lg-4">
+              <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                <img
+                  src="assets/img/document_verification.png"
+                  width="45px"
+                  height="45px"
+                  class="fit_img_cnt sg_pkg_pnt_icn"
+                />
+                <div>
+                  <h5 class="fs_18">Police clearance</h5>
+                  <p class="mb-0">
+                    It validates that your helper is a law-abiding citizen and
+                    hence safe for your beloved ones.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 mt-2 mt-lg-4">
+              <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                <img
+                  src="assets/img/document_verification.png"
+                  width="45px"
+                  height="45px"
+                  class="fit_img_cnt sg_pkg_pnt_icn"
+                />
+                <div>
+                  <h5 class="fs_18">Address Check-Present & Permanent</h5>
+                  <p class="mb-0">
+                    Validate address and locality to avoid future risks.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 mt-2 mt-lg-4">
+              <div class="sg_shadow px-4 py-3 bg_w d-flex gap-3">
+                <img
+                  src="assets/img/document_verification.png"
+                  width="45px"
+                  height="45px"
+                  class="fit_img_cnt sg_pkg_pnt_icn"
+                />
+                <div>
+                  <h5 class="fs_18">Reference Verification</h5>
+                  <p class="mb-0">
+                    From the previous deployment gather information about work
+                    history, performance, possible malpractices, etc.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-4 py-5 bg_w">
+    <div class="container pb-2">
+      <div class="row align-items-center px-xl-3">
+        <!-- <ng-container
+          *ngTemplateOutlet="
+            submenuServices;
+            context: { item: servicesPackagesdata }
+          "
+        ></ng-container> -->
+
+        <app-common-package
+          *ngIf="servicesPackagesdata?.length"
+          [data]="servicesPackagesdata"
+        ></app-common-package>
+      </div>
+    </div>
+  </section>
+
+  <section class="position-relative py-5" style="background: #fbfbfb">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2 text-center sg_service_m_img">
+          <img
+            src="assets/img/helper.png"
+            class="h-100 fit_img_cnt wow zoomIn w-75"
+            data-wow-delay="0.1s"
+          />
+        </div>
+        <div
+          class="col-lg-6 fs_18 wow fadeInRight ps-lg-5 order-lg-1 mt-4 mt-lg-0"
+          data-wow-delay="0.1s"
+        >
+          <div class="mb-2">
+            <h2 class="mt-2 fs_24 tc_lred">Know WHY?</h2>
+          </div>
+          <div class="row pt-2">
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Safer homes for children, elderly and disabled
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Proactive risk mitigation
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Making an informed decision
+                </h5>
+              </div>
+            </div>
+            <div class="col-lg-12 my-1 my-lg-2">
+              <div
+                class="sg_shadow d-flex align-items-center px-4 py-3 bg_w h-100"
+              >
+                <h5 class="fs_15 mb-0 tc_m_blu ff_reg">
+                  Hiring a quality helper
+                </h5>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="d-lg-flex align-items-center mt-4">
+               <button type="button" class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4">
+                  <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                  <span>Buy Now</span>
+               </button>
+                <button type="button" class="ms-4 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4">
+                  <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i> 
+                  <span>Add to Cart</span>
+               </button> 
+            </div>   -->
+        </div> 
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ------------ -->
+
+<div class="container-fluid" style="border-top: 4px #acc2dd solid">
+  <div class="row">
+    <div class="col-lg-12"></div>
+  </div>
+</div>
+<ng-template #submenuServices let-item="item">
+  <div class="col-lg-12">
+    <form class="row align-items-center">
+      <ng-container *ngFor="let el of item; let i = index">
+        <div class="col-md-6">
+          <div class="sg_pckg_checks">
+            <div
+              class="d-flex align-items-center justify-content-between border-bottom py-2 mb-3 px-3 sg_pckg_tlt_icn"
+            >
+              <div class="sg_form_group">
+                <input
+                  type="checkbox"
+                  id="helperPackage{{ el.package_id }}"
+                  [value]="el.package_id"
+                  [checked]="el.isSelected"
+                  (change)="selectPackage($event, i)"
+                />
+                <label for="helperPackage{{ el.package_id }}">{{
+                  el.package_name
+                }}</label>
+              </div>
+              <div class="d-flex gap-2 align-items-center">
+                <span class="price">₹{{ el.price }}</span>
+              </div>
+            </div>
+            <div class="h_tenant_verification_input sg_inner_checks px-3 pb-3">
+              <ng-container *ngFor="let menus of el?.packageServices">
+                <div class="sg_checkbox_div sg_form_group_inr">
+                  <input
+                    [disabled]="true"
+                    type="checkbox"
+                    [checked]="menus.isSelected"
+                    id="helper{{ i }}{{ menus.package_service_id }}"
+                    name="sg_occupied_option"
+                    [value]="menus.package_service_id"
+                    (change)="selectService($event)"
+                    class="sg_inner_checks"
+                  />
+                  <label
+                    class="fs_14"
+                    for="helper{{ i }}{{ menus.package_service_id }}"
+                    >{{ menus.service_name }}</label
+                  >
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="col-lg-6">
+        <div class="d-md-flex align-items-center justify-content-center">
+          <button
+            (click)="buyNow()"
+            style="min-width: 200px"
+            type="button"
+            class="mx-md-3 my-4 my-md-0 btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-none d-lg-flex align-items-center justify-content-center fs_20 px-4"
+          >
+            <i class="bi bi-cart-check fs_15 me-1 me-lg-0 me-xl-1"></i>
+            <span>Buy Now</span>
+          </button>
+          <button
+            (click)="goToCart(); isAddedCart = true"
+            style="min-width: 200px"
+            type="button"
+            class="mx-md-3 my-4 my-md-0 btn bg_lp_r sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_20 px-4"
+          >
+            <i class="bi bi-cart-plus fs_15 me-1 me-lg-0 me-xl-1"></i>
+            <span>{{ isAddedCart ? "Go to Cart" : "Add to Cart" }}</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

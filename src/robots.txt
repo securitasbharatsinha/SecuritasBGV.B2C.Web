@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /user-data/
+Disallow: /private/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /js/
+Disallow: /scripts/
+Disallow: /api/
+
+Allow: /images/
+Allow: /styles/
+Allow: /assets/
+Sitemap: https://www.walsonsverify.com/sitemap.xml

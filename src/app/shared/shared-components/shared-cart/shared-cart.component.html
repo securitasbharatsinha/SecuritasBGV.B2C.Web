@@ -1,0 +1,224 @@
+<div class="px-4 sg_cart_modal">
+  <div class="position-relative">
+    <button class="border-0 rounded-1 position-absolute sg_cart_modal_cls bg_h_red tc_h_w">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <div class="text-center mb-4 pb-2 mt-3">
+      <!-- <img src="assets/img/cart_i.png" width="100px" /> -->
+      <h6 class="fs_20 mt-3 tc_w">Cart Item(s)</h6>
+    </div>
+    <ng-container *ngFor="let item of AllCartItems; let i = index">
+      <ng-container>
+        <!-- <div
+          class="sg_prdt_crt_name border-0 py-0 my-2"
+          *ngIf="el.fixedpackage"
+        >
+          <div>
+            <div class="d-flex gap-2 justify-content-between">
+              <h6 class="align-items-center position-relative fs_15 tc_lred">
+                <button
+                  (click)="deleteItemCart(item.CartId)"
+                  class="border-0 rounded-1 position-absolute bg_h_red tc_red tc_h_w"
+                >
+                  <i class="bi bi-x"></i>
+                </button>
+                {{ el.package_name }}
+              </h6>
+              <span>₹{{ _cart.formatMoney(el.price) }}</span>
+            </div>
+            <div class="sg_child_checks mt-1 ps-2">
+              <ng-container *ngFor="let e of el.packageServices">
+                <div class="d-flex gap-2 justify-content-between">
+                  <p>{{ e.service_name }}</p>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div> -->
+        <!-- *ngIf="!el.fixedpackage" -->
+        <div class="sg_prdt_crt_name border-0 py-0 my-2">
+          <div>
+            <div class="d-flex gap-2 justify-content-between">
+              <h6 class="align-items-center position-relative fs_15 tc_lred">
+                <button (click)="deleteItemCart(item.CartId)"
+                  class="border-0 rounded-1 position-absolute bg_h_red tc_red tc_h_w">
+                  <i class="bi bi-x"></i>
+                </button>
+                {{ item.ServicePackageMapping.service_name }}
+              </h6>
+              <span></span>
+            </div>
+            <div class="sg_child_checks mt-1">
+              <ng-container *ngFor="let el of item.checksArr; let in = index">
+                <div class="sg_new_cart_right">
+                  <p class="position-relative d-block">
+                    <!-- (click)="deleteItemCart(item.CartId)" -->
+                    <button *ngIf="item.checksArr?.length > 1" (click)="updateCart(el.package_service_id, item, 0)"
+                      class="border-0 rounded-1 position-absolute bg_h_red tc_red tc_h_w">
+                      <i class="bi bi-x"></i>
+                    </button>
+
+                    {{ el.service_name }}
+                  </p>
+                  <div class="sg_right_cart_qty_prc">
+                    <!-- <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                      <option selected>QTY.</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>  -->
+                    <div class="d-md-flex align-items-center justify-content-center sg_qnt_prs py_5">
+                      <div class="sg_input-group w-auto justify-content-end align-items-center">
+                        <input type="button" value="-" data-field="quantity"
+                          class="button-minus border rounded-circle sg_icon-shape sg_icon-sm" (click)="
+                            decrementValue($event, qty.value, el, i, in, item)
+                          " />
+                        <input [disabled]="true" type="number" step="1" min="0" max="10" #qty [value]="el.qty" name="quantity"
+                          class="quantity-field border-0 text-center" />
+                        <input [disabled]="doDisable(el.Ismultiple, qty.value, el.MaxCheckNo)" type="button" value="+"
+                          data-field="quantity" class="button-plus border rounded-circle sg_icon-shape sg_icon-sm"
+                          (click)="
+                            incrementValue($event, qty.value, el, i, in, item)
+                          " />
+                      </div>
+                    </div>
+                    <span>₹{{ _cart.formatMoney(el.new_price) }}</span>
+                  </div>
+                </div>
+              </ng-container>
+              <!-- <div class="d-flex gap-2 justify-content-between">
+            <p class="position-relative ps-2">
+              <button
+                class="border-0 rounded-1 position-absolute bg_h_red tc_red tc_h_w"
+              >
+                <i class="bi bi-x"></i>
+              </button>
+              Current Address Check
+            </p>
+            <span>₹1000</span>
+          </div>
+          <div class="d-flex gap-2 justify-content-between">
+            <p class="position-relative ps-2">
+              <button
+                class="border-0 rounded-1 position-absolute bg_h_red tc_red tc_h_w"
+              >
+                <i class="bi bi-x"></i>
+              </button>
+              Court record check on permanent address
+            </p>
+            <span>₹1000</span>
+          </div>
+          <div class="d-flex gap-2 justify-content-between">
+            <p class="position-relative ps-2">
+              <button
+                class="border-0 rounded-1 position-absolute bg_h_red tc_red tc_h_w"
+              >
+                <i class="bi bi-x"></i>
+              </button>
+              Reference Check
+            </p>
+            <span>₹1000</span>
+          </div> -->
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+    <div class="mb-4 mt-3" *ngIf="AllCartItems?.length">
+      <div class="border-top pt-2 mt-2">
+
+        <h6 class="d-flex justify-content-between tc_w fs_14 ">
+          Total <span>₹ {{ _cart.formatMoney(cartAmt) }}</span>
+        </h6>
+      </div>
+      <h6 class="d-flex justify-content-between tc_w fs_14 ">
+        GST (18%) <span>₹ {{ _cart.formatMoney(gst) }}</span>
+      </h6>
+      <h6 class="d-flex justify-content-between tc_w mb-0 align-items-center gap-2">
+        <label class="fs_12" for="">Promo Code</label>
+        <!-- <input type="text" clas="form-control form-control-sm" style="width: 65%;"> -->
+        <div class="d-flex flex-column">
+          <div class="d-flex align-items-center position-relative">
+            <input type="text" class="form-control form-control-sm" id="code" #code [(ngModel)]="promoCode"
+              maxlength="9" (input)="onPromoInput($event)" placeholder="e.g. SAVE1234" />
+            <i class="bi icon tc_w " ngClass="{{(isCodeExpired || noPromoCode)&&'bi-x bg_red'}}"
+              ngClass="{{(codeApplied && !isCodeExpired)&&'bi-check bg_prp'}}"></i>
+
+
+
+          </div>
+          <ng-container>
+            <p *ngIf="codeApplied" class="fs_11 mb-0 pb-0  " [ngClass]="isCodeExpired?'text-danger':'text-success'">
+              {{isCodeExpired?'Promo
+              code expired':'Promo code applied'}}</p>
+            <p *ngIf="noPromoCode" class="fs_11 mb-0 pb-0   text-danger">
+              Invalid promo code</p>
+          </ng-container>
+        </div>
+        <button type="button" class="tc_w bg_blu bg_lred_h tc_h_w sg_new_btn fs_10"
+          (click)="checkCode(code.value)">Apply</button>
+      </h6>
+
+
+    </div>
+    <h6 class="d-flex justify-content-between tc_w fs_14" *ngIf="discountAmt">
+      Discount <span>₹ {{ _cart.formatMoney(discountAmt) }}</span>
+    </h6>
+    <div class="border-top pt-2 mt-2">
+
+      <h6 class="d-flex justify-content-between tc_w ">
+        Sub Total <span>₹ {{ _cart.formatMoney(totalAmt) }}</span>
+      </h6>
+    </div>
+
+    <!-- <div class="wallet-pay mt-4">
+      <h6 class="d-flex justify-content-between tc_w mb-0">
+        <div class="sg_checkbox_div sg_form_group_inr my-0">
+          <input
+            [(ngModel)]="isWalletSelected"
+            type="checkbox"
+            class="sg_inner_checks"
+            id="wallt"
+            name="wallt"
+          />
+          <label class="fs_14" for="wallt">Pay via wallet</label>
+        </div>
+        <span class="fs_14 mt-1">
+          <i class="me-2 bi bi-wallet"></i>
+          {{ walletBalance / 100 | currency : "INR" }}</span
+        >
+      </h6>
+    </div> -->
+
+    <div class="mt-4 d-flex gap-1 justify-content-between">
+      <button (click)="clearCart()" type="button"
+        class="bg_lp_r btn sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_14 px-3">
+        <i class="bi bi-cart-x fs_13 me-1 me-lg-0 me-xl-1"></i>
+        <span>Clear Cart </span>
+      </button>
+      <button (click)="buyNow()" type="button"
+        class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center fs_14 px-3">
+        <i class="bi bi-cart-check fs_13 me-1 me-lg-0 me-xl-1"></i><span>Buy Services </span>
+      </button>
+    </div>
+    <!-- <div
+      class="mt-4 d-flex gap-1 justify-content-between"
+      *ngIf="!_helper.isLoggedIn"
+    >
+      <button
+        type="button"
+        class="bg_lp_r btn sg_gradient_ani tc_w rounded-pill tc_h_w btn_shadow ff_reg border-0 d-flex align-items-center justify-content-center fs_14 px-3"
+      >
+        <i class="bi bi-cart-x fs_13 me-1 me-lg-0 me-xl-1"></i>
+        <span>Login </span>
+      </button>
+      <button
+        type="button"
+        class="btn tc_w bg_p_lr border-0 rounded-pill sg_gradient_ani tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center fs_14 px-3"
+      >
+        <i class="bi bi-cart-check fs_13 me-1 me-lg-0 me-xl-1"></i
+        ><span>Sign Up </span>
+      </button>
+    </div> -->
+  </div>
+</div>

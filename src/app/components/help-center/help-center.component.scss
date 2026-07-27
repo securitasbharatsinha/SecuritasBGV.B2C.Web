@@ -1,0 +1,141 @@
+.sg_hlp_cntr{
+    background-image: url(../../../assets/image/h_cntr.png); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.sg_hlp_cntr input[type="text"] {
+    border: 0;
+    border-bottom: 2px #8D5FFF solid;
+    border-radius: 0; 
+    padding: 9px 0px;
+    font-size: 16px; 
+}
+
+.sg_hlp_cntr input[type="text"]::placeholder { 
+    color: #9C9EA0;
+}
+
+.sg_hlp_cntr .form-check-input { 
+    // background: #9C9EA0;
+    // border: 3px solid #fff;
+    // outline: 1px solid #9C9EA0;
+    height: 17px;
+    width: 17px;
+}
+
+.sg_hlp_cntr input[type="radio"]+label {
+    color: #9C9EA0;
+}
+
+.sg_hlp_cntr .form-check-input:focus {
+    border-color: #8d5fff47; 
+    box-shadow: 0 0 0 0.25rem #8d5fff47;
+}
+
+.sg_hlp_cntr .form-check-input:checked[type=radio] {
+    // background-image: none;
+    background: #8D5FFF;
+    // border: 3px solid #fff;
+    // outline: 1px solid #8D5FFF; 
+} 
+
+.sg_hlp_cntr input[type="radio"]:checked+label {
+    color: var(--dark);
+}
+.sg_hlp_cntr .form-select { 
+    border: 1px solid #8d5fff; 
+    font-size: 16px;
+    font-family: 'securitaspro_regular';
+    color: var(--dark);
+}
+
+.sg_hlp_cntr .form-select option{
+    font-size: 14px;
+}
+
+.sg_hlp_cntr select:focus {
+    // color: #8d5fff;
+}
+
+.form-select:focus {
+    border-color: transparent; 
+    box-shadow: none;
+}
+
+.sg_text_ara textarea{
+    background-color: #f4f7f9;
+    font-size: 13px;
+}
+
+.sg_hlp_cntr textarea::placeholder { 
+    color: #D7D8D6;
+}
+
+.sg_hlp_cntr_frm .fs_20{
+    font-size: 24px;
+}
+
+.sg_image-upload > input
+{
+    display: none;
+}
+
+.sg_image-upload img
+{
+    width: 80px;
+    cursor: pointer;
+}
+
+.bi-x-circle-fill{
+    cursor: pointer;
+    color: #5947b2;
+}
+
+
+@media(min-width:1450px){
+    .sg_hlp_cntr .form-select option{
+        font-size: 15px;
+    }
+    .sg_hlp_cntr .form-select,
+    .sg_hlp_cntr input[type=text],
+    .form-control, .form-select { 
+        font-size: 20px; 
+    }
+
+    .sg_hlp_cntr_frm .fs_20 {
+        font-size: 26px;
+    }
+    .fs_18 {
+        font-size: 21px;
+    }
+    .sg_text_ara textarea { 
+        font-size: 16px;
+    }
+    .fs_12 {
+        font-size: 15px;
+    }
+    .fs_13 {
+        font-size: 16px;
+    }
+    .sg_hlp_cntr_frm span.text-danger {
+        font-size: 18px;
+    }
+    .fs_16{
+        font-size: 20px;
+    } 
+}
+
+@media(max-width:767px){
+    .sg_text_ara textarea{
+        height: 100px !important;
+    }
+
+    .sg_hlp_cntr_frm .fs_20{
+        font-size: 20px;
+    }
+}

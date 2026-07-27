@@ -1,0 +1,298 @@
+<div class="bg-white p-0 sg_new_srvs_div_s">
+  <div
+    class="py-4 bg_blu hero-header sg_page_title position-relative"
+    style="background-image: url(assets/image/bnr.png)"
+  >
+    <div class="container my-1 my-lg-5 position-relative">
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-2">
+              <li class="breadcrumb-item">
+                <span class="tc_red tc_h_w">HOME</span>
+              </li>
+              <li
+                class="breadcrumb-item tc_red active ps-1"
+                aria-current="page"
+              >
+                <span>SERVICES</span>
+              </li>
+            </ol>
+          </nav>
+          <h1 class="text-white animated zoomIn">Services</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar & Hero End -->
+
+  <div class="sg_new_srv_pg">
+    <!-- Employee Verification -->
+    <div class="container py-4 py-lg-5">
+      <div class="row">
+        <div class="col-10"></div>
+      </div>
+    </div>
+    <section class="">
+      <div class="container" id="employeeVerification">
+        <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
+          <div class="col-lg-6 sg_new_srv_img order-lg-2">
+            <img
+              src="assets/image/emly.png"
+              class="wow fadeIn w-100"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Employee</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Comprehensive employee verification services to validate background details before and after hiring. Make safe, compliant, and informed hiring decisions with accurate employee background verification.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12 mb-4 mt-lg-4">
+            <div class="sg_stps_div">
+              <div class="sg_stp_col">
+                <span>1</span>
+                <h4>Create/Invite Candidate</h4>
+              </div>
+              <div class="sg_stp_col sg_stp_col_aro">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/25/25426.png" alt="Select checks"
+                  width="100%"
+                />
+              </div>
+              <div class="sg_stp_col">
+                <span>2</span>
+                <h4>Select checks</h4>
+              </div>
+              <div class="sg_stp_col sg_stp_col_aro">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/25/25426.png" alt="Pay as you go"
+                  width="100%"
+                />
+              </div>
+              <div class="sg_stp_col">
+                <span>3</span>
+                <h4>Pay as you go</h4>
+              </div>
+              <div class="sg_stp_col sg_stp_col_aro">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/25/25426.png" alt="Case registered!"
+                  width="100%"
+                />
+              </div>
+              <div class="sg_stp_col">
+                <span>4</span>
+                <h4>Case registered!</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="position-relative">
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
+              <div
+                class="skelton d-flex justify-content-center align-items-center"
+                style="height: 350px"
+                *ngIf="!getServiceId('employee_verification')"
+              >
+                <div class="spinner-border tc_prp" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <shared-checks-table
+                *ngIf="getServiceId('employee_verification')"
+                [serviceTypeId]="getServiceId('employee_verification')"
+              ></shared-checks-table>
+            </div>
+          </div>
+          <div class="sg_circle_rt"></div>
+          <div class="sg_circle_ltb"></div>
+          <div class="sg_circle_lts"></div>
+          <div class="sg_circle_lb"></div>
+          <div class="sg_circle_lbs"></div>
+        </div>
+      </div>
+    </section>
+    <section class="">
+      <div class="container" id="instantVerify">
+        <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
+          <div class="col-lg-6 sg_new_srv_img order-lg-2">
+            <img
+              src="assets/image/emly.png"
+              class="wow fadeIn w-100"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Instant</span> Verification</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Validate your identity with quick and accurate Instant verification backed by reliable background verification results.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="position-relative">
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
+              <div
+                class="skelton d-flex justify-content-center align-items-center"
+                style="height: 350px"
+                *ngIf="!getServiceId('instant_verification')"
+              >
+                <div class="spinner-border tc_prp" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <shared-checks-table
+                *ngIf="getServiceId('instant_verification')"
+                [serviceTypeId]="getServiceId('instant_verification')"
+              ></shared-checks-table>
+            </div>
+          </div>
+          <div class="sg_circle_rt"></div>
+          <div class="sg_circle_ltb"></div>
+          <div class="sg_circle_lts"></div>
+          <div class="sg_circle_lb"></div>
+          <div class="sg_circle_lbs"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" id="leadership_due_diligence">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+    <div class="container py-4 mt-xl-5 py-lg-5">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+    <!-- Leadership Due Diligence -->
+
+    <section>
+      <div class="container" id="leadershipDueDiligence">
+        <div class="row g-3 g-lg-5 align-items-end">
+          <div class="col-lg-6 sg_new_srv_img">
+            <img
+              src="assets/image/ldr.png"
+              class="wow fadeIn"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999 text-lg-end">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Leadership Due</span> Diligence</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Thorough leadership due diligence with career tracking, competency mapping, and 360-degree screening. Make confident hiring decisions for senior and leadership roles.
+              </p>
+              <h5 class="tc_lred mb-0 mt-4 fs_22 pb-lg-3 text-lg-end">
+                Share your details, Securitas will connect to you.
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-lg-9 wow fadeIn" data-wow-delay="0.4s">
+            <div class="sg_new_shdw pb-3">
+              <diligence-form
+                [PkgName]="'leader'"
+                [checkDetails]="getServiceId('leadership_due_diligence')"
+              ></diligence-form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" id="vendor_due_diligence_(vdd)">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+    <div class="container py-4 mt-xl-5 py-lg-5">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+    <!-- Vendor Due Diligence -->
+
+    <section class="">
+      <div class="container" id="partnerVendorDueDiligence">
+        <div class="row g-3 g-lg-5 align-items-end">
+          <div class="col-lg-6 sg_new_srv_img order-lg-2">
+            <img
+              src="assets/image/vdr.png"
+              class="wow fadeIn"
+              data-wow-delay="0.3s"
+            />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>Vendor Due</span> Diligence</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Ensure safe and transparent partnerships with proper vendor due diligence. Screen and verify vendors to reduce risks and build reliable collaborations.
+              </p>
+              <h5 class="tc_prp mb-0 mt-4 fs_22 pb-lg-3">
+                Share your details, Securitas will connect to you.
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div
+            #vendor_due_diligence_(vdd)
+            class="col-lg-9 wow fadeIn"
+            data-wow-delay="0.4s"
+          >
+            <div class="sg_new_shdw mt-2 pb-3">
+              <diligence-form
+                [PkgName]="'vendor'"
+                [checkDetails]="getServiceId('vendor_due_diligence')"
+              ></diligence-form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" id="digital_verification">
+      <div class="row">
+        <div class="col-lg-12"></div>
+      </div>
+    </div>
+    <div class="container py-4 py-lg-5">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+  </div>
+</div>

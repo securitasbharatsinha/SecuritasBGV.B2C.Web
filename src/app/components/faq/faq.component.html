@@ -1,0 +1,78 @@
+<div class="py-4 bg_blu hero-header mb-5 sg_page_title position-relative">
+  <div
+    class="position-absolute top-0 left-0 w-100 h-100 opacity-50 bg_blu"
+  ></div>
+  <div class="container my-5 py-md-5 px-lg-5 position-relative">
+    <div class="row g-5">
+      <div class="col-12 text-center">
+        <h1 class="text-white animated zoomIn">Support</h1>
+        <hr class="bg-white mx-auto mt-0 opacity-100" style="width: 90px" />
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item">
+              <a class="tc_w tc_h_red" [routerLink]="['/home']">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Support</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-container *ngFor="let el of faqdata; let i = index; let last = last">
+  <div class="">
+    <div class="container-fluid px-3 px-lg-5">
+      <div
+        *ngIf="i === 0"
+        class="section-title position-relative mb-4 pb-2 wow fadeInUp"
+        data-wow-delay="0.1s"
+        style="
+          visibility: visible;
+          animation-delay: 0.1s;
+          animation-name: fadeInUp;
+        "
+      >
+        <h6 class="position-relative d-inline ps-4">Fair Background Checks</h6>
+        <h2 class="mt-2">Frequently Asked Questions</h2>
+      </div>
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <h5 class="fs_20 tc_prp mb-2 ps-1" [id]="el.slug">{{ el.title }}</h5>
+        </div>
+        <div class="col-lg-12">
+          <div class="accordion" id="accordionExample">
+            <ng-container *ngFor="let e of el.faq_details; let ii = index">
+              <div class="accordion-item border-0 faq">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button bg-transparent collapsed px-2 py-2 fs_16 fw_6 border-0 tc_lred tc_h_lred"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    attr.data-bs-target="#collapse{{
+                      el.faq_id + '_' + i + '_' + ii
+                    }}"
+                    aria-expanded="false"
+                    attr.aria-controls="collapse{{
+                      el.faq_id + '_' + i + '_' + ii
+                    }}"
+                  >
+                    {{ e.title }}
+                  </button>
+                </h2>
+                <div
+                  id="collapse{{ el.faq_id + '_' + i + '_' + ii }}"
+                  class="accordion-collapse collapse"
+                >
+                  <div class="accordion-body fs_15 border-top pt-2 pb-2 px-1">
+                    {{ e.desc }}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div class="mb-5"></div>
