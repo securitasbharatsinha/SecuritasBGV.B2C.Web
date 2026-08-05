@@ -253,7 +253,7 @@ export class Individual2Component implements OnInit {
       }
     }).then((result: any) => {
       if (result.isConfirmed) {
-        this._router.navigate(['/auth/login'], { fragment: this.servicePagesData?.[this.currentURL]?.['title'] });
+        this._router.navigate(['/auth/login'], { fragment: this.currentURL });
       }
     });
   }

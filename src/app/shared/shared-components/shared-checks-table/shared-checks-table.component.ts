@@ -417,7 +417,7 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
     let check = checkArr.filter((el: any) => el.qty).map((el: any) => [...Array(el.qty).fill(el.package_service_id)].join(","));
     let checkName = checkArr.filter((el: any) => el.qty).map((el: any) => [...Array(el.qty).fill(el.service_name)].join(","));
     let data = {
-      ServiceId: 6,
+      ServiceId: 9,
       PackageId: 42,
       PackageServiceId: check.join(","),
       PackageServiceNameforMailUse: checkName.join(","),
