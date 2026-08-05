@@ -69,17 +69,21 @@
                     </select>  -->
                     <div class="d-md-flex align-items-center justify-content-center sg_qnt_prs py_5">
                       <div class="sg_input-group w-auto justify-content-end align-items-center">
-                        <input type="button" value="-" data-field="quantity"
-                          class="button-minus border rounded-circle sg_icon-shape sg_icon-sm" (click)="
-                            decrementValue($event, qty.value, el, i, in, item)
-                          " />
+                        <ng-container *ngIf="(qty?.value ?? 0) > 1">
+                          <input type="button" value="-" data-field="quantity"
+                            class="button-minus border rounded-circle sg_icon-shape sg_icon-sm" (click)="
+                              decrementValue($event, qty.value, el, i, in, item)
+                            " />
+                        </ng-container>
                         <input [disabled]="true" type="number" step="1" min="0" max="10" #qty [value]="el.qty" name="quantity"
                           class="quantity-field border-0 text-center" />
-                        <input [disabled]="doDisable(el.Ismultiple, qty.value, el.MaxCheckNo)" type="button" value="+"
-                          data-field="quantity" class="button-plus border rounded-circle sg_icon-shape sg_icon-sm"
-                          (click)="
-                            incrementValue($event, qty.value, el, i, in, item)
-                          " />
+                        <ng-container *ngIf="!doDisable(el.Ismultiple, qty.value, el.MaxCheckNo)">
+                          <input [disabled]="doDisable(el.Ismultiple, qty.value, el.MaxCheckNo)" type="button" value="+"
+                            data-field="quantity" class="button-plus border rounded-circle sg_icon-shape sg_icon-sm"
+                            (click)="
+                              incrementValue($event, qty.value, el, i, in, item)
+                            " />
+                        </ng-container>
                       </div>
                     </div>
                     <span>₹{{ _cart.formatMoney(el.new_price) }}</span>

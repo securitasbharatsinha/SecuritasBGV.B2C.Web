@@ -26,7 +26,7 @@
           <div class="sg-dropdown-menu">
             <div class="sg-dropdown-inner" *ngIf="isLoggedin">
               <div class="dd-col">
-                <p class="dd-heading">Individual</p>
+                <!-- <p class="dd-heading">Individual</p> -->
                 <a routerLink="/individual" fragment="supportVerification" class="dd-link">Verify your House Help</a>
                 <a routerLink="/individual" fragment="tenantVerification" class="dd-link">Verify your Tenant</a>
                 <a routerLink="/individual" fragment="supportVerification" class="dd-link">Verify your Maid</a>
@@ -35,18 +35,34 @@
                 <a routerLink="/individual" fragment="instantVerify" class="dd-link">Instant Verify</a>
                 <a routerLink="/individual" fragment="matrimonialVerify" class="dd-link">Matrimonial Verification</a>
               </div>
+              <div class="dd-col">
+                <!-- <p class="dd-heading">Corporate</p> -->
+                <a [routerLink]="['/corporate']" class="dd-link">Business Employee Verification</a>
+                <a [routerLink]="['/corporate']" class="dd-link">Leadership Due Diligence</a>
+                <a [routerLink]="['/corporate']" class="dd-link">Vendor Due Diligence</a>
+              </div>
+
             </div>
             <div class="sg-dropdown-inner" *ngIf="!isLoggedin">
               <div class="dd-col">
-                <p class="dd-heading">Individual</p>
-                <a [routerLink]="['/verify-yourself']" class="dd-link">Verify Yourself</a>
+                <!-- <p class="dd-heading">Individual</p> -->
+                <!-- <a [routerLink]="['/verify-yourself']" class="dd-link">Verify Yourself</a>
                 <a [routerLink]="['/helper-verification']" class="dd-link">Domestic Help Verification</a>
                 <a [routerLink]="['/tenant-verification']" class="dd-link">Tenant Verification</a>
                 <a [routerLink]="['/matrimonial-due-diligence']" class="dd-link">Matrimonial Due Diligence</a>
-                <a [routerLink]="['/instant-verify']" class="dd-link">Instant Verification</a>
+                <a [routerLink]="['/instant-verify']" class="dd-link">Instant Verification</a> -->
+
+                <a [routerLink]="['/helper-verification']" class="dd-link">Verify your House Help</a>
+                <a [routerLink]="['/tenant-verification']" class="dd-link">Verify your Tenant</a>
+                <a [routerLink]="['/helper-verification']" class="dd-link">Verify your Maid</a>
+                <a [routerLink]="['/helper-verification']" class="dd-link">Verify your Driver</a>
+                <a [routerLink]="['/helper-verification']" class="dd-link">Verify your Guard</a>
+                <a [routerLink]="['/instant-verify']" class="dd-link">Instant Verify</a>
+                <a [routerLink]="['/matrimonial-due-diligence']" class="dd-link">Matrimonial Verification</a>
+
               </div>
               <div class="dd-col">
-                <p class="dd-heading">Corporate</p>
+                <!-- <p class="dd-heading">Corporate</p> -->
                 <a [routerLink]="['/corporate']" class="dd-link">Business Employee Verification</a>
                 <a [routerLink]="['/corporate']" class="dd-link">Leadership Due Diligence</a>
                 <a [routerLink]="['/corporate']" class="dd-link">Vendor Due Diligence</a>
@@ -85,9 +101,9 @@
         <button class="btn-primary" (click)="loginlogout(isLoggedin)">
           {{ isLoggedin ? 'Logout' : 'Login' }}
         </button>
-        <button class="btn-partner" [routerLink]="['/auth/login']">
+        <!-- <button class="btn-partner" [routerLink]="['/auth/login']">
           Partner Login
-        </button>
+        </button> -->
       </div>
  
       <!-- ── Mobile Toggle ─────────────────────────── -->

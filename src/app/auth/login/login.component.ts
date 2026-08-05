@@ -7,7 +7,7 @@ import { buyPackages } from 'src/app/api-interfaces/home-page';
 import { AuthService } from 'src/app/api-services/auth.services';
 import { HomePageService } from 'src/app/api-services/home-page.services';
 import { ToasterService } from 'src/app/api-services/toaster.services';
-import { reCaptcha_SITE_KEY } from 'src/environments/environment';
+import { getPortalPath, reCaptcha_SITE_KEY } from 'src/environments/environment';
 import { COOKIE_DOMAIN } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { CaptchaComponent } from '../captcha/captcha.component';
@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   showPassword: boolean = false;
   isSpecialWindow: boolean = false;
   isOtpSent: boolean;
+  getPortalPath: string = getPortalPath('');
   OTP: string;
   constructor(
     private _fb: FormBuilder,
@@ -123,8 +124,19 @@ export class LoginComponent implements OnInit, OnDestroy {
                 authObj
               )}; domain=${COOKIE_DOMAIN}; secure; samesite=none; path=/; `;
               this._toaster.showSuccessToast('Logged In successfully.');
-
-              this._router.navigate([!res?.Data?.ClientId ? '/home' : '/special/individual']);
+              // this._router.navigate([!res?.Data?.ClientId ? '/home' : '/special/individual']);
+              const getUrl = window.location.hash.replace('#', '');
+              if (getUrl) {
+                let urlFragment = '';
+                if(getUrl === '/helper-verification') urlFragment = 'supportVerification';
+                else if(getUrl === '/tenant-verification') urlFragment = 'tenantVerification';
+                else if(getUrl === '/instant-verify') urlFragment = 'instantVerify';
+                else if(getUrl === '/matrimonial-due-diligence') urlFragment = 'matrimonialVerify';
+                this._router.navigate([`/individual`], {fragment: urlFragment});
+              }
+              else{
+                window.location.href = this.getPortalPath;
+              }
             }
             else if(!res?.Data?.Isactive && res?.IsSuccess && res?.Data){
               this._toaster.showErrorToast('Account On-Hold - Please contact the helpdesk for further information');

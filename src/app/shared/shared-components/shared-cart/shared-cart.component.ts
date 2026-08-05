@@ -161,6 +161,8 @@ export class SharedCartComponent implements OnInit, AfterViewInit, OnDestroy {
           this.reduceData(res.Data);
           this.getTotalAmount();
           if (isPlatformBrowser(this.platformId)) {
+            $('.sg_cart_modal').removeClass('active');
+            $('.sg-cart-mdl').removeClass('active');
             $('.sg_cart_modal').toggleClass('active');
             $('.sg-cart-mdl').toggleClass('active');
           }
