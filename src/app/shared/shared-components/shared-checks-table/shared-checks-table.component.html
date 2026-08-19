@@ -3,6 +3,15 @@
     <span class="sr-only">Loading...</span>
   </div>
 </div>
+
+<div class="d-flex justify-content-center align-items-center"
+     style="position:fixed;inset:0;background:#ffffff99;z-index:99999"
+     *ngIf="isLoading">
+  <div class="spinner-border tc_prp" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
 <ng-container *ngIf="!isloading">
   <ng-container *ngFor="let item of servicesPackagesdata; let i = index">
     <div class="sg_new_shdw mt-2" ngClass="{{ item.service_id != 6 ? 'sg_indivi_tbl' : 'sg_corp' }}">
@@ -10,8 +19,9 @@
         <div class="d_tlt_prc_qty sg_tlt_row align-items-center" [ngClass]="{'sg_corp': item.service_id == 6  }" [ngStyle]="{'grid-template-columns' : isSpecial ? '30% 23% 23% 12% 12%' :  '30% 23% 23% 24%'}">
           <h5 class="tc_blu my-0">{{ item?.package_name }}</h5>
           <h5 *ngIf="isSpecial" class="tc_blu my-0">Check Category Type</h5>
-          <span class="bg_blu tc_w">Approx TAT </span>
-          <span class="bg_prp tc_w">Price</span>
+          <span class="bg_blu tc_w">TAT </span>
+          <!-- <span class="bg_prp tc_w">Price</span> -->
+          <span class="tc_w" style="background-color:#7c3aed">Price</span>
           <span class="tc_blu" [ngClass]="{'sg_corp': item.service_id == 6  }">{{ item.service_id === 6 ? "" : "Qty." }}
           </span>
         </div>
@@ -25,8 +35,8 @@
                 </p>
                 <div *ngIf="isSpecial" class="sg_qty_bdr">{{el.CheckCategoryType}}</div>
 
-                <span class="sg_instant tc_gry">{{ item.service_id === 9 ? el.TAT_InstantVerify : el.TAT
-                  }}<b *ngIf="item.service_id === 1 || el.TAT === 'Instant'" class="sg_tooltip bi bi-info-circle-fill">
+                <span class="sg_instant tc_gry">{{ el.TAT
+                  }}<b *ngIf="el.TAT === 'Instant'" class="sg_tooltip bi bi-info-circle-fill">
                     <span>(With PDF report to be made available within 1 hour)
                     </span></b></span>
                 <span class="tc_prp">
@@ -79,6 +89,18 @@
                 </div>
               </div>
             </ng-container>
+            <div class="d_tlt_prc_qty" style="cursor:pointer"
+              (click)="toggleOtherChecks(item)"
+              [ngStyle]="{'grid-template-columns' : isSpecial ? '30% 23% 23% 12% 12%' : '30% 23% 23% 24%'}">
+              <p class="tc_prp fw-bold">
+                <b class="sg_number">+</b>
+                {{ showOtherChecks ? 'Hide Other Checks' : 'Other Check' }}
+                <span *ngIf="isLoadingOther" class="spinner-border spinner-border-sm ms-2"></span>
+              </p>
+              <span class="sg_instant tc_gry">as applicable</span>
+              <span class="tc_prp"></span>
+              <span></span>
+            </div>
           </div>
           <div class="py-3 px-1" *ngIf="item.service_id === 6">
             <button (click)="goToPortal()" type="button "
@@ -96,7 +118,7 @@
         <!-- <small class="tc_red fs_18_srv"
           >*Select required checks and "Add to Cart"</small
         > -->
-        <ng-container *ngIf="item.service_id === 9">
+        <ng-container *ngIf="false">
           <form [formGroup]="actionForm" novalidate="" id="contact" class="sg_pkj_frm p-0 m-0 bg-transparent">
             <div class="row">
               <div class="col-lg-3">
@@ -157,7 +179,7 @@
             </div>
           </form>
         </ng-container>
-        <ng-container *ngIf="item.service_id !== 9">          
+        <ng-container *ngIf="true">          
           <button (click)="buyNowAla(item)" type="button "
             class="tc_w bg_blu bg_lred_h tc_h_w d-flex align-items-center justify-content-center sg_new_btn mt-3 mt-lg-0 mx-auto mx-lg-0">
             <img src="assets/image/crt.png" alt="" class="me-3" width="16px" />

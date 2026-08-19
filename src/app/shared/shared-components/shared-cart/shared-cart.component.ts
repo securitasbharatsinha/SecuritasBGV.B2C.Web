@@ -18,7 +18,7 @@ import { CartService } from 'src/app/api-services/cart.services';
 import { HelperService } from 'src/app/api-services/helper.services';
 import { PaymentService } from 'src/app/api-services/payment.services';
 import { ToasterService } from 'src/app/api-services/toaster.services';
-import { getPortalPath, postpaidUsers } from 'src/environments/environment';
+import { getPortalPath,portalPath, postpaidUsers } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 declare global {
@@ -260,8 +260,16 @@ export class SharedCartComponent implements OnInit, AfterViewInit, OnDestroy {
           if (res && res.is_success) {
             this._toaster.showSuccessToast('Order created successfully !!');
             this._payment.SubmitForm({ order_id: res.data.orderId });
-            window.location.href = getPortalPath(res?.data.orderId);
+            const oid = res?.data?.orderId;
+            window.location.href = oid
+              ? `${portalPath}/my-orders?key=${encodeURIComponent(oid)}&auto=1`
+              : `${portalPath}/my-orders`;
           }
+          // if (res && res.is_success) {
+          //   this._toaster.showSuccessToast('Order created successfully !!');
+          //   this._payment.SubmitForm({ order_id: res.data.orderId });
+          //   window.location.href = getPortalPath(res?.data.orderId);
+          // }
         });
     } else {
       const user = this._helper.user;
@@ -313,14 +321,48 @@ export class SharedCartComponent implements OnInit, AfterViewInit, OnDestroy {
       // }
     }
   }
+  // payViaWallet() {
+  //   this._payment
+  //     .payViaWallet(this.walletpayReq)
+  //     .pipe(takeWhile(() => this.isLive))
+  //     .subscribe((res: any) => {
+  //       if (res && res.is_success) {
+  //         this.walletpayReq = null;
+  //         this.getAllCartByUserId();
+  //       }
+  //     });
+  // }
   payViaWallet() {
+    const reqCopy = this.walletpayReq;      // redirect ke liye sambhal ke rakho
     this._payment
-      .payViaWallet(this.walletpayReq)
+      .payViaWallet(reqCopy)
       .pipe(takeWhile(() => this.isLive))
       .subscribe((res: any) => {
         if (res && res.is_success) {
           this.walletpayReq = null;
           this.getAllCartByUserId();
+
+          // Backend OrderId aise banata hai: "Order_" + CartId
+          const cartIds = (reqCopy || [])
+            .map((el: any) => el?.CartId)
+            .filter(Boolean);
+
+          // setTimeout(() => {
+          //   if (cartIds.length === 1) {
+          //     // ek hi order — seedha uska check page kholo
+          //     window.location.href =
+          //       `${portalPath}/my-orders?key=Order_${cartIds[0]}&auto=1`;
+          //   } else {
+          //     // kai order bane — list dikhao, user khud chune
+          //     window.location.href = `${portalPath}/my-orders`;
+          //   }
+          // }, 1500);
+          if (cartIds.length === 1) {
+            window.location.href =
+              `${portalPath}/my-orders?key=Order_${cartIds[0]}&auto=1`;
+          } else {
+            window.location.href = `${portalPath}/my-orders`;
+          }
         }
       });
   }

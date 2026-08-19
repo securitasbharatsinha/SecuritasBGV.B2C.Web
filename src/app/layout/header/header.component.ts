@@ -38,6 +38,7 @@ import { CartService } from 'src/app/api-services/cart.services';
 import { ToasterService } from 'src/app/api-services/toaster.services';
 import { getPortalPath } from 'src/environments/environment';
 import { PaymentService } from 'src/app/api-services/payment.services';
+import { COOKIE_ATTRS } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -395,7 +396,8 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   loginlogout(isLogged: boolean) {
     if (isLogged) {
-      document.cookie = `sessionauth=; domain=${COOKIE_DOMAIN}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      // document.cookie = `sessionauth=; domain=${COOKIE_DOMAIN}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            document.cookie = `sessionauth=; ${COOKIE_ATTRS} expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
       this._cookie.deleteAll();
       this._toaster.showSuccessToast('Logout successfully.');
       this.isLoggedin = this._helperSerice.isLoggedIn;

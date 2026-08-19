@@ -30,6 +30,14 @@ export class IndividualComponent implements OnInit, OnDestroy, AfterViewInit {
   knowWhy: knowWhy;
   knowHow: knowHow;
   serviceTypeId: number;
+  HELPER_TITLES: any = {
+    'house-help': { a: 'Verify', b: 'Your House Help' },
+    'maid':       { a: 'Verify', b: 'Your Maid' },
+    'driver':     { a: 'Verify', b: 'Your Driver' },
+    'guard':      { a: 'Verify', b: 'Your Guard' },
+    'tutor':      { a: 'Verify', b: 'Your Tutor' },
+  };
+  helperTitle: any = { a: 'Verify', b: 'Your House Help' };
   islive: boolean = true;
   serviceLists: any[] = [];
   selectedService: any = [];
@@ -71,6 +79,11 @@ export class IndividualComponent implements OnInit, OnDestroy, AfterViewInit {
     this.route.queryParams.subscribe((prm) => {
       this.serviceTypeId = prm.service;
       this.loadData();
+
+      if (prm.helper) {
+        this.helperTitle = this.HELPER_TITLES[prm.helper] || { a: 'Domestic', b: 'Help Verification' };
+        setTimeout(() => this.jumpTo('supportVerification'), 400);
+      }
     });
   }
   service_checks() {
@@ -199,5 +212,8 @@ export class IndividualComponent implements OnInit, OnDestroy, AfterViewInit {
       return service;
       // return service?.servicetype_id;
     }
+  }
+  getServiceById(id: number) {
+    return this.servicesTypesList?.find((d: any) => Number(d.servicetype_id) === Number(id));
   }
 }

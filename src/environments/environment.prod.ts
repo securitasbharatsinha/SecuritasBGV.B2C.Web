@@ -13,6 +13,7 @@ export const apiEndPoint = 'https://api.walsonsverify.com';
 export const hostEndPoint = 'https://b2cbackend.keycorp.in';
 // export const COOKIE_DOMAIN = 'keycorp.in';
 export const COOKIE_DOMAIN = 'walsonsverify.com';
+export const COOKIE_ATTRS = 'domain=walsonsverify.com; secure; samesite=none; path=/;';   
 // export const portalPath = 'https://securitasb2cwebadmin.keycorp.in';
 // export const portalPath = 'https://www.walsonsverify.com:5002';
 export const portalPath = 'https://admin.walsonsverify.com/#';

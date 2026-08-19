@@ -316,7 +316,8 @@
         </p>
 
 
-        <form class="login-form" [formGroup]="loginForm">
+        <!-- <form class="login-form" [formGroup]="loginForm"> -->
+          <form class="login-form" [formGroup]="loginForm" (ngSubmit)="loginUser()">
 
           <!-- Email Input -->
           <div class="form-group">
@@ -374,9 +375,16 @@
 
           <!-- Action Buttons -->
           <div class="mt-1" *ngIf="!loginWithOtp || isOtpSent">
-            <button type="button" class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100" (click)="loginUser()">
-              Login
+            <button type="submit" [disabled]="isLoggingIn"
+              class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100">
+              <span *ngIf="!isLoggingIn">Login</span>
+              <span *ngIf="isLoggingIn">
+                <span class="spinner-border spinner-border-sm me-2"></span>Signing in...
+              </span>
             </button>
+            <!-- <button type="button" class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100" (click)="loginUser()">
+              Login
+            </button> -->
           </div>
 
         

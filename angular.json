@@ -29,7 +29,17 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets", "src/web.config", "src/robots.txt", {"glob": "sitemap.xml", "input": "src", "output": "."}],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/web.config",
+              "src/robots.txt",
+              {
+                "glob": "sitemap.xml",
+                "input": "src",
+                "output": "."
+              }
+            ],
             "styles": [
               "node_modules/wowjs/css/libs/animate.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -45,7 +55,6 @@
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/@fortawesome/fontawesome-free/js/all.min.js",
               "node_modules/swiper/swiper-bundle.min.js",
-
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/slick-carousel/slick/slick.min.js"
             ]
@@ -72,6 +81,27 @@
               ],
               "outputHashing": "all"
             },
+            "staging": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stag.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": true,
@@ -88,6 +118,9 @@
           "configurations": {
             "production": {
               "browserTarget": "new-securitas-universal:build:production"
+            },
+            "staging": {
+              "browserTarget": "new-securitas-universal:build:staging"
             },
             "development": {
               "browserTarget": "new-securitas-universal:build:development"
@@ -109,8 +142,13 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -157,7 +195,9 @@
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "routes": ["/"]
+            "routes": [
+              "/"
+            ]
           },
           "configurations": {
             "production": {

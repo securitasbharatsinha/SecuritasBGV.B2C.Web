@@ -34,7 +34,7 @@ export class PartnerWithUsComponent implements OnInit, OnDestroy {
     if(this.partnerUsForm.invalid){
       return;
     }
-    console.log(this.partnerUsForm.value);
+    // console.log(this.partnerUsForm.value);
   }
   ngOnInit(): void {
     this.loadData()

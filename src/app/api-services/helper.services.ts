@@ -24,7 +24,31 @@ export class HelperService {
     @Inject(PLATFORM_ID) private platformId: any
   ) { }
 
-  get getAuthObj() {
+//   get getAuthObj() {
+//     if (
+//       isPlatformBrowser(this.platformId) &&
+//       document.cookie
+//         .split(';')
+//         .some((item) => item.trim().startsWith('sessionauth='))
+//     ) {
+//       let cookie: any = {};
+
+//       // document.cookie.split(';').forEach(function (el) {
+//       //   let [key, value] = el.split('=');
+//       //   cookie[key.trim()] = value;
+//       // });
+//       document.cookie.split(';').forEach(function (el) {
+//   const idx = el.indexOf('=');
+//   if (idx < 0) return;
+//   cookie[el.slice(0, idx).trim()] = el.slice(idx + 1);
+// });
+//       return cookie['sessionauth'];
+//     }
+//     return null;
+//   }
+
+
+get getAuthObj(): string {
     if (
       isPlatformBrowser(this.platformId) &&
       document.cookie
@@ -34,12 +58,15 @@ export class HelperService {
       let cookie: any = {};
 
       document.cookie.split(';').forEach(function (el) {
-        let [key, value] = el.split('=');
-        cookie[key.trim()] = value;
+        const idx = el.indexOf('=');
+        if (idx < 0) return;
+        cookie[el.slice(0, idx).trim()] = el.slice(idx + 1);
       });
-      return cookie['sessionauth'];
+
+      const raw = cookie['sessionauth'];
+      return raw ? decodeURIComponent(raw) : 'null';
     }
-    return null;
+    return 'null';
   }
   get header() {
     const header = new HttpHeaders().set(

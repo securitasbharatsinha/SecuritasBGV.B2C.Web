@@ -29,6 +29,8 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
   @Input() serviceTypeId: any;
   // @Output() servicesPackagesdata = new EventEmitter<any[]>();
   servicesPackagesdata: any[];
+  showOtherChecks: boolean = false;
+  isLoadingOther: boolean = false;
   // serviceTypeId: number;
   islive: boolean = true;
   isloading: boolean = false;
@@ -121,7 +123,8 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
     }
     this._payment.payWithoutWalletInstant.subscribe(
       (res: any) => {
-        if (res && res.pay) {
+        // if (res && res.pay) {
+                if (res && res.pay && this.walletpayReqInstant) {
           this._payment.payWithoutWalletInstant.next({ pay: false });
           this.payViaWalletInstant();
         }
@@ -211,6 +214,49 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
       this.servicesPackagesdata[i].newPackageServices[indx].new_price =
         qty * item.service_price;
     }
+  }
+
+  toggleOtherChecks(item: any) {
+    if (this.showOtherChecks) {
+      item.newPackageServices = item.newPackageServices.filter(
+        (el: any) => !el.isOtherCheck || el.qty > 0
+      );
+      this.showOtherChecks = false;
+      return;
+    }
+
+    this.isLoadingOther = true;
+    this._home
+      .getAllActiveChecks()
+      .pipe(takeWhile(() => this.islive))
+      .subscribe(
+        (res: any) => {
+          this.isLoadingOther = false;
+          const all = res?.Data || [];
+          const already = new Set(
+            item.newPackageServices.map((d: any) => Number(d.package_service_id))
+          );
+          const others = all
+            .filter(
+              (d: any) =>
+                d.service_status &&
+                !already.has(Number(d.package_service_id))
+            )
+            .map((d: any) => ({
+              ...d,
+              isSelected: false,
+              oldPrice: d.service_price,
+              qty: 0,
+              isOtherCheck: true,
+            }));
+          item.newPackageServices = [...item.newPackageServices, ...others];
+          this.showOtherChecks = true;
+        },
+        () => {
+          this.isLoadingOther = false;
+          this.openAlert('Could not load other checks. Please try again.');
+        }
+      );
   }
   buyNowAla(item: any) {
     if (item && item.newPackageServices.some((el: any) => el.qty > 0)) {
@@ -451,7 +497,9 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
       },
       Description: "Instant Verification",
     };
+    // this.walletpayReqInstant = payload;
     this.walletpayReqInstant = payload;
+    try { localStorage.setItem('walletpayReqInstant', JSON.stringify(payload)); } catch (e) {}
     this.previewInformation(payload, checkArr, totalAmt);
     return;
   }
@@ -469,7 +517,9 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
       RequestAmt: Math.round(finalAmt * 100),
       description: "Requested Amount",
     }];
+
     this._payment.addWallet(req).subscribe((res: any) => {
+      this.isLoading = false;
       if (res && res.is_success) {
         const promoCodeData = {
           Orderid: res?.data?.OrderId,
@@ -482,10 +532,31 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
           createdate: null,
           Percentages: "10%",
         };
-        this.isLoading = false;
         this.payWalletNow(res.data, promoCodeData);
+      } else {
+        this._toaster.showErrorToast("Payment could not be started. Please try again.");
       }
+    }, () => {
+      this.isLoading = false;
+      this._toaster.showErrorToast("Payment could not be started. Please try again.");
     });
+    // this._payment.addWallet(req).subscribe((res: any) => {
+    //   if (res && res.is_success) {
+    //     const promoCodeData = {
+    //       Orderid: res?.data?.OrderId,
+    //       Amt: totalAmt,
+    //       Toamount: finalAmt,
+    //       Codeapplicable: true,
+    //       Copencodevalue: null,
+    //       Finalvalue: finalAmt,
+    //       Status: "1",
+    //       createdate: null,
+    //       Percentages: "10%",
+    //     };
+    //     this.isLoading = false;
+    //     this.payWalletNow(res.data, promoCodeData);
+    //   }
+    // });
   }
   payWalletNow(orderObj: any, promoCodeData: any) {
     this.isLoading = true;
@@ -550,9 +621,30 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
     });
   }
 
+  // payViaWalletInstant() {
+  //   this._payment.createOrderForCandidate(this.walletpayReqInstant).subscribe((res: any) => {
   payViaWalletInstant() {
-    this._payment.createOrderForCandidate(this.walletpayReqInstant).subscribe((res: any) => {
+    if (this._payment.orderInProgress) return;
+      // ADD — dobara na chale
+    this._payment.orderInProgress = true;
+    // Razorpay ke async flow me component property (walletpayReqInstant) kho sakti hai.
+    // Isliye localStorage se recover karo agar property null ho.
+    if (!this.walletpayReqInstant) {
+      try {
+        const saved = localStorage.getItem('walletpayReqInstant');
+        if (saved) this.walletpayReqInstant = JSON.parse(saved);
+      } catch (e) {}
+    }
+    if (!this.walletpayReqInstant || !this.walletpayReqInstant.cartReq) {
+      this._toaster.showErrorToast('Order details not found. Please try again.');
+      return;
+    }
+    // this._payment.createOrderForCandidate(this.walletpayReqInstant).subscribe((res: any) => {
+    //   if (res.is_success) {
+    //     let reqBody = {
+          this._payment.createOrderForCandidate(this.walletpayReqInstant).subscribe((res: any) => {
       if (res.is_success) {
+        this._payment.orderInProgress = false;        try { localStorage.removeItem('walletpayReqInstant'); } catch (e) {}
         let reqBody = {
           SLA_Start_Date: null,
           SLA_Due_Date: null,
@@ -566,10 +658,15 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
           submittedBy: "User",
           isInstantVerify: true,
         }
-        if(this.walletpayReqInstant?.Description === 'Instant Verification') window.location.href = getPortalPath(res?.data.orderId);
-        // this.submitData(reqBody);
-        // this._toaster.showSuccessToast("Order successfully.");
+        this._toaster.showSuccessToast(
+          "Order created successfully. Please complete the candidate details to proceed."
+        );
+        setTimeout(() => {
+          window.location.href = `${portalPath}/my-orders?key=${encodeURIComponent(res.OrderId)}&auto=1`;
+        }, 1500);
+
       } else {
+        this._payment.orderInProgress = false;   // ADD
         this._toaster.showErrorToast(res.message);
       }
     }); 

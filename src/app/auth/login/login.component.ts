@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 import { CaptchaComponent } from '../captcha/captcha.component';
 import { Subscription } from 'rxjs';
 import { HelperService } from 'src/app/api-services/helper.services';
+import { COOKIE_ATTRS } from 'src/environments/environment';
 declare var grecaptcha: any;
 @Component({
   selector: 'app-login',
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   isOtpSent: boolean;
   getPortalPath: string = getPortalPath('');
   OTP: string;
+  isLoggingIn: boolean = false;
   constructor(
     private _fb: FormBuilder,
     private _authService: AuthService,
@@ -47,117 +49,244 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.isLive = false;
   }
-
   ngOnInit(): void {
     this.loginForm = this._fb.group({
-      Email: [null, [Validators.required]],
-      Password: [null],
+      Email: [null, [Validators.required, Validators.email]],
+      Password: [null, [Validators.required]],
     });
   }
-  loginUser() {
+
+  // ngOnInit(): void {
+  //   this.loginForm = this._fb.group({
+  //     Email: [null, [Validators.required]],
+  //     Password: [null],
+  //   });
+  // }
+  // loginUser() {
+  //   let req: any;
+  //   const captcha = this.captcha.CaptchaMatched;
+  //   if (this.loginForm.valid && captcha) {
+  //     if (!this.loginWithOtp) {
+  //       if (!this.loginForm.controls.Password.value) {
+  //         this._toaster.showInfoToast('Required fields are empty !!')
+  //         return
+  //       }
+  //       req = this._authService
+  //         .login({ ...this.loginForm.value })
+  //       // .doAuth(this.loginForm.value.Email, this.loginForm.value.Password)
+  //     }
+  //     if (this.loginWithOtp && this.isOtpSent) {
+  //       req = this._authService
+  //         .loginWithOTP({ ...this.loginForm.value }, this.OTP)
+  //     }
+
+  //     req.pipe(takeWhile(() => this.isLive))
+  //       .subscribe(
+  //         (res: any) => {
+  //           if (res && res.IsSuccess && res.Data && res?.Data?.Isactive) {
+  //             // if (res.Data?.RoleID === 4 && res.Data?.status !== 'Active') {
+  //             //   this.openAlert();
+  //             //   return;
+  //             // }
+  //             this._cookie.set('userId', res.Data.Id);
+  //             this._cookie.set('isLoggedIn', 'true');
+  //             this._cookie.set('userType', res.Data.RoleID);
+  //             this._cookie.set(
+  //               'industryType',
+  //               res.Data?.CompanyInfo?.CompanyIndustry
+  //             );
+  //             this._cookie.set('userCatgeory', res.Data.user_category);
+  //             this._cookie.set('token', res?.Data.Token);
+  //             this._cookie.set('token', res?.Data.Token);
+  //             this._cookie.set('adminEmail', res?.Data?.Email?.trim());
+  //             this._cookie.set('clientId', res?.Data?.ClientId);
+
+  //             // NOTE Setting Root Cookie
+  //             const authObj: Partial<{
+  //               userId: any;
+  //               isLoggedIn: boolean;
+  //               tenant: string;
+  //               token: string;
+  //               userCatgeory: string;
+  //               userType: number;
+  //               adminEmail: string;
+  //               industryType: number;
+  //               clientId: any;
+
+  //             }> = {
+  //               userId: res.Data.Id,
+  //               isLoggedIn: true,
+  //               tenant: 'securitas-b2c',
+  //               token: res?.Data.Token,
+  //               userType: res.Data.RoleID,
+  //               userCatgeory: res.Data.user_category,
+  //               adminEmail: res?.Data?.Email?.trim(),
+  //               industryType: Number(
+  //                 res.Data?.CompanyInfo?.CompanyIndustry ?? 0
+  //               ),
+  //               clientId: res?.Data?.ClientId,
+  //             };
+  //             this._helper.isLoggedOut.next(false);
+  //             // document.cookie = `auth=${authObj}; path=/;`;
+  //             // document.cookie = `sessionauth=${encodeURIComponent(
+  //             //   JSON.stringify(authObj)
+  //             // )}; domain=${COOKIE_DOMAIN}; secure; samesite=none; path=/;`;
+  //             document.cookie = `sessionauth=${encodeURIComponent(
+  //               JSON.stringify(authObj)
+  //             )}; ${COOKIE_ATTRS}`;
+  //             this._toaster.showSuccessToast('Logged In successfully.');
+  //             // this._router.navigate([!res?.Data?.ClientId ? '/home' : '/special/individual']);
+  //             const getUrl = window.location.hash.replace('#', '');
+  //             if (getUrl) {
+  //               let urlFragment = '';
+  //               if(getUrl === '/helper-verification') urlFragment = 'supportVerification';
+  //               else if(getUrl === '/tenant-verification') urlFragment = 'tenantVerification';
+  //               else if(getUrl === '/instant-verify') urlFragment = 'instantVerify';
+  //               else if(getUrl === '/matrimonial-due-diligence') urlFragment = 'matrimonialVerify';
+  //               this._router.navigate([`/individual`], {fragment: urlFragment});
+  //             }
+  //             else{
+  //               window.location.href = this.getPortalPath;
+  //             }
+  //           }
+  //           else if(!res?.Data?.Isactive && res?.IsSuccess && res?.Data){
+  //             this._toaster.showErrorToast('Account On-Hold - Please contact the helpdesk for further information');
+  //           }
+  //           else {
+  //             this._toaster.showErrorToast(res.Message);
+  //             // this._toaster.showErrorToast('Incorrect email/password!!');
+  //           }
+  //         },
+  //         (error: any) => {
+  //           // this.isDisabled = false
+  //           if (error?.error_description)
+  //             this._toaster.showErrorToast(error?.error_description);
+  //         }
+  //       );
+  //   } else {
+  //     !this.loginForm.valid
+  //       ? this._toaster.showInfoToast('Required fields are empty !!')
+  //       : this._toaster.showErrorToast('wrong/empty captcha code!!');
+  //     this.loginForm.markAllAsTouched();
+  //   }
+  // }
+
+
+    loginUser() {
     let req: any;
-    const captcha = this.captcha.CaptchaMatched;
-    if (this.loginForm.valid && captcha) {
-      if (!this.loginWithOtp) {
-        if (!this.loginForm.controls.Password.value) {
-          this._toaster.showInfoToast('Required fields are empty !!')
-          return
-        }
-        req = this._authService
-          .login({ ...this.loginForm.value })
-        // .doAuth(this.loginForm.value.Email, this.loginForm.value.Password)
-      }
-      if (this.loginWithOtp && this.isOtpSent) {
-        req = this._authService
-          .loginWithOTP({ ...this.loginForm.value }, this.OTP)
-      }
+    const captcha = this.captcha?.CaptchaMatched;
 
-      req.pipe(takeWhile(() => this.isLive))
-        .subscribe(
-          (res: any) => {
-            if (res && res.IsSuccess && res.Data && res?.Data?.Isactive) {
-              // if (res.Data?.RoleID === 4 && res.Data?.status !== 'Active') {
-              //   this.openAlert();
-              //   return;
-              // }
-              this._cookie.set('userId', res.Data.Id);
-              this._cookie.set('isLoggedIn', 'true');
-              this._cookie.set('userType', res.Data.RoleID);
-              this._cookie.set(
-                'industryType',
-                res.Data?.CompanyInfo?.CompanyIndustry
-              );
-              this._cookie.set('userCatgeory', res.Data.user_category);
-              this._cookie.set('token', res?.Data.Token);
-              this._cookie.set('token', res?.Data.Token);
-              this._cookie.set('adminEmail', res?.Data?.Email?.trim());
-              this._cookie.set('clientId', res?.Data?.ClientId);
-
-              // NOTE Setting Root Cookie
-              const authObj: Partial<{
-                userId: any;
-                isLoggedIn: boolean;
-                tenant: string;
-                token: string;
-                userCatgeory: string;
-                userType: number;
-                adminEmail: string;
-                industryType: number;
-                clientId: any;
-
-              }> = {
-                userId: res.Data.Id,
-                isLoggedIn: true,
-                tenant: 'securitas-b2c',
-                token: res?.Data.Token,
-                userType: res.Data.RoleID,
-                userCatgeory: res.Data.user_category,
-                adminEmail: res?.Data?.Email?.trim(),
-                industryType: Number(
-                  res.Data?.CompanyInfo?.CompanyIndustry ?? 0
-                ),
-                clientId: res?.Data?.ClientId,
-              };
-              this._helper.isLoggedOut.next(false);
-              // document.cookie = `auth=${authObj}; path=/;`;
-              document.cookie = `sessionauth=${JSON.stringify(
-                authObj
-              )}; domain=${COOKIE_DOMAIN}; secure; samesite=none; path=/; `;
-              this._toaster.showSuccessToast('Logged In successfully.');
-              // this._router.navigate([!res?.Data?.ClientId ? '/home' : '/special/individual']);
-              const getUrl = window.location.hash.replace('#', '');
-              if (getUrl) {
-                let urlFragment = '';
-                if(getUrl === '/helper-verification') urlFragment = 'supportVerification';
-                else if(getUrl === '/tenant-verification') urlFragment = 'tenantVerification';
-                else if(getUrl === '/instant-verify') urlFragment = 'instantVerify';
-                else if(getUrl === '/matrimonial-due-diligence') urlFragment = 'matrimonialVerify';
-                this._router.navigate([`/individual`], {fragment: urlFragment});
-              }
-              else{
-                window.location.href = this.getPortalPath;
-              }
-            }
-            else if(!res?.Data?.Isactive && res?.IsSuccess && res?.Data){
-              this._toaster.showErrorToast('Account On-Hold - Please contact the helpdesk for further information');
-            }
-            else {
-              this._toaster.showErrorToast(res.Message);
-              // this._toaster.showErrorToast('Incorrect email/password!!');
-            }
-          },
-          (error: any) => {
-            // this.isDisabled = false
-            if (error?.error_description)
-              this._toaster.showErrorToast(error?.error_description);
-          }
-        );
-    } else {
-      !this.loginForm.valid
-        ? this._toaster.showInfoToast('Required fields are empty !!')
-        : this._toaster.showErrorToast('wrong/empty captcha code!!');
+    if (!this.loginForm.valid || !captcha) {
       this.loginForm.markAllAsTouched();
+
+      const email = this.loginForm.get('Email');
+      const pwd = this.loginForm.get('Password');
+
+      if (email?.hasError('required')) {
+        this._toaster.showInfoToast('Please enter your email address.');
+      } else if (email?.hasError('email')) {
+        this._toaster.showInfoToast('Please enter a valid email address.');
+      } else if (!this.loginWithOtp && pwd?.hasError('required')) {
+        this._toaster.showInfoToast('Please enter your password.');
+      } else if (this.loginWithOtp && this.isOtpSent && !this.OTP) {
+        this._toaster.showInfoToast('Please enter the OTP sent to your email.');
+      } else {
+        this._toaster.showErrorToast('Verification code does not match.');
+        this.resetCaptcha();
+      }
+      return;
     }
+
+    if (this.isLoggingIn) return;
+    this.isLoggingIn = true;
+
+    if (!this.loginWithOtp) {
+      req = this._authService.login({ ...this.loginForm.value });
+    }
+    if (this.loginWithOtp && this.isOtpSent) {
+      req = this._authService.loginWithOTP({ ...this.loginForm.value }, this.OTP);
+    }
+
+    req.pipe(takeWhile(() => this.isLive))
+      .subscribe(
+        (res: any) => {
+          this.isLoggingIn = false;
+
+          if (res && res.IsSuccess && res.Data && res?.Data?.Isactive) {
+            this._cookie.set('userId', res.Data.Id);
+            this._cookie.set('isLoggedIn', 'true');
+            this._cookie.set('userType', res.Data.RoleID);
+            this._cookie.set('industryType', res.Data?.CompanyInfo?.CompanyIndustry);
+            this._cookie.set('userCatgeory', res.Data.user_category);
+            this._cookie.set('token', res?.Data.Token);
+            this._cookie.set('adminEmail', res?.Data?.Email?.trim());
+            this._cookie.set('clientId', res?.Data?.ClientId);
+
+            const authObj: Partial<{
+              userId: any;
+              isLoggedIn: boolean;
+              tenant: string;
+              token: string;
+              userCatgeory: string;
+              userType: number;
+              adminEmail: string;
+              industryType: number;
+              clientId: any;
+            }> = {
+              userId: res.Data.Id,
+              isLoggedIn: true,
+              tenant: 'securitas-b2c',
+              token: res?.Data.Token,
+              userType: res.Data.RoleID,
+              userCatgeory: res.Data.user_category,
+              adminEmail: res?.Data?.Email?.trim(),
+              industryType: Number(res.Data?.CompanyInfo?.CompanyIndustry ?? 0),
+              clientId: res?.Data?.ClientId,
+            };
+            this._helper.isLoggedOut.next(false);
+            document.cookie = `sessionauth=${encodeURIComponent(
+              JSON.stringify(authObj)
+            )}; ${COOKIE_ATTRS}`;
+            this._toaster.showSuccessToast('Logged In successfully.');
+
+            const getUrl = window.location.hash.replace('#', '');
+            if (getUrl) {
+              let urlFragment = '';
+              if (getUrl === '/helper-verification') urlFragment = 'supportVerification';
+              else if (getUrl === '/tenant-verification') urlFragment = 'tenantVerification';
+              else if (getUrl === '/instant-verify') urlFragment = 'instantVerify';
+              else if (getUrl === '/matrimonial-due-diligence') urlFragment = 'matrimonialVerify';
+              this._router.navigate([`/individual`], { fragment: urlFragment });
+            } else {
+              window.location.href = this.getPortalPath;
+            }
+          }
+          else if (!res?.Data?.Isactive && res?.IsSuccess && res?.Data) {
+            this._toaster.showErrorToast(
+              'Account On-Hold - Please contact the helpdesk for further information'
+            );
+            this.resetCaptcha();
+          }
+          else {
+            this._toaster.showErrorToast(res?.Message || 'Incorrect email or password.');
+            this.resetCaptcha();
+          }
+        },
+        (error: any) => {
+          this.isLoggingIn = false;
+          this._toaster.showErrorToast(
+            error?.error?.Message ||
+            error?.error_description ||
+            'Unable to sign in right now. Please try again.'
+          );
+          this.resetCaptcha();
+        }
+      );
+  }
+
+  private resetCaptcha() {
+    this.captcha?.generateCaptcha();
+    if (this.captcha) this.captcha.captcha = '';
   }
   // loginUser() {
   //   if (this.loginForm.valid && this.captchaToken) {

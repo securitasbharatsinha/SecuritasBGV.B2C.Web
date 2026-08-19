@@ -59,7 +59,8 @@ export class SignupComponent implements OnInit {
   phonePattern = '((([0-9]{3}) |[0-9]{3}-)[0-9]{3}-[0-9]{4})';
 
   // emailPattern = '[a-z0-9]+@[a-z]+.[a-z]{2,4}';
-  emailPattern = '^[a-z0-9._%]+@[a-z0-9.-]+[.][a-z]{2,4}$';
+  // emailPattern = '^[a-z0-9._%]+@[a-z0-9.-]+[.][a-z]{2,4}$';
+  emailPattern = '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$';
   // emailPattern = `^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3,4})+$`;
   gstPattern = '^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$';
   isCodeVerified: boolean = false;
@@ -77,6 +78,7 @@ export class SignupComponent implements OnInit {
   industries = industries;
   isSpecialWindow: boolean = false;
   gstLoading: boolean = false;
+  isSigningUp: boolean = false;
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
     private _fb: FormBuilder,
@@ -96,42 +98,53 @@ export class SignupComponent implements OnInit {
       FName: ['', [Validators.required]], //added (dot -> .) with (space ->  )
       LName: ['', [Validators.required]], //added (dot -> .) with (space ->  )
       MName: ['', []], //added (dot -> .) with (space ->  )
-      Email: [
+
+            Email: [
         '',
-        [
-          Validators.required,
-          // Validators.compose([
-          //   Validators.pattern(this.emailPattern),
-          //   CustomValidators.emailHasUppercase(/[A-Z]/, {
-          //     hasCapitalCase: true,
-          //   }),
-          // ]),
-        ],
-        // [CustomValidators.emailValidator(this._authService)],
+        [Validators.required, Validators.pattern(this.emailPattern)],
       ],
       UserName: [null],
       DOB: [null],
       Password: [
         null,
-        [
-          Validators.required,
-
-          // Validators.compose([
-          //   CustomValidators.patternValidator(/\d/, { hasNumber: true }),
-          //   CustomValidators.patternValidator(/[A-Z]/, {
-          //     hasCapitalCase: true,
-          //   }),
-          //   CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }),
-          //   CustomValidators.patternValidator(/(?=.{8,})/, {
-          //     hasEight: true,
-          //   }),
-
-          //   CustomValidators.patternValidator(/[^A-Za-z0-9 ]/, {
-          //     hasSpecialCharacters: true,
-          //   }),
-          // ]),
-        ],
+        [Validators.required, Validators.pattern(this.passwordPattern)],
       ],
+      // Email: [
+      //   '',
+      //   [
+      //     Validators.required,
+      //     // Validators.compose([
+      //     //   Validators.pattern(this.emailPattern),
+      //     //   CustomValidators.emailHasUppercase(/[A-Z]/, {
+      //     //     hasCapitalCase: true,
+      //     //   }),
+      //     // ]),
+      //   ],
+      //   // [CustomValidators.emailValidator(this._authService)],
+      // ],
+      // UserName: [null],
+      // DOB: [null],
+      // Password: [
+      //   null,
+      //   [
+      //     Validators.required,
+
+      //     // Validators.compose([
+      //     //   CustomValidators.patternValidator(/\d/, { hasNumber: true }),
+      //     //   CustomValidators.patternValidator(/[A-Z]/, {
+      //     //     hasCapitalCase: true,
+      //     //   }),
+      //     //   CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }),
+      //     //   CustomValidators.patternValidator(/(?=.{8,})/, {
+      //     //     hasEight: true,
+      //     //   }),
+
+      //     //   CustomValidators.patternValidator(/[^A-Za-z0-9 ]/, {
+      //     //     hasSpecialCharacters: true,
+      //     //   }),
+      //     // ]),
+      //   ],
+      // ],
       CompanyInfo: this._fb.group({
         CompanyName: [null],
         CompanyEmail: [null],
@@ -150,14 +163,18 @@ export class SignupComponent implements OnInit {
       RoleID: [null],
       Phone: [
         '',
-        [
-          // Validators.pattern('[0-9]{10}'),
-          Validators.required,
-          // Validators.max(9999999999),
-          // Validators.min(1),
-          // Validators.maxLength(10),
-        ],
+        [Validators.required, Validators.pattern('^[6-9][0-9]{9}$')],
       ],
+      // Phone: [
+      //   '',
+      //   [
+      //     // Validators.pattern('[0-9]{10}'),
+      //     Validators.required,
+      //     // Validators.max(9999999999),
+      //     // Validators.min(1),
+      //     // Validators.maxLength(10),
+      //   ],
+      // ],
       Address1: [null],
       Address2: [null],
       District: [null],
@@ -182,26 +199,48 @@ export class SignupComponent implements OnInit {
 
     req.send();
   }
-  ngOnInit(): void {
-    this.startAutoRotate();
-    this._route.queryParams.subscribe((prm) => {
-      if (prm && prm.type && prm.type === 'Corporate') {
-        const elm = document.getElementById('corporateButton') as HTMLElement;
-        this.changeTab(elm, 'Corporate');
-      } else {
-        if (isPlatformBrowser(this.platformId)) {
-          var defaultOpen = document.getElementById(
-            'Individual'
-          ) as HTMLElement;
+  // ngOnInit(): void {
+  //   this.startAutoRotate();
+  //   this._route.queryParams.subscribe((prm) => {
+  //     if (prm && prm.type && prm.type === 'Corporate') {
+  //       const elm = document.getElementById('corporateButton') as HTMLElement;
+  //       this.changeTab(elm, 'Corporate');
+  //     } else {
+  //       if (isPlatformBrowser(this.platformId)) {
+  //         var defaultOpen = document.getElementById(
+  //           'Individual'
+  //         ) as HTMLElement;
 
-          defaultOpen.click();
-        }
-      }
-    });
+  //         defaultOpen.click();
+  //       }
+  //     }
+  //   });
+  //   this.todayDate = this._datePipe.transform(
+  //     new Date(Date.now()),
+  //     'yyyy-MM-dd'
+  //   );
+  // }
+
+
+    ngOnInit(): void {
     this.todayDate = this._datePipe.transform(
       new Date(Date.now()),
       'yyyy-MM-dd'
     );
+
+    this.startAutoRotate();
+
+    this._route.queryParams.subscribe((prm) => {
+      if (!isPlatformBrowser(this.platformId)) return;
+
+      if (prm?.type === 'Corporate') {
+        const elm = document.getElementById('corporateButton');
+        if (elm) this.changeTab(elm, 'Corporate');
+      } else {
+        const defaultOpen = document.getElementById('Individual');
+        if (defaultOpen) defaultOpen.click();
+      }
+    });
   }
 
   signupold() {
@@ -265,65 +304,164 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  signup(){
-  let captcha = this.captcha.CaptchaMatched;
-    if (
-      this.signUpForm.valid &&
-      captcha &&
-      this.signUpForm.controls.IsAgreement.value
-    ) {
-      const payload: signUp = {
-        ...this.signUpForm.value,
-        Phone: `${this.signUpForm.controls.Phone.value}`,
-        // Phone: `${this.dialCode}-${this.signUpForm.controls.Phone.value}`,
-        RoleID: this.selectedTypeForRegistration ? corporateId : individualId,
-        isSpecialClient: this.isSpecialWindow ? 1 : 0,
-        ClientId: this.isSpecialWindow ? genSxty : null,
-        user_category: 'prepaid',
-        // status: this.selectedTypeForRegistration ? 'Inactive' : 'Active',
-        status: 'Active',
-      };
+  // signup(){
+  // let captcha = this.captcha.CaptchaMatched;
+  //   if (
+  //     this.signUpForm.valid &&
+  //     captcha &&
+  //     this.signUpForm.controls.IsAgreement.value
+  //   ) {
+  //     const payload: signUp = {
+  //       ...this.signUpForm.value,
+  //       Phone: `${this.signUpForm.controls.Phone.value}`,
+  //       // Phone: `${this.dialCode}-${this.signUpForm.controls.Phone.value}`,
+  //       RoleID: this.selectedTypeForRegistration ? corporateId : individualId,
+  //       isSpecialClient: this.isSpecialWindow ? 1 : 0,
+  //       ClientId: this.isSpecialWindow ? genSxty : null,
+  //       user_category: 'prepaid',
+  //       // status: this.selectedTypeForRegistration ? 'Inactive' : 'Active',
+  //       status: 'Active',
+  //     };
 
-      this._authService.postUserData(payload).subscribe(
-        (res: any) => {
-          if (res && res.IsSuccess) {
-            this.verifyTemplate = 'Authentication';
-            this._toaster.showSuccessToast(
-              'OTP sent on registered mail successfully'
-            );
-          } else {
-            this._toaster.showErrorToast(res.Message);
-          }
-        },
-        (err) => {
-          this._toaster.showErrorToast('Something went wrong !!');
+  //     this._authService.postUserData(payload).subscribe(
+  //       (res: any) => {
+  //         if (res && res.IsSuccess) {
+  //           this.verifyTemplate = 'Authentication';
+  //           this._toaster.showSuccessToast(
+  //             'OTP sent on registered mail successfully'
+  //           );
+  //         } else {
+  //           this._toaster.showErrorToast(res.Message);
+  //         }
+  //       },
+  //       (err) => {
+  //         this._toaster.showErrorToast('Something went wrong !!');
 
-        }
-      );
-    } else {
+  //       }
+  //     );
+  //   } else {
+  //     this.signUpForm.markAllAsTouched();
+  //     if (!this.signUpForm.valid) {
+  //       this._toaster.showInfoToast('Required fields are empty !!');
+  //       return;
+  //     }
+  //     if (!this.signUpForm.controls.IsAgreement.value) {
+  //       this._toaster.showErrorToast(
+  //         'You must agree to the terms and conditions before proceeding !!'
+  //       );
+  //       return;
+  //     }
+  //     if (!captcha) this._toaster.showErrorToast('wrong/empty captcha code!!');
+  //     // !captcha && this._toaster.showErrorToast('wrong/empty captcha code!!')
+
+  //     if (this.signUpForm.get('CompanyInfo.CompanyGST')?.errors?.error) {
+  //       this._toaster.showErrorToast('Please provide valid GST No!!');
+  //       return;
+  //     }
+  //     if (this.signUpForm.get('CompanyInfo.CompanyPincode')?.errors?.error) {
+  //       this._toaster.showErrorToast('Please provide valid pin code!!');
+  //       return;
+  //     }
+  //   }
+  // }
+
+
+    signup() {
+    const captcha = this.captcha ? this.captcha.CaptchaMatched : false;
+
+    if (!this.signUpForm.valid || !captcha || !this.signUpForm.controls.IsAgreement.value) {
       this.signUpForm.markAllAsTouched();
-      if (!this.signUpForm.valid) {
-        this._toaster.showInfoToast('Required fields are empty !!');
-        return;
-      }
-      if (!this.signUpForm.controls.IsAgreement.value) {
-        this._toaster.showErrorToast(
-          'You must agree to the terms and conditions before proceeding !!'
-        );
-        return;
-      }
-      if (!captcha) this._toaster.showErrorToast('wrong/empty captcha code!!');
-      // !captcha && this._toaster.showErrorToast('wrong/empty captcha code!!')
 
-      if (this.signUpForm.get('CompanyInfo.CompanyGST')?.errors?.error) {
-        this._toaster.showErrorToast('Please provide valid GST No!!');
-        return;
+      const f = this.signUpForm;
+      if (f.get('Prefix')?.hasError('required')) {
+        this._toaster.showInfoToast('Please select a title.');
+      } else if (f.get('FName')?.hasError('required')) {
+        this._toaster.showInfoToast('Please enter your first name.');
+      } else if (f.get('LName')?.hasError('required')) {
+        this._toaster.showInfoToast('Please enter your last name.');
+      } else if (f.get('Phone')?.hasError('required')) {
+        this._toaster.showInfoToast('Please enter your mobile number.');
+      } else if (f.get('Phone')?.hasError('pattern')) {
+        this._toaster.showInfoToast('Enter a valid 10-digit mobile number.');
+      } else if (f.get('Email')?.hasError('required')) {
+        this._toaster.showInfoToast('Please enter your email address.');
+      } else if (f.get('Email')?.hasError('pattern')) {
+        this._toaster.showInfoToast('Enter a valid email address.');
+      } else if (f.get('Password')?.hasError('required')) {
+        this._toaster.showInfoToast('Please create a password.');
+      } else if (f.get('Password')?.hasError('pattern')) {
+        this._toaster.showInfoToast(
+          'Password needs at least 8 characters with an uppercase letter, a lowercase letter, a number and a special character.'
+        );
+      } else if (f.get('CompanyInfo.CompanyGST')?.errors?.error) {
+        this._toaster.showErrorToast('Please provide a valid GST number.');
+      } else if (f.get('CompanyInfo.CompanyPincode')?.errors?.error) {
+        this._toaster.showErrorToast('Please provide a valid pin code.');
+      } else if (!f.controls.IsAgreement.value) {
+        this._toaster.showErrorToast(
+          'You must agree to the terms and conditions before proceeding.'
+        );
+      } else if (!captcha) {
+        this._toaster.showErrorToast('Verification code does not match.');
+        this.resetCaptcha();
       }
-      if (this.signUpForm.get('CompanyInfo.CompanyPincode')?.errors?.error) {
-        this._toaster.showErrorToast('Please provide valid pin code!!');
-        return;
-      }
+      return;
     }
+
+    if (this.isSigningUp) return;
+    this.isSigningUp = true;
+
+    const payload: signUp = {
+      ...this.signUpForm.value,
+      Phone: `${this.signUpForm.controls.Phone.value}`,
+      RoleID: this.selectedTypeForRegistration ? corporateId : individualId,
+      isSpecialClient: this.isSpecialWindow ? 1 : 0,
+      ClientId: this.isSpecialWindow ? genSxty : null,
+      user_category: 'prepaid',
+      status: 'Active',
+    };
+
+    this._authService.postUserData(payload).subscribe(
+      (res: any) => {
+        this.isSigningUp = false;
+        if (res && res.IsSuccess) {
+          this.verifyTemplate = 'Authentication';
+          this._toaster.showSuccessToast('OTP sent on registered mail successfully');
+        } else {
+          const alreadyExists = (res?.Message || '')
+            .toLowerCase()
+            .includes('already exist');
+
+          if (alreadyExists) {
+            this._toaster.showInfoToast(
+              'This email is already registered. Please sign in instead.'
+            );
+            setTimeout(() => {
+              this._router.navigate([
+                !this.isSpecialWindow ? '/auth/login' : '/special/login',
+              ]);
+            }, 2000);
+          } else {
+            this._toaster.showErrorToast(
+              res?.Message || 'Could not create your account. Please try again.'
+            );
+          }
+          this.resetCaptcha();
+        }
+      },
+      (err) => {
+        this.isSigningUp = false;
+        this._toaster.showErrorToast(
+          err?.error?.Message || 'Unable to sign up right now. Please try again.'
+        );
+        this.resetCaptcha();
+      }
+    );
+  }
+
+  private resetCaptcha() {
+    this.captcha?.generateCaptcha();
+    if (this.captcha) this.captcha.captcha = '';
   }
 
   verifyActivationCode(code: any, type: string = '') {

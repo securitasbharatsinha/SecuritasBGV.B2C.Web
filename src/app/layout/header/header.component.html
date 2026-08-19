@@ -27,17 +27,24 @@
             <div class="sg-dropdown-inner" *ngIf="isLoggedin">
               <div class="dd-col">
                 <!-- <p class="dd-heading">Individual</p> -->
-                <a routerLink="/individual" fragment="supportVerification" class="dd-link">Verify your House Help</a>
-                <a routerLink="/individual" fragment="tenantVerification" class="dd-link">Verify your Tenant</a>
+               <a routerLink="/individual" fragment="self_verification" class="dd-link">Verify Yourself</a>
+               <a routerLink="/individual" [queryParams]="{helper:'house-help'}" fragment="supportVerification" class="dd-link">Verify your House Help</a>
+<a routerLink="/individual" [queryParams]="{helper:'maid'}"       fragment="supportVerification" class="dd-link">Verify your Maid</a>
+<a routerLink="/individual" [queryParams]="{helper:'driver'}"     fragment="supportVerification" class="dd-link">Verify your Driver</a>
+<a routerLink="/individual" [queryParams]="{helper:'guard'}"      fragment="supportVerification" class="dd-link">Verify your Guard</a>
+<a routerLink="/individual" [queryParams]="{helper:'tutor'}"      fragment="supportVerification" class="dd-link">Verify your Tutor</a>
+                <!-- <a routerLink="/individual" fragment="supportVerification" class="dd-link">Verify your House Help</a>
                 <a routerLink="/individual" fragment="supportVerification" class="dd-link">Verify your Maid</a>
                 <a routerLink="/individual" fragment="supportVerification" class="dd-link">Verify your Driver</a>
                 <a routerLink="/individual" fragment="supportVerification" class="dd-link">Verify your Guard</a>
-                <a routerLink="/individual" fragment="instantVerify" class="dd-link">Instant Verify</a>
+                <a routerLink="/individual" fragment="supportVerification" class="dd-link">Verify your Tutor</a> -->
+                <a routerLink="/individual" fragment="tenantVerification" class="dd-link">Verify Your Tenant</a>
                 <a routerLink="/individual" fragment="matrimonialVerify" class="dd-link">Matrimonial Verification</a>
+                <a routerLink="/individual" fragment="kyc_check" class="dd-link">KYC Check</a>
               </div>
               <div class="dd-col">
                 <!-- <p class="dd-heading">Corporate</p> -->
-                <a [routerLink]="['/corporate']" class="dd-link">Business Employee Verification</a>
+                <a [routerLink]="['/corporate']" class="dd-link">Employee Verification</a>
                 <a [routerLink]="['/corporate']" class="dd-link">Leadership Due Diligence</a>
                 <a [routerLink]="['/corporate']" class="dd-link">Vendor Due Diligence</a>
               </div>
@@ -52,18 +59,28 @@
                 <a [routerLink]="['/matrimonial-due-diligence']" class="dd-link">Matrimonial Due Diligence</a>
                 <a [routerLink]="['/instant-verify']" class="dd-link">Instant Verification</a> -->
 
-                <a [routerLink]="['/helper-verification']" class="dd-link">Verify your House Help</a>
+                <!-- <a [routerLink]="['/helper-verification']" class="dd-link">Verify your House Help</a>
                 <a [routerLink]="['/tenant-verification']" class="dd-link">Verify your Tenant</a>
                 <a [routerLink]="['/helper-verification']" class="dd-link">Verify your Maid</a>
                 <a [routerLink]="['/helper-verification']" class="dd-link">Verify your Driver</a>
                 <a [routerLink]="['/helper-verification']" class="dd-link">Verify your Guard</a>
                 <a [routerLink]="['/instant-verify']" class="dd-link">Instant Verify</a>
+                <a [routerLink]="['/matrimonial-due-diligence']" class="dd-link">Matrimonial Verification</a> -->
+
+                <a [routerLink]="['/verify-yourself']" class="dd-link">Verify Yourself</a>
+                <a [routerLink]="['/helper-verification']" class="dd-link">Verify your House Help</a>
+                <a [routerLink]="['/helper-verification']" class="dd-link">Verify your Maid</a>
+                <a [routerLink]="['/helper-verification']" class="dd-link">Verify your Driver</a>
+                <a [routerLink]="['/helper-verification']" class="dd-link">Verify your Guard</a>
+                <a [routerLink]="['/helper-verification']" class="dd-link">Verify your Tutor</a>
+                <a [routerLink]="['/tenant-verification']" class="dd-link">Verify Your Tenant</a>
                 <a [routerLink]="['/matrimonial-due-diligence']" class="dd-link">Matrimonial Verification</a>
+                <a href="javascript:void(0)" class="dd-link">KYC Check</a>
 
               </div>
               <div class="dd-col">
                 <!-- <p class="dd-heading">Corporate</p> -->
-                <a [routerLink]="['/corporate']" class="dd-link">Business Employee Verification</a>
+                <a [routerLink]="['/corporate']" class="dd-link">Employee Verification</a>
                 <a [routerLink]="['/corporate']" class="dd-link">Leadership Due Diligence</a>
                 <a [routerLink]="['/corporate']" class="dd-link">Vendor Due Diligence</a>
               </div>

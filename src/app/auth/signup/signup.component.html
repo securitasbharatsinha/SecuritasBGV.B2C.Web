@@ -63,9 +63,9 @@
           </div>
           <h1 class="card-title">Get Started</h1>
           <p class="card-subtitle">Create your secure profile to begin background verification and unlock verified opportunities.</p>
-             <form class="registration-form">  
+             <div class="registration-form">  
        <div class="container">
-  <form [formGroup]="signUpForm">
+  <form [formGroup]="signUpForm" (ngSubmit)="signup()">
   <div class="name-row">
               <div class="form-group">
                 <label for="Title" class="form-label label-select">
@@ -107,22 +107,42 @@
               <div class="form-group">
                 <label for="MobileNumber" class="form-label">Mobile Number<span class="required-star">*</span></label>
                 <div class="input-wrapper">
-                  <input type="tel" id="Phone" class="form-input" placeholder="IN (+91)" formControlName="Phone">
+                 <input type="tel" id="Phone" class="form-input" placeholder="IN (+91)"
+                      maxlength="10" formControlName="Phone">
+                  </div>
+                  <small class="text-danger"
+                    *ngIf="signUpForm.get('Phone')?.touched && signUpForm.get('Phone')?.hasError('required')">
+                    Mobile number is required.
+                  </small>
+                                    <small class="text-danger"
+                    *ngIf="signUpForm.get('Phone')?.touched && signUpForm.get('Phone')?.hasError('pattern')">
+                    Enter a valid 10-digit mobile number.
+                  </small>
                 </div>
-              </div>
               <div class="form-group">
                 <label for="Email" class="form-label">Email Address<span class="required-star">*</span></label>
                 <div class="input-wrapper">
-                  <input type="email" id="Email" class="form-input" formControlName="Email">
+                 <input type="email" id="Email" class="form-input" formControlName="Email">
+                  </div>
+                  <small class="text-danger"
+                    *ngIf="signUpForm.get('Email')?.touched && signUpForm.get('Email')?.hasError('required')">
+                    Email address is required.
+                  </small>
+                  <small class="text-danger"
+                    *ngIf="signUpForm.get('Email')?.touched && signUpForm.get('Email')?.hasError('pattern')">
+                    Enter a valid email address.
+                  </small>
                 </div>
-              </div>
             </div>
             <!-- Create Password -->
             <div class="form-group col-md-7">
               <label for="Password" class="form-label">Create Password<span class="required-star">*</span></label>
               <div class="input-wrapper ">
-                <input type="password" id="Password" class="form-input has-icon" placeholder="••••••" formControlName="Password">
-                <button type="button" class="input-icon-btn" id="togglePasswordBtn" aria-label="Toggle Password Visibility">
+                <!-- <input type="password" id="Password" class="form-input has-icon" placeholder="••••••" formControlName="Password">
+                <button type="button" class="input-icon-btn" id="togglePasswordBtn" aria-label="Toggle Password Visibility"> -->
+                                    <input [type]="showPassword ? 'text' : 'password'" id="Password" class="form-input has-icon" placeholder="••••••" formControlName="Password">
+                  <button type="button" class="input-icon-btn" id="togglePasswordBtn"
+                    (click)="showPassword = !showPassword" aria-label="Toggle Password Visibility">
                   <!-- Sleeping Eye SVG -->
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="eyeIcon">
                     <path d="M3 10C3 10 7 15 12 15C17 15 21 10 21 10"></path>
@@ -133,8 +153,16 @@
                     <path d="M19.5 11.5L21 13.5"></path>
                   </svg>
                 </button>
-              </div>
             </div>
+                <small class="text-danger"
+                  *ngIf="signUpForm.get('Password')?.touched && signUpForm.get('Password')?.hasError('required')">
+                  Password is required.
+                </small>
+                <small class="text-danger"
+                  *ngIf="signUpForm.get('Password')?.touched && signUpForm.get('Password')?.hasError('pattern')">
+                  Minimum 8 characters with an uppercase letter, a lowercase letter, a number and a special character.
+                </small>
+              </div>
             <!-- Checkbox Agreement -->
             <div class="checkbox-group">
               <input type="checkbox" id="agreement" class="checkbox-input" formControlName="IsAgreement">
@@ -148,14 +176,16 @@
               <div class="captcha-badge" id="captchaBadge" style="cursor: pointer;" title="Click to refresh captcha">
               </div>
               <div class="col-md-7">
-                <captcha #captcha *ngIf="selectedTab === 'Individual'"></captcha>
+                <!-- <captcha #captcha *ngIf="selectedTab === 'Individual'"></captcha> -->
+                 <captcha #captcha></captcha>
               </div>
             </div>
 
             <ng-container *ngIf="verifyTemplate === 'Authentication'">
               <div class="col-md-4">
                 <label class="form-label"> Enter OTP:</label>
-                <input min="0" type="number" minlength="6" maxlength="6" class="form-input" id="code" placeholder="Code" #code />
+                <!-- <input min="0" type="number" minlength="6" maxlength="6" class="form-input" id="code" placeholder="Code" #code /> -->
+                 <input type="text" inputmode="numeric" maxlength="6" class="form-input" id="code" placeholder="Code" #code />
               </div>
               <div class="mt-2 col-md-7">
                 <button type="submit" class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100" (click)="verifyActivationCode(code.value)">
@@ -165,13 +195,20 @@
             </ng-container>
             <!-- Submit Button -->
             <div class="mt-2 col-md-7" *ngIf="verifyTemplate !== 'Authentication'">
-              <button type="submit" class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100" (click)="signup()">
-                Create Secure Account
+              <button type="submit" [disabled]="isSigningUp"
+                class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100">
+                <span *ngIf="!isSigningUp">Create Secure Account</span>
+                <span *ngIf="isSigningUp">
+                  <span class="spinner-border spinner-border-sm me-2"></span>Creating account...
+                </span>
               </button>
+              <!-- <button type="submit" class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100" (click)="signup()">
+                Create Secure Account
+              </button> -->
             </div>
   </form>
 </div>
-          </form>
+</div>
       </div>
     </section>
   </main>

@@ -1,3 +1,4 @@
+
 <div class="bg-white p-0 sg_new_srvs_div_s">
   <div class="py-4 bg_blu hero-header sg_page_title position-relative"
     style="background-image: url(assets/image/bnr.png)">
@@ -37,7 +38,7 @@
           </div>
           <div class="col-lg-6 position-relative z_index999">
             <div class="sg_new_tlt position-relative">
-              <h2><span>Self</span> Verification</h2>
+              <h2><span>Verify</span> Yourself</h2>
             </div>
             <div>
               <p class="mb-0 tc_m_blu">
@@ -55,13 +56,13 @@
           <div class="row">
             <div #instant_verification class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
               <div class="skelton d-flex justify-content-center align-items-center" style="height: 350px"
-                *ngIf="!getServiceId('self_verification')">
+                *ngIf="!getServiceId('verify_yourself')">
                 <div class="spinner-border tc_prp" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
-              <shared-checks-table *ngIf="getServiceId('self_verification')"
-                [serviceTypeId]="getServiceId('self_verification')"></shared-checks-table>
+              <shared-checks-table *ngIf="getServiceId('verify_yourself')"
+                [serviceTypeId]="getServiceId('verify_yourself')"></shared-checks-table>
             </div>
           </div>
           <div class="sg_circle_rt"></div>
@@ -95,7 +96,7 @@
           </div>
           <div class="col-lg-6 text-lg-end position-relative z_index999">
             <div class="sg_new_tlt position-relative">
-              <h2><span>Domestic</span> Help Verification</h2>
+              <h2><span>{{ helperTitle.a }}</span> {{ helperTitle.b }}</h2>
             </div>
             <div>
               <p class="mb-0 tc_m_blu">
@@ -113,13 +114,13 @@
           <div class="row">
             <div class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
               <div class="skelton d-flex justify-content-center align-items-center" style="height: 350px"
-                *ngIf="!getServiceId('support_verification')">
+                *ngIf="!getServiceId('verify_your_house_help')">
                 <div class="spinner-border tc_prp" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
-              <shared-checks-table *ngIf="getServiceId('support_verification')"
-                [serviceTypeId]="getServiceId('support_verification')"></shared-checks-table>
+              <shared-checks-table *ngIf="getServiceId('verify_your_house_help')"
+                [serviceTypeId]="getServiceId('verify_your_house_help')"></shared-checks-table>
             </div>
           </div>
           <div class="sg_circle_rt crcl_xxl_sh"></div>
@@ -153,7 +154,7 @@
           </div>
           <div class="col-lg-6 position-relative z_index999">
             <div class="sg_new_tlt position-relative">
-              <h2><span>Tenant</span> Verification</h2>
+              <h2><span>Verify</span> Your Tenant</h2>
             </div>
             <div>
               <p class="mb-0 tc_m_blu">
@@ -168,13 +169,13 @@
           <div class="row">
             <div class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
               <div class="skelton d-flex justify-content-center align-items-center" style="height: 350px"
-                *ngIf="!getServiceId('tenant_verification')">
+                *ngIf="!getServiceId('verify_your_tenant')">
                 <div class="spinner-border tc_prp" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
-              <shared-checks-table *ngIf="getServiceId('tenant_verification')"
-                [serviceTypeId]="getServiceId('tenant_verification')"></shared-checks-table>
+              <shared-checks-table *ngIf="getServiceId('verify_your_tenant')"
+                [serviceTypeId]="getServiceId('verify_your_tenant')"></shared-checks-table>
             </div>
           </div>
           <div class="sg_circle_rt"></div>
@@ -198,7 +199,7 @@
     </div>
 
     <!-- Matrimonial verification -->
-    <section class="" *ngIf="!isSpecial">
+    <section class="" *ngIf="false">
       <div class="container" id="instantVerify">
         <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
           <div class="col-lg-6 sg_new_srv_img order-lg-2">
@@ -245,6 +246,42 @@
           <div class="sg_circle_lts"></div>
           <div class="sg_circle_lb"></div>
           <div class="sg_circle_lbs"></div>
+        </div>
+      </div>
+    </section>
+    <section id="kyc_check" *ngIf="!isSpecial">
+      <div class="container">
+        <div class="row g-3 g-lg-5 align-items-center mb-3">
+          <div class="col-lg-6 order-lg-2 sg_new_srv_img">
+            <img src="assets/image/ins.png" class="wow fadeIn" data-wow-delay="0.3s" />
+          </div>
+          <div class="col-lg-6 position-relative z_index999">
+            <div class="sg_new_tlt position-relative">
+              <h2><span>KYC</span> Check</h2>
+            </div>
+            <div>
+              <p class="mb-0 tc_m_blu">
+                Quick identity and address verification backed by trusted data sources.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="position-relative">
+        <div class="container position-relative z_index999">
+          <div class="row">
+            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.4s">
+              <div class="skelton d-flex justify-content-center align-items-center" style="height: 350px"
+                *ngIf="!getServiceId('kyc_check')">
+                <div class="spinner-border tc_prp" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <shared-checks-table *ngIf="getServiceId('kyc_check')"
+                [serviceTypeId]="getServiceId('kyc_check')"></shared-checks-table>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -24,6 +24,7 @@ export class PaymentService {
   _WalletDetails = new BehaviorSubject<any>(null);
   payWithoutWallet = new BehaviorSubject<any>(null);
   payWithoutWalletInstant = new BehaviorSubject<any>(null);
+  orderInProgress = false;
   isLive: boolean = false;
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
@@ -76,11 +77,19 @@ export class PaymentService {
       .post(url, payload, {
         headers: this._helper.apiHeader,
       })
+      // .pipe(
+      //   tap((res: any) => {
+      //     if (res && res.is_success) {
+      //       this._toaster.showSuccessToast("Checks purchased successfully !!");
+      //     } else {
+      //     }
+      //   })
+      // );
       .pipe(
         tap((res: any) => {
           if (res && res.is_success) {
-            this._toaster.showSuccessToast("Checks purchased successfully !!");
-          } else {
+            this._toaster.showSuccessToast('Checks purchased successfully !!');
+            // redirect ab shared-cart.component.ts me hai (order-wise)
           }
         })
       );
@@ -145,12 +154,20 @@ export class PaymentService {
       .post(url, payload, {
         headers: this._helper.apiHeader,
       })
+      // .pipe(
+      //   tap((res: any) => {
+      //     if (res && res.is_success) {
+      //       // this.reloadWallet.next({ reload: true });
+      //       this._toaster.showSuccessToast('Checks purchased successfully !!');
+      //       window.location.href = getPortalPath('');
+      //     }
+      //   })
+      // );
       .pipe(
         tap((res: any) => {
           if (res && res.is_success) {
-            // this.reloadWallet.next({ reload: true });
             this._toaster.showSuccessToast('Checks purchased successfully !!');
-            window.location.href = getPortalPath('');
+            // redirect shared-cart.component.ts me hai (order-wise, key ke saath)
           }
         })
       );

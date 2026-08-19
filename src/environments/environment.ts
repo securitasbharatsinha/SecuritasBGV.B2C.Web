@@ -19,16 +19,18 @@ export const walsonsApiEndPoint = 'https://api.weverifyglobal.com/';
 // export const walsonsApiEndPoint = 'https://apiwalsonsone.weverifyglobal.com/';
 
 // live URL
-export const apiEndPoint = 'https://api.walsonsverify.com';
+//export const apiEndPoint = 'https://api.walsonsverify.com';
 // local backend URL
-// export const apiEndPoint = 'https://localhost:44364';
+ export const apiEndPoint = 'https://localhost:44364';
 
 export const hostEndPoint = 'https://b2cbackend.keycorp.in';
 // export const COOKIE_DOMAIN = 'keycorp.in';
-export const COOKIE_DOMAIN = 'walsonsverify.com';
+export const COOKIE_DOMAIN = 'localhost';
+export const COOKIE_ATTRS = 'path=/;';
 // export const portalPath = 'https://securitasb2cwebadmin.keycorp.in';
 // export const portalPath = 'https://www.walsonsverify.com:5002';
-export const portalPath = 'https://admin.walsonsverify.com/#';
+// export const portalPath = 'https://admin.walsonsverify.com/#';
+export const portalPath = 'http://localhost:5000/#';
 export const ApiBase = 'https://api.weverifyglobal.com';
 export const api = (path: string) => {
   return `${ApiBase}/${path}`;

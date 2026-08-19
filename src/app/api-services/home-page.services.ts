@@ -29,6 +29,12 @@ export class HomePageService {
     const url = `${apiEndPoint}/packages-list-by-serviceid/${id}`;
     return this._HttpClient.get<packages | null>(url);
   }
+  getAllActiveChecks() {
+    const url = `${apiEndPoint}/Get-Package-Service`;
+    return this._HttpClient.get<any>(url, {
+      headers: this._helper.apiHeader,
+    });
+  }
   getAllTestimonialsList() {
     const url = `${apiEndPoint}/testimonial-list`;
     return this._HttpClient.get<testimonials | null>(url);
