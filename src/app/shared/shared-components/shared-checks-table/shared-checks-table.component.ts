@@ -27,6 +27,9 @@ import { PaymentService } from 'src/app/api-services/payment.services';
 })
 export class SharedChecksTableComponent implements OnInit, OnDestroy {
   @Input() serviceTypeId: any;
+  @Input() forceCartMode: boolean = false;
+    @Input() layout: 'card' | 'table' = 'card';
+ 
   // @Output() servicesPackagesdata = new EventEmitter<any[]>();
   servicesPackagesdata: any[];
   showOtherChecks: boolean = false;
@@ -130,7 +133,27 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
         }
       }
     );
+    // Cart clear hote hi saare +1 aur "already in cart" thappe reset
+    this._cart.cartCleared.pipe(takeWhile(() => this.islive)).subscribe(() => {
+      (this.servicesPackagesdata || []).forEach((item: any) => {
+        (item.newPackageServices || []).forEach((el: any) => {
+          el.qty = 0;
+          el.addedToCart = false;
+          el.new_price = 0;
+        });
+      });
+    });
   }
+  //   this._payment.payWithoutWalletInstant.subscribe(
+  //     (res: any) => {
+  //       // if (res && res.pay) {
+  //               if (res && res.pay && this.walletpayReqInstant) {
+  //         this._payment.payWithoutWalletInstant.next({ pay: false });
+  //         this.payViaWalletInstant();
+  //       }
+  //     }
+  //   );
+  // }
 
   loadData() {
     if (this.serviceTypeId) {
@@ -258,31 +281,49 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
         }
       );
   }
-  buyNowAla(item: any) {
+    buyNowAla(item: any) {
     if (item && item.newPackageServices.some((el: any) => el.qty > 0)) {
-      item.isSelected = true;
-      if (item.newPackageServices.some((el: any) => el.qty > 0)) {
-        let newItem = {
-          ...item,
-          newPackageServices: item.newPackageServices
-            .filter((el: any) => el.qty > 0)
-            .map((d: any) => {
-              return {
-                ...d,
-                package_service_id: Array(d.qty).fill(d.package_service_id),
-              };
-            }),
-        };
-
-        this.addItemToCart(newItem);
-      } else {
-        this.addItemToCart({
-          ...item,
-          newPackageServices: item.newPackageServices.filter(
-            (el: any) => el.qty > 0
-          ),
-        });
+      const freshOnes = item.newPackageServices.filter((el: any) => el.qty > 0 && !el.addedToCart);
+      if (!freshOnes.length) {
+        this._toaster.showSuccessToast('Selected checks are already in your cart.');
+        return;
       }
+      item.isSelected = true;
+      let newItem = {
+        ...item,
+        newPackageServices: freshOnes.map((d: any) => {
+          return {
+            ...d,
+            package_service_id: Array(d.qty).fill(d.package_service_id),
+          };
+        }),
+      };
+      this.addItemToCart(newItem, false, null, item);
+  // buyNowAla(item: any) {
+  //   if (item && item.newPackageServices.some((el: any) => el.qty > 0)) {
+  //     item.isSelected = true;
+  //     if (item.newPackageServices.some((el: any) => el.qty > 0)) {
+  //       let newItem = {
+  //         ...item,
+  //         newPackageServices: item.newPackageServices
+  //           .filter((el: any) => el.qty > 0)
+  //           .map((d: any) => {
+  //             return {
+  //               ...d,
+  //               package_service_id: Array(d.qty).fill(d.package_service_id),
+  //             };
+  //           }),
+  //       };
+
+  //       this.addItemToCart(newItem);
+  //     } else {
+  //       this.addItemToCart({
+  //         ...item,
+  //         newPackageServices: item.newPackageServices.filter(
+  //           (el: any) => el.qty > 0
+  //         ),
+  //       });
+  //     }
 
       // this._payment.createOrder(
       //   this.totalAmt,
@@ -301,7 +342,8 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
       );
     }
   }
-  addItemToCart(item: any, flag: boolean = false, pkgServiceId: any = null) {
+    addItemToCart(item: any, flag: boolean = false, pkgServiceId: any = null, sourceItem: any = null) {
+  // addItemToCart(item: any, flag: boolean = false, pkgServiceId: any = null) {
     if (item) {
       item.isSelected = true;
       if (this._helper.isLoggedIn) {
@@ -320,7 +362,8 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
                   .join(','),
             PackageServiceNameforMailUse: item?.newPackageServices.map((d: any) => d.service_name).join(','),
           };
-          this.callApiAddTocart(payload);
+          // this.callApiAddTocart(payload);
+          this.callApiAddTocart(payload, sourceItem)
         }
         if (
           item &&
@@ -343,14 +386,26 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
       }
     }
   }
-  callApiAddTocart(payload: any) {
+  callApiAddTocart(payload: any, sourceItem: any = null) {
     this._cart
       .addToCart(payload)
       .pipe(takeWhile(() => this.islive))
       .subscribe((res) => {
 
         if (res && res.IsSuccess) {
-          this.loadData();
+          if (sourceItem?.newPackageServices) {
+            sourceItem.newPackageServices.forEach((el: any) => {
+              if (el.qty > 0) el.addedToCart = true;
+            });
+          }
+  // callApiAddTocart(payload: any) {
+  //   this._cart
+  //     .addToCart(payload)
+  //     .pipe(takeWhile(() => this.islive))
+  //     .subscribe((res) => {
+
+  //       if (res && res.IsSuccess) {
+  //         this.loadData();
 
           this.isApiSuccess = true;
           this._cart.isAddedInCart.next(true);
@@ -567,7 +622,8 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
       currency: orderObj.Currency,
       name: orderObj.Name,
       description: orderObj.description,
-      image: "https://securitasb2cweb.keycorp.in/assets/img/logo_b.png",
+      // image: "https://securitasb2cweb.keycorp.in/assets/img/logo_b.png",
+      image: "https://walsonsverify.com/assets/img/logo_b.png",
       order_id: orderObj.OrderId,
       handler: function (response: any) {
         if (response) {
@@ -584,8 +640,11 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
         address: orderObj.address,
       },
       theme: {
-        color: "#3399cc",
+        color: "#031F30",
       },
+      // theme: {
+      //   color: "#3399cc",
+      // },
     };
     var rzp1 = new this._payment.nativeWindow.Razorpay(options);
     rzp1.open();
@@ -635,7 +694,8 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
         if (saved) this.walletpayReqInstant = JSON.parse(saved);
       } catch (e) {}
     }
-    if (!this.walletpayReqInstant || !this.walletpayReqInstant.cartReq) {
+        if (!this.walletpayReqInstant || !this.walletpayReqInstant.cartReq) {
+      this._payment.orderInProgress = false;   // ADD — warna retry hamesha block
       this._toaster.showErrorToast('Order details not found. Please try again.');
       return;
     }
@@ -663,13 +723,16 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
         );
         setTimeout(() => {
           window.location.href = `${portalPath}/my-orders?key=${encodeURIComponent(res.OrderId)}&auto=1`;
-        }, 1500);
+        }, 400);
 
-      } else {
+     } else {
         this._payment.orderInProgress = false;   // ADD
         this._toaster.showErrorToast(res.message);
       }
-    }); 
+    }, (err: any) => {
+      this._payment.orderInProgress = false;     // API error pe bhi flag reset
+      this._toaster.showErrorToast('Something went wrong. Please try again.');
+    });
   }
   submitData(payload: any){
     let personalPayload = {

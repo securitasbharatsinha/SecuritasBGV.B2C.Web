@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { apiEndPoint } from 'src/environments/environment';
 
 import { HelperService } from './helper.services';
@@ -10,6 +10,7 @@ import { HelperService } from './helper.services';
 })
 export class CartService {
   isAddedInCart = new BehaviorSubject<boolean>(false);
+  cartCleared = new Subject<boolean>();
   private _cartDetails: any;
   constructor(
     private _HttpClient: HttpClient,

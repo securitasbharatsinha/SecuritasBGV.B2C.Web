@@ -69,6 +69,7 @@ export class SignupComponent implements OnInit {
   selectedTab: string = 'Individual';
   verifyTemplate: string = '';
   showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
   todayDate: any;
   dialCodes: any;
   countryCode: string = 'IN';
@@ -109,6 +110,20 @@ export class SignupComponent implements OnInit {
         null,
         [Validators.required, Validators.pattern(this.passwordPattern)],
       ],
+      ConfirmPassword: [
+        null,
+        [
+          Validators.required,
+          (c: any) =>
+            c?.parent && c.value && c.value !== c.parent.get('Password')?.value
+              ? { mismatch: true }
+              : null,
+        ],
+      ],
+      // Password: [
+      //   null,
+      //   [Validators.required, Validators.pattern(this.passwordPattern)],
+      // ],
       // Email: [
       //   '',
       //   [
@@ -184,11 +199,20 @@ export class SignupComponent implements OnInit {
       VarificationFor: [null],
       IsAddressSame: [false],
       IsAgreement: [false],
+      });
+    // Password badle to ConfirmPassword ki match-validation dobara chale
+    this.signUpForm.get('Password')?.valueChanges.subscribe(() => {
+      this.signUpForm.get('ConfirmPassword')?.updateValueAndValidity();
     });
     this.fetch((data: any) => {
       this.dialCodes = data;
     });
   }
+  //   });
+  //   this.fetch((data: any) => {
+  //     this.dialCodes = data;
+  //   });
+  // }
   fetch(cb: any) {
     const req = new XMLHttpRequest();
     req.open('GET', `assets/data/CountryCodes.json`);
@@ -367,6 +391,7 @@ export class SignupComponent implements OnInit {
 
 
     signup() {
+      if (this.verifyTemplate === 'Authentication') return;
     const captcha = this.captcha ? this.captcha.CaptchaMatched : false;
 
     if (!this.signUpForm.valid || !captcha || !this.signUpForm.controls.IsAgreement.value) {

@@ -214,16 +214,22 @@
               <h3 class="form-title">Looking for more details?</h3>
               <p class="form-sub">Reach out to us</p>
 
-              <form #ctaForm="ngForm" novalidate>
+                          <form #ctaForm="ngForm" novalidate (ngSubmit)="submitCtaForm(ctaForm)">
                 <!-- Row 1 -->
                 <div class="row g-0 form-row">
                   <div class="col-12 col-sm-6 form-field pe-sm-3">
                     <label>First Name <span class="req">*</span></label>
-                    <input type="text" name="firstName" ngModel placeholder="Enter Your Name" required />
+                    <input type="text" name="firstName" ngModel #fn="ngModel" placeholder="Enter Your Name"
+                      required maxlength="30" pattern="^[A-Za-z ]+$" (input)="onlyLetters($event)" />
+                    <small class="text-danger" *ngIf="(fn.touched || ctaForm.submitted) && fn.errors?.required">First name is required.</small>
+                    <small class="text-danger" *ngIf="(fn.touched || ctaForm.submitted) && fn.errors?.pattern">Only letters allowed.</small>
                   </div>
                   <div class="col-12 col-sm-6 form-field ps-sm-3">
                     <label>Last Name <span class="req">*</span></label>
-                    <input type="text" name="lastName" ngModel placeholder="Enter Your Last Name" required />
+                    <input type="text" name="lastName" ngModel #ln="ngModel" placeholder="Enter Your Last Name"
+                      required maxlength="30" pattern="^[A-Za-z ]+$" (input)="onlyLetters($event)" />
+                    <small class="text-danger" *ngIf="(ln.touched || ctaForm.submitted) && ln.errors?.required">Last name is required.</small>
+                    <small class="text-danger" *ngIf="(ln.touched || ctaForm.submitted) && ln.errors?.pattern">Only letters allowed.</small>
                   </div>
                 </div>
 
@@ -231,28 +237,37 @@
                 <div class="row g-0 form-row">
                   <div class="col-12 col-sm-6 form-field pe-sm-3">
                     <label>Email <span class="req">*</span></label>
-                    <input type="email" name="email" ngModel placeholder="Enter email address" required />
+                    <input type="email" name="email" ngModel #em="ngModel" placeholder="Enter email address"
+                      required maxlength="60" pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" />
+                    <small class="text-danger" *ngIf="(em.touched || ctaForm.submitted) && em.errors?.required">Email is required.</small>
+                    <small class="text-danger" *ngIf="(em.touched || ctaForm.submitted) && em.errors?.pattern">Enter a valid email address.</small>
                   </div>
                   <div class="col-12 col-sm-6 form-field ps-sm-3">
                     <label>Phone Number <span class="req">*</span></label>
-                    <input type="tel" name="phone" ngModel placeholder="Mobile Number" required />
+                    <input type="tel" name="phone" ngModel #ph="ngModel" placeholder="Mobile Number" inputmode="numeric"
+                      required maxlength="10" pattern="^[0-9]{10}$" (input)="onlyDigits($event)" />
+                    <small class="text-danger" *ngIf="(ph.touched || ctaForm.submitted) && ph.errors?.required">Phone number is required.</small>
+                    <small class="text-danger" *ngIf="(ph.touched || ctaForm.submitted) && ph.errors?.pattern">Enter a valid 10-digit number.</small>
                   </div>
                 </div>
 
                 <!-- Row 3 -->
                 <div class="form-row form-field">
                   <label>Message <span class="req">*</span></label>
-                  <textarea name="message" ngModel placeholder="Tell us how we can help you...." rows="3"
-                    required></textarea>
+                  <textarea name="message" ngModel #msg="ngModel" placeholder="Tell us how we can help you...." rows="3"
+                    required minlength="10" maxlength="500"></textarea>
+                  <small class="text-danger" *ngIf="(msg.touched || ctaForm.submitted) && msg.errors?.required">Message is required.</small>
+                  <small class="text-danger" *ngIf="(msg.touched || ctaForm.submitted) && msg.errors?.minlength">Message should be at least 10 characters.</small>
+                  <small class="text-muted d-block" *ngIf="msg.value">{{ msg.value.length }}/500</small>
                 </div>
 
                 <!-- Submit -->
-                <button type="submit" class="submit-btn">Submit</button>
+                <button type="submit" class="submit-btn" [disabled]="isSendingEnquiry">{{ isSendingEnquiry ? 'Sending...' : 'Submit' }}</button>
               </form>
 
               <div class="form-footer">
                 <span>If you're already registered, please</span>
-                <button class="btn btn-outline-primary rounded-piLL" type="button">Login</button>
+                                                <button class="btn btn-outline-primary rounded-piLL" type="button" (click)="_router.navigate(['/auth/login'])">Login</button>
               </div>
             </div>
           </div>
@@ -261,16 +276,16 @@
           <div class="col-12 col-lg-5">
             <div class="stats-grid">
 
+                            <div class="stat-item">
+                <div class="stat-big">NSR</div>
+                <div class="stat-label text-grad">Platinum Verifier</div>
+                <div class="stat-desc">Highest tier awarded by<br>National Skill Registry</div>
+              </div>
+
               <div class="stat-item">
                 <div class="stat-big">ISO</div>
                 <div class="stat-label text-grad">27001 Certified</div>
                 <div class="stat-desc">Your data protected by<br>international data standards</div>
-              </div>
-
-              <div class="stat-item">
-                <div class="stat-big">NSR</div>
-                <div class="stat-label text-grad">Platinum Verifier</div>
-                <div class="stat-desc">Highest tier awarded by<br>National Skill Registry</div>
               </div>
 
               <div class="stat-item">

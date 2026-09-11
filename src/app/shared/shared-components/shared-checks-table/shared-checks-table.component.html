@@ -4,189 +4,153 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center align-items-center"
-     style="position:fixed;inset:0;background:#ffffff99;z-index:99999"
-     *ngIf="isLoading">
-  <div class="spinner-border tc_prp" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div>
-
 <ng-container *ngIf="!isloading">
-  <ng-container *ngFor="let item of servicesPackagesdata; let i = index">
-    <div class="sg_new_shdw mt-2" ngClass="{{ item.service_id != 6 ? 'sg_indivi_tbl' : 'sg_corp' }}">
-      <div class="sg_pkg_row sg_pkg_alacate">
-        <div class="d_tlt_prc_qty sg_tlt_row align-items-center" [ngClass]="{'sg_corp': item.service_id == 6  }" [ngStyle]="{'grid-template-columns' : isSpecial ? '30% 23% 23% 12% 12%' :  '30% 23% 23% 24%'}">
-          <h5 class="tc_blu my-0">{{ item?.package_name }}</h5>
-          <h5 *ngIf="isSpecial" class="tc_blu my-0">Check Category Type</h5>
-          <span class="bg_blu tc_w">TAT </span>
-          <!-- <span class="bg_prp tc_w">Price</span> -->
-          <span class="tc_w" style="background-color:#7c3aed">Price</span>
-          <span class="tc_blu" [ngClass]="{'sg_corp': item.service_id == 6  }">{{ item.service_id === 6 ? "" : "Qty." }}
-          </span>
-        </div>
 
-        <div class="sg_fix_pkg">
-          <div class="sg_pkg_pnt">
-            <ng-container *ngFor="let el of item.newPackageServices; let in = index">
-              <div class="d_tlt_prc_qty" [ngStyle]="{'grid-template-columns' : isSpecial ? '30% 23% 23% 12% 12%' : '30% 23% 23% 24%'}">
-                <p class="tc_gry">
-                  <b class="sg_number">{{ in + 1 }}</b> {{ el.service_name }}
-                </p>
-                <div *ngIf="isSpecial" class="sg_qty_bdr">{{el.CheckCategoryType}}</div>
+  <div class="d-flex justify-content-center align-items-center"
+       style="position:fixed;inset:0;background:#ffffff99;z-index:99999"
+       *ngIf="isLoading">
+    <div class="spinner-border tc_prp" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 
-                <span class="sg_instant tc_gry">{{ el.TAT
-                  }}<b *ngIf="el.TAT === 'Instant'" class="sg_tooltip bi bi-info-circle-fill">
-                    <span>(With PDF report to be made available within 1 hour)
-                    </span></b></span>
-                <span class="tc_prp">
-                  <!-- <span ngClass="{{ !_helper.isLoggedIn && 'price-blur' }}">
-                    {{ el.service_price | currency : "INR" }}
-                  </span> -->
-                  <span *ngIf="item.service_id !== 9">
-                    {{
-                    (serviceTypeId?.roleid === 4
-                    ? el.service_corporate_price ?? 0
-                    : el.service_price
-                    ) | currency : "INR"
-                    }}
-                  </span>
-                  <span *ngIf="item.service_id === 9">{{el?.service_price  | currency : "INR"}}</span>
-                  <!-- <span *ngIf="
-                      !_helper.isLoggedIn ||
-                      userRoleId !== serviceTypeId?.roleid
-                    " class="price-blur">
-                    {{ 00 | currency : "INR" }}
-                  </span>
-                  <b *ngIf="!_helper.isLoggedIn" class="sg_tooltip bi bi-info-circle-fill d-none">
-                    <span>View price after login </span></b> -->
-                </span>
-                <div class="sg_qty_bdr" *ngIf="item.service_id !== 6">
-                  <div class="d-md-flex align-items-center justify-content-center sg_qnt_prs py_5">
-                    <div class="sg_input-group w-auto justify-content-end align-items-center">
-                      <input type="button" value="-" data-field="quantity"
-                        class="button-minus border rounded-circle sg_icon-shape sg_icon-sm"
-                        (click)="decrementValue($event, qty.value, el, in, i)" />
-                      <input [disabled]="true" #qty type="number" step="1" min="0" [value]="el.qty" max="10"
-                        name="quantity" class="quantity-field border-0 text-center tc_l_gry" disabled="" />
-                      <!-- serviceTypeId?.roleid === userRoleId -->
-                      <input [disabled]="doDisable(el.Ismultiple, qty.value, el.MaxCheckNo)" type="button" value="+"
-                        data-field="quantity" class="button-plus border rounded-circle sg_icon-shape sg_icon-sm"
-                        (click)="
-                          (serviceTypeId?.roleid === userRoleId || (item.service_id === 9 && _helper.isLoggedIn))
-                            ? incrementValue(
-                                $event,
-                                qty.value,
-                                el,
-                                in,
-                                i,
-                                el.Ismultiple
-                              )
-                            : askForSignup()
-                        " />
+  <!-- Card layout (original) -->
+  <ng-container *ngIf="layout === 'card'">
+    <ng-container *ngFor="let item of servicesPackagesdata; let i = index">
+      <div class="row">
+        <ng-container *ngFor="let el of item.newPackageServices; let in = index" class="service-card">
+          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-12 mb-4">
+            <div class="service-card">
+              <div class="service-card-top">
+                <div class="service-meta">
+                  <div class="tat-badge">
+                    <div>
+                      <i class="bi bi-clock"></i>
+                      <span>TAT-</span>
                     </div>
+                    <strong>
+                      {{ item.service_id === 9 ? (el.TAT_InstantVerify || el.TAT) : el.TAT }}
+                    </strong>
+                                        <b *ngIf="(item.service_id === 9 ? (el.TAT_InstantVerify || el.TAT) : el.TAT) === 'Instant'" tabindex="0" class="sg_tooltip bi bi-info-circle-fill ms-1">
+                      <span>Instant check — verification completed within 1 hour, PDF report included.</span>
+                    </b>
+                  </div>
+                  <div class="price-badge">
+                    <span *ngIf="item.service_id !== 9">
+                      {{ (serviceTypeId?.roleid === 4 ? (el.service_corporate_price ?? 0) : el.service_price) | currency:'INR' }}
+                    </span>
+                    <span *ngIf="item.service_id === 9">{{ el?.service_price | currency:'INR' }}</span>
                   </div>
                 </div>
               </div>
-            </ng-container>
-            <div class="d_tlt_prc_qty" style="cursor:pointer"
-              (click)="toggleOtherChecks(item)"
-              [ngStyle]="{'grid-template-columns' : isSpecial ? '30% 23% 23% 12% 12%' : '30% 23% 23% 24%'}">
-              <p class="tc_prp fw-bold">
-                <b class="sg_number">+</b>
-                {{ showOtherChecks ? 'Hide Other Checks' : 'Other Check' }}
-                <span *ngIf="isLoadingOther" class="spinner-border spinner-border-sm ms-2"></span>
-              </p>
-              <span class="sg_instant tc_gry">as applicable</span>
-              <span class="tc_prp"></span>
-              <span></span>
+              <div class="service-title-row">
+                <h5 class="service-title">{{ el.service_name }}</h5>
+                <img src="../../../assets/img/Shield-Icon.png" alt="" class="shiled-icons">
+              </div>
+              <div *ngIf="isSpecial" class="category-badge">{{ el.CheckCategoryType }}</div>
+              <div class="quantity-wrapper" *ngIf="item.service_id !== 6">
+                <button type="button" class="quantity-btn" (click)="decrementValue($event, qty.value, el, in, i)">-</button>
+                <input #qty type="number" min="0" max="10" step="1" [value]="el.qty" class="quantity-input" disabled />
+                <button type="button" class="quantity-btn" [disabled]="doDisable(el.Ismultiple, qty.value, el.MaxCheckNo)" (click)="(serviceTypeId?.roleid === userRoleId || (item.service_id === 9 && _helper.isLoggedIn)) ? incrementValue($event, qty.value, el, in, i, el.Ismultiple) : askForSignup()">+</button>
+              </div>
             </div>
           </div>
-          <div class="py-3 px-1" *ngIf="item.service_id === 6">
-            <button (click)="goToPortal()" type="button "
-              class="tc_w bg_blu bg_lred_h tc_h_w d-flex align-items-center justify-content-center sg_new_btn mx-auto">
-              <img src="assets/image/crt.png" alt="" class="me-2" width="16px" />
-              <span>Create Your Candidate</span>
-            </button>
-          </div>
+        </ng-container>
+
+        <div class="d_tlt_prc_qty" style="cursor:pointer" (click)="toggleOtherChecks(item)" [ngStyle]="{'grid-template-columns' : isSpecial ? '30% 23% 23% 12% 12%' : (item.service_id === 6 ? '40% 30% 30%' : '30% 23% 23% 24%')}">
+          <p class="tc_prp fw-bold">
+            <b class="sg_number">+</b>
+            {{ showOtherChecks ? 'Hide Other Checks' : 'Other Check' }}
+            <span *ngIf="isLoadingOther" class="spinner-border spinner-border-sm ms-2"></span>
+          </p>
+          <span class="sg_instant tc_gry">As Applicable</span>
+          <span class="tc_prp">N/A</span>
+          <span *ngIf="item.service_id !== 6"></span>
         </div>
       </div>
-    </div>
-    <div class="col-12 mt-4 pe-xl-5" *ngIf="item.service_id !== 6">
-      <div
-        class="d-lg-flex align-items-center gap-3 justify-content-center justify-content-lg-end text-center text-lg-end">
-        <!-- <small class="tc_red fs_18_srv"
-          >*Select required checks and "Add to Cart"</small
-        > -->
-        <ng-container *ngIf="false">
-          <form [formGroup]="actionForm" novalidate="" id="contact" class="sg_pkj_frm p-0 m-0 bg-transparent">
-            <div class="row">
-              <div class="col-lg-3">
-                <fieldset>
-                  <select class="form-control dialCode" id="dialCode" formControlName="Title">
-                    <option value="Mr">Mr</option>
-                    <option value="Ms">Ms</option>
-                    <option value="Other">Other</option>
-                  </select>
-                  <input type="text" name="name1" id="phn"
-                    placeholder="Candidate Name" formControlName="Name" class="form-control" (input)="onNameInput($event)" maxlength="30"/>
-                </fieldset>
-                <span *ngIf="actionForm?.get('Name')?.errors?.required && isSubmitted">
-                  <small class="text-danger">
-                    Candidate Name is required.
-                  </small>
-                </span>
+
+      <div class="col-12 mt-4 pe-xl-5" *ngIf="item.service_id !== 6">
+        <div class="d-lg-flex align-items-center gap-3 justify-content-center justify-content-lg-end text-center text-lg-end">
+          <ng-container *ngIf="item.service_id === 9 && !forceCartMode">
+            <form [formGroup]="actionForm" novalidate="" id="contact" class="sg_pkj_frm p-0 m-0 bg-transparent">
+              <div class="row">
+                <div class="col-lg-3">
+                  <fieldset>
+                    <select class="form-control dialCode" id="dialCode" formControlName="Title">
+                      <option value="Mr">Mr</option>
+                      <option value="Ms">Ms</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <input type="text" name="name1" id="phn" placeholder="Candidate Name" formControlName="Name" class="form-control" (input)="onNameInput($event)" maxlength="30"/>
+                  </fieldset>
+                  <span *ngIf="actionForm?.get('Name')?.errors?.required && isSubmitted"><small class="text-danger">Candidate Name is required.</small></span>
+                </div>
+                <div class="col-lg-3">
+                  <fieldset>
+                    <select [disabled]="true" name="" id="dialCode" class="form-control dialCode" [(ngModel)]="selectedDialCode" [ngModelOptions]="{ standalone: true }">
+                      <option [value]="code.code" *ngFor="let code of dialCodes">{{ code.code }}({{ code.dial_code }})</option>
+                    </select>
+                    <input type="text" name="phn" id="phn" placeholder="Mobile No" formControlName="MobileNumber" min="0" class="form-control" (input)="onInput($event)" maxlength="10" />
+                  </fieldset>
+                  <span *ngIf="actionForm?.get('MobileNumber')?.errors?.required && isSubmitted"><small class="text-danger">Mob No is required.</small></span>
+                  <span class="tc_red fs_13" *ngIf="actionForm.controls.MobileNumber.errors?.pattern">Please enter valid Mob No</span>
+                </div>
+                <div class="col-lg-3">
+                  <fieldset>
+                    <input type="email" name="email1" id="email1" placeholder="E-mail ID" formControlName="EmailId" class="" maxlength="50" />
+                  </fieldset>
+                  <span *ngIf="actionForm?.get('EmailId')?.errors?.required && isSubmitted"><small class="text-danger">Email ID is required.</small></span>
+                  <span *ngIf="actionForm.controls.EmailId?.errors?.pattern && actionForm.controls.EmailId.touched" class="tc_red fs_13">Please enter a valid Email ID.</span>
+                </div>
+                <div class="col-lg-3">
+                  <fieldset class="d-flex gap-3 justify-content-end">
+                    <button (click)="buyNowInstant(item)" type="button" style="margin-top: 15px !important; background-color: black !important;" class="sg_new_submit_btn btn tc_w border-0 rounded-pill bg_prp bg_lred_h tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center px-2 btn-sm">
+                      <i class="bi bi-arrow-right-short fs_16 me-1 me-lg-0 me-xl-1"></i><span> Proceed to Pay / Checkout</span>
+                    </button>
+                  </fieldset>
+                </div>
               </div>
-              <div class="col-lg-3">
-                <fieldset>
-                  <select [disabled]="true" name="" id="dialCode" class="form-control dialCode" [(ngModel)]="selectedDialCode"
-                    [ngModelOptions]="{ standalone: true }">
-                    <option [value]="code.code" *ngFor="let code of dialCodes">
-                      {{ code.code }}({{ code.dial_code }})
-                    </option>
-                  </select>
-                  <input type="text" name="phn" id="phn"
-                    placeholder="Mobile No" formControlName="MobileNumber" min="0" class="form-control" (input)="onInput($event)" maxlength="10" />
-                </fieldset>
-                <span *ngIf="actionForm?.get('MobileNumber')?.errors?.required && isSubmitted">
-                  <small class="text-danger">
-                    Mob No is required.
-                  </small>
-                </span>
-                <span class="tc_red fs_13" *ngIf= "actionForm.controls.MobileNumber.errors?.pattern">Please enter valid Mob No</span>
-              </div>
-              <div class="col-lg-3">
-                <fieldset>
-                  <input type="email" name="email1"
-                    id="email1" placeholder="E-mail ID" formControlName="EmailId" class="" maxlength="50" />
-                </fieldset>
-                <span *ngIf="actionForm?.get('EmailId')?.errors?.required && isSubmitted">
-                  <small class="text-danger">
-                    Email ID is required.
-                  </small>
-                </span>
-                <span
-                *ngIf="actionForm.controls.EmailId?.errors?.pattern&& actionForm.controls.EmailId.touched" class="tc_red fs_13">Please enter a valid Email ID.</span>
-              </div>
-              <div class="col-lg-3">
-                <fieldset class="d-flex gap-3 justify-content-end">
-                  <button (click)="buyNowInstant(item)" type="button" style="margin-top: 15px !important; background-color: black !important;"
-                    class="sg_new_submit_btn btn tc_w border-0 rounded-pill bg_prp bg_lred_h tc_h_w btn_shadow ff_reg d-flex align-items-center justify-content-center px-2 btn-sm">
-                    <i class="bi bi-arrow-right-short fs_16 me-1 me-lg-0 me-xl-1"></i><span> Proceed to Pay / Checkout</span>
-                  </button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </ng-container>
-        <ng-container *ngIf="true">          
-          <button (click)="buyNowAla(item)" type="button "
-            class="tc_w bg_blu bg_lred_h tc_h_w d-flex align-items-center justify-content-center sg_new_btn mt-3 mt-lg-0 mx-auto mx-lg-0">
-            <img src="assets/image/crt.png" alt="" class="me-3" width="16px" />
-            <span>Add to Cart </span>
-          </button>
-        </ng-container>
+            </form>
+          </ng-container>
+          <ng-container *ngIf="item.service_id !== 9 || forceCartMode">
+            <button (click)="buyNowAla(item)" type="button" class="tc_w bg_blu bg_lred_h tc_h_w d-flex align-items-center justify-content-center sg_new_btn mt-3 mt-lg-0 mx-auto mx-lg-0">
+              <img src="assets/image/crt.png" alt="" class="me-3" width="16px" />
+              <span>Add to Cart </span>
+            </button>
+          </ng-container>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
+
+  <!-- Table layout (requested) -->
+  <ng-container *ngIf="layout === 'table'">
+    <ng-container *ngFor="let item of servicesPackagesdata; let i = index">
+      <div class="row">
+        <ng-container *ngFor="let el of item.newPackageServices; let in = index">
+          <div class="col-12 py-2 border-bottom d-flex align-items-center">
+            <div class="flex-grow-1">
+              <h6 class="mb-0">{{ el.service_name }}</h6>
+              <small class="text-muted">{{ el.CheckCategoryType }}</small>
+            </div>
+            <div class="text-end me-3">{{ (el.service_price) | currency:'INR' }}</div>
+            <div class="ms-3">
+              <button class="btn btn-sm btn-outline-primary" (click)="incrementValue($event, el.qty, el, in, i, el.Ismultiple)">+</button>
+              <span class="mx-2">{{ el.qty }}</span>
+              <button class="btn btn-sm btn-outline-primary" (click)="decrementValue($event, el.qty, el, in, i)">-</button>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="d_tlt_prc_qty w-100" style="cursor:pointer" (click)="toggleOtherChecks(item)" [ngStyle]="{'grid-template-columns' : isSpecial ? '30% 23% 23% 12% 12%' : (item.service_id === 6 ? '40% 30% 30%' : '30% 23% 23% 24%')}">
+          <p class="tc_prp fw-bold">
+            <b class="sg_number">+</b>
+            {{ showOtherChecks ? 'Hide Other Checks' : 'Other Check' }}
+            <span *ngIf="isLoadingOther" class="spinner-border spinner-border-sm ms-2"></span>
+          </p>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
 </ng-container>

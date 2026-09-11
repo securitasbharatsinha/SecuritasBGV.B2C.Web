@@ -652,4 +652,14 @@ select.form-input {
     font-size: 0.95rem;
     margin-bottom: 20px;
   }
+
+  .securitas-logo-container,
+.walsons-logo-container {
+  z-index: 1;
+  pointer-events: none;
+}
+.securitas-logo-container a,
+.walsons-logo-container a {
+  pointer-events: auto;
+}
 }

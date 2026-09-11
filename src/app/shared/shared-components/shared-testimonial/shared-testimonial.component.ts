@@ -18,6 +18,7 @@ import {
   testimonials,
 } from 'src/app/api-interfaces/home-page';
 import { HomePageService } from 'src/app/api-services/home-page.services';
+import { ToasterService } from 'src/app/api-services/toaster.services';
 
 @Component({
   selector: 'app-shared-testimonial',
@@ -112,8 +113,55 @@ export class SharedTestimonialComponent implements OnInit, OnDestroy {
   };
   constructor(
     private _homepageService: HomePageService,
-    private _router: Router
+    public _router: Router,
+    private _toaster: ToasterService
   ) {}
+
+    isSendingEnquiry = false;
+
+      // Phone: typing me hi sirf digits, 10 tak
+  onlyDigits(ev: any) {
+    const el = ev.target;
+    const clean = (el.value || '').replace(/[^0-9]/g, '').slice(0, 10);
+    if (el.value !== clean) el.value = clean;
+  }
+
+  // Naam: sirf letters aur space
+  onlyLetters(ev: any) {
+    const el = ev.target;
+    const clean = (el.value || '').replace(/[^A-Za-z ]/g, '');
+    if (el.value !== clean) el.value = clean;
+  }
+  submitCtaForm(ctaForm: any) {
+    if (ctaForm?.invalid) {
+      this._toaster.showErrorToast('Please fill all required fields');
+      return;
+    }
+    if (this.isSendingEnquiry) return;
+    this.isSendingEnquiry = true;
+    const v = ctaForm.value;
+    const payload = {
+      Name: v.firstName || '',
+      SurName: v.lastName || '',
+      Email: v.email || '',
+      Phone: v.phone || '',
+      Message: v.message || '',
+    };
+    this._homepageService
+      .saveContactUs(payload as any)
+      .pipe(takeWhile(() => this.isLive))
+      .subscribe(
+        (res: any) => {
+          this.isSendingEnquiry = false;
+          this._toaster.showSuccessToast('Thank you! We will reach out to you shortly.');
+          ctaForm.resetForm();
+        },
+        () => {
+          this.isSendingEnquiry = false;
+          this._toaster.showErrorToast('Something went wrong. Please try again.');
+        }
+      );
+  }
   ngOnDestroy(): void {
     this.isLive = false;
   }

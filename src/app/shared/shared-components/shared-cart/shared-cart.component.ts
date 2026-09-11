@@ -490,6 +490,7 @@ export class SharedCartComponent implements OnInit, AfterViewInit, OnDestroy {
               .subscribe((res: any) => {
                 if (res && res.IsSuccess) {
                   this._toaster.showSuccessToast(res.Message);
+                  this._cart.cartCleared.next(true);
 
                   this.getAllCartByUserId();
                   this.getTotalAmount();

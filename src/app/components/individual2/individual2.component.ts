@@ -1,5 +1,6 @@
 import {Component,OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HomePageService } from 'src/app/api-services/home-page.services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -51,7 +52,7 @@ export class Individual2Component implements OnInit {
       img1: '../../../assets/img/Helper-Verification-updated.png',
       img2: '../../../assets/img/Helper-Verification-image.png',
       heading1: {
-        p1: 'Verify Domestic Help,',
+        p1: 'Verify Your House Help,',
         p2: 'Stay Safe At Home',
         p3: '',
         p4: ''
@@ -148,12 +149,43 @@ export class Individual2Component implements OnInit {
   }
   constructor(
     private _router: Router,
+    private _route: ActivatedRoute,
     private _homepageService: HomePageService,
     private _fb: FormBuilder,
     public _helper: HelperService,
     private _payment: PaymentService,
   ) {
-      this.currentURL = this._router.url;
+      // query/fragment hata ke saaf path — warna ?helper=maid par content lookup fail ho jata
+      this.currentURL = this._router.url.split('?')[0].split('#')[0];
+
+     // helper param ke hisaab se hero heading + title badlo (login wale page jaisa behavior)
+      this._route.queryParams.subscribe((prm: any) => {
+        const HELPER_HEADINGS: any = {
+          'house-help': 'Verify Your House Help,',
+          'maid':       'Verify Your Maid,',
+          'driver':     'Verify Your Driver,',
+          'guard':      'Verify Your Guard,',
+          'tutor':      'Verify Your Tutor,',
+          'kyc':        'KYC Check,',
+        };
+        const HELPER_TITLES: any = {
+          'house-help': 'Domestic Help Verification',
+          'maid':       'Maid Verification',
+          'driver':     'Driver Verification',
+          'guard':      'Guard Verification',
+          'tutor':      'Tutor Verification',
+          'kyc':        'KYC Check',
+        };
+        const page = this.servicePagesData?.['/helper-verification'];
+        if (page) {
+          page.heading1.p1 = (prm.helper && HELPER_HEADINGS[prm.helper])
+            ? HELPER_HEADINGS[prm.helper]
+            : 'Verify Domestic Help,';
+          page.title = (prm.helper && HELPER_TITLES[prm.helper])
+            ? HELPER_TITLES[prm.helper]
+            : 'Domestic Help Verification';
+        }
+      });
       this.actionForm = this._fb.group({
         Title: ['Mr', [Validators.required]],
         Name: ['',[Validators.required,Validators.pattern('^[A-Za-z]+( [A-Za-z]+)*$'),Validators.minLength(3),Validators.maxLength(30)]],
@@ -185,6 +217,10 @@ export class Individual2Component implements OnInit {
   }
 
   incDecQty(type: any, check: any){
+    if(!this._helper.isLoggedIn){
+      this.openLoginAlert();
+      return;
+    }
     if(type === 'inc'){
       (this as any)[check] = (this as any)[check] >= 10 ? 10 : (this as any)[check] + 1;
     }
@@ -373,7 +409,8 @@ export class Individual2Component implements OnInit {
       currency: orderObj.Currency,
       name: orderObj.Name,
       description: orderObj.description,
-      image: "https://securitasb2cweb.keycorp.in/assets/img/logo_b.png",
+      // image: "https://securitasb2cweb.keycorp.in/assets/img/logo_b.png",
+            image: "https://walsonsverify.com/assets/img/logo_b.png",
       order_id: orderObj.OrderId,
       handler: function (response: any) {
         if (response) {
@@ -390,8 +427,11 @@ export class Individual2Component implements OnInit {
         address: orderObj.address,
       },
       theme: {
-        color: "#3399cc",
+        color: "#031F30",
       },
+      // theme: {
+      //   color: "#3399cc",
+      // },
     };
     var rzp1 = new this._payment.nativeWindow.Razorpay(options);
     rzp1.open();

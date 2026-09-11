@@ -82,7 +82,7 @@ export class AuthService {
       headers,
     });
   }
-
+  
   generateOrderId(id: string, secretkey: string, payload: any) {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/json')

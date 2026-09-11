@@ -158,11 +158,13 @@ body {
 //   }
 // }
 /* LOGO WRAPPERS - DESKTOP ABSOLUTE POSITIONING */
+/* LOGO WRAPPERS - DESKTOP ABSOLUTE POSITIONING */
 .securitas-logo-container {
   position: absolute;
   top: 40px;
   right: 60px;
-  z-index: 10;
+  z-index: 1;
+  pointer-events: none;
 }
 header.securitas-logo-container a img {
     width: 70px;
@@ -171,7 +173,12 @@ header.securitas-logo-container a img {
   position: absolute;
   bottom: 40px;
   left: 60px;
-  z-index: 10;
+  z-index: 1;
+  pointer-events: none;
+}
+.securitas-logo-container a,
+.walsons-logo-container a {
+  pointer-events: auto;
 }
 
 /* MAIN CONTAINER GRID */

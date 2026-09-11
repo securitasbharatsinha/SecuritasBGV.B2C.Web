@@ -34,7 +34,7 @@
       <div class="container">
         <div class="row g-3 g-lg-5 align-items-center mb-3">
           <div class="col-lg-6 order-lg-2 sg_new_srv_img">
-            <img src="assets/image/ins.png" class="wow fadeIn" data-wow-delay="0.3s" />
+            <img src="../../../assets/img/Self-Verification-image.png" class="wow fadeIn" data-wow-delay="0.3s" />
           </div>
           <div class="col-lg-6 position-relative z_index999">
             <div class="sg_new_tlt position-relative">
@@ -92,7 +92,7 @@
       <div class="container" id="supportVerification">
         <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
           <div class="col-lg-6 sg_new_srv_img">
-            <img src="assets/image/spt.png" class="wow fadeIn w-100" data-wow-delay="0.3s" />
+            <img src="../../../assets/img/Helper-Verification-image.png" class="wow fadeIn w-100" data-wow-delay="0.3s" />
           </div>
           <div class="col-lg-6 text-lg-end position-relative z_index999">
             <div class="sg_new_tlt position-relative">
@@ -149,8 +149,8 @@
     <section class="sg_tenant_sec" *ngIf="!isSpecial">
       <div class="container position-relative z_index9999" id="tenantVerification">
         <div class="row g-3 g-lg-5 align-items-center mb-4 pb-2">
-          <div class="col-lg-6 sg_new_srv_img order-lg-2">
-            <img src="assets/image/tnt.png" class="wow fadeIn" data-wow-delay="0.3s" />
+          <div class="col-lg-6 sg_new_srv_img order-lg-2 d-flex justify-content-end ">
+            <img src="../../../assets/img/Tenant-Verification-image.png" class="wow fadeIn" data-wow-delay="0.3s" />
           </div>
           <div class="col-lg-6 position-relative z_index999">
             <div class="sg_new_tlt position-relative">
@@ -253,7 +253,7 @@
       <div class="container">
         <div class="row g-3 g-lg-5 align-items-center mb-3">
           <div class="col-lg-6 order-lg-2 sg_new_srv_img">
-            <img src="assets/image/ins.png" class="wow fadeIn" data-wow-delay="0.3s" />
+            <img src="../../../assets/img/Instant-Verification-image.png" class="wow fadeIn" data-wow-delay="0.3s" />
           </div>
           <div class="col-lg-6 position-relative z_index999">
             <div class="sg_new_tlt position-relative">
@@ -278,8 +278,8 @@
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
-              <shared-checks-table *ngIf="getServiceId('kyc_check')"
-                [serviceTypeId]="getServiceId('kyc_check')"></shared-checks-table>
+                           <shared-checks-table *ngIf="getServiceId('kyc_check')"
+                [serviceTypeId]="getServiceId('kyc_check')" [forceCartMode]="true"></shared-checks-table>
             </div>
           </div>
         </div>
@@ -289,7 +289,7 @@
       <div class="container">
         <div class="row g-3 g-lg-5 align-items-baseline">
           <div class="col-lg-6 sg_new_srv_img ps-lg-5">
-            <img src="assets/image/mtri.png" class="wow fadeIn" data-wow-delay="0.3s" />
+            <img src="../../../assets/img/Matrimonial-Verification-image.png" class="wow fadeIn" data-wow-delay="0.3s" />
           </div>
           <div class="col-lg-6 position-relative z_index999 text-lg-end">
             <div class="sg_new_tlt position-relative">

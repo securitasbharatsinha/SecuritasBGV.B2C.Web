@@ -163,6 +163,34 @@
                   Minimum 8 characters with an uppercase letter, a lowercase letter, a number and a special character.
                 </small>
               </div>
+                          <!-- Confirm Password -->
+            <div class="form-group col-md-7">
+              <label for="ConfirmPassword" class="form-label">Confirm Password<span class="required-star">*</span></label>
+              <div class="input-wrapper ">
+                <input [type]="showConfirmPassword ? 'text' : 'password'" id="ConfirmPassword" class="form-input has-icon"
+                  placeholder="••••••" formControlName="ConfirmPassword">
+                <button type="button" class="input-icon-btn"
+                  (click)="showConfirmPassword = !showConfirmPassword" aria-label="Toggle Password Visibility">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 10C3 10 7 15 12 15C17 15 21 10 21 10"></path>
+                    <path d="M12 15V18"></path>
+                    <path d="M8 14L6.5 16.5"></path>
+                    <path d="M16 14L17.5 16.5"></path>
+                    <path d="M4.5 11.5L3 13.5"></path>
+                    <path d="M19.5 11.5L21 13.5"></path>
+                  </svg>
+                </button>
+              </div>
+              <small class="text-danger"
+                *ngIf="signUpForm.get('ConfirmPassword')?.touched && signUpForm.get('ConfirmPassword')?.hasError('required')">
+                Confirm Password is required.
+              </small>
+              <small class="text-danger"
+                *ngIf="signUpForm.get('ConfirmPassword')?.touched && signUpForm.get('ConfirmPassword')?.hasError('mismatch')">
+                Passwords do not match.
+              </small>
+            </div>
             <!-- Checkbox Agreement -->
             <div class="checkbox-group">
               <input type="checkbox" id="agreement" class="checkbox-input" formControlName="IsAgreement">
@@ -185,11 +213,13 @@
               <div class="col-md-4">
                 <label class="form-label"> Enter OTP:</label>
                 <!-- <input min="0" type="number" minlength="6" maxlength="6" class="form-input" id="code" placeholder="Code" #code /> -->
-                 <input type="text" inputmode="numeric" maxlength="6" class="form-input" id="code" placeholder="Code" #code />
+                                  <input type="text" inputmode="numeric" maxlength="6" class="form-input" id="code" placeholder="Code" #code
+                   (keydown.enter)="$event.preventDefault(); verifyActivationCode(code.value)" />
+                 <app-timer [Email]="signUpForm.get('Email')?.value" [type]="'signup'"></app-timer>
               </div>
               <div class="mt-2 col-md-7">
-                <button type="submit" class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100" (click)="verifyActivationCode(code.value)">
-                  Authentication
+                <button type="button" class="edit-btn btn-primary text-while rounded-pill px-3 py-1 shadow-lg w-100" (click)="verifyActivationCode(code.value)">
+                  Verify OTP
                 </button>
               </div>
             </ng-container>

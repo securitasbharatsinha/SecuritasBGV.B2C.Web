@@ -14,6 +14,7 @@ import { CustomValidators } from '../custom-validators';
 export class ForgotPasswordComponent implements OnInit {
   showErrors: boolean;
   showPassword: boolean;
+  showConfirmPassword: boolean;
   loginForm: FormGroup;
   captchaToken: string;
   Email: string;
@@ -59,13 +60,18 @@ export class ForgotPasswordComponent implements OnInit {
           ]),
         ],
       ],
-      // ConfirmPassword: [null, [Validators.required]],
+      ConfirmPassword: [null, [Validators.required]],
     });
   }
 
   ngOnInit(): void { }
-  submit() {
+    submit() {
     if (this.isCodeSent) {
+      if (this.loginForm.get('Password')?.value !== this.loginForm.get('ConfirmPassword')?.value) {
+        console.log('MISMATCH:', this.loginForm.get('Password')?.value, this.loginForm.get('ConfirmPassword')?.value);
+        this._toaster.showErrorToast('Passwords do not match');
+        return;
+      }
       this.resetPassword();
     } else {
       this.sendCode();

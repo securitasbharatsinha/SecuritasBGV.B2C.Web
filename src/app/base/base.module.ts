@@ -32,7 +32,6 @@ const routes: Routes = [
       },
       {
         path: 'faq',
-        canActivate: [AuthGuard],
         loadChildren: () =>
           import('../components/faq/faq.module').then((m) => m.FaqModule),
       },
@@ -193,7 +192,6 @@ const routes: Routes = [
       // },
       {
         path: 'faq',
-        canActivate: [AuthGuard],
         loadChildren: () =>
           import('../components/faq/faq.module').then((m) => m.FaqModule),
       },

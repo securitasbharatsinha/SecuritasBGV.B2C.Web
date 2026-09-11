@@ -251,7 +251,8 @@ export class PaymentService {
         currency: orderObj.currency,
         name: orderObj.name,
         description: orderObj.description,
-        image: 'https://securitasb2cweb.keycorp.in/assets/img/logo_b.png',
+        // image: 'https://securitasb2cweb.keycorp.in/assets/img/logo_b.png',
+        image: 'https://walsonsverify.com/assets/img/logo_b.png',
         order_id: orderObj.orderId,
         handler: function (response: any) {
           if (response) {
@@ -270,7 +271,8 @@ export class PaymentService {
           address: orderObj.address,
         },
         theme: {
-          color: '#3399cc',
+          // color: '#3399cc',
+          color: '#031F30',
         },
       };
       var rzp1 = new this._auth.nativeWindow.Razorpay(options);
@@ -394,7 +396,9 @@ export class PaymentService {
         currency: orderObj.Currency,
         name: orderObj.Name,
         description: orderObj.description,
-        image: 'https://securitasb2cweb.keycorp.in/assets/img/logo_b.png',
+        // image: 'https://securitasb2cweb.keycorp.in/assets/img/logo_b.png',
+                image: 'https://walsonsverify.com/assets/img/logo_b.png',
+        
         order_id: orderObj.OrderId,
         handler: function (response: any) {
           if (response) {
@@ -411,7 +415,8 @@ export class PaymentService {
           address: orderObj.address,
         },
         theme: {
-          color: '#3399cc',
+          // color: '#3399cc',
+          color: '#031F30',
         },
       };
       var rzp1 = new this._auth.nativeWindow.Razorpay(options);

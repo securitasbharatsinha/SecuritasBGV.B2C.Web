@@ -11,3 +11,12 @@
 @import "~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 @import "~animate.css/animate.css";
 @import "lib/timeline-slider.css";
+
+
+
+.swal2-container.swal2-toast-shown {
+  pointer-events: none;
+}
+.swal2-container.swal2-toast-shown .swal2-toast {
+  pointer-events: auto;
+}
