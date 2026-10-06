@@ -47,10 +47,10 @@ export class Individual2Component implements OnInit {
         p5: 'Protect against identity misuse',
       },
     },
-    '/helper-verification': {
-      title: 'Domestic Help Verification',
-      img1: '../../../assets/img/Helper-Verification-updated.png',
-      img2: '../../../assets/img/Helper-Verification-image.png',
+         '/helper-verification': {
+        title: 'Domestic Help Verification',
+        img1: '../../../assets/img/Helper-Verification-update.png',
+        img2: '../../../assets/img/Domestic-Helpd.png',
       heading1: {
         p1: 'Verify Your House Help,',
         p2: 'Stay Safe At Home',
@@ -59,7 +59,7 @@ export class Individual2Component implements OnInit {
       },
       heading2: {
         p1: 'Verify maids, drivers, nannies,',
-        p2: 'cooks, guards , home tutors and',
+            p2: 'cooks, guards and',
         p3: 'more, before hiring,',
         p4: 'through trusted background checks for',
         p5: 'safer homes and smarter hiring.',
@@ -75,7 +75,7 @@ export class Individual2Component implements OnInit {
     '/tenant-verification': {
       title: 'Tenant Verification',
       img1: '../../../assets/img/Tenant-Verification-updated.png',
-      img2: '../../../assets/img/Tenant-Verification-image.png',
+      img2: '../../../assets/img/Tenant_Image.png',
       heading1: {
         p1: 'Verify Tenants,',
         p2: 'Rent Smarter',
@@ -159,13 +159,13 @@ export class Individual2Component implements OnInit {
       this.currentURL = this._router.url.split('?')[0].split('#')[0];
 
      // helper param ke hisaab se hero heading + title badlo (login wale page jaisa behavior)
+           // helper param ke hisaab se hero heading + title + image badlo
       this._route.queryParams.subscribe((prm: any) => {
         const HELPER_HEADINGS: any = {
           'house-help': 'Verify Your House Help,',
           'maid':       'Verify Your Maid,',
           'driver':     'Verify Your Driver,',
           'guard':      'Verify Your Guard,',
-          'tutor':      'Verify Your Tutor,',
           'kyc':        'KYC Check,',
         };
         const HELPER_TITLES: any = {
@@ -173,8 +173,20 @@ export class Individual2Component implements OnInit {
           'maid':       'Maid Verification',
           'driver':     'Driver Verification',
           'guard':      'Guard Verification',
-          'tutor':      'Tutor Verification',
           'kyc':        'KYC Check',
+        };
+        const HELPER_IMG1: any = {
+          'maid':  '../../../assets/img/Maid_banner.png',
+          'guard': '../../../assets/img/Guard_Banner.png',
+          'driver': '../../../assets/img/Helper-Verification-updated.png',
+          'kyc': '../../../assets/img/KYC-Banner.png',
+        };
+               const HELPER_IMG2: any = {
+          'maid':  '../../../assets/img/maid_img.png',
+          'guard': '../../../assets/img/Guard_img.png',
+          'driver': '../../../assets/img/Helper-Verification_image.png',
+          'kyc': '../../../assets/img/KYC_.png',
+
         };
         const page = this.servicePagesData?.['/helper-verification'];
         if (page) {
@@ -184,6 +196,12 @@ export class Individual2Component implements OnInit {
           page.title = (prm.helper && HELPER_TITLES[prm.helper])
             ? HELPER_TITLES[prm.helper]
             : 'Domestic Help Verification';
+          page.img1 = (prm.helper && HELPER_IMG1[prm.helper])
+            ? HELPER_IMG1[prm.helper]
+            : '../../../assets/img/Helper-Verification-update.png';
+          page.img2 = (prm.helper && HELPER_IMG2[prm.helper])
+            ? HELPER_IMG2[prm.helper]
+            : '../../../assets/img/Domestic-Helpd.png';
         }
       });
       this.actionForm = this._fb.group({

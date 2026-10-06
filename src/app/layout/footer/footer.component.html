@@ -18,18 +18,18 @@
   
  
         <!-- Social Icons -->
-        <div class="footer-socials">
-          <a href="https://www.facebook.com" target="_blank" class="social-icon" aria-label="Facebook">
+                     <div class="footer-socials">
+          <a href="https://www.facebook.com/profile.php?id=100070740042906" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
             <i class="bi bi-facebook"></i>
           </a>
-          <a href="https://www.linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/company/securitas-background-verification-india" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
             <i class="bi bi-linkedin"></i>
           </a>
-          <a href="https://www.instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
+          <a href="https://www.instagram.com/securitas_india" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
             <i class="bi bi-instagram"></i>
           </a>
-          <a href="https://wa.me/" target="_blank" class="social-icon" aria-label="WhatsApp">
-            <i class="bi bi-whatsapp"></i>
+          <a href="https://www.youtube.com/@SecuritasScreeningSolutions" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube">
+            <i class="bi bi-youtube"></i>
           </a>
         </div>
       </div>
@@ -38,16 +38,19 @@
       <div class="col-6 col-md-3 col-lg-2">
         <h5 class="footer-col-title">Useful links</h5>
         <ul class="footer-links">
-          <li>
-            <a [routerLink]="['/home']" class="footer-link">
+                             <li>
+            <a *ngIf="!_helper.isLoggedIn" [routerLink]="['/verify-yourself']" class="footer-link">
+              <i class="bi bi-chevron-right"></i> Services
+            </a>
+            <a *ngIf="_helper.isLoggedIn" [routerLink]="['/individual']" class="footer-link">
               <i class="bi bi-chevron-right"></i> Services
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a [routerLink]="['/supplier-connect']" class="footer-link">
               <i class="bi bi-chevron-right"></i> Partner with us
             </a>
-          </li>
+          </li> -->
         </ul>
         <!-- Payment icons -->
         <div class="payment-icons mt-3">
@@ -62,6 +65,16 @@
           <li>
             <a [routerLink]="['/about']" class="footer-link">
               <i class="bi bi-chevron-right"></i> About Us
+            </a>
+          </li>
+           <li>
+            <a [routerLink]="['/leadership']" class="footer-link">
+              <i class="bi bi-chevron-right"></i> Leadership
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/contact-us']" class="footer-link">
+              <i class="bi bi-chevron-right"></i> Contact Us
             </a>
           </li>
           <!-- <li>

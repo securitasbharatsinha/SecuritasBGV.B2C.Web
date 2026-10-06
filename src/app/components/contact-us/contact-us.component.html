@@ -1,0 +1,589 @@
+<!-- <div
+    class="modal-dialog mw-100 h-100 m-0 modal-dialog-centered modal-dialog-scrollable"
+  >
+    <div
+      class="position-absolute top-0 left-0 w-100 h-100 bg_blu"
+      style="opacity: 0.8"
+    ></div>
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-header border-0">
+        <div class="container-fluid px-2 px-md-5">
+          <div class="row">
+            <div
+              class="col-md-12 d-flex justify-content-between align-items-center"
+            >
+              <h5 class="modal-title tc_w fs_28" id="exampleModalLabel">
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid px-1 px-md-5">
+          <div class="row align-items-center">
+            <div class="col-lg-4 col-md-6">
+              <h5
+                class="modal-title tc_w fs_28 mb-2 mb-lg-4 mt-2"
+                id="exampleModalLabel"
+              >
+                Contact Us
+              </h5>
+              <button
+                type="button"
+                class="btn tc_w opacity-100 p-0 fs_24 my-btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <i class="bi bi-x-lg"></i>
+              </button>
+              <form
+                id="contact"
+                class="p-0 m-0 bg-transparent"
+                [formGroup]="contactForm"
+              >
+                <div class="row contactUsRadius">
+                  <div class="col-lg-6 col-md-12 col-sm-6">
+                    <fieldset>
+                      <input
+                        type="name"
+                        name="name1"
+                        id="name1"
+                        placeholder="Name"
+                        (input)="onNameInput($event)"
+                        autocomplete="on"
+                        class="form-control"
+                        formControlName="Name"
+                        required=""
+                        maxlength="30"
+                      />
+                    </fieldset>
+                    <span *ngIf="contactForm?.get('Name')?.errors?.required">
+                      <small class="text-danger" *ngIf="isSubmitted">
+                        Name is required.
+                      </small>
+                    </span>
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-sm-6">
+                    <fieldset>
+                      <input
+                        type="surname"
+                        name="surname1"
+                        id="surname1"
+                        placeholder="Surname"
+                        (input)="onSurnameInput($event)"
+
+                        autocomplete="on"
+                        formControlName="SurName"
+                        required=""
+                        maxlength="30"
+                      />
+                    </fieldset>
+                    <span *ngIf="contactForm?.get('SurName')?.errors?.required">
+                      <small class="text-danger" *ngIf="isSubmitted">
+                        Surname is required.
+                      </small>
+                    </span>
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-sm-6">
+                    <fieldset>
+                      <input
+                        type="tel"
+                        name="phn"
+                        id="phn"
+                        placeholder="Phone"
+                        formControlName="Phone"
+                        required=""
+                        maxlength="10"
+                        minlength="10"
+                        (input)="onInput($event)"
+                      />
+                    </fieldset>
+                    <span *ngIf="contactForm?.get('Phone')?.errors?.required">
+                      <small class="text-danger" *ngIf="isSubmitted">
+                        Phone is required.
+                      </small>
+                    </span>
+                    <span
+                      class="tc_red fs_13"
+                      *ngIf="contactForm.controls.Phone.errors?.pattern"
+                      >Please enter valid phone no.</span
+                    >
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-sm-6">
+                    <fieldset>
+                      <input
+                        type="email"
+                        name="email1"
+                        id="email1"
+                        required=""
+                        placeholder="Email"
+                        formControlName="Email"
+                      />
+                      <span *ngIf="contactForm?.get('Email')?.errors?.required">
+                        <small class="text-danger" *ngIf="isSubmitted">
+                          Email is required.
+                        </small>
+                      </span>  
+                      <span
+                        *ngIf="
+                          contactForm.controls.Email?.errors?.email &&
+                          contactForm.controls.Email.touched
+                        "
+                        class="tc_red fs_13"
+                        >Please enter a valid e-mail.</span
+                      >
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <textarea
+                        name="message"
+                        type="text"
+                        class="form-control"
+                        id="message"
+                        placeholder="Message"
+                        formControlName="Message"
+                        maxlength="300"
+                      ></textarea>
+                    </fieldset>
+                    <span *ngIf="contactForm?.get('Message')?.errors?.required">
+                      <small class="text-danger" *ngIf="isSubmitted">
+                        Message is required.
+                      </small>
+                    </span>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button
+                        (click)="sendMessage()"
+                        class="btn bg_lp_r sg_gradient_ani tc_w sg_dropdown_toggle rounded-pill tc_h_w btn_shadow sg_ac_search ff_reg border-0"
+                      >
+                        Send Message
+                      </button>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-lg-12 col-md-4 mt-4 pt-lg-3">
+                  <div class="fs_20">
+                    <h4 class="fs_24 tc_w mb-3">Social Share:</h4>
+                    <div class="d-flex gap-3">
+                      <a
+                        class="tc_red h_tc_prp transition_06"
+                        href="https://www.linkedin.com/company/securitas---background-verification-india/?viewAsMember=true"
+                        target="_blank"
+                        ><i class="fab fa-linkedin-in"></i
+                      ></a>
+                      <a
+                        class="tc_red h_tc_prp transition_06"
+                        href="https://www.instagram.com/securitas_india_bgv/"
+                        target="_blank"
+                        ><i class="fab fa-instagram"></i
+                      ></a>
+                      <a
+                        class="tc_red h_tc_prp transition_06"
+                        href="https://www.facebook.com/Securitas-India-Background-Verification-108686524814783"
+                        target="_blank"
+                        ><i class="fab fa-facebook-f"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5 col-md-6 px-lg-5 text-center my-4 my-md-0">
+              <a
+                href="https://www.google.com/maps/place/496,+Phase+III,+Udyog+Vihar,+Sector+19,+Gurugram,+Haryana+122015/@28.5106282,77.0849555,982m/data=!3m2!1e3!4b1!4m5!3m4!1s0x390d195ba75ad12f:0x48cdab27e747b4b7!8m2!3d28.5106235!4d77.0871442"
+                target="_blank"
+                ><img src="assets/img/map.jpg" class="w-100 rounded-circle"
+              /></a>
+            </div>
+
+            <div class="col-lg-3 tc_w">
+              <div class="row mt-4 mt-lg-0">
+                <div class="col-lg-12 col-md-6">
+                  <div class="mb-2 mb-lg-4 fs_14">
+                    <h4 class="fs_18 mb-0 mb-lg-3 tc_w">
+                      Corporate Office Address
+                    </h4>
+                    <table class="table table-borderless tc_w">
+                      <tbody>
+                        <tr>
+                          <th scope="row" class="px-1">
+                            <i class="fa fa-map-marker-alt tc_red"></i>
+                          </th>
+                          <td>
+                            496, Udyog Vihar, Phase-III, Gurgaon – 122016
+                            Haryana
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row" class="px-1">
+                            <i class="fa fa-phone-alt tc_red"></i>
+                          </th>
+                          <td>
+                            <a href="tel:0124-4718888" class="tc_w h_tc_prp">
+                              0124-4718888
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row" class="px-1">
+                            <i class="fa fa-envelope tc_red"></i>
+                          </th>
+                          <td>
+                            <a
+                              href="mailto:contact.us@securitas-india.com"
+                              class="tc_w h_tc_prp"
+                            >
+                              contact.us&#64;securitas-india.com
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-6">
+                  <div class="mb-2 mb-lg-4 fs_14">
+                    <h4 class="fs_18 mb-0 mb-lg-3 tc_w">Regional offices</h4>
+                    <table class="table table-borderless tc_w">
+                      <tbody>
+                        <tr>
+                          <th scope="row" class="px-1">
+                            <i class="fa fa-map-marker-alt tc_red"></i>
+                          </th>
+                          <td>
+                            496, Udyog Vihar, Phase-III, Gurgaon – 122016
+                            Haryana
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<div class="ctu-page">
+  <!-- Hero -->
+  <div class="ctu-hero">
+          <img class="ctu-hero-img" src="assets/img/7984.jpg" alt="Contacts" />
+    <div class="ctu-hero-overlay">
+      <h1 class="ctu-hero-title">Contacts</h1>
+    </div>
+        <div class="ctu-hero-breadcrumb">
+      <a [routerLink]="['/home']" class="ctu-bc-home text-decoration-none">Home</a>
+      <span class="ctu-bc-sep">&#8594;</span>
+      <span class="ctu-bc-current">Contact Us</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="ctu-main">
+    <div class="ctu-main-inner">
+      <!-- Left: Info -->
+      <div class="ctu-info-col">
+        <h2 class="ctu-info-heading">
+          We're here to<br />
+          <span class="ctu-green">help you</span><br />
+          and answer all<br />your questions
+        </h2>
+
+        <div class="ctu-address-block">
+          <h4 class="ctu-address-title">Corporate Office Address</h4>
+          <div class="ctu-address-row">
+            <span class="ctu-addr-icon ctu-addr-icon--map"></span>
+            <span>496, Udyog Vihar, Phase-III, Gurgaon – 122016 Haryana</span>
+          </div>
+          <div class="ctu-address-row">
+            <span class="ctu-addr-icon ctu-addr-icon--phone"></span>
+            <a class="ctu-addr-link" href="tel:0124-4718888">0124-4718888</a>
+          </div>
+          <div class="ctu-address-row">
+            <span class="ctu-addr-icon ctu-addr-icon--email"></span>
+            <a
+              class="ctu-addr-link"
+              href="mailto:contact.us@securitas-india.com"
+            >
+              contact.us&#64;securitas-india.com
+            </a>
+          </div>
+        </div>
+
+        <div class="ctu-address-block">
+          <h4 class="ctu-address-title">Regional Offices</h4>
+          <div class="ctu-address-row">
+            <span class="ctu-addr-icon ctu-addr-icon--map"></span>
+            <span>496, Udyog Vihar, Phase-III, Gurgaon – 122016 Haryana</span>
+          </div>
+        </div>
+
+        <div class="ctu-social-block">
+          <h4 class="ctu-address-title">Social Network</h4>
+          <div class="ctu-social-icons">
+            <a
+                         
+              class="ctu-social-link"
+              href="https://www.linkedin.com/company/securitas-background-verification-india"
+              target="_blank" rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a
+              class="ctu-social-link"
+                           href="https://www.facebook.com/profile.php?id=100070740042906"
+              target="_blank" rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                />
+              </svg>
+            </a>
+            <a
+              class="ctu-social-link"
+                           href="https://www.instagram.com/securitas_india"
+              target="_blank" rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+            <a
+              class="ctu-social-link"
+                           href="https://www.youtube.com/@SecuritasScreeningSolutions"
+              target="_blank" rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"
+                />
+                <polygon
+                  points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                  fill="white"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form Card -->
+      <div class="ctu-form-col">
+        <div class="ctu-form-card">
+          <h3 class="ctu-form-title">Connect with our experts</h3>
+          <p class="ctu-form-sub">
+            Whether you have a question, need support, or want to explore our
+            services — we're here for you.
+          </p>
+
+          <form class="ctu-form" [formGroup]="contactForm">
+            <!-- First Name | Last Name -->
+            <div class="ctu-row ctu-row--2">
+              <div class="ctu-field-group">
+                <label class="ctu-label"
+                  >First Name <span class="ctu-req">*</span></label
+                >
+                <input
+                  class="ctu-input"
+                  type="text"
+                  name="name1"
+                  id="name1"
+                  placeholder="Name"
+                  (input)="onNameInput($event)"
+                  autocomplete="on"
+                  formControlName="Name"
+                  required
+                  maxlength="30"
+                />
+                <small
+                  class="ctu-error"
+                  *ngIf="
+                    contactForm?.get('Name')?.errors?.required && isSubmitted
+                  "
+                >
+                  Name is required.
+                </small>
+              </div>
+
+              <div class="ctu-field-group">
+                <label class="ctu-label"
+                  >Last Name <span class="ctu-req">*</span></label
+                >
+                <input
+                  class="ctu-input"
+                  type="text"
+                  name="surname1"
+                  id="surname1"
+                  placeholder="Surname"
+                  (input)="onSurnameInput($event)"
+                  autocomplete="on"
+                  formControlName="SurName"
+                  required
+                  maxlength="30"
+                />
+                <small
+                  class="ctu-error"
+                  *ngIf="
+                    contactForm?.get('SurName')?.errors?.required && isSubmitted
+                  "
+                >
+                  Surname is required.
+                </small>
+              </div>
+            </div>
+
+            <!-- Email | Phone -->
+            <div class="ctu-row ctu-row--2">
+              <div class="ctu-field-group">
+                <label class="ctu-label"
+                  >Email <span class="ctu-req">*</span></label
+                >
+                <input
+                  class="ctu-input"
+                  type="email"
+                  name="email1"
+                  id="email1"
+                  placeholder="example@gmail.com"
+                  formControlName="Email"
+                  required
+                />
+                <small
+                  class="ctu-error"
+                  *ngIf="
+                    contactForm?.get('Email')?.errors?.required && isSubmitted
+                  "
+                >
+                  Email is required.
+                </small>
+                <small
+                  class="ctu-error"
+                  *ngIf="
+                    contactForm.controls.Email?.errors?.email &&
+                    contactForm.controls.Email.touched
+                  "
+                >
+                  Please enter a valid e-mail.
+                </small>
+              </div>
+
+              <div class="ctu-field-group">
+                <label class="ctu-label"
+                  >Phone Number <span class="ctu-req">*</span></label
+                >
+                <input
+                  class="ctu-input"
+                  type="tel"
+                  name="phn"
+                  id="phn"
+                  placeholder="Enter your phone number"
+                  formControlName="Phone"
+                  required
+                  maxlength="10"
+                  minlength="10"
+                  (input)="onInput($event)"
+                />
+                <small
+                  class="ctu-error"
+                  *ngIf="
+                    contactForm?.get('Phone')?.errors?.required && isSubmitted
+                  "
+                >
+                  Phone is required.
+                </small>
+                <small
+                  class="ctu-error"
+                  *ngIf="contactForm.controls.Phone.errors?.pattern"
+                >
+                  Please enter valid phone no.
+                </small>
+              </div>
+            </div>
+            <!-- Message -->
+            <div class="ctu-field-group ctu-field-group--full">
+              <label class="ctu-label"
+                >Message <span class="ctu-req">*</span></label
+              >
+              <textarea
+                class="ctu-textarea"
+                name="message"
+                id="message"
+                placeholder="Tell us how we can help you...."
+                formControlName="Message"
+                maxlength="300"
+              ></textarea>
+              <small
+                class="ctu-error"
+                *ngIf="
+                  contactForm?.get('Message')?.errors?.required && isSubmitted
+                "
+              >
+                Message is required.
+              </small>
+            </div>
+            <div class="ctu-submit-row">
+              <button
+                class="ctu-submit-btn"
+                type="button"
+                (click)="sendMessage()"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map Section -->
+  <div class="ctu-map-section">
+    <!-- <div class="ctu-map-inner">
+      <a href="https://www.google.com/maps/place/496,+Phase+III,+Udyog+Vihar,+Sector+19,+Gurugram,+Haryana+122015"
+         target="_blank">
+        <img class="ctu-map-img" src="assets/img/map.jpg" alt="Office Location" />
+      </a>
+    </div> -->
+    <div class="contact-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.9678400918992!2d77.0845909740888!3d28.51061528960928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d194730b63e77%3A0xf397c6ac2fd2dc2b!2sSecuritas%20India!5e0!3m2!1sen!2sin!4v1778068964711!5m2!1sen!2sin"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+</div>

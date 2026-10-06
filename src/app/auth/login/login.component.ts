@@ -50,6 +50,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.isLive = false;
   }
   ngOnInit(): void {
+    this._cookie.delete('isLoggedIn', '/auth');
+    this._cookie.delete('isLoggedIn', '/');
     this.loginForm = this._fb.group({
       Email: [null, [Validators.required, Validators.email]],
       Password: [null, [Validators.required]],
@@ -214,7 +216,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
           if (res && res.IsSuccess && res.Data && res?.Data?.Isactive) {
             this._cookie.set('userId', res.Data.Id);
-            this._cookie.set('isLoggedIn', 'true');
+            // this._cookie.set('isLoggedIn', 'true');
+            this._cookie.set('isLoggedIn', 'true', undefined, '/');
             this._cookie.set('userType', res.Data.RoleID);
             this._cookie.set('industryType', res.Data?.CompanyInfo?.CompanyIndustry);
             this._cookie.set('userCatgeory', res.Data.user_category);

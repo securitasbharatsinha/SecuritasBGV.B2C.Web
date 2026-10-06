@@ -69,7 +69,8 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
   isCLient: any;
   actionGroup: FormGroup;
   currentURL: string;
-  greyHeaderPage: any = ['/verify-yourself', '/helper-verification', '/tenant-verification', '/matrimonial-due-diligence', '/instant-verify', '/supplier-connect', "/contact-us"]
+  // greyHeaderPage: any = ['/verify-yourself', '/helper-verification', '/tenant-verification', '/matrimonial-due-diligence', '/instant-verify', '/supplier-connect', "/contact-us"]
+    greyHeaderPage: any = ['/verify-yourself', '/helper-verification', '/tenant-verification', '/matrimonial-due-diligence', '/instant-verify', '/supplier-connect', "/contact-us", '/about', '/privacy-policy', '/leadership' ];
   loginUrls: any = ['/auth/signup', '/auth/login']
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,

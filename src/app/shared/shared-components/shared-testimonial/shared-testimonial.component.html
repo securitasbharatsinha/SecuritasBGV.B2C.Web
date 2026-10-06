@@ -265,10 +265,10 @@
                 <button type="submit" class="submit-btn" [disabled]="isSendingEnquiry">{{ isSendingEnquiry ? 'Sending...' : 'Submit' }}</button>
               </form>
 
-              <div class="form-footer">
-                <span>If you're already registered, please</span>
-                                                <button class="btn btn-outline-primary rounded-piLL" type="button" (click)="_router.navigate(['/auth/login'])">Login</button>
-              </div>
+            <div class="form-footer" *ngIf="!_helper.isLoggedIn">
+              <span>If you're already registered, please</span>
+              <button class="btn btn-outline-primary rounded-piLL" type="button" (click)="_router.navigate(['/auth/login'])">Login</button>
+            </div>
             </div>
           </div>
 

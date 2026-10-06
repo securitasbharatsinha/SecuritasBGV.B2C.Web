@@ -19,6 +19,7 @@ import {
 } from 'src/app/api-interfaces/home-page';
 import { HomePageService } from 'src/app/api-services/home-page.services';
 import { ToasterService } from 'src/app/api-services/toaster.services';
+import { HelperService } from 'src/app/api-services/helper.services';
 
 @Component({
   selector: 'app-shared-testimonial',
@@ -114,7 +115,8 @@ export class SharedTestimonialComponent implements OnInit, OnDestroy {
   constructor(
     private _homepageService: HomePageService,
     public _router: Router,
-    private _toaster: ToasterService
+    private _toaster: ToasterService,
+    public _helper: HelperService
   ) {}
 
     isSendingEnquiry = false;

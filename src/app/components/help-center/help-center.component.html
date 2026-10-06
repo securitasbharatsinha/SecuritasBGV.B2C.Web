@@ -3,13 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-xl-10 bg-white rounded-2 px-lg-5">
         <div class="d-flex justify-content-end w-100">
-          <a [routerLink]="
-              !isLoggedIn && isSpecialWindow
-                ? '/special/login'
-                : isLoggedIn && isSpecialWindow
-                ? '/special/individual'
-                : '/individual'
-            " routerLinkActive="active" class="nav-item nav-link mt-2 mt-md-0"><i
+          <a href="javascript:void(0)" (click)="closeForm()" class="nav-item nav-link mt-2 mt-md-0"><i
               class="bi bi-x-circle-fill fa-2x"></i></a>
         </div>
 
@@ -54,7 +48,7 @@
                   class="form-label tc_lred fs_18 mb-2 d-none d-md-block">&nbsp;</label>
                 <select class="form-select rounded-1 ff_l" aria-labdel="Default select example" formControlName="query">
                   <option value="" disabled>Select the query related</option>
-                  <option *ngFor="let el of data?.[qt.value]" [value]="el">
+                  <option *ngFor="let el of data?.[actionForm.get('queryType')?.value]" [value]="el">
                     {{ el }}
                   </option>
                 </select>
@@ -192,7 +186,8 @@
               <div *ngIf="isLoading">
                 <span class="spinner-border tc_prp" role="status"></span>Loading...
               </div>
-              <button type="submit" class="btn bg_prp bg_h_red w-auto rounded-0 border-0 tc_w fs_13 py-1 px-4" *ngIf="!isLoading"
+                          <button type="submit" class="btn w-auto border-0 py-2 px-5" *ngIf="!isLoading"
+                style="background: linear-gradient(90deg, #f886a8, #8b5cf6); color: #fff; font-size: 15px; border-radius: 24px; letter-spacing: 0.3px;"
                 (click)="postFrom()">
                 Submit
               </button>

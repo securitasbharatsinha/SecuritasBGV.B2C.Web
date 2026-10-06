@@ -16,6 +16,9 @@
      background: unset;
     position: absolute !important;
     width: 100%;
+    @media (max-width: 540px) {
+      padding: 12px 0px  !important;
+    }
 
 }
 

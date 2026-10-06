@@ -1,0 +1,395 @@
+// ── Tokens ────────────────────────────────────────────────────
+$ctu-page-bg:    #f1f1f1;
+$ctu-white:      #FFFFFF;
+$ctu-dark:       #031F30;
+$ctu-green:      #1bc16a;
+$ctu-purple:     #7C4DFF;
+$ctu-text:       #3C4A5C;
+$ctu-label:      #031F30;
+$ctu-border:     #26224C;
+$ctu-input-line: #C2B4FC;
+$ctu-error:      #E53935;
+$ctu-addr-text:  #53565A;
+
+// ── Page ──────────────────────────────────────────────────────
+.ctu-page {
+  background: $ctu-page-bg;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: $ctu-dark;
+padding: 0px 116px;
+display: flex;
+flex-direction: column;
+align-items: center;
+@media(max-width:543px){
+  padding:0px 10px;
+}
+}
+
+// ── Hero ──────────────────────────────────────────────────────
+.ctu-hero {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius:16px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) { height: 200px; }
+}
+
+.ctu-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.ctu-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 16, 30, 0.30) 0%,
+    rgba(8, 16, 30, 0.75) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 0 60px 36px;
+
+  @media (max-width: 768px) { padding: 0 24px 24px; }
+}
+
+.ctu-hero-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: $ctu-white;
+  margin: 0;
+}
+
+.ctu-hero-breadcrumb {
+ position: absolute;
+    bottom: 0px;
+    right: 0;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    grid-gap: 6px;
+    gap: 6px;
+    background-image: url(../../../assets/img/contact-banner-shape.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 4px 14px;
+    border-radius: 8px 0 12px 0;
+    height: 54px;
+    width: 279px;
+    z-index: 99999;
+}
+
+.ctu-bc-home   { font-size: 0.78rem; color: #6B7A8D; }
+.ctu-bc-sep    { font-size: 0.7rem;  color: #A0AABB; }
+.ctu-bc-current {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: $ctu-purple;
+}
+
+// ── Main Section ──────────────────────────────────────────────
+.ctu-main {
+  padding: 56px 60px;
+
+  @media (max-width: 900px) { padding: 40px 32px; }
+  @media (max-width: 480px) { padding: 32px 20px; }
+  margin: 0 auto;
+}
+
+.ctu-main-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+// ── Info Column ───────────────────────────────────────────────
+.ctu-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.ctu-info-heading {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  color: $ctu-dark;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.ctu-green { color: $ctu-green; }
+
+.ctu-address-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ctu-address-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: $ctu-dark;
+  margin: 0 0 6px;
+}
+
+.ctu-address-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: $ctu-addr-text;
+  line-height: 1.5;
+}
+
+.ctu-addr-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  // Using CSS shapes as icon fallback
+  &--map {
+    background-color: $ctu-dark;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z'/%3E%3C/svg%3E");
+  }
+
+  &--phone {
+    background-color: $ctu-dark;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.4 11.4 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.4 11.4 0 00.57 3.57 1 1 0 01-.25 1.02l-2.2 2.2z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.4 11.4 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.4 11.4 0 00.57 3.57 1 1 0 01-.25 1.02l-2.2 2.2z'/%3E%3C/svg%3E");
+  }
+
+  &--email {
+    background-color: $ctu-dark;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E");
+  }
+}
+
+.ctu-addr-link {
+  color: $ctu-addr-text;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover { color: $ctu-purple; }
+}
+
+// ── Social ────────────────────────────────────────────────────
+.ctu-social-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ctu-social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.ctu-social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid $ctu-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $ctu-dark;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2;
+  }
+
+  &:hover {
+    background: $ctu-dark;
+    color: $ctu-white;
+  }
+}
+
+// ── Form Card ─────────────────────────────────────────────────
+.ctu-form-col { 
+    // max-height: 10px;
+}
+
+.ctu-form-card {
+  background: $ctu-page-bg;
+  border: 1.5px solid $ctu-border;
+  border-radius: 20px;
+  padding: 44px 48px 40px;
+
+  @media (max-width: 768px) { padding: 32px 24px; }
+  @media (max-width: 480px) { padding: 24px 16px; }
+}
+
+.ctu-form-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: $ctu-purple;
+  margin: 0 0 8px;
+}
+
+.ctu-form-sub {
+  font-size: 0.88rem;
+  color: $ctu-text;
+  line-height: 1.6;
+  margin: 0 0 32px;
+}
+
+// ── Form layout ───────────────────────────────────────────────
+.ctu-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ctu-row {
+  display: grid;
+  gap: 24px;
+
+  &--2 {
+    grid-template-columns: 1fr 1fr;
+    @media (max-width: 560px) { grid-template-columns: 1fr; }
+  }
+}
+
+.ctu-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &--full { width: 100%; }
+}
+
+.ctu-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $ctu-label;
+}
+
+.ctu-req { color: $ctu-error; margin-left: 2px; }
+
+// ── Inputs ────────────────────────────────────────────────────
+  .ctu-input,
+  .ctu-textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid $ctu-input-line;
+    border-radius: 0;
+    padding: 6px 2px 10px;
+    font-size: 0.88rem;
+    color: $ctu-label;
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+
+    &::placeholder { color: #A0AABB; font-size: 0.84rem; }
+    &:focus { border-bottom-color: $ctu-purple; }
+  }
+
+.ctu-textarea {
+  resize: none;
+  height: 80px;
+  line-height: 1.6;
+}
+
+.ctu-error {
+  font-size: 0.76rem;
+  color: $ctu-error;
+}
+
+// ── Submit ────────────────────────────────────────────────────
+.ctu-submit-row {
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+}
+.ctu-map-section{
+ width:100%;
+}
+.ctu-submit-btn {
+  background: $ctu-purple;
+  color: $ctu-white;
+  border: none;
+  border-radius: 50px;
+  padding: 13px 48px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: darken($ctu-purple, 8%);
+    transform: translateY(-1px);
+  }
+}
+
+// ── Map Section ───────────────────────────────────────────────
+.ctu-map-section {
+  padding: 0 0 60px;
+
+  @media (max-width: 900px) { padding: 0 32px 48px; }
+  @media (max-width: 480px) { padding: 0 20px 40px; }
+  margin: 0 auto;
+}
+
+.ctu-map-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+
+  a { display: block; }
+}
+
+.ctu-map-img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+
+  &:hover { transform: scale(1.02); }
+
+  @media (max-width: 768px) { height: 220px; }
+}
+
+.contact-map{
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    border-radius: 28px;
+    margin-top: 40px;
+
+    iframe{
+        width: 100%;
+        height: 100%;
+
+        filter: grayscale(50%) brightness(1.08);
+    }
+}

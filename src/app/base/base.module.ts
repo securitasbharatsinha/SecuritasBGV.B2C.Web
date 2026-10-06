@@ -30,6 +30,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('../book/book.module').then((m) => m.BookModule),
       },
+       {
+        path: 'leadership',
+        loadChildren: () =>
+          import('../components/leadership/leadership.module').then((m) => m.LeadershipModule),
+      },
       {
         path: 'faq',
         loadChildren: () =>
@@ -120,12 +125,20 @@ const routes: Routes = [
       // },
 
       {
-        path: 'supplier-connect',
+        path: 'contact-us',
         loadChildren: () =>
-          import('../components/partner-with-us/partner-with-us.module').then(
-            (m) => m.PartnerWithUsModule
+          import('../components/contact-us/contact-us.module').then(
+            (m) => m.ContactUsModule
           ),
       },
+
+      // {
+      //   path: 'supplier-connect',
+      //   loadChildren: () =>
+      //     import('../components/partner-with-us/partner-with-us.module').then(
+      //       (m) => m.PartnerWithUsModule
+      //     ),
+      // },
       {
         path: 'cart',
         loadChildren: () =>
@@ -250,6 +263,8 @@ const routes: Routes = [
       //       (m) => m.PartnerWithUsModule
       //     ),
       // },
+      { path: 'supplier-connect', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'faq',              redirectTo: 'home', pathMatch: 'full' },
       {
         path: 'cart',
         loadChildren: () =>
@@ -262,14 +277,20 @@ const routes: Routes = [
             (m) => m.HelpCenterModule
           ),
       },
-      {
+     {
         path: 'sitemap',
         loadChildren: () =>
           import('../components/sitemap/sitemap.module').then(
             (m) => m.SitemapModule
           ),
       },
-
+      {
+        path: 'leadership',
+        loadChildren: () =>
+          import('../components/leadership/leadership.module').then(
+            (m) => m.LeadershipModule
+          ),
+      },
       // {
       //   path: '**',
       //   redirectTo: 'home',

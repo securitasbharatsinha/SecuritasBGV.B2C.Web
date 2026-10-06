@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HelperService } from 'src/app/api-services/helper.services';
@@ -35,10 +36,12 @@ export class HelpCenterComponent implements OnInit, OnDestroy {
     private _helper: HelperService,
     private _cart: CartService,
     private _toaster: ToasterService,
+    private _location: Location,
     private _router: Router
   ) {
     this.actionForm = this._fb.group({
-      UserType: ['', Validators.required],
+      // UserType: ['', Validators.required],
+      UserType: ['individual', Validators.required],
       queryType: ['', Validators.required],
       query: ['', Validators.required],
       name: ['',
@@ -94,6 +97,14 @@ export class HelpCenterComponent implements OnInit, OnDestroy {
     this.actionForm.controls['name'].setValue(value, { emitEvent: false });
   }
  
+
+  closeForm() {
+    if (this.isSpecialWindow) {
+      this._router.navigate([this.isLoggedIn ? '/special/individual' : '/special/login']);
+    } else {
+      this._router.navigate(['/home']);
+    }
+  }
   ngOnDestroy(): void {
     this.isLive = false;
   }
@@ -103,18 +114,18 @@ export class HelpCenterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isSpecialWindow = this._router.url.includes('special');
 
-    this._helper.isLoggedIn &&
-      this._helper.uDetails?.subscribe((res: any) => {
-        if (res) {
-          this.actionForm.patchValue({
-            name: `${res?.Prefix} ${res?.FName}${
-              res?.MName ?? '' + res?.MName
-            } ${res?.LName}`,
-            phone: res?.Phone,
-            email: res?.Email,
-          });
-        }
-      });
+    // this._helper.isLoggedIn &&
+    //   this._helper.uDetails?.subscribe((res: any) => {
+    //     if (res) {
+    //       this.actionForm.patchValue({
+    //         name: `${res?.Prefix} ${res?.FName}${
+    //           res?.MName ?? '' + res?.MName
+    //         } ${res?.LName}`,
+    //         phone: res?.Phone,
+    //         email: res?.Email,
+    //       });
+    //     }
+    //   });
 
     this.loggedInUser = this._helper.getUserId;
     this.loggedInUserType = this._helper.getUserType;
@@ -133,11 +144,14 @@ export class HelpCenterComponent implements OnInit, OnDestroy {
         )));
       this.actionForm.get('UserType')?.disable();
     }
-    this.actionForm.controls.UserType.valueChanges.subscribe((res: any) => {
+   this.actionForm.controls.UserType.valueChanges.subscribe((res: any) => {
       this.data = data.find(
         (el) => el.login === this.isLoggedIn && el.UserType === res
       );
     });
+    if (!this.loggedInUserType) {
+      this.actionForm.get('UserType')?.setValue('individual');
+    }
     if (this.isLoggedIn) {
       this.actionForm.controls.query.valueChanges.subscribe((res: any) => {
         if (
@@ -184,6 +198,8 @@ export class HelpCenterComponent implements OnInit, OnDestroy {
           if (res && res.is_success) {
             this.isLoading = false;
             this.actionForm.reset();
+            this.actionForm.get('UserType')?.setValue('individual');
+            this.actionForm.markAsUntouched();
             this.selectedFile = null;
             this.b64Value = '';
             this._toaster.showSuccessToast(res.message);

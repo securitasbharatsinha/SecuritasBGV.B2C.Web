@@ -158,4 +158,30 @@
   color: #fff;
 }
  
+
+.policy-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  a{
+    color:#8D5FFF;
+  }
+}
+ 
+h3.section-subtitle-text {
+    font-size: 18px;
+    color: #8D5FFF; 
+}
+
+ul.contact-info-list {
+    list-style: none;
+}
+
+ul.contact-info-list li {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    margin-bottom: 10px;
+}
  

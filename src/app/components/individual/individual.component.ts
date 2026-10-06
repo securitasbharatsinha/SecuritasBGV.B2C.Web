@@ -30,12 +30,12 @@ export class IndividualComponent implements OnInit, OnDestroy, AfterViewInit {
   knowWhy: knowWhy;
   knowHow: knowHow;
   serviceTypeId: number;
-  HELPER_TITLES: any = {
+   HELPER_TITLES: any = {
     'house-help': { a: 'Verify', b: 'Your House Help' },
     'maid':       { a: 'Verify', b: 'Your Maid' },
     'driver':     { a: 'Verify', b: 'Your Driver' },
     'guard':      { a: 'Verify', b: 'Your Guard' },
-    'tutor':      { a: 'Verify', b: 'Your Tutor' },
+    // 'tutor':      { a: 'Verify', b: 'Your Tutor' },
   };
   helperTitle: any = { a: 'Verify', b: 'Your House Help' };
   islive: boolean = true;

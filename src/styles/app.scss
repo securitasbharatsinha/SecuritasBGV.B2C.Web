@@ -4317,3 +4317,14 @@ body{
    opacity: 1;
   visibility: visible;
 }
+
+
+.mobile-nav{
+  @media (max-width:1920px) {
+    display: none !important;
+  }
+  @media (max-width: 1024px) {
+    display: block !important;
+   
+  }
+}

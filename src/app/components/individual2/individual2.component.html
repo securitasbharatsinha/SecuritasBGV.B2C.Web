@@ -1,5 +1,6 @@
 <div class="indivisual-page"></div>
 <div class="sv-page">
+    <div class="container">
         <!-- Header -->
      
 
@@ -15,7 +16,7 @@
             </div>
            
                  <div class="intro-links">
-                <p>Home</p> - <a href="" class="">{{servicePagesData?.[currentURL]?.['title']}}</a>
+                <a [routerLink]="['/home']">Home</a> - <p>{{servicePagesData?.[currentURL]?.['title']}}</p>
             </div>
             <div class="sv-intro__grid ">
                 <div class="sv-intro__left">
@@ -321,5 +322,6 @@
 
            
 
-        </section>
+               </section>
          </div>
+</div>
