@@ -152,8 +152,16 @@ export class SharedTestimonialComponent implements OnInit, OnDestroy {
     this._homepageService
       .saveContactUs(payload as any)
       .pipe(takeWhile(() => this.isLive))
-      .subscribe(
+      // .subscribe(
+      //   (res: any) => {
+      //     this.isSendingEnquiry = false;
+      //     this._toaster.showSuccessToast('Thank you! We will reach out to you shortly.');
+      //     ctaForm.resetForm();
+
+            .subscribe(
         (res: any) => {
+          (window as any).wvTrack?.formSubmit('home-enquiry');
+
           this.isSendingEnquiry = false;
           this._toaster.showSuccessToast('Thank you! We will reach out to you shortly.');
           ctaForm.resetForm();

@@ -202,7 +202,7 @@ export class SharedCartComponent implements OnInit, AfterViewInit, OnDestroy {
     this.codeApplied = false;
     this.promoCode = '';
   }
-  async buyNow() {
+    async buyNow() {
     await this.loadRazorpay();
 
     if (this._helper.isLoggedIn) {
@@ -211,7 +211,23 @@ export class SharedCartComponent implements OnInit, AfterViewInit, OnDestroy {
       this._router.navigate(['/auth/login']);
       return;
     }
+
+    (window as any).wvTrack?.checkout(
+      this.totalAmt,
+      (this.AllCartItems || []).reduce((s: number, el: any) => s + this.getIds(el?.checksArr || []).length, 0) || 1
+    );
+
     const userCatgeory = this._helper.getUserCategory;
+  // async buyNow() {
+  //   await this.loadRazorpay();
+
+  //   if (this._helper.isLoggedIn) {
+  //     !this.AllCartItems?.length && this._router.navigate(['/services']);
+  //   } else {
+  //     this._router.navigate(['/auth/login']);
+  //     return;
+  //   }
+  //   const userCatgeory = this._helper.getUserCategory;
     const userType = Number(this._helper.getUserType);
     let payload: any = {
       amount: this.totalAmt,
@@ -332,13 +348,19 @@ export class SharedCartComponent implements OnInit, AfterViewInit, OnDestroy {
   //       }
   //     });
   // }
-  payViaWallet() {
-    const reqCopy = this.walletpayReq;      // redirect ke liye sambhal ke rakho
+    payViaWallet() {
+    const reqCopy = this.walletpayReq;     // redirect ke liye sambhal ke rakho
     this._payment
       .payViaWallet(reqCopy)
       .pipe(takeWhile(() => this.isLive))
       .subscribe((res: any) => {
-        if (res && res.is_success) {
+        // if (res && res.is_success) {
+        //   this.walletpayReq = null;
+        //   this.getAllCartByUserId();
+                if (res && res.is_success) {
+          const cid = (reqCopy || []).map((el: any) => el?.CartId).filter(Boolean);
+          (window as any).wvTrack?.purchase('Order_' + (cid[0] || Date.now()), this.totalAmt);
+
           this.walletpayReq = null;
           this.getAllCartByUserId();
 
@@ -409,7 +431,8 @@ export class SharedCartComponent implements OnInit, AfterViewInit, OnDestroy {
             createdate: null,
             Percentages: '10%',
           };
-          this._payment.payWalletNow(res.data, promoCodeData);
+          // this._payment.payWalletNow(res.data, promoCodeData);
+          this._payment.payWalletNow(res.data, promoCodeData, 'cart');
         }
       });
   }

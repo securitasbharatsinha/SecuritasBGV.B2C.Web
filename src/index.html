@@ -18,6 +18,151 @@
     <meta name="google-site-verification" content="sSLlvQTMgM-qAirjh7jS2ZHPYKxgr2EvXXYV-y0KeA0" />
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
+        <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2013363712659912');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2013363712659912&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
+       <!-- Walsons Pixel Events -->
+    <script>
+    (function () {
+
+      function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+      function set(k, v) { try { localStorage.setItem(k, v); } catch (e) { } }
+      function svc() { return get('wv_service') || 'unknown'; }
+
+      // ---- role gate: sirf B2C user aur logged-out visitor track honge ----
+      function readCookie(name) {
+        try {
+          var parts = document.cookie.split(';');
+          for (var i = 0; i < parts.length; i++) {
+            var el = parts[i];
+            var idx = el.indexOf('=');
+            if (idx < 0) continue;
+            if (el.slice(0, idx).trim() === name) return el.slice(idx + 1);
+          }
+        } catch (e) { }
+        return null;
+      }
+
+      function currentRole() {
+        var raw = readCookie('sessionauth');          // live
+        if (raw) {
+          try {
+            var a = JSON.parse(decodeURIComponent(raw));
+            if (a && a.userType) return Number(a.userType);
+          } catch (e) { }
+        }
+        var ut = readCookie('userType');              // localhost
+        if (ut) return Number(decodeURIComponent(ut));
+        return 0;                                     // logged out
+      }
+
+      // 0 = logged out (ad se aaya visitor — ye track hona ZAROORI hai)
+      // 2 = Individual / B2C customer
+      // 1 = internal staff, 4 = Corporate, 6, 7 → block
+      function isTrackable() {
+        var r = currentRole();
+        return !r || r === 2;
+      }
+
+      function queryString() {
+        if (location.search) return location.search;
+        var h = location.hash || '';
+        var i = h.indexOf('?');
+        return i > -1 ? h.substring(i) : '';
+      }
+
+      function detectService() {
+        var p = new URLSearchParams(queryString());
+        if (p.get('helper')) return p.get('helper');
+        var path = location.pathname + (location.hash || '');
+        if (path.indexOf('tenant-verification') > -1) return 'tenant';
+        if (path.indexOf('matrimonial') > -1)         return 'matrimonial';
+        if (path.indexOf('verify-yourself') > -1)     return 'verify-yourself';
+        return null;
+      }
+
+      function trackService() {
+        if (!isTrackable()) return;
+        var s = detectService();
+        if (s) { set('wv_service', s); fbq('track', 'ViewContent', { content_name: s }); }
+      }
+
+      // Base code ne load pe PageView bhej diya hai, isliye Angular ka
+      // pehla NavigationEnd skip karo. Uske baad HAR navigation ginegi.
+      var skipFirstPageView = true;
+      function pageView() {
+        if (skipFirstPageView) { skipFirstPageView = false; return; }
+        if (!isTrackable()) return;
+        fbq('track', 'PageView');
+      }
+
+      trackService();
+
+      window.wvTrack = {
+        routeChanged: function () { pageView(); trackService(); },
+
+        addToCart: function (checkName, price) {
+          if (!isTrackable()) return;
+          fbq('track', 'AddToCart', {
+            content_name: svc(), content_ids: [checkName],
+            content_type: 'product', value: Number(price) || 0, currency: 'INR'
+          });
+        },
+        registered: function () {
+          if (!isTrackable()) return;
+          fbq('track', 'CompleteRegistration', { content_name: svc() });
+        },
+        loggedIn: function () {
+          if (!isTrackable()) return;
+          fbq('trackCustom', 'Login', { content_name: svc() });
+        },
+        formSubmit: function (formName) {
+          if (!isTrackable()) return;
+          fbq('track', 'Lead', { content_name: formName || 'unknown-form' });
+        },
+        buttonClick: function (label) {
+          if (!isTrackable()) return;
+          fbq('trackCustom', 'ButtonClick', { content_name: label || 'unknown' });
+        },
+        checkout: function (total, count) {
+          if (!isTrackable()) return;
+          fbq('track', 'InitiateCheckout', {
+            content_name: svc(), value: Number(total) || 0,
+            currency: 'INR', num_items: count || 1
+          });
+        },
+        purchase: function (orderId, amount) {
+          if (!isTrackable()) return;
+          if (get('wv_paid_' + orderId)) return;
+          fbq('track', 'Purchase', {
+            content_name: svc(), value: Number(amount) || 0, currency: 'INR'
+          }, { eventID: String(orderId) });
+          set('wv_paid_' + orderId, '1');
+        }
+      };
+
+      window.addEventListener('hashchange', function () { window.wvTrack.routeChanged(); });
+
+    })();
+    </script>
+    <!-- End Walsons Pixel Events -->
+
     <!-- <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"

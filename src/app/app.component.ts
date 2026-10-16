@@ -40,13 +40,27 @@ export class AppComponent implements OnInit {
       this.wowService.init();
       // this.mousePointer();
    
-      this._router.events.subscribe((event: any) => {
+      // this._router.events.subscribe((event: any) => {
+      //   if (event && event.url) {
+      //     this.isHideFooter =
+      //       event.url === '/auth' ||
+      //       event.url === '/auth/login' ||
+      //       event.url === '/auth/signup';
+         
+      //   }
+      // });
+
+            this._router.events.subscribe((event: any) => {
         if (event && event.url) {
           this.isHideFooter =
             event.url === '/auth' ||
             event.url === '/auth/login' ||
             event.url === '/auth/signup';
          
+        }
+
+        if (event instanceof NavigationEnd) {
+          (window as any).wvTrack?.routeChanged();
         }
       });
     }

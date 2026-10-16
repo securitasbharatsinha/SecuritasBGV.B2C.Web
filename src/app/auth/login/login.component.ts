@@ -214,7 +214,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         (res: any) => {
           this.isLoggingIn = false;
 
-          if (res && res.IsSuccess && res.Data && res?.Data?.Isactive) {
+                   if (res && res.IsSuccess && res.Data && res?.Data?.Isactive) {
+            if (Number(res?.Data?.RoleID) === 2) {
+              (window as any).wvTrack?.loggedIn();
+            }
             this._cookie.set('userId', res.Data.Id);
             // this._cookie.set('isLoggedIn', 'true');
             this._cookie.set('isLoggedIn', 'true', undefined, '/');

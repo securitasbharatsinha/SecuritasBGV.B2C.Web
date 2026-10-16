@@ -100,7 +100,7 @@ export class Individual2Component implements OnInit {
     '/matrimonial-due-diligence': {
       title: 'Matrimonial Verification',
       img1: '../../../assets/img/Matrimonial-Verification-updated.png',
-      img2: '../../../assets/img/Matrimonial-Verification-image.png',
+      img2: '../../../assets/img/Matrimonial_M.png',
       heading1: {
         p1: 'Verify Your Match,',
         p2: 'Before You Decide',
@@ -178,7 +178,7 @@ export class Individual2Component implements OnInit {
         const HELPER_IMG1: any = {
           'maid':  '../../../assets/img/Maid_banner.png',
           'guard': '../../../assets/img/Guard_Banner.png',
-          'driver': '../../../assets/img/Helper-Verification-updated.png',
+          'driver': '../../../assets/img/Driver_B.png',
           'kyc': '../../../assets/img/KYC-Banner.png',
         };
                const HELPER_IMG2: any = {
@@ -186,7 +186,6 @@ export class Individual2Component implements OnInit {
           'guard': '../../../assets/img/Guard_img.png',
           'driver': '../../../assets/img/Helper-Verification_image.png',
           'kyc': '../../../assets/img/KYC_.png',
-
         };
         const page = this.servicePagesData?.['/helper-verification'];
         if (page) {
@@ -222,12 +221,33 @@ export class Individual2Component implements OnInit {
   quantity9: number = 0;
   quantity10: number = 0;
 
-  incDecQty2(type: any, index: any){
+  // incDecQty2(type: any, index: any){
+  //   if(!this._helper.isLoggedIn){
+  //     this.openLoginAlert();
+  //   }
+  //   else if(type === 'inc'){
+  //     this.instantChecks[0].newPackageServices[index].qty = 1;
+  //   }
+  //   else if(type === 'dec'){
+  //     this.instantChecks[0].newPackageServices[index].qty = 0;
+  //   }
+  // }
+
+    // incDecQty2(type: any, index: any){
+    // if(!this._helper.isLoggedIn){
+    //   this.openLoginAlert();
+    // }
+      incDecQty2(type: any, index: any){
     if(!this._helper.isLoggedIn){
+      (window as any).wvTrack?.buttonClick('check-select-login-wall');
+
       this.openLoginAlert();
     }
     else if(type === 'inc'){
       this.instantChecks[0].newPackageServices[index].qty = 1;
+
+      const it = this.instantChecks[0].newPackageServices[index];
+      (window as any).wvTrack?.addToCart(it?.service_name, it?.service_price);
     }
     else if(type === 'dec'){
       this.instantChecks[0].newPackageServices[index].qty = 0;

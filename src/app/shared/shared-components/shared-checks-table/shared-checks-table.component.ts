@@ -224,8 +224,12 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
           : 1;
         this.servicesPackagesdata[i].newPackageServices[indx].new_price =
           qty * item.service_price;
+          (window as any).wvTrack?.addToCart(item?.service_name, item?.service_price);
       }
     } else {
+      if (!this._helper.isLoggedIn) {
+        (window as any).wvTrack?.buttonClick('check-select-login-wall');
+      }
       this.userRoleId === 4 && this.openAlert('Create your candidate');
     }
   }
@@ -480,13 +484,26 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
     this.userRoleId === 4 &&
       (window.location.href = `${portalPath}/ulogged/case-initiation`);
   }
-  buyNowInstant(item: any) {
+  // buyNowInstant(item: any) {
+  //   if (item && item.newPackageServices.some((el: any) => el.qty > 0)) {
+  //     this.isSubmitted = true;
+  //     if (!this.actionForm.valid) {
+  //       return;
+  //     }
+  //     item.isSelected = true;
+    buyNowInstant(item: any) {
     if (item && item.newPackageServices.some((el: any) => el.qty > 0)) {
       this.isSubmitted = true;
       if (!this.actionForm.valid) {
         return;
       }
       item.isSelected = true;
+
+      const sel = item.newPackageServices.filter((el: any) => el.qty > 0);
+      (window as any).wvTrack?.checkout(
+        sel.reduce((s: number, c: any) => s + (c.new_price || 0), 0),
+        sel.reduce((s: number, c: any) => s + (c.qty || 0), 0)
+      );
       let newItem = {
         ...item,
         newPackageServices: item.newPackageServices
@@ -625,12 +642,23 @@ export class SharedChecksTableComponent implements OnInit, OnDestroy {
       // image: "https://securitasb2cweb.keycorp.in/assets/img/logo_b.png",
       image: "https://walsonsverify.com/assets/img/logo_b.png",
       order_id: orderObj.OrderId,
-      handler: function (response: any) {
+            handler: function (response: any) {
         if (response) {
+          (window as any).wvTrack?.purchase(
+            orderObj.OrderId,
+            Number(orderObj.RequestAmt) / 100
+          );
+
           // globalThis.promoCodeDetails && globalThis._payment.SavePromoCode(promoCodeData);
           globalThis._payment.walletPaymentInstant(response, orderObj.OrderId);
         }
       },
+      // handler: function (response: any) {
+      //   if (response) {
+      //     // globalThis.promoCodeDetails && globalThis._payment.SavePromoCode(promoCodeData);
+      //     globalThis._payment.walletPaymentInstant(response, orderObj.OrderId);
+      //   }
+      // },
       prefill: {
         name: orderObj.name,
         email: orderObj.email,

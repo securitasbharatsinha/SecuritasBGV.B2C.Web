@@ -193,8 +193,15 @@ export class DiligenceFormComponent implements OnInit, OnChanges {
         this._cart
           .postEnquiry(data)
           .pipe(takeWhile(() => this.isLive))
-          .subscribe((res) => {
+          // .subscribe((res) => {
+          //   if (res && res.is_success) {
+          //     this.isLoading = false;
+          //     this.actionForm.reset();
+          //     this.isSubmitted = false;
+                    .subscribe((res) => {
             if (res && res.is_success) {
+              (window as any).wvTrack?.formSubmit('due-diligence');
+
               this.isLoading = false;
               this.actionForm.reset();
               this.isSubmitted = false;

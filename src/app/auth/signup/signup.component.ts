@@ -446,10 +446,20 @@ export class SignupComponent implements OnInit {
       status: 'Active',
     };
 
-    this._authService.postUserData(payload).subscribe(
+    // this._authService.postUserData(payload).subscribe(
+    //   (res: any) => {
+    //     this.isSigningUp = false;
+    //     if (res && res.IsSuccess) {
+    //       this.verifyTemplate = 'Authentication';
+    //       this._toaster.showSuccessToast('OTP sent on registered mail successfully');
+    //     } else {
+
+          this._authService.postUserData(payload).subscribe(
       (res: any) => {
         this.isSigningUp = false;
         if (res && res.IsSuccess) {
+          (window as any).wvTrack?.registered();
+
           this.verifyTemplate = 'Authentication';
           this._toaster.showSuccessToast('OTP sent on registered mail successfully');
         } else {
@@ -498,7 +508,10 @@ export class SignupComponent implements OnInit {
         })
         .subscribe(
           (res: any) => {
-            if (res && res.IsSuccess) {
+            // if (res && res.IsSuccess) {
+            //   (window as any).wvTrack?.registered();
+            //   this._toaster.showSuccessToast(res.Message);
+                        if (res && res.IsSuccess) {
               this._toaster.showSuccessToast(res.Message);
 
               this._router.navigate([

@@ -194,8 +194,14 @@ export class HelpCenterComponent implements OnInit, OnDestroy {
       this._cart
         .needSupport(data)
         .pipe(takeWhile(() => this.isLive))
-        .subscribe((res) => {
+        // .subscribe((res) => {
+        //   if (res && res.is_success) {
+        //     this.isLoading = false;
+        //     this.actionForm.reset();
+                .subscribe((res) => {
           if (res && res.is_success) {
+            (window as any).wvTrack?.formSubmit('help-desk');
+
             this.isLoading = false;
             this.actionForm.reset();
             this.actionForm.get('UserType')?.setValue('individual');

@@ -381,8 +381,14 @@ export class HeaderComponent implements OnInit, OnDestroy, AfterViewInit {
     this.isSubmitted = true;
     if (this.contactForm.valid) {
       this._homepageService.saveContactUs(this.contactForm.value).subscribe(
-        (res: any) => {
+        // (res: any) => {
+        //   if (res && res.IsSuccess) {
+        //     this._toaster.showSuccessToast(res.Message);
+        //     this.contactForm.reset();
+          (res: any) => {
           if (res && res.IsSuccess) {
+            (window as any).wvTrack?.formSubmit('header-enquiry');
+
             this._toaster.showSuccessToast(res.Message);
             this.contactForm.reset();
             this.isSubmitted = false;

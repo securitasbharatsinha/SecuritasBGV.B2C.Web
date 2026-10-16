@@ -80,9 +80,16 @@ export class ContactUsComponent implements OnInit {
   sendMessage(): void {
     this.isSubmitted = true;
     if (this.contactForm.valid) {
-      this._homepageServices.saveContactUs(this.contactForm.value).subscribe(
+      // this._homepageServices.saveContactUs(this.contactForm.value).subscribe(
+      //   (res: any) => {
+      //     if (res && res.IsSuccess) {
+      //       this._toaster.showSuccessToast(res.Message);
+      //       this.contactForm.reset();
+            this._homepageServices.saveContactUs(this.contactForm.value).subscribe(
         (res: any) => {
           if (res && res.IsSuccess) {
+            (window as any).wvTrack?.formSubmit('contact-us');
+
             this._toaster.showSuccessToast(res.Message);
             this.contactForm.reset();
             this.isSubmitted = false;

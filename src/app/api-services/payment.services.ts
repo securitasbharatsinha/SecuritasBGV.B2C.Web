@@ -387,7 +387,8 @@ export class PaymentService {
         }
       });
   }
-  payWalletNow(orderObj: any, promoCodeData: any) {
+  // payWalletNow(orderObj: any, promoCodeData: any) {
+    payWalletNow(orderObj: any, promoCodeData: any, pixelSource: string = '') {
     if (this._helper.isLoggedIn) {
       var globalThis = this;
       const options = {
@@ -400,7 +401,13 @@ export class PaymentService {
                 image: 'https://walsonsverify.com/assets/img/logo_b.png',
         
         order_id: orderObj.OrderId,
-        handler: function (response: any) {
+        // handler: function (response: any) {
+        //   if (response) {
+        //     globalThis.SavePromoCode(promoCodeData);
+        //     globalThis.walletPayment(response, orderObj.OrderId);
+        //   }
+        // },
+                       handler: function (response: any) {
           if (response) {
             globalThis.SavePromoCode(promoCodeData);
             globalThis.walletPayment(response, orderObj.OrderId);
